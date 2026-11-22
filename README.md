@@ -18,7 +18,23 @@ The current deliverable is a static, single-file prototype of the cashier sales 
 - Sequential ticket numbering
 - Local sales journal
 
-## Getting started
+## Application (PWA)
+
+The application lives in `app/`: an Angular progressive web app that behaves like a desktop operating system. A lock screen with PIN login comes first, then a desktop with draggable windows, a taskbar, and a start menu. Animations use GSAP, and the app works offline once installed.
+
+Requirements: Node.js 24 (or 22.22+). Then:
+
+```bash
+cd app
+npm install
+npm run dev        # development server on http://localhost:4250
+npm test           # unit tests
+npm run build      # production build in app/dist/app/browser
+```
+
+The app is not yet connected to the sales engine. Each window currently shows its purpose and the requirements it covers.
+
+## Getting started (prototype)
 
 The prototype has no dependencies, no build step, and no server.
 
@@ -67,8 +83,13 @@ Design prompts stay in French, because the generated interface is in French.
 |------|-------------|
 | `docs/en/`, `docs/fr/` | Documentation, in English and French (same files in each folder) |
 | `docs/references/` | Shared images used by the documentation |
+| `app/` | Angular 22 PWA: lock screen, desktop shell, windows, taskbar, start menu |
 | `prototype/caisse/index.html` | Sales-screen prototype (CSS, JavaScript, and markup in one file) |
 | `prototype/marketpos_retail_software/` | Design exports: one folder per screen, with HTML source and screenshot |
+
+## Credits
+
+Colour icons in the application come from [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) by Microsoft, licensed under the MIT License (see `app/public/icons/fluent/LICENSE`).
 
 ## Roadmap
 

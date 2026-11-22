@@ -18,7 +18,23 @@ Le livrable actuel est un prototype statique, en un seul fichier, de l'écran de
 - Numérotation continue des tickets
 - Journal local des ventes
 
-## Démarrage rapide
+## Application (PWA)
+
+L'application est dans `app/` : une application web progressive Angular qui se comporte comme un système d'exploitation de bureau. Un écran de verrouillage avec connexion par code PIN vient en premier, puis un bureau avec des fenêtres déplaçables, une barre des tâches et un menu Démarrer. Les animations utilisent GSAP, et l'application fonctionne hors ligne une fois installée.
+
+Prérequis : Node.js 24 (ou 22.22+). Ensuite :
+
+```bash
+cd app
+npm install
+npm run dev        # serveur de développement sur http://localhost:4250
+npm test           # tests unitaires
+npm run build      # build de production dans app/dist/app/browser
+```
+
+L'application n'est pas encore reliée au moteur de vente. Chaque fenêtre présente pour l'instant sa fonction et les exigences qu'elle couvre.
+
+## Démarrage rapide (prototype)
 
 Le prototype n'a aucune dépendance, aucune étape de compilation et aucun serveur.
 
@@ -65,8 +81,13 @@ Les prompts de design restent en français, car l'interface générée est en fr
 |--------|-------------|
 | `docs/en/`, `docs/fr/` | Documentation, en anglais et en français (mêmes fichiers dans chaque dossier) |
 | `docs/references/` | Images partagées utilisées par la documentation |
+| `app/` | PWA Angular 22 : écran de verrouillage, bureau, fenêtres, barre des tâches, menu Démarrer |
 | `prototype/caisse/index.html` | Prototype de l'écran de vente (CSS, JavaScript et balisage dans un seul fichier) |
 | `prototype/marketpos_retail_software/` | Exports de maquettes : un dossier par écran, avec source HTML et capture |
+
+## Crédits
+
+Les icônes en couleur de l'application viennent de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji), de Microsoft, sous licence MIT (voir `app/public/icons/fluent/LICENSE`).
 
 ## Feuille de route
 
