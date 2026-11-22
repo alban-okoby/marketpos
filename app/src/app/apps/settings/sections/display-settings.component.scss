@@ -34,6 +34,45 @@
   margin-top: 4px;
 }
 
+// Accent colour: one round swatch per palette, with the selected one ringed.
+.accents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 12px 0 0;
+}
+
+.accent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+
+  &:hover {
+    background: var(--fill-hover);
+  }
+
+  &.selected {
+    color: var(--text);
+    font-weight: 600;
+
+    .dot {
+      box-shadow: 0 0 0 2px var(--glass-strong), 0 0 0 4px var(--text);
+    }
+  }
+}
+
+.dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: box-shadow 0.15s;
+}
+
 // Theme previews use flat colours only.
 .swatch {
   position: relative;

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
+import { ACCENT_ORDER, ACCENT_PALETTES, AccentService } from '../../../core/theme/accent.service';
 import { ThemePreference, ThemeService } from '../../../core/theme/theme.service';
 
 interface ThemeOption {
@@ -44,12 +45,38 @@ interface ThemeOption {
 
         <p class="current" aria-live="polite">Thème affiché : {{ currentLabel() }}</p>
       </section>
+
+      <section aria-labelledby="accent-title">
+        <h3 id="accent-title">Couleur d'accentuation</h3>
+        <p class="hint">Couleur des boutons principaux, des éléments sélectionnés et du focus clavier.</p>
+
+        <div class="accents" role="radiogroup" aria-labelledby="accent-title">
+          @for (color of accentOrder; track color) {
+            <button
+              type="button"
+              role="radio"
+              class="accent"
+              [class.selected]="accent.accent() === color"
+              [attr.aria-checked]="accent.accent() === color"
+              [attr.aria-label]="accentPalettes[color].label"
+              [attr.title]="accentPalettes[color].label"
+              (click)="accent.setAccent(color)"
+            >
+              <span class="dot" [style.background-color]="accentPalettes[color].strong"></span>
+              <span class="accent-label">{{ accentPalettes[color].label }}</span>
+            </button>
+          }
+        </div>
+      </section>
     </article>
   `,
   styleUrl: './display-settings.component.scss',
 })
 export class DisplaySettingsComponent {
   readonly theme = inject(ThemeService);
+  readonly accent = inject(AccentService);
+  readonly accentPalettes = ACCENT_PALETTES;
+  readonly accentOrder = ACCENT_ORDER;
 
   readonly themeOptions: readonly ThemeOption[] = [
     { value: 'system', label: 'Automatique', hint: 'Suit le système' },

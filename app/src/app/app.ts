@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SwUpdate, VersionEvent } from '@angular/service-worker';
 import { filter } from 'rxjs';
 
+import { AccentService } from './core/theme/accent.service';
 import { SessionService } from './core/session/session.service';
 import { DesktopComponent } from './shell/desktop/desktop.component';
 import { LockScreenComponent } from './shell/lock-screen/lock-screen.component';
@@ -24,6 +25,8 @@ import { LockScreenComponent } from './shell/lock-screen/lock-screen.component';
 })
 export class App {
   readonly session = inject(SessionService);
+  // Created at start-up so the saved accent colour applies before the settings are opened.
+  private readonly accent = inject(AccentService);
 
   constructor() {
     // The service worker serves the cached build first. When a new build is ready, activate it and reload,
