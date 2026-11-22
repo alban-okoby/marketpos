@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, computed, inject, signal } from '@angular/core';
 import { gsap } from 'gsap';
 
+import { ClockService } from '../../core/clock.service';
 import { duration, reducedMotion } from '../../core/motion';
 import { AppId } from '../../core/os/apps';
 import { ModuleSettingsService } from '../../core/os/module-settings.service';
@@ -31,6 +32,11 @@ import { WindowComponent } from '../window/window.component';
         }
       </nav>
 
+      <div class="clock" aria-label="Date et heure">
+        <time class="clock-time">{{ clock.time() }}</time>
+        <span class="clock-date">{{ clock.date() }}</span>
+      </div>
+
       <div class="windows">
         @for (win of wm.windows(); track win.id) {
           <app-window [state]="win" />
@@ -49,6 +55,7 @@ import { WindowComponent } from '../window/window.component';
 export class DesktopComponent implements AfterViewInit {
   readonly wm = inject(WindowManagerService);
   readonly modules = inject(ModuleSettingsService);
+  readonly clock = inject(ClockService);
   readonly startOpen = signal(false);
   private readonly wallpaper = inject(WallpaperService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);

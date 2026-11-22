@@ -67,6 +67,33 @@
   text-shadow: none;
 }
 
+// Date and time on the desktop, always in white. They sit under the windows and follow the taskbar's position.
+.clock {
+  position: absolute;
+  top: calc(20px + var(--reserve-top));
+  right: calc(20px + var(--reserve-right));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  user-select: none;
+}
+
+.clock-time {
+  font-size: 2.6rem;
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-date {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
 // The windows area excludes the space taken by the taskbar, so windows never sit under it.
 .windows {
   position: absolute;
