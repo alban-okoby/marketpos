@@ -45,7 +45,8 @@
   --shadow-window: 0 24px 60px rgba(0, 0, 0, 0.45);
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
   --wallpaper-scrim: rgba(0, 0, 0, 0.2);
-  --label-bg: rgba(0, 0, 0, 0.45);
+  --label-bg: rgba(0, 0, 0, 0.45); /* pill behind desktop labels over a wallpaper image */
+  --on-image-text: #ffffff;
 }
 
 :root[data-theme="light"] {
@@ -69,7 +70,6 @@
   --shadow-window: 0 24px 60px rgba(20, 40, 30, 0.2);
   --shadow-soft: 0 8px 24px rgba(20, 40, 30, 0.12);
   --wallpaper-scrim: rgba(255, 255, 255, 0.08);
-  --label-bg: rgba(255, 255, 255, 0.6);
 }
 
 *,
