@@ -1,0 +1,59 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: block;
+}
+
+.desktop {
+  position: absolute;
+  inset: 0;
+}
+
+.icons {
+  position: absolute;
+  top: 20px;
+  left: 14px;
+  bottom: var(--taskbar-space);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 6px;
+}
+
+.icon {
+  width: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.icon:hover {
+  background: var(--fill-subtle);
+}
+
+.icon-tile {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--fill-active);
+}
+
+.icon-label {
+  font-size: 0.8rem;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: var(--label-shadow);
+}
+
+.windows {
+  position: absolute;
+  inset: 0 0 var(--taskbar-space) 0;
+  pointer-events: none;
+}

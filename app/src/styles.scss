@@ -1,0 +1,118 @@
+/*
+ * Global design tokens and base styles for the MarketPOS shell.
+ * Every colour used by components comes from a token, so the light and dark themes stay consistent.
+ * The active theme is set on <html data-theme="light|dark"> by ThemeService.
+ */
+
+:root {
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius-lg: 16px;
+  --radius-md: 10px;
+
+  --taskbar-height: 56px;
+  --taskbar-space: calc(var(--taskbar-height) + 28px);
+
+  /* Brand colours: green for primary actions, orange for prices and secondary actions. */
+  --accent-strong: #1e7a3a; /* button backgrounds with white text (WCAG AA) */
+  --danger: #d64545;
+
+  /* Dark theme (default, before the theme script runs). */
+  --text: #f4f7f5;
+  --text-muted: rgba(244, 247, 245, 0.7);
+  --body-bg: #0d1412;
+  --glass: rgba(28, 34, 32, 0.46);
+  --glass-strong: rgba(22, 28, 26, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --stroke: rgba(255, 255, 255, 0.1);
+  --fill-subtle: rgba(255, 255, 255, 0.05);
+  --fill-hover: rgba(255, 255, 255, 0.1);
+  --fill-active: rgba(255, 255, 255, 0.16);
+  --accent-indicator: #4cc46a;
+  --warn-text: #ffc58a;
+  --warn-strong: #ffb36b;
+  --warn-bg: rgba(245, 130, 31, 0.2);
+  --danger-text: #ff8a8a;
+  --focus: #7ee39a;
+  --label-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  --shadow-window: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="light"] {
+  --text: #17201c;
+  --text-muted: rgba(23, 32, 28, 0.68);
+  --body-bg: #e6efe9;
+  --glass: rgba(255, 255, 255, 0.6);
+  --glass-strong: rgba(250, 252, 251, 0.92);
+  --glass-border: rgba(20, 40, 30, 0.1);
+  --stroke: rgba(20, 40, 30, 0.1);
+  --fill-subtle: rgba(20, 40, 30, 0.04);
+  --fill-hover: rgba(20, 40, 30, 0.07);
+  --fill-active: rgba(20, 40, 30, 0.12);
+  --accent-indicator: #1e7a3a;
+  --warn-text: #8a4300;
+  --warn-strong: #a85200;
+  --warn-bg: rgba(245, 130, 31, 0.18);
+  --danger-text: #b42323;
+  --focus: #1e7a3a;
+  --label-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  --shadow-window: 0 24px 60px rgba(20, 40, 30, 0.2);
+  --shadow-soft: 0 8px 24px rgba(20, 40, 30, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--body-bg);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+input {
+  user-select: text;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+}
+
+/* Respect the operating system setting: no decorative motion for users who ask for less. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,184 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: block;
+}
+
+.lock {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.clock {
+  margin: 12px 0 0;
+  font-size: clamp(56px, 10vw, 96px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.date {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.card {
+  width: min(380px, 92vw);
+  padding: 22px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.users {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.user {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.user:hover {
+  background: var(--fill-subtle);
+}
+
+.user.selected {
+  color: var(--text);
+  background: var(--fill-active);
+  border-color: var(--glass-border);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--fill-active);
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.prompt {
+  margin: 6px 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.dots {
+  display: flex;
+  gap: 14px;
+  height: 16px;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.dot.filled {
+  background: var(--text);
+  border-color: var(--text);
+  transform: scale(1.05);
+}
+
+.dot.error {
+  border-color: var(--danger);
+}
+
+.dot.filled.error {
+  background: var(--danger);
+}
+
+.error-text {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--danger-text);
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.key {
+  height: 60px;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: grid;
+  place-items: center;
+  background: var(--fill-hover);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.key:hover {
+  background: var(--fill-active);
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key-secondary {
+  background: transparent;
+}
+
+.footer {
+  position: fixed;
+  left: 20px;
+  bottom: 16px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}

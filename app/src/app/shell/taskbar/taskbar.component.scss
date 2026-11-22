@@ -1,0 +1,105 @@
+:host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  height: var(--taskbar-height);
+  z-index: 200;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 12px;
+  pointer-events: none;
+}
+
+.taskbar {
+  grid-column: 2;
+  pointer-events: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  border-radius: 16px;
+}
+
+.start,
+.app {
+  position: relative;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.start:hover,
+.app:hover,
+.start.open {
+  background: var(--fill-active);
+}
+
+.start:active,
+.app:active {
+  transform: scale(0.92);
+}
+
+.app.minimized {
+  opacity: 0.6;
+}
+
+.indicator {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 6px;
+  height: 3px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  background: var(--text-muted);
+  transition: width 0.2s, background 0.2s;
+}
+
+.app.active .indicator {
+  width: 16px;
+  background: var(--accent-indicator);
+}
+
+.tray {
+  grid-column: 3;
+  justify-self: end;
+  pointer-events: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.status.offline {
+  color: var(--warn-strong);
+}
+
+.pending {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.time {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
