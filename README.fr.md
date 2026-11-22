@@ -18,9 +18,9 @@ Le livrable actuel est un prototype statique, en un seul fichier, de l'écran de
 - Numérotation continue des tickets
 - Journal local des ventes
 
-## Application (PWA)
+## Application
 
-L'application est dans `app/` : une application web progressive Angular qui se comporte comme un système d'exploitation de bureau. Un écran de verrouillage avec connexion par code PIN vient en premier, puis un bureau avec des fenêtres déplaçables, une barre des tâches et un menu Démarrer. Les animations utilisent GSAP, et l'application fonctionne hors ligne une fois installée.
+L'application est dans `app/` : une application web Angular et l'application fonctionne hors ligne une fois installée.
 
 Prérequis : Node.js 24 (ou 22.22+). Ensuite :
 
