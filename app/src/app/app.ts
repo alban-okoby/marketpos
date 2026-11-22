@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { SwUpdate, VersionEvent } from '@angular/service-worker';
 import { filter } from 'rxjs';
 
+import { CustomerDisplayComponent } from './apps/caisse/customer-display.component';
 import { SessionService } from './core/session/session.service';
 import { AccentService } from './core/theme/accent.service';
 import { WallpaperService } from './core/wallpaper/wallpaper.service';
@@ -14,12 +15,14 @@ import { LockScreenComponent } from './shell/lock-screen/lock-screen.component';
  */
 @Component({
   selector: 'app-root',
-  imports: [LockScreenComponent, DesktopComponent],
+  imports: [LockScreenComponent, DesktopComponent, CustomerDisplayComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="wallpaper" aria-hidden="true" [class.has-image]="wallpaperImage() !== null" [style.background-image]="wallpaperImage()"></div>
 
-    @if (session.locked()) {
+    @if (isCustomerDisplay) {
+      <app-customer-display />
+    } @else if (session.locked()) {
       <app-lock-screen (unlocked)="session.unlock($event)" />
     } @else {
       <app-desktop />
@@ -28,6 +31,8 @@ import { LockScreenComponent } from './shell/lock-screen/lock-screen.component';
   styleUrl: './app.scss',
 })
 export class App {
+  /** The customer display opens in its own window with ?client=1 and shows nothing else. */
+  readonly isCustomerDisplay = new URLSearchParams(location.search).has('client');
   readonly session = inject(SessionService);
   // Created at start-up so the saved accent colour applies before the settings are opened.
   private readonly accent = inject(AccentService);

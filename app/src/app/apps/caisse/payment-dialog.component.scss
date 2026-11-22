@@ -1,0 +1,141 @@
+:host {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.dialog {
+  width: min(420px, 92%);
+  padding: 22px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-window);
+  background: var(--glass-strong);
+
+  h2 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+}
+
+.due {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: var(--text-muted);
+
+  strong {
+    font-size: 2rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+
+  input {
+    height: 52px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke);
+    background: var(--fill-subtle);
+    color: var(--text);
+    font: inherit;
+    font-size: 1.4rem;
+    font-variant-numeric: tabular-nums;
+    outline: none;
+
+    &:focus-visible {
+      border-color: var(--accent-strong);
+    }
+  }
+}
+
+.shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+
+  button {
+    height: 44px;
+    border-radius: 10px;
+    background: var(--fill-active);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+
+    &:hover {
+      background: var(--fill-hover);
+    }
+  }
+
+  .exact {
+    grid-column: span 3;
+    background: var(--accent-strong);
+    color: var(--on-accent);
+    font-weight: 600;
+  }
+}
+
+.change {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1rem;
+
+  strong {
+    font-size: 1.6rem;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.error {
+  margin: 0;
+  color: var(--danger-text);
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 10px;
+  margin-top: 4px;
+
+  button {
+    height: 52px;
+    border-radius: 12px;
+    font-weight: 600;
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  .secondary {
+    background: var(--warn-bg);
+    color: var(--warn-text);
+  }
+
+  .primary {
+    background: var(--accent-strong);
+    color: var(--on-accent);
+  }
+}

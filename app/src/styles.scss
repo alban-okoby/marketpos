@@ -127,3 +127,21 @@ input {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* Printing: only the receipt is printed (see apps/caisse/ticket-print). */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  .print-area {
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+}

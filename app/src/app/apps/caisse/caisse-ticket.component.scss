@@ -1,0 +1,142 @@
+:host {
+  display: flex;
+  min-height: 0;
+}
+
+// Ticket panel on the right.
+.ticket {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+.lines {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.line {
+  display: grid;
+  grid-template-columns: 1fr auto auto 26px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--fill-subtle);
+}
+
+.line-name {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  small {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+  }
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--fill-active);
+    font-size: 1rem;
+  }
+
+  span {
+    min-width: 22px;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+.amount {
+  font-weight: 600;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.remove {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--danger-text);
+
+  &:hover {
+    background: var(--fill-active);
+  }
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 10px;
+  border-top: 1px solid var(--stroke);
+
+  span {
+    color: var(--text-muted);
+  }
+
+  strong {
+    font-size: 2rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 8px;
+
+  button {
+    height: 52px;
+    border-radius: 12px;
+    font-weight: 600;
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+  }
+
+  .cancel {
+    background: var(--warn-bg);
+    color: var(--warn-text);
+  }
+
+  .pay {
+    background: var(--accent-strong);
+    color: var(--on-accent);
+    font-size: 1rem;
+  }
+}

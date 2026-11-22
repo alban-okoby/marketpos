@@ -14,6 +14,7 @@ import {
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 
+import { CaisseAppComponent } from '../../apps/caisse/caisse-app.component';
 import { ModuleAppComponent } from '../../apps/module-app/module-app.component';
 import { SettingsAppComponent } from '../../apps/settings/settings-app.component';
 import { duration } from '../../core/motion';
@@ -29,7 +30,7 @@ gsap.registerPlugin(Draggable);
  */
 @Component({
   selector: 'app-window',
-  imports: [IconComponent, ModuleAppComponent, SettingsAppComponent],
+  imports: [IconComponent, ModuleAppComponent, SettingsAppComponent, CaisseAppComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'window-host',
@@ -66,10 +67,13 @@ gsap.registerPlugin(Draggable);
         </div>
       </header>
 
-      <div class="content" [class.flush]="state().appId === 'parametres'">
+      <div class="content" [class.flush]="state().appId === 'parametres' || state().appId === 'caisse'">
         @switch (state().appId) {
           @case ('parametres') {
             <app-settings-app />
+          }
+          @case ('caisse') {
+            <app-caisse-app />
           }
           @default {
             <app-module-app [appId]="state().appId" />
