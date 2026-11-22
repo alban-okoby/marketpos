@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarketPOS : prototype caisse</title>
+<style>
+  /* Palette tirée de docs/en/reference-visuelle.md : vert action principale, orange prix et actions secondaires */
+  :root {
+    --fond: #f4f5f7; --carte: #ffffff; --texte: #1f2430; --discret: #6b7280;
+    --accent: #4caf50; --accent-clair: #e8f5e9; --orange: #f5821f; --orange-clair: #fff1e4;
+    --danger: #dc2626; --bord: #e5e7eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --fond: #0f1419; --carte: #181f27; --texte: #e6eaf0; --discret: #94a3b8;
+      --accent: #5dbb63; --accent-clair: #1b3a1f; --orange: #ff9a3d; --orange-clair: #3a2a18;
+      --danger: #f87171; --bord: #2a3440;
+    }
+  }
+  :root[data-theme="dark"] {
+    --fond: #0f1419; --carte: #181f27; --texte: #e6eaf0; --discret: #94a3b8;
+    --accent: #5dbb63; --accent-clair: #1b3a1f; --orange: #ff9a3d; --orange-clair: #3a2a18;
+    --danger: #f87171; --bord: #2a3440;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, sans-serif; background: var(--fond); color: var(--texte); }
+  button { font: inherit; cursor: pointer; border: 1px solid var(--bord); background: var(--carte); color: var(--texte); border-radius: 8px; padding: 10px 14px; min-height: 44px; }
+  button.primaire { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  button.danger { color: var(--danger); }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  input { font: inherit; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--bord); background: var(--carte); color: var(--texte); min-height: 44px; }
+  .masque { display: none !important; }
+
+  /* Connexion */
+  #connexion { max-width: 360px; margin: 12vh auto; background: var(--carte); padding: 24px; border-radius: 12px; border: 1px solid var(--bord); }
+  #connexion h1 { margin-top: 0; font-size: 20px; }
+  #connexion label { display: block; margin: 12px 0 6px; font-size: 14px; color: var(--discret); }
+  #connexion input { width: 100%; }
+  .erreur { color: var(--danger); font-size: 14px; min-height: 20px; margin: 8px 0 0; }
+
+  /* Caisse : mise en page de docs/en/reference-visuelle.md */
+  .entete-app { display: flex; align-items: center; gap: 16px; padding: 12px 16px; background: var(--carte); border-bottom: 1px solid var(--bord); }
+  .logo { font-weight: 800; font-size: 18px; color: var(--accent); white-space: nowrap; }
+  .logo span { color: var(--texte); }
+  .entete-app .recherche-globale { flex: 1; max-width: 560px; margin: 0 auto; }
+  .statut { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--discret); white-space: nowrap; }
+  .point { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); display: inline-block; }
+  .point.hors { background: var(--orange); }
+  .caissier-badge { display: flex; align-items: center; gap: 8px; font-size: 14px; white-space: nowrap; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--accent-clair); color: var(--accent); display: grid; place-items: center; font-weight: 700; }
+  #caisse { display: grid; grid-template-columns: 65fr 35fr; height: calc(100vh - 62px); }
+  .gauche { display: flex; flex-direction: column; padding: 16px; gap: 14px; min-width: 0; background: var(--fond); overflow: hidden; }
+  .categories { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+  .categorie { min-width: 130px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 12px; background: var(--carte); border: 1px solid var(--bord); border-radius: 10px; text-align: left; }
+  .categorie .rond { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-clair); display: grid; place-items: center; font-weight: 700; color: var(--accent); }
+  .categorie small { color: var(--discret); font-size: 12px; }
+  .categorie.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .categorie.active .rond { background: rgba(255,255,255,.25); color: #fff; }
+  .categorie.active small { color: #e8f5e9; }
+  .titre-section { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .titre-section h2 { margin: 0; font-size: 18px; }
+  .titre-section .outils { display: flex; gap: 8px; }
+  .titre-section input { width: 260px; }
+  .btn-vert { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  .btn-orange { background: var(--orange); color: #fff; border-color: var(--orange); font-weight: 600; }
+  .grille { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; overflow: auto; align-content: start; padding-bottom: 8px; }
+  @media (min-width: 1700px) { .grille { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  .produit { text-align: left; padding: 12px; min-height: 120px; display: flex; flex-direction: column; gap: 8px; background: var(--carte); border: 1px solid var(--bord); border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .produit:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+  .produit .image { height: 56px; border-radius: 8px; background: var(--accent-clair); color: var(--accent); display: grid; place-items: center; font-size: 22px; font-weight: 700; }
+  .produit .nom { font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .produit .prix { font-weight: 700; color: var(--orange); margin-top: auto; }
+  .produit .cat { font-size: 12px; color: var(--discret); }
+  .droite { background: var(--carte); border-left: 1px solid var(--bord); display: flex; flex-direction: column; min-height: 0; }
+  .droite h2 { margin: 0; padding: 16px; font-size: 18px; border-bottom: 1px solid var(--bord); display: flex; justify-content: space-between; align-items: center; }
+  .droite h2 small { font-size: 13px; color: var(--discret); font-weight: 400; }
+  .ajout { display: flex; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--bord); }
+  .ajout input { flex: 1; min-width: 0; }
+  .entete-lignes { display: grid; grid-template-columns: 1fr 120px 90px 36px; gap: 8px; padding: 10px 16px 4px; font-size: 12px; color: var(--discret); }
+  .lignes { flex: 1; overflow: auto; padding: 0 16px; }
+  .ligne { display: grid; grid-template-columns: 1fr 120px 90px 36px; gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--bord); }
+  .ligne .nom { font-weight: 500; }
+  .ligne .qte { display: flex; gap: 4px; align-items: center; }
+  .ligne .qte button { min-width: 32px; min-height: 32px; padding: 0; }
+  .ligne .qte span { min-width: 22px; text-align: center; }
+  .ligne .montant { text-align: right; font-weight: 600; color: var(--orange); }
+  .ligne .suppr { min-width: 36px; min-height: 36px; padding: 0; color: var(--danger); }
+  .vide { color: var(--discret); text-align: center; margin-top: 40px; }
+  .totaux { padding: 12px 16px; border-top: 1px solid var(--bord); font-size: 14px; }
+  .totaux div { display: flex; justify-content: space-between; padding: 4px 0; color: var(--discret); }
+  .totaux .grand { color: var(--texte); font-size: 22px; font-weight: 800; padding-top: 8px; }
+  .totaux .grand span:last-child { font-size: 34px; color: var(--texte); }
+  .pied { padding: 0 16px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pied button { min-height: 56px; font-size: 16px; font-weight: 600; }
+  .pied .btn-payer { font-size: 18px; }
+
+  /* Modale paiement */
+  .voile { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; padding: 16px; }
+  .modale { background: var(--carte); border-radius: 12px; padding: 20px; width: 100%; max-width: 420px; border: 1px solid var(--bord); }
+  .modale h2 { margin: 0 0 12px; font-size: 18px; }
+  .modale .gros { font-size: 28px; font-weight: 700; }
+  .modale .ligne-info { display: flex; justify-content: space-between; margin: 8px 0; }
+  .montants { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+  .modale input { width: 100%; font-size: 20px; text-align: right; margin-top: 8px; }
+  .modale .boutons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+
+  /* Ticket (impression) */
+  #ticket { display: none; }
+  @media print {
+    body * { visibility: hidden; }
+    #ticket, #ticket * { visibility: visible; }
+    #ticket { display: block; position: absolute; left: 0; top: 0; width: 72mm; font-family: monospace; font-size: 12px; color: #000; background: #fff; }
+    #ticket .c { text-align: center; }
+    #ticket hr { border: 0; border-top: 1px dashed #000; }
+    #ticket .l { display: flex; justify-content: space-between; }
+  }
+
+  /* Affichage client (fenêtre séparée) */
+  body.client { background: #0b1220; color: #f1f5f9; }
+  body.client .client-zone { padding: 24px; height: 100vh; display: flex; flex-direction: column; }
+  body.client .client-liste { flex: 1; overflow: auto; font-size: 22px; }
+  body.client .client-liste div { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1e293b; }
+  body.client .client-total { font-size: 56px; font-weight: 800; text-align: right; color: #5eead4; }
+  body.client .client-msg { font-size: 22px; color: #94a3b8; text-align: center; margin-top: 12px; }
+
+  @media (max-width: 760px) {
+    #caisse { grid-template-columns: 1fr; grid-template-rows: 1fr auto; height: auto; min-height: 100vh; }
+    .droite { border-left: 0; border-top: 1px solid var(--bord); max-height: 50vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Connexion caissier -->
+<section id="connexion">
+  <h1>MarketPOS : connexion</h1>
+  <label for="ident">Caissier</label>
+  <select id="ident" style="width:100%;min-height:44px;font:inherit;padding:8px;border-radius:8px;border:1px solid var(--bord);background:var(--carte);color:var(--texte)">
+    <option value="caissier1">Caissier 1</option>
+    <option value="caissier2">Caissier 2</option>
+    <option value="gerant">Gérant</option>
+  </select>
+  <label for="pin">Code PIN</label>
+  <input id="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off">
+  <p class="erreur" id="erreur-connexion"></p>
+  <button class="primaire" id="btn-connexion" style="width:100%;margin-top:8px">Se connecter</button>
+  <p style="font-size:12px;color:var(--discret);margin-top:16px">Prototype. PIN de test : caissier1 = 1111, caissier2 = 2222, gérant = 9999.</p>
+</section>
+
+<!-- Caisse -->
+<div id="caisse-app" class="masque">
+  <header class="entete-app">
+    <div class="logo">Market<span>POS</span></div>
+    <input id="recherche" class="recherche-globale" type="text" placeholder="Chercher un article ou scanner un code (Entrée)" autocomplete="off">
+    <div class="statut" id="statut-sync"><span class="point" id="point-statut"></span><span id="texte-statut">En ligne</span></div>
+    <button id="btn-client">Afficher client</button>
+    <div class="caissier-badge">
+      <div class="avatar" id="avatar"></div>
+      <span id="entete-caissier"></span>
+      <button id="btn-deconnexion" title="Changer de caissier">Quitter</button>
+    </div>
+  </header>
+
+<main id="caisse">
+  <div class="gauche">
+    <div class="categories" id="categories"></div>
+    <div class="titre-section">
+      <h2>Articles <small id="compte-articles" style="font-weight:400;color:var(--discret)"></small></h2>
+      <div class="outils">
+        <button class="btn-vert" id="btn-chercher">Chercher</button>
+      </div>
+    </div>
+    <div class="grille" id="grille"></div>
+  </div>
+
+  <aside class="droite">
+    <h2>Ticket en cours <small id="entete-ticket"></small></h2>
+    <div class="ajout">
+      <input id="saisie-code" type="text" placeholder="Code article" autocomplete="off">
+      <button class="btn-vert" id="btn-ajouter">Ajouter</button>
+      <button class="btn-orange" id="btn-vider">Vider</button>
+    </div>
+    <div class="entete-lignes"><span>Article</span><span>Quantité</span><span style="text-align:right">Montant</span><span></span></div>
+    <div class="lignes" id="lignes"></div>
+    <div class="totaux">
+      <div><span>Sous-total</span><span id="sous-total">0 F</span></div>
+      <div><span>Remise</span><span>0 F</span></div>
+      <div class="grand"><span>Total</span><span id="total">0 F</span></div>
+    </div>
+    <div class="pied">
+      <button class="btn-orange" id="btn-annuler">Annuler la vente</button>
+      <button class="btn-vert btn-payer" id="btn-payer" disabled>Encaisser (F9)</button>
+    </div>
+  </aside>
+</main>
+</div>
+
+<!-- Modale paiement -->
+<div class="voile masque" id="voile-paiement">
+  <div class="modale" role="dialog" aria-modal="true" aria-labelledby="titre-paiement">
+    <h2 id="titre-paiement">Encaissement en espèces</h2>
+    <div class="ligne-info"><span>Total à payer</span><span class="gros" id="paiement-total">0 F</span></div>
+    <label for="montant-recu" style="font-size:14px;color:var(--discret)">Montant reçu</label>
+    <input id="montant-recu" type="number" inputmode="numeric" min="0" step="1">
+    <div class="montants" id="raccourcis"></div>
+    <div class="ligne-info"><span>Rendu de monnaie</span><span class="gros" id="paiement-rendu">0 F</span></div>
+    <p class="erreur" id="erreur-paiement"></p>
+    <div class="boutons">
+      <button id="btn-annuler-paiement">Annuler</button>
+      <button class="primaire" id="btn-valider-paiement">Valider et imprimer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Ticket imprimable -->
+<div id="ticket"></div>
+
+<script>
+(() => {
+  "use strict";
+
+  // ---------- Configuration ----------
+  const CAISSE_ID = "CAISSE-01";
+  const TVA_DEFAUT = 0; // taux à valider (FC-01) : prototype sans TVA
+  const UTILISATEURS = {
+    caissier1: { nom: "Caissier 1", pin: "1111", role: "caissier" },
+    caissier2: { nom: "Caissier 2", pin: "2222", role: "caissier" },
+    gerant:    { nom: "Gérant",     pin: "9999", role: "gerant" },
+  };
+  const STOCK_CLE = "marketpos.proto.catalogue";
+  const VENTES_CLE = "marketpos.proto.ventes";
+  const COMPTEUR_CLE = "marketpos.proto.compteur";
+
+  // ---------- Catalogue de test ----------
+  // 15 articles nommés de test (prix indicatifs, non issus d'un grossiste), puis 185 articles générés pour atteindre 200.
+  const BASE = [
+    ["6100000000001", "Eau minérale 1,5 L", 500, "Boissons"],
+    ["6100000000002", "Jus d'orange 1 L", 1200, "Boissons"],
+    ["6100000000003", "Sucre 1 kg", 800, "Épicerie"],
+    ["6100000000004", "Huile végétale 1 L", 1500, "Épicerie"],
+    ["6100000000005", "Riz parfumé 5 kg", 4500, "Épicerie"],
+    ["6100000000006", "Lait en poudre 400 g", 2200, "Laitier"],
+    ["6100000000007", "Pain de mie", 900, "Boulangerie"],
+    ["6100000000008", "Savon de Marseille", 350, "Hygiène"],
+    ["6100000000009", "Pâtes 500 g", 600, "Épicerie"],
+    ["6100000000010", "Tomate concentrée 400 g", 500, "Épicerie"],
+    ["6100000000011", "Bière 65 cl", 800, "Boissons"],
+    ["6100000000012", "Savon liquide 1 L", 1800, "Hygiène"],
+    ["6100000000013", "Biscuits 200 g", 350, "Épicerie"],
+    ["6100000000014", "Yaourt nature", 250, "Laitier"],
+    ["6100000000015", "Papier toilette x4", 1000, "Hygiène"],
+  ];
+  function genererCatalogue() {
+    const liste = BASE.map(([code, nom, prix, cat]) => ({ code, nom, prix, cat, stock: 20 }));
+    for (let i = 16; i <= 200; i++) {
+      const n = String(i).padStart(3, "0");
+      liste.push({
+        code: "6100000" + n.padStart(6, "0"),
+        nom: "Article test " + n,
+        prix: 100 * ((i % 25) + 1),
+        cat: ["Épicerie", "Boissons", "Hygiène", "Laitier"][i % 4],
+        stock: 10,
+      });
+    }
+    return liste;
+  }
+  function chargerCatalogue() {
+    try {
+      const brut = localStorage.getItem(STOCK_CLE);
+      if (brut) return JSON.parse(brut);
+    } catch (_) { /* stockage indisponible : on repart du catalogue généré */ }
+    return genererCatalogue();
+  }
+  function sauverCatalogue() {
+    try { localStorage.setItem(STOCK_CLE, JSON.stringify(catalogue)); } catch (_) {}
+  }
+
+  // ---------- Etat ----------
+  let catalogue = chargerCatalogue();
+  let panier = []; // { code, nom, prix, qte }
+  let utilisateur = null;
+  const canal = ("BroadcastChannel" in window) ? new BroadcastChannel("marketpos-caisse") : null;
+  const estAffichageClient = new URLSearchParams(location.search).has("client");
+
+  // ---------- Utilitaires ----------
+  const f = (n) => Math.round(n).toLocaleString("fr-FR").replace(/ | /g, " ") + " F";
+  const $ = (id) => document.getElementById(id);
+  function lireJSON(cle, defaut) {
+    try { return JSON.parse(localStorage.getItem(cle)) ?? defaut; } catch (_) { return defaut; }
+  }
+  function ecrireJSON(cle, valeur) {
+    try { localStorage.setItem(cle, JSON.stringify(valeur)); } catch (_) {}
+  }
+  function total() { return panier.reduce((s, l) => s + l.prix * l.qte, 0); }
+  function diffuser() {
+    if (!canal) return;
+    canal.postMessage({ lignes: panier.map((l) => ({ nom: l.nom, qte: l.qte, prix: l.prix })), total: total(), message: "" });
+  }
+
+  // ---------- Affichage client ----------
+  if (estAffichageClient) {
+    document.body.classList.add("client");
+    document.body.innerHTML = `
+      <div class="client-zone">
+        <div class="client-liste" id="c-liste"></div>
+        <div class="client-total" id="c-total">0 F</div>
+        <div class="client-msg" id="c-msg">Bienvenue</div>
+      </div>`;
+    const rendu = (d) => {
+      document.getElementById("c-liste").innerHTML = d.lignes.map((l) =>
+        `<div><span>${l.qte} × ${l.nom}</span><span>${f(l.prix * l.qte)}</span></div>`).join("");
+      document.getElementById("c-total").textContent = f(d.total);
+      document.getElementById("c-msg").textContent = d.message || (d.lignes.length ? "" : "Bienvenue");
+    };
+    if (canal) canal.onmessage = (e) => rendu(e.data);
+  } else {
+    initialiserCaisse();
+  }
+
+  // ---------- Caisse ----------
+  function initialiserCaisse() {
+    // Connexion
+    $("btn-connexion").addEventListener("click", connecter);
+    $("pin").addEventListener("keydown", (e) => { if (e.key === "Enter") connecter(); });
+
+    $("btn-deconnexion").addEventListener("click", () => {
+      if (panier.length && !confirm("Panier non vide. Quitter quand même ?")) return;
+      panier = [];
+      utilisateur = null;
+      sessionStorage.removeItem("marketpos.proto.session");
+      $("caisse-app").classList.add("masque");
+      $("connexion").classList.remove("masque");
+      $("pin").value = "";
+      rafraichir();
+    });
+
+    $("recherche").addEventListener("keydown", (e) => {
+      if (e.key !== "Enter") return;
+      const saisie = $("recherche").value.trim();
+      if (!saisie) return;
+      const exact = catalogue.find((p) => p.code === saisie);
+      if (exact) { ajouter(exact.code); $("recherche").value = ""; return; }
+      const trouves = catalogue.filter((p) => p.nom.toLowerCase().includes(saisie.toLowerCase()));
+      if (trouves.length === 1) { ajouter(trouves[0].code); $("recherche").value = ""; return; }
+      afficherGrille(trouves);
+    });
+    $("recherche").addEventListener("input", filtrer);
+
+    $("btn-ajouter").addEventListener("click", () => {
+      const code = $("saisie-code").value.trim();
+      if (!code) return;
+      if (catalogue.some((p) => p.code === code)) {
+        ajouter(code);
+        $("saisie-code").value = "";
+      } else {
+        $("recherche").value = code;
+        filtrer();
+      }
+    });
+    $("saisie-code").addEventListener("keydown", (e) => { if (e.key === "Enter") $("btn-ajouter").click(); });
+    $("btn-annuler").addEventListener("click", () => $("btn-vider").click());
+    $("btn-chercher").addEventListener("click", () => $("recherche").focus());
+
+    $("btn-vider").addEventListener("click", () => {
+      if (!panier.length) return;
+      if (!confirm("Vider le panier ?")) return;
+      panier = [];
+      rafraichir();
+    });
+    $("btn-client").addEventListener("click", () => {
+      window.open(location.pathname + "?client=1", "affichage-client", "width=800,height=600");
+      setTimeout(diffuser, 400);
+    });
+    $("btn-payer").addEventListener("click", ouvrirPaiement);
+    $("btn-annuler-paiement").addEventListener("click", fermerPaiement);
+    $("btn-valider-paiement").addEventListener("click", validerPaiement);
+    $("montant-recu").addEventListener("input", majRendu);
+    $("montant-recu").addEventListener("keydown", (e) => { if (e.key === "Enter") validerPaiement(); });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "F9" && !$("btn-payer").disabled && $("voile-paiement").classList.contains("masque")) {
+        e.preventDefault();
+        ouvrirPaiement();
+      }
+      if (e.key === "Escape" && !$("voile-paiement").classList.contains("masque")) fermerPaiement();
+    });
+
+    // Session conservée pour la durée de l'onglet
+    try {
+      const s = sessionStorage.getItem("marketpos.proto.session");
+      if (s && UTILISATEURS[s]) { utilisateur = s; ouvrirCaisse(); }
+    } catch (_) {}
+
+    afficherCategories();
+    filtrer();
+    rafraichir();
+  }
+
+  function connecter() {
+    const id = $("ident").value;
+    const u = UTILISATEURS[id];
+    if (!u || $("pin").value !== u.pin) {
+      $("erreur-connexion").textContent = "PIN incorrect.";
+      $("pin").value = "";
+      return;
+    }
+    utilisateur = id;
+    try { sessionStorage.setItem("marketpos.proto.session", id); } catch (_) {}
+    $("erreur-connexion").textContent = "";
+    $("pin").value = "";
+    ouvrirCaisse();
+  }
+
+  function ouvrirCaisse() {
+    $("connexion").classList.add("masque");
+    $("caisse-app").classList.remove("masque");
+    $("entete-caissier").textContent = UTILISATEURS[utilisateur].nom;
+    $("avatar").textContent = UTILISATEURS[utilisateur].nom.split(" ").map((s) => s[0]).join("");
+    $("recherche").focus();
+    rafraichir();
+  }
+
+  let categorieActive = null; // null = toutes les catégories
+
+  function afficherCategories() {
+    const cats = [...new Set(catalogue.map((p) => p.cat))];
+    const entrees = [{ nom: "Tous", cle: null }, ...cats.map((c) => ({ nom: c, cle: c }))];
+    $("categories").innerHTML = "";
+    entrees.forEach((c) => {
+      const n = c.cle ? catalogue.filter((p) => p.cat === c.cle).length : catalogue.length;
+      const b = document.createElement("button");
+      b.className = "categorie" + (categorieActive === c.cle ? " active" : "");
+      b.innerHTML = `<span class="rond">${c.nom.charAt(0)}</span><strong>${c.nom}</strong><small>${n} articles</small>`;
+      b.addEventListener("click", () => { categorieActive = c.cle; afficherCategories(); filtrer(); });
+      $("categories").appendChild(b);
+    });
+  }
+
+  function filtrer() {
+    const saisie = $("recherche").value.trim().toLowerCase();
+    let liste = categorieActive ? catalogue.filter((p) => p.cat === categorieActive) : catalogue;
+    if (saisie) liste = liste.filter((p) => p.nom.toLowerCase().includes(saisie));
+    $("compte-articles").textContent = liste.length + " article(s)";
+    afficherGrille(liste.slice(0, 200));
+  }
+
+  function afficherGrille(liste) {
+    $("grille").innerHTML = "";
+    liste.forEach((p) => {
+      const b = document.createElement("button");
+      b.className = "produit";
+      b.innerHTML = `<div class="image">${p.nom.charAt(0)}</div><div class="nom">${p.nom}</div><div class="cat">${p.cat} · ${p.code.slice(-6)}</div><div class="prix">${f(p.prix)}</div>`;
+      b.addEventListener("click", () => ajouter(p.code));
+      $("grille").appendChild(b);
+    });
+    if (!liste.length) $("grille").innerHTML = `<p class="vide">Aucun article trouvé.</p>`;
+  }
+
+  function supprimerLigne(code) {
+    panier = panier.filter((l) => l.code !== code);
+    rafraichir();
+  }
+
+  function ajouter(code) {
+    const p = catalogue.find((x) => x.code === code);
+    if (!p) return;
+    const ligne = panier.find((l) => l.code === code);
+    if (ligne) ligne.qte += 1;
+    else panier.push({ code: p.code, nom: p.nom, prix: p.prix, qte: 1 });
+    rafraichir();
+  }
+
+  function changerQte(code, delta) {
+    const ligne = panier.find((l) => l.code === code);
+    if (!ligne) return;
+    ligne.qte += delta;
+    if (ligne.qte <= 0) panier = panier.filter((l) => l.code !== code);
+    rafraichir();
+  }
+
+  function rafraichir() {
+    const lignesEl = $("lignes");
+    lignesEl.innerHTML = panier.length ? "" : `<p class="vide">Panier vide. Scanner ou choisir un article.</p>`;
+    panier.forEach((l) => {
+      const d = document.createElement("div");
+      d.className = "ligne";
+      d.innerHTML = `
+        <div class="nom">${l.nom}<br><small style="color:var(--discret)">${f(l.prix)} l'unité</small></div>
+        <div class="qte">
+          <button data-d="-1" aria-label="Retirer une unité">−</button>
+          <span>${l.qte}</span>
+          <button data-d="1" aria-label="Ajouter une unité">+</button>
+        </div>
+        <div class="montant">${f(l.prix * l.qte)}</div>
+        <button class="suppr" data-d="0" aria-label="Supprimer la ligne">🗑</button>`;
+      d.querySelectorAll("button").forEach((b) =>
+        b.addEventListener("click", () => Number(b.dataset.d) === 0
+          ? supprimerLigne(l.code)
+          : changerQte(l.code, Number(b.dataset.d))));
+      lignesEl.appendChild(d);
+    });
+    $("total").textContent = f(total());
+    $("sous-total").textContent = f(total());
+    $("btn-payer").disabled = panier.length === 0;
+    const attente = lireJSON(VENTES_CLE, []).filter((v) => v.statut === "EN_ATTENTE_SYNC").length;
+    $("texte-statut").textContent = attente ? `En ligne · ${attente} vente(s) en attente` : "En ligne";
+    $("entete-ticket").textContent = "Prochain ticket : " + numeroSuivant();
+    diffuser();
+  }
+
+  // ---------- Numérotation et journal ----------
+  function numeroSuivant() {
+    const n = lireJSON(COMPTEUR_CLE, 0) + 1;
+    return CAISSE_ID + "-" + String(n).padStart(6, "0");
+  }
+  function attribuerNumero() {
+    const n = lireJSON(COMPTEUR_CLE, 0) + 1;
+    ecrireJSON(COMPTEUR_CLE, n);
+    return CAISSE_ID + "-" + String(n).padStart(6, "0");
+  }
+
+  // ---------- Paiement espèces ----------
+  const RACCOURCIS = [500, 1000, 2000, 5000, 10000, 20000];
+  function ouvrirPaiement() {
+    if (!panier.length) return;
+    $("paiement-total").textContent = f(total());
+    $("montant-recu").value = "";
+    $("erreur-paiement").textContent = "";
+    $("raccourcis").innerHTML = "";
+    const exact = document.createElement("button");
+    exact.textContent = "Montant exact";
+    exact.addEventListener("click", () => { $("montant-recu").value = total(); majRendu(); });
+    $("raccourcis").appendChild(exact);
+    RACCOURCIS.forEach((m) => {
+      const b = document.createElement("button");
+      b.textContent = f(m);
+      b.addEventListener("click", () => { $("montant-recu").value = m; majRendu(); });
+      $("raccourcis").appendChild(b);
+    });
+    majRendu();
+    $("voile-paiement").classList.remove("masque");
+    $("montant-recu").focus();
+  }
+  function fermerPaiement() { $("voile-paiement").classList.add("masque"); }
+  function majRendu() {
+    const recu = Number($("montant-recu").value) || 0;
+    const rendu = recu - total();
+    $("paiement-rendu").textContent = f(Math.max(rendu, 0));
+    $("erreur-paiement").textContent = recu && rendu < 0 ? "Montant reçu insuffisant." : "";
+  }
+
+  function validerPaiement() {
+    const recu = Number($("montant-recu").value) || 0;
+    if (recu < total()) {
+      $("erreur-paiement").textContent = "Montant reçu insuffisant : la vente ne peut pas être validée.";
+      return;
+    }
+    const numero = attribuerNumero();
+    const vente = {
+      numero,
+      date: new Date().toISOString(),
+      caissier: utilisateur,
+      lignes: panier.map((l) => ({ code: l.code, nom: l.nom, prix: l.prix, qte: l.qte })),
+      total: total(),
+      paiement: { mode: "ESPECES", recu, rendu: recu - total() },
+      statut: "EN_ATTENTE_SYNC", // file d'attente : sera envoyée au serveur au retour du réseau
+    };
+    // Décrément du stock local
+    vente.lignes.forEach((l) => {
+      const p = catalogue.find((x) => x.code === l.code);
+      if (p) p.stock -= l.qte;
+    });
+    sauverCatalogue();
+    const journal = lireJSON(VENTES_CLE, []);
+    journal.push(vente);
+    ecrireJSON(VENTES_CLE, journal);
+
+    imprimerTicket(vente);
+    fermerPaiement();
+    panier = [];
+    if (canal) canal.postMessage({ lignes: [], total: 0, message: "Merci, à bientôt" });
+    rafraichir();
+    if (canal) setTimeout(() => canal.postMessage({ lignes: [], total: 0, message: "" }), 3000);
+  }
+
+  // ---------- Ticket ----------
+  function imprimerTicket(v) {
+    const lignes = v.lignes.map((l) =>
+      `<div class="l"><span>${l.qte} x ${l.nom}</span><span>${f(l.prix * l.qte)}</span></div>`).join("");
+    $("ticket").innerHTML = `
+      <div class="c"><strong>MARKETPOS</strong><br>Prototype, non fiscal</div>
+      <hr>
+      <div>Ticket : ${v.numero}</div>
+      <div>Date : ${new Date(v.date).toLocaleString("fr-FR")}</div>
+      <div>Caissier : ${UTILISATEURS[v.caissier].nom}</div>
+      <hr>${lignes}<hr>
+      <div class="l"><strong>TOTAL</strong><strong>${f(v.total)}</strong></div>
+      <div class="l"><span>Espèces</span><span>${f(v.paiement.recu)}</span></div>
+      <div class="l"><span>Rendu</span><span>${f(v.paiement.rendu)}</span></div>
+      <hr>
+      <div class="c">Merci de votre visite</div>`;
+    window.print();
+  }
+})();
+</script>
+</body>
+</html>

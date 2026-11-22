@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-secondary-container":"#006f66","surface":"#faf8ff","surface-container-high":"#e2e7ff","surface-tint":"#006a63","surface-bright":"#faf8ff","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#6bd8cb","outline-variant":"#bdc9c6","on-primary":"#ffffff","primary-fixed-dim":"#80d5cb","tertiary":"#005f26","inverse-surface":"#283044","on-secondary-fixed-variant":"#005049","on-tertiary-fixed-variant":"#005320","on-tertiary":"#ffffff","primary":"#005c55","on-tertiary-container":"#a1ffad","on-secondary":"#ffffff","on-primary-container":"#a3faef","on-background":"#131b2e","primary-container":"#0f766e","on-error":"#ffffff","on-surface-variant":"#3e4947","surface-container":"#eaedff","primary-fixed":"#9cf2e8","secondary-fixed":"#89f5e7","on-tertiary-fixed":"#002109","on-surface":"#131b2e","error":"#ba1a1a","inverse-on-surface":"#eef0ff","tertiary-container":"#007a33","inverse-primary":"#80d5cb","surface-container-highest":"#dae2fd","tertiary-fixed-dim":"#62df7d","surface-dim":"#d2d9f4","error-container":"#ffdad6","surface-variant":"#dae2fd","surface-container-low":"#f2f3ff","tertiary-fixed":"#7ffc97","on-error-container":"#93000a","background":"#faf8ff","outline":"#6e7977","on-secondary-fixed":"#00201d","secondary":"#006a61","on-primary-fixed-variant":"#00504a","on-primary-fixed":"#00201d","secondary-container":"#86f2e4"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"1rem","space-lg":"1rem","margin-mobile":"0.5rem",margin:"1rem","space-xl":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","space-md":"0.75rem","gutter-mobile":"0.5rem"},fontFamily:{"body-md":["Inter"],"body-sm":["Inter"],"label-keypad":["Inter"],"headline-total-mobile":["Inter"],"headline-total":["Inter"],"label-lg":["Inter"],"headline-lg":["Inter"],"label-sm":["Inter"],"headline-md":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-keypad":["24px",{lineHeight:"28px",fontWeight:"600"}],"headline-total-mobile":["32px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-total":["44px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["16px",{lineHeight:"20px",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"headline-md":["22px",{lineHeight:"28px",fontWeight:"600"}],"label-md":["13px",{lineHeight:"16px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"22px",fontWeight:"500"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center justify-between bg-primary text-on-primary"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[24px]">point_of_sale</span><span class="font-headline-sm text-headline-sm uppercase tracking-wider font-bold">MarketPOS</span></div><span class="px-space-xs py-0.5 rounded bg-on-primary/20 text-on-primary font-label-sm text-label-sm">CI-ABJ</span></div><div class="px-space-lg py-space-md bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Caisse 01</span><span class="flex items-center gap-1 font-label-sm text-label-sm text-tertiary font-bold"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>Ouverte</span></div><div class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Opérateur: Awa K. (ID #429)</div><div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span><span>Abidjan (UTC+0) 14:38</span></div></div><div class="px-space-md py-space-sm font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Navigation Système</div><nav class="flex flex-col gap-1 px-space-sm" data-active-classes="bg-primary-container text-on-primary font-bold"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-md rounded-lg transition-all bg-primary-container text-on-primary font-bold" data-path="poste-caissier" href="#"><span class="material-symbols-outlined text-[20px]">desktop_windows</span><span class="font-label-md text-label-md">Poste Caissier</span></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ecran-client" href="#"><span class="material-symbols-outlined text-[20px]">tv</span><span class="font-label-md text-label-md">Écran Client</span></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="espace-gerant" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span class="font-label-md text-label-md">Espace Gérant</span></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ticket-de-caisse" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-md text-label-md">Ticket de caisse</span></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="tokens-&-composants" href="#"><span class="material-symbols-outlined text-[20px]">palette</span><span class="font-label-md text-label-md">Tokens & Composants</span></a></nav></div><div class="p-space-md bg-surface-container-lowest flex flex-col gap-space-sm"><div class="flex items-center justify-between p-space-sm rounded bg-surface-container"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">cloud_done</span><span class="font-label-sm text-label-sm text-on-surface">Synchro Wave & MoMo</span></div><span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">3 en attente</span></div><div class="flex items-center justify-between gap-space-xs pt-space-xs"><button class="flex-1 flex items-center justify-center gap-1 py-space-sm px-space-xs rounded bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-sm text-label-sm" type="button"><span class="material-symbols-outlined text-[16px]">lock</span>Verrouiller</button><button class="flex items-center justify-center p-space-sm rounded bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors" title="Aide Clavier" type="button"><span class="material-symbols-outlined text-[18px]">keyboard</span></button></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container px-space-md py-1.5 rounded-full"><span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm font-bold text-on-surface">RÉSEAU ACTIF</span><span class="font-body-sm text-body-sm text-on-surface-variant">| Abidjan Plateau (Fibre)</span></div><div class="hidden xl:flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded"><span class="material-symbols-outlined text-[16px] text-primary">bolt</span><span class="font-label-sm text-label-sm text-on-surface">Taux XOF vérifié</span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-lg"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">schedule</span><span class="font-label-md text-label-md font-bold text-on-surface">14:38:12 GMT</span></div><div class="flex items-center gap-space-sm"><button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" title="Basculeur Clair / Sombre" type="button"><span class="material-symbols-outlined text-[20px]">light_mode</span></button><button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" title="Assistance Caissier" type="button"><span class="material-symbols-outlined text-[20px]">help</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- BANDEAU SIMULATION RÉSEAU HORS-LIGNE (DYNAMIQUE) -->
+<div class="hidden w-full bg-error-container text-on-error-container px-space-lg py-space-xs flex items-center justify-between shadow-sm animate-pulse" id="offline-banner">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-error">cloud_off</span>
+<span class="font-label-md text-label-md">Mode hors-ligne actif. Les ventes sont enregistrées localement dans la mémoire de caisse sécurisée (CI-ABJ-01).</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-sm text-label-sm font-bold text-error">SYNCHRO SUSPENDUE</span>
+</div>
+<!-- BARRE SUPÉRIEURE DE COMMANDE & RACCOURCIS (ERGONOMIE POS) -->
+<div class="p-space-md bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<!-- Recherche & Lecteur Code-Barres -->
+<div class="flex items-center gap-space-sm flex-1 min-w-[280px] max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[22px]">barcode_scanner</span>
+<input class="w-full h-12 pl-11 pr-12 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary transition-all" id="barcode-input" placeholder="Scanner (F2) ou saisir nom/référence..." type="text"/>
+<button class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" id="clear-search-btn" title="Effacer la saisie" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<button class="h-12 px-space-md rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center gap-space-xs active:scale-95 transition-transform" id="scan-trigger-btn" title="Simuler scan (F2)" type="button">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+<span class="hidden sm:inline">Scanner (F2)</span>
+</button>
+<button class="h-12 px-space-sm rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors" id="btn-unknown-barcode" title="Tester scan inconnu (Code 789456)" type="button">
+<span class="material-symbols-outlined text-[18px]">add_box</span>
+<span class="hidden md:inline">Test Inconnu</span>
+</button>
+</div>
+<!-- Contrôles Caisse & Indicateurs -->
+<div class="flex items-center gap-space-sm">
+<!-- Bascule Réseau -->
+<button class="h-12 px-space-md rounded-lg bg-surface-container flex items-center gap-space-sm hover:bg-surface-container-high transition-colors" id="toggle-network-btn" type="button">
+<span class="w-3 h-3 rounded-full bg-tertiary" id="network-dot"></span>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm font-bold text-on-surface" id="network-label">En ligne</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="network-pending">0 vente en attente</span>
+</div>
+</button>
+<!-- Bascule Thème Sombre Local -->
+<button class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors" id="toggle-dark-btn" title="Bascule mode d'ambiance caisse" type="button">
+<span class="material-symbols-outlined text-[22px]">dark_mode</span>
+</button>
+</div>
+</div>
+<!-- Catégories de filtres tactiles rapides & Raccourcis rappel -->
+<div class="flex items-center justify-between gap-space-md overflow-x-auto pb-1">
+<div class="flex items-center gap-space-xs flex-nowrap shrink-0" id="category-pills">
+<button class="cat-pill px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md active:scale-95 transition-all" data-cat="all">Tous</button>
+<button class="cat-pill px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" data-cat="Boissons & Eau">Boissons & Eau</button>
+<button class="cat-pill px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" data-cat="Épicerie salée">Épicerie salée</button>
+<button class="cat-pill px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" data-cat="Huiles & Riz">Huiles & Riz</button>
+<button class="cat-pill px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" data-cat="Produits laitiers">Produits laitiers</button>
+<button class="cat-pill px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" data-cat="Entretien & Hygiène">Entretien & Hygiène</button>
+<button class="cat-pill px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" data-cat="Frais & Boulangerie">Frais & Boulangerie</button>
+</div>
+<div class="hidden xl:flex items-center gap-space-sm shrink-0">
+<span class="px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-bold">[F9] Encaisser</span>
+<span class="px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-bold">[F4] Remise</span>
+<span class="px-space-xs py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-bold">[Échap] Vider</span>
+</div>
+</div>
+</div>
+<!-- WORKSPACE SPLIT (GRILLE PRODUITS GAUCHE 65% / TICKET PANIER DROITE 35%) -->
+<div class="p-space-md grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start">
+<!-- ZONE GAUCHE : CATALOGUE TACTILE -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-space-md">
+<!-- Info barre produits -->
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Sélection Produits</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm" id="product-count-badge">20 articles</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Touchez un article pour l'ajouter au panier</span>
+</div>
+<!-- Grille Produits Tactiles (min 48px, haut contraste, réactif) -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-space-sm" id="product-grid">
+<!-- Généré dynamiquement en vanilla JS pour une réactivité totale -->
+</div>
+</div>
+<!-- ZONE DROITE : PANNEAU PANIER ET ENCAISSEMENT (FIXE / STICKY) -->
+<div class="lg:col-span-5 xl:col-span-4 flex flex-col bg-surface-container-lowest rounded-xl shadow-md overflow-hidden sticky top-20">
+<!-- En-tête Ticket Panier -->
+<div class="p-space-md bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">Ticket #0482</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant" id="cart-item-count">0 article(s)</div>
+</div>
+</div>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-error-container hover:text-on-error-container font-label-sm text-label-sm transition-colors flex items-center gap-1" id="btn-clear-cart" title="Vider le panier (Échap)" type="button">
+<span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+<span>Vider [Échap]</span>
+</button>
+</div>
+<!-- Liste des lignes du panier défilante -->
+<div class="p-space-md flex flex-col gap-space-sm max-h-[380px] min-h-[260px] overflow-y-auto" id="cart-items-container">
+<!-- État vide initial -->
+<div class="py-12 flex flex-col items-center justify-center text-center text-on-surface-variant" id="cart-empty-placeholder">
+<span class="material-symbols-outlined text-[48px] text-outline-variant mb-2">shopping_bag</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Panier vide</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-[220px]">Scannez un code-barres ou touchez des articles dans la grille.</p>
+</div>
+</div>
+<!-- Bloc Récapitulatif Financier & Remise -->
+<div class="p-space-md bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sous-total brut</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold" id="summary-subtotal">0 F</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Remise</span>
+<button class="px-1.5 py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-bold hover:bg-primary-container hover:text-on-primary transition-colors" id="btn-open-discount-modal" type="button">+ Remise (F4)</button>
+</div>
+<span class="font-label-md text-label-md text-error font-semibold" id="summary-discount">-0 F</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm">TVA incluse (18% informative)</span>
+<span class="font-body-sm text-body-sm" id="summary-tax">0 F</span>
+</div>
+<!-- TOTAL EN TRÈS GRAND AVEC ACCENTUATION FORTE -->
+<div class="mt-space-xs pt-space-xs flex items-baseline justify-between">
+<span class="font-label-lg text-label-lg uppercase font-bold text-on-surface">Net à payer</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-total text-headline-total text-primary font-bold tracking-tight" id="summary-total">0</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">FCFA</span>
+</div>
+</div>
+</div>
+<!-- BOUTON D'ENCAISSEMENT GÉANT (64px, contraste WCAG AA maximal) -->
+<div class="p-space-md bg-surface-container-lowest">
+<button class="w-full h-16 rounded-xl bg-primary-container text-on-primary disabled:opacity-40 disabled:cursor-not-allowed font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-sm shadow-md active:scale-[0.98] transition-all" disabled="" id="btn-checkout" type="button">
+<span class="material-symbols-outlined text-[28px]">payments</span>
+<span id="btn-checkout-label">ENCAISSER [F9] — 0 F</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ==================== MODALE 1 : ENCAISSEMENT & RÈGLEMENT (SECTION B) ==================== -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md animate-fadeIn" id="modal-checkout">
+<div class="bg-surface-container-lowest w-full max-w-4xl rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[92vh]">
+<!-- En-tête Modale -->
+<div class="p-space-lg bg-primary text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[32px]">point_of_sale</span>
+<div>
+<div class="font-headline-md text-headline-md">Règlement du Ticket #0482</div>
+<div class="font-body-sm text-body-sm opacity-90">Caisse 01 • Opérateur : Awa K. (Abidjan)</div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm uppercase opacity-80 block">Total à payer</span>
+<span class="font-headline-lg text-headline-lg font-bold" id="modal-pay-total">0 FCFA</span>
+</div>
+</div>
+<!-- Onglets Modes de Règlement -->
+<div class="p-space-sm bg-surface-container flex items-center gap-space-xs overflow-x-auto">
+<button class="tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm" id="tab-cash" type="button">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span>1. ESPÈCES</span>
+</button>
+<button class="tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-transparent text-on-surface font-label-md text-label-md flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-colors" id="tab-momo" type="button">
+<span class="material-symbols-outlined text-[20px]">phone_android</span>
+<span>2. MOBILE MONEY</span>
+</button>
+<button class="tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-transparent text-on-surface font-label-md text-label-md flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-colors" id="tab-card" type="button">
+<span class="material-symbols-outlined text-[20px]">credit_card</span>
+<span>3. CARTE BANCAIRE</span>
+</button>
+</div>
+<!-- Corps Modale Onglets -->
+<div class="p-space-lg flex-1 overflow-y-auto">
+<!-- ONGLET 1 : ESPÈCES (PAVÉ NUMÉRIQUE & MONNAIE DIRECTE) -->
+<div class="flex flex-col lg:flex-row gap-space-lg" id="panel-cash">
+<!-- Partie Gauche : Montant Reçu & Calcul Monnaie -->
+<div class="flex-1 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold">Montant Espèces Reçu (FCFA)</label>
+<div class="relative">
+<input class="w-full h-16 px-space-md bg-surface-container-low text-on-surface font-headline-lg text-headline-lg font-bold rounded-xl text-right" id="cash-received-input" placeholder="0" readonly="" type="number" value=""/>
+<button class="absolute left-3 top-1/2 -translate-y-1/2 px-space-sm py-1.5 rounded-lg bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold" id="btn-cash-exact" type="button">Montant Exact</button>
+</div>
+</div>
+<!-- Raccourcis coupures FCFA rapides -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Billets rapides UEMOA</span>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="cash-chip h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container-high active:scale-95" data-val="500" type="button">500 F</button>
+<button class="cash-chip h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container-high active:scale-95" data-val="1000" type="button">1 000 F</button>
+<button class="cash-chip h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container-high active:scale-95" data-val="2000" type="button">2 000 F</button>
+<button class="cash-chip h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container-high active:scale-95" data-val="5000" type="button">5 000 F</button>
+<button class="cash-chip h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container-high active:scale-95" data-val="10000" type="button">10 000 F</button>
+<button class="cash-chip h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container-high active:scale-95" data-val="20000" type="button">20 000 F</button>
+</div>
+</div>
+<!-- Bloc Monnaie à Rendre Dynamique -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col justify-center min-h-[90px]" id="change-status-box">
+<span class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant">Statut du règlement</span>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-1" id="change-message">Saisir le montant remis par le client.</div>
+</div>
+</div>
+<!-- Partie Droite : Pavé Numérique Tactile (Numpad POS 3x4) -->
+<div class="w-full lg:w-72 bg-surface-container-low p-space-md rounded-2xl flex flex-col gap-space-sm">
+<div class="font-label-sm text-label-sm uppercase font-bold text-on-surface-variant text-center">Clavier Tactile</div>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">7</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">8</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">9</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">4</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">5</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">6</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">1</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">2</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">3</button>
+<button class="numpad-action h-14 rounded-lg bg-error-container text-on-error-container font-label-md text-label-md font-bold active:scale-95" data-action="clear" type="button">C</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">0</button>
+<button class="numpad-key h-14 rounded-lg bg-surface-container-lowest text-on-surface font-label-keypad text-label-keypad shadow-sm active:scale-95" type="button">00</button>
+</div>
+<button class="h-14 mt-1 rounded-xl bg-tertiary text-on-tertiary disabled:opacity-40 disabled:cursor-not-allowed font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs shadow-md transition-all" disabled="" id="btn-validate-cash" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span>VALIDER & IMPRIMER</span>
+</button>
+</div>
+</div>
+<!-- ONGLET 2 : MOBILE MONEY (WAVE, ORANGE, MTN, MOOV) -->
+<div class="hidden flex flex-col gap-space-lg" id="panel-momo">
+<!-- Sélection Opérateur Côte d'Ivoire -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold">Sélectionner l'opérateur de paiement</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<button class="momo-op-btn h-16 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1 active:scale-95" data-op="wave" type="button">
+<span class="font-label-lg text-label-lg font-bold text-secondary">🌊 Wave</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">QR / Push direct</span>
+</button>
+<button class="momo-op-btn h-16 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1 active:scale-95" data-op="orange" type="button">
+<span class="font-label-lg text-label-lg font-bold text-primary">🟠 Orange Money</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">#144# / Push CI</span>
+</button>
+<button class="momo-op-btn h-16 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1 active:scale-95" data-op="mtn" type="button">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">🟡 MTN MoMo</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">*133# / Push</span>
+</button>
+<button class="momo-op-btn h-16 rounded-xl bg-surface-container-low text-on-surface flex flex-col items-center justify-center gap-1 active:scale-95" data-op="moov" type="button">
+<span class="font-label-lg text-label-lg font-bold text-tertiary">🔵 Moov Money</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">*155# / Push</span>
+</button>
+</div>
+</div>
+<!-- Saisie Téléphone Client -->
+<div class="flex flex-col sm:flex-row gap-space-md items-end">
+<div class="flex-1 flex flex-col gap-space-xs w-full">
+<label class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold">Numéro de téléphone client (Côte d'Ivoire)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-label-md text-label-md text-on-surface-variant font-bold">+225</span>
+<input class="w-full h-14 pl-16 pr-space-md rounded-xl bg-surface-container-low font-headline-sm text-headline-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" id="momo-phone-input" placeholder="0X XX XX XX XX" type="tel" value="07 58 42 19 03"/>
+</div>
+</div>
+<button class="h-14 px-space-lg rounded-xl bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-space-xs shrink-0 w-full sm:w-auto shadow-md active:scale-95 transition-all" id="btn-momo-push" type="button">
+<span class="material-symbols-outlined text-[20px]">send_to_mobile</span>
+<span>Envoyer demande de paiement (Push USSD)</span>
+</button>
+</div>
+<!-- Écran d'état en cours (Spinner, Chronomètre, Bouton simulation succès) -->
+<div class="hidden p-space-lg rounded-2xl bg-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-md animate-fadeIn" id="momo-status-screen">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full border-4 border-primary border-t-transparent animate-spin shrink-0"></div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">En attente de validation client...</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Push envoyé au +225 07 58 42 19 03 • Expiration dans <span class="font-bold text-primary" id="momo-timer">54s</span></div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<button class="h-12 px-space-md rounded-lg bg-tertiary text-on-tertiary font-label-sm text-label-sm font-bold flex items-center gap-space-xs shadow-sm hover:brightness-110 active:scale-95" id="btn-momo-simulate-ok" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Simuler Paiement Reçu</span>
+</button>
+<button class="h-12 px-space-sm rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm hover:bg-surface-container-highest" id="btn-momo-cancel" type="button">Annuler</button>
+</div>
+</div>
+</div>
+<!-- ONGLET 3 : CARTE BANCAIRE (TPE TERMINAL GIM-UEMOA / VISA) -->
+<div class="hidden flex flex-col items-center justify-center py-space-xl text-center gap-space-md" id="panel-card">
+<div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[44px]">contactless</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">TPE Bancaire Pax A920 Connecté</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md mt-1">Invitez le client à insérer ou approcher sa carte VISA, Mastercard ou GIM-UEMOA du terminal sans fil.</p>
+</div>
+<div class="px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md">
+            Montant envoyé au lecteur : <span class="font-bold text-primary" id="tpe-amount-display">0 FCFA</span>
+</div>
+<button class="h-14 px-space-xl rounded-xl bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center gap-space-xs shadow-md hover:bg-primary-container active:scale-95 transition-all" id="btn-validate-card" type="button">
+<span class="material-symbols-outlined text-[20px]">check</span>
+<span>Simuler Validation TPE Acceptée</span>
+</button>
+</div>
+</div>
+<!-- Pied Modale -->
+<div class="p-space-md bg-surface-container flex items-center justify-between">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" id="btn-close-checkout-modal" type="button">Fermer [Échap]</button>
+<span class="font-body-sm text-body-sm text-on-surface-variant">MarketPOS v4.2 • Certifié DGI Côte d'Ivoire</span>
+</div>
+</div>
+</div>
+<!-- ==================== MODALE 2 : SUCCÈS & TICKET DE CAISSE THERMIQUE ==================== -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md" id="modal-success">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-2xl shadow-xl overflow-hidden flex flex-col p-space-lg items-center text-center gap-space-md animate-fadeIn">
+<div class="w-16 h-16 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[36px]">done_all</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface">Vente Validée avec Succès !</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Ticket #0482 enregistré et transmis au journal de caisse.</p>
+</div>
+<!-- Aperçu mini ticket thermique 80mm -->
+<div class="w-full bg-surface-container-low p-space-md rounded-xl text-left font-body-sm text-body-sm text-on-surface flex flex-col gap-1">
+<div class="text-center font-bold font-label-md text-label-md">SUPERMARCHÉ PLATEAU EXPRESS</div>
+<div class="text-center text-[11px] text-on-surface-variant">Boulevard de la République, Abidjan • CC: 9812401 A</div>
+<div class="border-t border-dashed border-outline-variant my-1"></div>
+<div class="flex justify-between">
+<span>Date : 24/10/2024 14:39</span>
+<span id="receipt-ticket-id">#0482</span>
+</div>
+<div class="flex justify-between">
+<span>Règlement :</span>
+<span class="font-bold" id="receipt-pay-method">ESPÈCES</span>
+</div>
+<div class="flex justify-between">
+<span>Total TTC :</span>
+<span class="font-bold text-primary" id="receipt-total">0 FCFA</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Rendu monnaie :</span>
+<span id="receipt-change">0 FCFA</span>
+</div>
+</div>
+<div class="w-full flex flex-col gap-space-xs mt-2">
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-space-xs shadow-sm hover:bg-primary-container active:scale-95 transition-all" id="btn-print-receipt" type="button">
+<span class="material-symbols-outlined text-[20px]">print</span>
+<span>Imprimer le Ticket (ESC/POS)</span>
+</button>
+<button class="w-full h-12 rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container-highest active:scale-95 transition-all" id="btn-new-sale" type="button">
+          Nouvelle Vente [Entrée]
+        </button>
+</div>
+</div>
+</div>
+<!-- ==================== MODALE 3 : ARTICLE INCONNU (CRÉATION EXPRESS) ==================== -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md" id="modal-unknown-item">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-2xl shadow-xl overflow-hidden flex flex-col">
+<div class="p-space-md bg-secondary text-on-secondary flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[24px]">contact_support</span>
+<span class="font-headline-sm text-headline-sm">Code Inconnu (789456)</span>
+</div>
+<button class="text-on-secondary hover:opacity-80" id="btn-close-unknown-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="form-quick-add">
+<p class="font-body-sm text-body-sm text-on-surface-variant">L'article scanné n'existe pas encore dans la base locale. Créez une fiche temporaire pour l'ajouter immédiatement au panier.</p>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-bold">Nom de l'article *</label>
+<input class="h-12 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md" id="quick-item-name" required="" type="text" value="Boisson énergisante XXL 33cl"/>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-bold">Prix de vente (FCFA) *</label>
+<input class="h-12 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md" id="quick-item-price" required="" type="number" value="600"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-bold">Catégorie</label>
+<select class="h-12 px-space-sm rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md" id="quick-item-cat">
+<option value="Boissons & Eau">Boissons & Eau</option>
+<option value="Épicerie salée">Épicerie salée</option>
+<option value="Frais & Boulangerie">Frais & Boulangerie</option>
+</select>
+</div>
+</div>
+<button class="h-12 mt-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-space-xs shadow-md" type="submit">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>Enregistrer & Ajouter au Panier</span>
+</button>
+</form>
+</div>
+</div>
+<!-- ==================== MODALE 4 : APPLICATION REMISE ==================== -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md" id="modal-discount">
+<div class="bg-surface-container-lowest w-full max-w-sm rounded-2xl shadow-xl overflow-hidden flex flex-col p-space-lg gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Appliquer une Remise</span>
+<button class="text-on-surface-variant hover:text-on-surface" id="btn-close-discount-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="discount-preset-btn h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-primary hover:text-on-primary active:scale-95 transition-colors" data-percent="5" type="button">5 %</button>
+<button class="discount-preset-btn h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-primary hover:text-on-primary active:scale-95 transition-colors" data-percent="10" type="button">10 %</button>
+<button class="discount-preset-btn h-12 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-bold hover:bg-primary hover:text-on-primary active:scale-95 transition-colors" data-percent="15" type="button">15 %</button>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-bold">Ou montant fixe (FCFA)</label>
+<input class="h-12 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md" id="custom-discount-input" placeholder="ex: 500" type="number"/>
+</div>
+<div class="flex gap-space-xs">
+<button class="flex-1 h-11 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold" id="btn-remove-discount" type="button">Supprimer Remise</button>
+<button class="flex-1 h-11 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-bold" id="btn-apply-custom-discount" type="button">Appliquer</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+(() => {
+  // 1. BASE DE DONNÉES PRODUITS IVOIRIENNE
+  const PRODUCTS = [
+    { id: "P01", name: "Riz Dinor parfumé 5kg", price: 4750, cat: "Huiles & Riz", stock: 18, code: "61811001" },
+    { id: "P02", name: "Huile Aya 1L", price: 1400, cat: "Huiles & Riz", stock: 42, code: "61811002" },
+    { id: "P03", name: "Lait Bonnet Rouge 410g", price: 650, cat: "Produits laitiers", stock: 85, code: "61811003" },
+    { id: "P04", name: "Eau Minérale Céleste 1.5L", price: 400, cat: "Boissons & Eau", stock: 120, code: "61811004" },
+    { id: "P05", name: "Boisson Youki Cocktail 50cl", price: 500, cat: "Boissons & Eau", stock: 64, code: "61811005" },
+    { id: "P06", name: "Savon BF 400g", price: 450, cat: "Entretien & Hygiène", stock: 90, code: "61811006" },
+    { id: "P07", name: "Pâtes Maman 500g", price: 450, cat: "Épicerie salée", stock: 110, code: "61811007" },
+    { id: "P08", name: "Cube Maggi tablette x25", price: 1000, cat: "Épicerie salée", stock: 75, code: "61811008" },
+    { id: "P09", name: "Sucre roux Sucrivoire 1kg", price: 850, cat: "Épicerie salée", stock: 50, code: "61811009" },
+    { id: "P10", name: "Nescafé Classic sachet", price: 100, cat: "Épicerie salée", stock: 300, code: "61811010" },
+    { id: "P11", name: "Chocolat Tartina pot 350g", price: 1600, cat: "Produits laitiers", stock: 24, code: "61811011" },
+    { id: "P12", name: "Farine de blé Grand Moulin 1kg", price: 700, cat: "Épicerie salée", stock: 40, code: "61811012" },
+    { id: "P13", name: "Jus Présséa Mangue 1L", price: 1200, cat: "Boissons & Eau", stock: 35, code: "61811013" },
+    { id: "P14", name: "Couscous Dari moyen 1kg", price: 1100, cat: "Épicerie salée", stock: 28, code: "61811014" },
+    { id: "P15", name: "Sardines à l'huile Titus", price: 600, cat: "Épicerie salée", stock: 80, code: "61811015" },
+    { id: "P16", name: "Tomate pâte Gino sachet 70g", price: 150, cat: "Épicerie salée", stock: 150, code: "61811016" },
+    { id: "P17", name: "Mayonnaise Calvé 450ml", price: 1850, cat: "Épicerie salée", stock: 32, code: "61811017" },
+    { id: "P18", name: "Biscuits Vitalo chocolat", price: 250, cat: "Frais & Boulangerie", stock: 95, code: "61811018" },
+    { id: "P19", name: "Détergent Madar 500g", price: 900, cat: "Entretien & Hygiène", stock: 45, code: "61811019" },
+    { id: "P20", name: "Papier hygiénique Lotus x4", price: 1300, cat: "Entretien & Hygiène", stock: 38, code: "61811020" }
+  ];
+
+  // 2. ÉTAT DU PANIER ET CAISSE
+  let cart = [
+    { ...PRODUCTS[0], qty: 1 }, // Riz Dinor
+    { ...PRODUCTS[1], qty: 2 }, // Huile Aya
+    { ...PRODUCTS[3], qty: 3 }  // Eau Céleste
+  ];
+  let discountAmount = 0;
+  let activeCategory = 'all';
+  let isOnline = true;
+  let selectedPaymentMethod = 'ESPÈCES';
+  let momoTimerInterval = null;
+
+  // Formateur FCFA
+  const fmt = (num) => new Intl.NumberFormat('fr-FR').format(Math.round(num)) + ' F';
+
+  // 3. RENDU DU CATALOGUE PRODUITS
+  const gridEl = document.getElementById('product-grid');
+  const renderCatalog = (filter = 'all', searchQuery = '') => {
+    gridEl.innerHTML = '';
+    const filtered = PRODUCTS.filter(p => {
+      const matchCat = filter === 'all' || p.cat === filter;
+      const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.code.includes(searchQuery);
+      return matchCat && matchSearch;
+    });
+
+    document.getElementById('product-count-badge').textContent = `${filtered.length} articles`;
+
+    filtered.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = "p-space-sm bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between cursor-pointer hover:shadow-md active:scale-95 transition-all select-none min-h-[110px]";
+      card.innerHTML = `
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">${prod.cat.split(' ')[0]}</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">Stk: ${prod.stock}</span>
+          </div>
+          <div class="font-label-md text-label-md text-on-surface line-clamp-2 mt-1 leading-snug">${prod.name}</div>
+        </div>
+        <div class="flex items-center justify-between pt-2">
+          <span class="font-headline-sm text-headline-sm text-primary font-bold">${fmt(prod.price)}</span>
+          <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', () => addToCart(prod));
+      gridEl.appendChild(card);
+    });
+  };
+
+  // 4. GESTION DU PANIER
+  const addToCart = (product) => {
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ ...product, qty: 1 });
+    }
+    renderCart();
+  };
+
+  const updateQty = (id, delta) => {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+    renderCart();
+  };
+
+  const removeItem = (id) => {
+    cart = cart.filter(i => i.id !== id);
+    renderCart();
+  };
+
+  const clearCart = () => {
+    cart = [];
+    discountAmount = 0;
+    renderCart();
+  };
+
+  const calculateTotals = () => {
+    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+    const total = Math.max(0, subtotal - discountAmount);
+    const tax = Math.round(total * 0.18 / 1.18);
+    const itemCount = cart.reduce((acc, item) => acc + item.qty, 0);
+    return { subtotal, discount: discountAmount, total, tax, itemCount };
+  };
+
+  const renderCart = () => {
+    const container = document.getElementById('cart-items-container');
+    const totals = calculateTotals();
+
+    document.getElementById('cart-item-count').textContent = `${totals.itemCount} article(s)`;
+    document.getElementById('summary-subtotal').textContent = fmt(totals.subtotal);
+    document.getElementById('summary-discount').textContent = totals.discount > 0 ? `-${fmt(totals.discount)}` : '0 F';
+    document.getElementById('summary-tax').textContent = fmt(totals.tax);
+    document.getElementById('summary-total').textContent = new Intl.NumberFormat('fr-FR').format(totals.total);
+    
+    // Bouton Encaisser
+    const checkoutBtn = document.getElementById('btn-checkout');
+    const checkoutLabel = document.getElementById('btn-checkout-label');
+    checkoutBtn.disabled = cart.length === 0;
+    checkoutLabel.textContent = `ENCAISSER [F9] — ${fmt(totals.total)}`;
+
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div id="cart-empty-placeholder" class="py-12 flex flex-col items-center justify-center text-center text-on-surface-variant">
+          <span class="material-symbols-outlined text-[48px] text-outline-variant mb-2">shopping_bag</span>
+          <div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Panier vide</div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-[220px]">Scannez un code-barres ou touchez des articles dans la grille.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = '';
+    cart.forEach(item => {
+      const row = document.createElement('div');
+      row.className = "p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between gap-space-xs transition-colors hover:bg-surface-container";
+      row.innerHTML = `
+        <div class="flex-1 min-w-0 pr-2">
+          <div class="font-label-md text-label-md text-on-surface truncate">${item.name}</div>
+          <div class="font-body-sm text-body-sm text-on-surface-variant">${fmt(item.price)} unitaire</div>
+        </div>
+        <div class="flex items-center gap-1 shrink-0">
+          <button type="button" class="btn-qty-minus w-11 h-11 rounded-lg bg-surface-container-lowest text-on-surface flex items-center justify-center font-bold active:scale-95 shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">remove</span>
+          </button>
+          <span class="w-8 text-center font-label-md text-label-md font-bold text-on-surface">${item.qty}</span>
+          <button type="button" class="btn-qty-plus w-11 h-11 rounded-lg bg-surface-container-lowest text-on-surface flex items-center justify-center font-bold active:scale-95 shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+          </button>
+        </div>
+        <div class="text-right shrink-0 w-24">
+          <div class="font-label-md text-label-md font-bold text-primary">${fmt(item.price * item.qty)}</div>
+        </div>
+        <button type="button" class="btn-remove-row text-outline hover:text-error p-1">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      `;
+
+      row.querySelector('.btn-qty-minus').addEventListener('click', () => updateQty(item.id, -1));
+      row.querySelector('.btn-qty-plus').addEventListener('click', () => updateQty(item.id, 1));
+      row.querySelector('.btn-remove-row').addEventListener('click', () => removeItem(item.id));
+      container.appendChild(row);
+    });
+  };
+
+  // 5. INTERACTION CLAVIER & SCANNER CODE-BARRES (F2, F4, F9, Échap)
+  const barcodeInput = document.getElementById('barcode-input');
+  const clearSearchBtn = document.getElementById('clear-search-btn');
+
+  barcodeInput.addEventListener('input', (e) => {
+    const val = e.target.value.trim();
+    clearSearchBtn.classList.toggle('hidden', val.length === 0);
+    renderCatalog(activeCategory, val);
+  });
+
+  clearSearchBtn.addEventListener('click', () => {
+    barcodeInput.value = '';
+    clearSearchBtn.classList.add('hidden');
+    renderCatalog(activeCategory, '');
+    barcodeInput.focus();
+  });
+
+  document.getElementById('scan-trigger-btn').addEventListener('click', () => {
+    // Simuler le scan aléatoire d'un produit existant
+    const randomProduct = PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
+    addToCart(randomProduct);
+  });
+
+  document.getElementById('btn-clear-cart').addEventListener('click', clearCart);
+
+  // Filtres catégories
+  document.querySelectorAll('.cat-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-pill').forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary');
+        b.classList.add('bg-surface-container', 'text-on-surface');
+      });
+      btn.classList.add('bg-primary', 'text-on-primary');
+      btn.classList.remove('bg-surface-container', 'text-on-surface');
+      activeCategory = btn.getAttribute('data-cat');
+      renderCatalog(activeCategory, barcodeInput.value.trim());
+    });
+  });
+
+  // Bascule Mode Réseau (Hors-ligne / En-ligne)
+  const toggleNetBtn = document.getElementById('toggle-network-btn');
+  const netDot = document.getElementById('network-dot');
+  const netLabel = document.getElementById('network-label');
+  const netPending = document.getElementById('network-pending');
+  const offlineBanner = document.getElementById('offline-banner');
+
+  toggleNetBtn.addEventListener('click', () => {
+    isOnline = !isOnline;
+    if (isOnline) {
+      netDot.className = "w-3 h-3 rounded-full bg-tertiary";
+      netLabel.textContent = "En ligne";
+      netPending.textContent = "0 vente en attente";
+      offlineBanner.classList.add('hidden');
+    } else {
+      netDot.className = "w-3 h-3 rounded-full bg-error animate-ping";
+      netLabel.textContent = "Hors-ligne";
+      netPending.textContent = "1 vente en attente";
+      offlineBanner.classList.remove('hidden');
+    }
+  });
+
+  // Bascule Thème Sombre Local
+  document.getElementById('toggle-dark-btn').addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+  });
+
+  // 6. GESTION MODALE D'ENCAISSEMENT & ONGLET
+  const modalCheckout = document.getElementById('modal-checkout');
+  const modalPayTotal = document.getElementById('modal-pay-total');
+  const cashReceivedInput = document.getElementById('cash-received-input');
+  const changeMessage = document.getElementById('change-message');
+  const changeStatusBox = document.getElementById('change-status-box');
+  const btnValidateCash = document.getElementById('btn-validate-cash');
+  const tpeAmountDisplay = document.getElementById('tpe-amount-display');
+
+  const openCheckoutModal = () => {
+    if (cart.length === 0) return;
+    const totals = calculateTotals();
+    modalPayTotal.textContent = fmt(totals.total);
+    tpeAmountDisplay.textContent = fmt(totals.total);
+    cashReceivedInput.value = '';
+    updateCashChange();
+    modalCheckout.classList.remove('hidden');
+  };
+
+  const closeCheckoutModal = () => {
+    modalCheckout.classList.add('hidden');
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+  };
+
+  document.getElementById('btn-checkout').addEventListener('click', openCheckoutModal);
+  document.getElementById('btn-close-checkout-modal').addEventListener('click', closeCheckoutModal);
+
+  // Bascule onglets paiement
+  const tabCash = document.getElementById('tab-cash');
+  const tabMomo = document.getElementById('tab-momo');
+  const tabCard = document.getElementById('tab-card');
+  const panelCash = document.getElementById('panel-cash');
+  const panelMomo = document.getElementById('panel-momo');
+  const panelCard = document.getElementById('panel-card');
+
+  const setPaymentTab = (tab) => {
+    [tabCash, tabMomo, tabCard].forEach(t => {
+      t.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-transparent text-on-surface font-label-md text-label-md flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-colors";
+    });
+    [panelCash, panelMomo, panelCard].forEach(p => p.classList.add('hidden'));
+
+    if (tab === 'cash') {
+      tabCash.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm font-bold";
+      panelCash.classList.remove('hidden');
+      selectedPaymentMethod = 'ESPÈCES';
+    } else if (tab === 'momo') {
+      tabMomo.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm font-bold";
+      panelMomo.classList.remove('hidden');
+      selectedPaymentMethod = 'MOBILE MONEY (CI)';
+    } else if (tab === 'card') {
+      tabCard.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm font-bold";
+      panelCard.classList.remove('hidden');
+      selectedPaymentMethod = 'CARTE BANCAIRE (TPE)';
+    }
+  };
+
+  tabCash.addEventListener('click', () => setPaymentTab('cash'));
+  tabMomo.addEventListener('click', () => setPaymentTab('momo'));
+  tabCard.addEventListener('click', () => setPaymentTab('card'));
+
+  // Pavé Numérique Tactile Espèces
+  const updateCashChange = () => {
+    const totals = calculateTotals();
+    const received = parseInt(cashReceivedInput.value, 10) || 0;
+    const diff = received - totals.total;
+
+    if (received === 0) {
+      changeStatusBox.className = "p-space-md rounded-xl bg-surface-container flex flex-col justify-center min-h-[90px]";
+      changeMessage.className = "font-headline-sm text-headline-sm text-on-surface mt-1";
+      changeMessage.textContent = "Saisir le montant remis par le client.";
+      btnValidateCash.disabled = true;
+    } else if (diff < 0) {
+      changeStatusBox.className = "p-space-md rounded-xl bg-error-container text-on-error-container flex flex-col justify-center min-h-[90px]";
+      changeMessage.className = "font-headline-sm text-headline-sm text-error mt-1 font-bold";
+      changeMessage.textContent = `Montant insuffisant (manque ${fmt(Math.abs(diff))})`;
+      btnValidateCash.disabled = true;
+    } else {
+      changeStatusBox.className = "p-space-md rounded-xl bg-secondary-container text-on-secondary-container flex flex-col justify-center min-h-[90px]";
+      changeMessage.className = "font-headline-sm text-headline-sm text-on-secondary-container mt-1 font-bold";
+      changeMessage.textContent = `À RENDRE : ${fmt(diff)}`;
+      btnValidateCash.disabled = false;
+    }
+  };
+
+  document.querySelectorAll('.numpad-key').forEach(k => {
+    k.addEventListener('click', () => {
+      const val = k.textContent.trim();
+      cashReceivedInput.value = (cashReceivedInput.value || '') + val;
+      updateCashChange();
+    });
+  });
+
+  document.querySelector('.numpad-action[data-action="clear"]').addEventListener('click', () => {
+    cashReceivedInput.value = '';
+    updateCashChange();
+  });
+
+  document.querySelectorAll('.cash-chip').forEach(c => {
+    c.addEventListener('click', () => {
+      const val = parseInt(c.getAttribute('data-val'), 10);
+      const current = parseInt(cashReceivedInput.value, 10) || 0;
+      cashReceivedInput.value = (current + val).toString();
+      updateCashChange();
+    });
+  });
+
+  document.getElementById('btn-cash-exact').addEventListener('click', () => {
+    const totals = calculateTotals();
+    cashReceivedInput.value = totals.total.toString();
+    updateCashChange();
+  });
+
+  // Mobile Money Handlers
+  document.querySelectorAll('.momo-op-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.momo-op-btn').forEach(b => b.classList.replace('bg-primary-container', 'bg-surface-container-low'));
+      btn.classList.replace('bg-surface-container-low', 'bg-primary-container');
+    });
+  });
+
+  const momoStatusScreen = document.getElementById('momo-status-screen');
+  const momoTimerEl = document.getElementById('momo-timer');
+
+  document.getElementById('btn-momo-push').addEventListener('click', () => {
+    momoStatusScreen.classList.remove('hidden');
+    let timeLeft = 60;
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+    momoTimerInterval = setInterval(() => {
+      timeLeft -= 1;
+      momoTimerEl.textContent = `${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(momoTimerInterval);
+        alert("Délai de validation push USSD expiré.");
+        momoStatusScreen.classList.add('hidden');
+      }
+    }, 1000);
+  });
+
+  document.getElementById('btn-momo-cancel').addEventListener('click', () => {
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+    momoStatusScreen.classList.add('hidden');
+  });
+
+  // Validation Finale & Affichage Ticket Succès
+  const showSuccessModal = (payMethod, changeVal = 0) => {
+    closeCheckoutModal();
+    const totals = calculateTotals();
+    document.getElementById('receipt-pay-method').textContent = payMethod;
+    document.getElementById('receipt-total').textContent = fmt(totals.total);
+    document.getElementById('receipt-change').textContent = fmt(changeVal);
+    document.getElementById('modal-success').classList.remove('hidden');
+  };
+
+  btnValidateCash.addEventListener('click', () => {
+    const received = parseInt(cashReceivedInput.value, 10) || 0;
+    const totals = calculateTotals();
+    showSuccessModal('ESPÈCES', Math.max(0, received - totals.total));
+  });
+
+  document.getElementById('btn-momo-simulate-ok').addEventListener('click', () => {
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+    showSuccessModal('WAVE / MOMO (0758421903)', 0);
+  });
+
+  document.getElementById('btn-validate-card').addEventListener('click', () => {
+    showSuccessModal('CARTE BANCAIRE (TPE)', 0);
+  });
+
+  document.getElementById('btn-new-sale').addEventListener('click', () => {
+    document.getElementById('modal-success').classList.add('hidden');
+    clearCart();
+    barcodeInput.focus();
+  });
+
+  document.getElementById('btn-print-receipt').addEventListener('click', () => {
+    alert("Impression du ticket ESC/POS envoyée à l'imprimante thermique de caisse.");
+    document.getElementById('modal-success').classList.add('hidden');
+    clearCart();
+    barcodeInput.focus();
+  });
+
+  // 7. SCÉNARIO ARTICLE INCONNU (CRÉATION EXPRESS)
+  const modalUnknown = document.getElementById('modal-unknown-item');
+  document.getElementById('btn-unknown-barcode').addEventListener('click', () => {
+    modalUnknown.classList.remove('hidden');
+  });
+
+  document.getElementById('btn-close-unknown-modal').addEventListener('click', () => {
+    modalUnknown.classList.add('hidden');
+  });
+
+  document.getElementById('form-quick-add').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('quick-item-name').value;
+    const price = parseInt(document.getElementById('quick-item-price').value, 10);
+    const cat = document.getElementById('quick-item-cat').value;
+    
+    const newProd = {
+      id: 'P_' + Date.now(),
+      name,
+      price,
+      cat,
+      stock: 50,
+      code: "789456"
+    };
+    PRODUCTS.unshift(newProd);
+    addToCart(newProd);
+    renderCatalog(activeCategory, '');
+    modalUnknown.classList.add('hidden');
+  });
+
+  // 8. MODALE REMISE (F4)
+  const modalDiscount = document.getElementById('modal-discount');
+  document.getElementById('btn-open-discount-modal').addEventListener('click', () => {
+    modalDiscount.classList.remove('hidden');
+  });
+  document.getElementById('btn-close-discount-modal').addEventListener('click', () => {
+    modalDiscount.classList.add('hidden');
+  });
+
+  document.querySelectorAll('.discount-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pct = parseInt(btn.getAttribute('data-percent'), 10);
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      discountAmount = Math.round(subtotal * (pct / 100));
+      renderCart();
+      modalDiscount.classList.add('hidden');
+    });
+  });
+
+  document.getElementById('btn-apply-custom-discount').addEventListener('click', () => {
+    const val = parseInt(document.getElementById('custom-discount-input').value, 10) || 0;
+    discountAmount = val;
+    renderCart();
+    modalDiscount.classList.add('hidden');
+  });
+
+  document.getElementById('btn-remove-discount').addEventListener('click', () => {
+    discountAmount = 0;
+    renderCart();
+    modalDiscount.classList.add('hidden');
+  });
+
+  // Raccourcis Clavier Globaux (F2, F4, F9, Échap, Entrée)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'F2') {
+      e.preventDefault();
+      barcodeInput.focus();
+    } else if (e.key === 'F4') {
+      e.preventDefault();
+      modalDiscount.classList.remove('hidden');
+    } else if (e.key === 'F9') {
+      e.preventDefault();
+      if (!modalCheckout.classList.contains('hidden')) {
+        if (!btnValidateCash.disabled) btnValidateCash.click();
+      } else {
+        openCheckoutModal();
+      }
+    } else if (e.key === 'Escape') {
+      if (!modalCheckout.classList.contains('hidden')) {
+        closeCheckoutModal();
+      } else if (!modalDiscount.classList.contains('hidden')) {
+        modalDiscount.classList.add('hidden');
+      } else if (!modalUnknown.classList.contains('hidden')) {
+        modalUnknown.classList.add('hidden');
+      } else {
+        clearCart();
+      }
+    } else if (e.key === 'Enter') {
+      if (!document.getElementById('modal-success').classList.contains('hidden')) {
+        document.getElementById('btn-new-sale').click();
+      }
+    }
+  });
+
+  // Initialisation au chargement
+  renderCatalog('all', '');
+  renderCart();
+})();
+</script></main></div></body></html>

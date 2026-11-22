@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#bfc6dc","on-error":"#ffffff","surface-tint":"#006e11","primary-fixed":"#88fc7d","surface-container-low":"#eff4ff","secondary-fixed":"#ffdbc9","inverse-on-surface":"#eaf1ff","inverse-surface":"#213145","on-secondary-fixed":"#321200","on-surface":"#0b1c30","on-secondary-fixed-variant":"#753400","surface-variant":"#d3e4fe","on-error-container":"#93000a","surface-bright":"#f8f9ff","on-primary-container":"#003404","inverse-primary":"#6cdf64","outline-variant":"#becab6","primary-container":"#34a835","primary":"#006e11","surface-container":"#e5eeff","tertiary":"#565e71","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","on-tertiary-container":"#242c3d","error-container":"#ffdad6","tertiary-container":"#8b93a8","on-surface-variant":"#3f4a3b","on-secondary":"#ffffff","primary-fixed-dim":"#6cdf64","on-primary-fixed-variant":"#00530a","surface-container-highest":"#d3e4fe","error":"#ba1a1a","on-secondary-container":"#5a2600","tertiary-fixed":"#dbe2f9","surface":"#f8f9ff","surface-container-high":"#dce9ff","on-tertiary-fixed":"#141b2c","background":"#f8f9ff","on-tertiary-fixed-variant":"#3f4759","secondary-fixed-dim":"#ffb68c","secondary-container":"#fd7700","surface-container-lowest":"#ffffff","secondary":"#9a4600","on-primary":"#ffffff","on-background":"#0b1c30","outline":"#6e7b69","on-primary-fixed":"#002202"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"0.75rem","space-xl":"1.75rem","margin":"1.25rem","space-xs":"0.25rem","gutter":"1rem","space-sm":"0.5rem","space-lg":"1.25rem"},"fontFamily":{"headline-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},"fontSize":{"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["11px",{"lineHeight":"16px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-[0_4px_14px_rgba(52,168,53,0.28)]"><span class="material-symbols-outlined text-[20px]">local_mall</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-none tracking-tight">MarketPOS</span><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase mt-0.5">Plateau • Abidjan</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Navigation Opérationnelle</div><nav class="mt-space-xs flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-[0_4px_14px_rgba(52,168,53,0.28)]"><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="tableau-de-bord" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Tableau de Bord</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="caisse-ventes" href="#"><span class="material-symbols-outlined text-[20px]">point_of_sale</span><span>Caisse &amp; Ventes</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="stocks-inventaire" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Stocks &amp; Inventaire</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="receptions-fournisseurs" href="#"><span class="material-symbols-outlined text-[20px]">conveyor_belt</span><span>Réceptions &amp; Fournisseurs</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="tarifs-etiquettes" href="#"><span class="material-symbols-outlined text-[20px]">sell</span><span>Tarifs &amp; Étiquettes</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="rapports-compta" href="#"><span class="material-symbols-outlined text-[20px]">finance</span><span>Rapports &amp; Compta</span></a></nav></div></div><div class="p-space-md flex flex-col gap-space-xs"><div class="px-space-sm font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Système</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg"><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="parametres" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Paramètres</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="aide-support" href="#"><span class="material-symbols-outlined text-[20px]">help_center</span><span>Aide &amp; Support</span></a></nav><div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px]">verified</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface">MarketPOS v4.2 Pro</span><span class="font-body-sm text-body-sm text-on-surface-variant">Connecté Serveur Abidjan</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm px-space-md py-1.5 rounded-full bg-surface-container text-on-surface"><span class="material-symbols-outlined text-primary text-[18px]">storefront</span><span class="font-label-md text-label-md font-semibold">Supermarché Central</span><span class="text-outline-variant font-label-sm">•</span><span class="font-label-sm text-label-sm text-on-surface-variant">Quai Réception</span><span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm font-semibold text-primary">En direct</span></div></div><div class="flex-1 max-w-md mx-space-lg"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full h-9 pl-9 pr-14 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" placeholder="Rechercher article, lot, code-barres, BL..." type="text"/><div class="absolute right-2 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Ctrl+K</div></div></div><div class="flex items-center gap-space-md"><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container"></span></button><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">qr_code_scanner</span></button><div class="h-6 w-px bg-surface-container-highest"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-md text-label-md text-on-surface leading-tight">K. N'Dri</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Resp. Stock &amp; Réceptions</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg space-y-space-lg">
+<!-- En-tête de page & Actions rapides -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-tertiary">
+<span class="hover:text-primary transition-colors cursor-pointer">Rayons &amp; Tarifs</span>
+<span>•</span>
+<span>Supermarché Central</span>
+<span>•</span>
+<span class="flex items-center gap-1 text-primary font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+            Mis à jour aujourd'hui 14:40
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          Gestion des Tarifs &amp; Générateur d'Étiquettes Gondoles
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+          Pilotage des prix de vente, marges brutes, campagnes promotionnelles et impression des étiquettes code-barres / gondoles 60x40mm &amp; électroniques (EEG)
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm self-start lg:self-center">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px] text-tertiary">file_download</span>
+<span>Exporter grille (Excel/CSV)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px] text-primary">sync</span>
+<span>Sync EEG (1 420 balises)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-lg py-2.5 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_14px_rgba(52,168,53,0.28)] hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-[20px] text-on-primary">print</span>
+<span class="text-on-primary">Lancer impression du lot (38 étiquettes) [F8]</span>
+</button>
+</div>
+</div>
+<!-- KPIs Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Catalogue Actif</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">4 850 <span class="font-label-md text-label-md text-on-surface-variant font-normal">réfs</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">category</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex flex-wrap items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-label-sm">Primeur 185</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-label-sm">Frais 640</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-label-sm">Épicerie 2 400</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-label-sm">Boissons 750</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-label-sm">DPH 875</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Taux de Marge Moyen</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">32.4%</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">trending_up</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between font-body-sm text-body-sm">
+<div class="flex items-center gap-1 text-primary font-semibold font-label-sm">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>+1.8% vs mois dernier</span>
+</div>
+<span class="text-on-surface-variant font-label-sm">Cible : &gt; 30.0%</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">En Attente Impression</span>
+<div class="font-headline-lg text-headline-lg text-secondary font-bold tracking-tight">38 <span class="font-label-md text-label-md text-on-surface-variant font-normal">étiquettes</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">label_important</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center gap-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+            14 promos
+          </span>
+<span>•</span>
+<span>8 réceptions quai</span>
+<span>•</span>
+<span>16 régularisations</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Prix Réglementés &amp; Bouclier</span>
+<div class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">100% <span class="font-label-md text-label-md text-on-surface-variant font-normal">conforme</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+<span class="truncate">Dinor, Riz Brisure, Sucre, Baguette conforme barème</span>
+</div>
+</div>
+</div>
+<!-- Barre d'outils, onglets & filtres -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md space-y-space-md">
+<!-- Tabs Row -->
+<div class="flex items-center justify-between overflow-x-auto pb-1 gap-space-md">
+<div class="flex items-center gap-1.5">
+<button class="px-space-md py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all">
+            Tous les articles (4 850)
+          </button>
+<button class="px-space-md py-2 rounded-lg font-label-md text-label-md bg-primary-container text-on-primary shadow-[0_4px_14px_rgba(52,168,53,0.28)] flex items-center gap-1.5">
+<span>À ré-étiqueter</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-lowest text-primary text-[10px] font-bold">38</span>
+</button>
+<button class="px-space-md py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all flex items-center gap-1.5">
+<span>Promotions actives</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary-container text-on-secondary text-[10px] font-bold">24</span>
+</button>
+<button class="px-space-md py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all">
+            Rayon Primeur &amp; Pesée PLU
+          </button>
+<button class="px-space-md py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all">
+            Historique d'impression
+          </button>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">sensors</span>
+<span>Gateway EEG 868MHz : Connectée</span>
+</div>
+</div>
+<!-- Filters & Search Line -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm pt-space-xs">
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full h-10 pl-9 pr-14 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Rechercher nom, code EAN-13, code PLU balance ou fournisseur..." type="text" value="Mangues Kent Korhogo"/>
+<span class="absolute right-2 top-2 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Ctrl+K</span>
+</div>
+<div class="md:col-span-2">
+<select class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none">
+<option>Tous les Rayons</option>
+<option selected="">Fruits &amp; Légumes (Primeur)</option>
+<option>Épicerie Sucrée &amp; Salée</option>
+<option>Frais &amp; Crémerie</option>
+<option>Boucherie &amp; Volaille</option>
+<option>Boissons &amp; Liquides</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<select class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none">
+<option>Tous les Statuts</option>
+<option selected="">À réimprimer (Prioritaire)</option>
+<option>Promo en cours</option>
+<option>Synchronisé EEG</option>
+<option>Écart PMP constaté</option>
+</select>
+</div>
+<div class="md:col-span-3">
+<div class="relative">
+<select class="w-full h-10 pl-3 pr-8 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md focus:outline-none font-semibold">
+<option selected="">Format : Gondole 60x40mm Thermique</option>
+<option>Format : Gondole Promo Flash Jaune/Rouge</option>
+<option>Format : Étiquette Pesée Primeur PLU</option>
+<option>Format : Électronique E-Ink (EEG 2.9")</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-on-surface-variant text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Workspace Split 65% / 35% -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column (65%) -->
+<div class="lg:col-span-8 space-y-space-md">
+<!-- Bulk Action Bar -->
+<div class="p-space-sm px-space-md rounded-xl bg-surface-container flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+<span class="font-label-md text-label-md text-on-surface font-semibold">38 articles sélectionnés sur 38 à réimprimer</span>
+</label>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-tertiary">Total 5 facings moyens / réf</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-bright flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">queue</span>
+<span>Ajouter à la file</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-bright flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">percent</span>
+<span>Remise groupée %</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-bright flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">style</span>
+<span>Format</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm hover:bg-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-primary">done_all</span>
+<span class="text-on-primary">Marquer imprimé</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-space-md w-10">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+</th>
+<th class="py-3 px-space-sm">Article &amp; Traçabilité</th>
+<th class="py-3 px-space-sm text-right">PMP (Achat)</th>
+<th class="py-3 px-space-sm text-right">Tarif Vente TTC</th>
+<th class="py-3 px-space-sm text-right">Marge Brute</th>
+<th class="py-3 px-space-sm text-center">Statut Étiquette</th>
+<th class="py-3 px-space-md text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<!-- Row 1 : Primeur Mangues (Active Wysiwyg Selection) -->
+<tr class="bg-primary/5 hover:bg-primary/10 transition-colors">
+<td class="py-3.5 px-space-md align-middle">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-sm align-middle">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low overflow-hidden flex-shrink-0 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Close-up of fresh ripe mangoes from Ivory Coast with golden yellow and rosy red blush skin, stacked neatly with soft natural morning light in an upscale supermarket primeur department." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvrm0kL_KujL4aM2pWsNXPvoZ7314LLG-KyA9tCHY8QaQ9hYkhbUirh2e94Ebb0zEi8SJBSXTSvux3o4KXLJSrr0REDIyBXwQdtJ2KRI-8DseS9onWPeSfRKf-xFJwH-3IfkBvMb_p0lWp7oXPBXhYLbpC34N-ZPQksQkmgfiuMu2vbbQmY6r67W7friAW9bYLtBHp9wKPCpNmd8dcLOyl7jApvVRiJenP1ujOLlqs"/>
+</div>
+<div class="min-w-0">
+<div class="font-label-lg text-label-lg font-bold text-on-surface truncate flex items-center gap-1.5">
+<span>Mangues Kent Fraîches de Korhogo</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-label-sm text-[10px]">Primeur</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Calibre A • Lot #LT-240611</span>
+<span>•</span>
+<span class="font-semibold text-primary">PLU #4012</span>
+<span>•</span>
+<span class="font-mono text-[10px]">2004012000000</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right font-body-md text-on-surface">
+<span class="font-semibold">750</span> <span class="font-label-sm text-label-sm text-tertiary">FCFA/kg</span>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-sm text-body-sm line-through text-outline-variant">1 400 FCFA</span>
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">1 200</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">FCFA</span>
+</div>
+<span class="font-label-sm text-[10px] text-secondary font-bold bg-secondary-fixed/40 px-1 rounded">-14% Promo</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-lg text-label-lg font-bold text-primary">37.5%</span>
+<span class="font-body-sm text-body-sm text-primary">+450 FCFA/kg</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Changement prix
+                    </span>
+</td>
+<td class="py-3.5 px-space-md align-middle text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center hover:bg-primary transition-colors shadow-sm" title="Imprimer cette étiquette">
+<span class="material-symbols-outlined text-[16px] text-on-primary">print</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors" title="Modifier le prix">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 : Épicerie Dinor -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-space-md align-middle">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-sm align-middle">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low overflow-hidden flex-shrink-0 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Clear bottle of refined golden vegetable cooking oil on a supermarket shelf with a crisp clean label under commercial retail spot lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXVhcOjQMfN7ccTRapnjoClqFME-sIFB4_5f64P1Ob74N9xjWwpAEjfYitrh47tLDsId-EtQT7uwPl-m2fmC5yTIEW9xI5ieHauFU7L9Nq-oVedXbJDjmVYMxQY0OzSbmK3ur3xqKJ_8a13zma4tl9qRMHEmQFZD1LdREwRA5IJKvaLopHeLzsy0M2bw268VxyhUnXOyDDfyu4jUCHFuh6fkc_Szp_PepfUeHr3EyL"/>
+</div>
+<div class="min-w-0">
+<div class="font-label-lg text-label-lg font-bold text-on-surface truncate flex items-center gap-1.5">
+<span>Huile Végétale Dinor 1.5L</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-tertiary font-label-sm text-[10px]">Épicerie</span>
+<span class="material-symbols-outlined text-[14px] text-primary" title="Prix Bouclier Réglementé">verified</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Bouteille PET 1.5L</span>
+<span>•</span>
+<span class="font-mono text-[10px]">EAN: 6181100345012</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right font-body-md text-on-surface">
+<span class="font-semibold">1 520</span> <span class="font-label-sm text-label-sm text-tertiary">FCFA</span>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-sm text-body-sm line-through text-outline-variant">1 950 FCFA</span>
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">1 750</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">FCFA</span>
+</div>
+<span class="font-label-sm text-[10px] text-secondary font-bold bg-error-container/40 px-1 rounded">-200 FCFA</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">13.1%</span>
+<span class="font-body-sm text-body-sm text-tertiary">+230 FCFA</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                      Promo Flash 7j
+                    </span>
+</td>
+<td class="py-3.5 px-space-md align-middle text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 : Primeur Ananas Bonoua -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-space-md align-middle">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-sm align-middle">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low overflow-hidden flex-shrink-0 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Fresh ripe Bonoua sugarloaf pineapple with green crown leaves on clean wooden marketplace display in West African fresh grocery store." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC0Bp4wagUZn93W6PVIgECAeWG7AqhMxm-CvQQGFPdILnA2GwfteFXHDfia82Ldb9CvxO06pisP1tsQU2Tm7dPU-LOtQjv6CxGOQ61c2midLeBxQ6J_aCenqTBNPevh7frjCSEsUAfxoj-xyUyj9Nd_VW2R1S_NFjUz6oA0srvu8vSDeUm-2dwTlXWj-RqEfzCODAAsg1XEfXdyZefLt4DKiPXNRktx4H1S8fHjNYg"/>
+</div>
+<div class="min-w-0">
+<div class="font-label-lg text-label-lg font-bold text-on-surface truncate flex items-center gap-1.5">
+<span>Ananas Pain de Sucre Bonoua</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-label-sm text-[10px]">Primeur</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Pièce calibre 1.2kg • Quai #Q-04</span>
+<span>•</span>
+<span class="font-semibold text-primary">PLU #4028</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right font-body-md text-on-surface">
+<span class="font-semibold">320</span> <span class="font-label-sm text-label-sm text-tertiary">FCFA/u</span>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">600</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">FCFA/u</span>
+</div>
+<span class="font-label-sm text-[10px] text-tertiary">Tarif régulier</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-lg text-label-lg font-bold text-primary">46.7%</span>
+<span class="font-body-sm text-body-sm text-primary">+280 FCFA</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                      Nouveau lot quai
+                    </span>
+</td>
+<td class="py-3.5 px-space-md align-middle text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 : Bonnet Rouge -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-space-md align-middle">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-sm align-middle">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low overflow-hidden flex-shrink-0 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Classic red tin can of sweetened condensed milk on an organized grocery store display with neat alignment and soft reflection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArmoUrpE-KIeoZVLLmmoUUjqM7KX83aFhDM9rv8j77-zSFXwsOFhPQW1DhxSb9YCpoeu0SVJ-jREFn6RcAQZ4FiKAhZzxaJML1hiaazABEJVQSUWjUS5msaMjaUX74bgTvp83_uos1QJRfGbuaQFZ1ozdnnVchHyLRBLWAaHPwZDOtgjiyJXg3YSZa3oPiTBMR-tsGDtYD2fKW3sP3tHPYFZLuJPyDmmz7Ud9IeGzB"/>
+</div>
+<div class="min-w-0">
+<div class="font-label-lg text-label-lg font-bold text-on-surface truncate flex items-center gap-1.5">
+<span>Lait Bonnet Rouge Concentré Sucré 410g</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-tertiary font-label-sm text-[10px]">Crémerie</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Boîte métal 410g</span>
+<span>•</span>
+<span class="font-mono text-[10px]">EAN: 6181120019234</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right font-body-md text-on-surface">
+<span class="font-semibold">710</span> <span class="font-label-sm text-label-sm text-tertiary">FCFA</span>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">850</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">FCFA</span>
+</div>
+<span class="font-label-sm text-[10px] text-tertiary">Tarif régulier</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">16.5%</span>
+<span class="font-body-sm text-body-sm text-tertiary">+140 FCFA</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                      Conforme sync
+                    </span>
+</td>
+<td class="py-3.5 px-space-md align-middle text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 : Tomates Rondes Anti-Gaspi -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-space-md align-middle">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-sm align-middle">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low overflow-hidden flex-shrink-0 flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Plump red fresh vine tomatoes in a rustic wicker basket in an African supermarket organic section with vivid natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzijlOd19Tp09AoGHj2whAFIXwV3nNkGTOrzU9JuhuhcaP9YRVUFfCPsMyrrEWjrz3EWb0JaDLqwtBX-YGZbHgUcvNnrDKpEKuxf6Tg5iOSkc2i6C24UbD12DgCHt4h3GWhc34hi7XB26G2FEm1EHSNBNGNDdLIHgP9BJJ2t5ZY_uKBs5TUlaieiL6qzuK-ww4wBNh0OeGX7eIiQid3Hs3cfzYlWhYsljR2B8PPBa1"/>
+</div>
+<div class="min-w-0">
+<div class="font-label-lg text-label-lg font-bold text-on-surface truncate flex items-center gap-1.5">
+<span>Tomates Rondes Bassam (Lot maturité)</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary font-label-sm text-[10px]">Anti-Gaspi</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>DLC J+1 • Barquette 1kg</span>
+<span>•</span>
+<span class="font-semibold text-primary">PLU #4055</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right font-body-md text-on-surface">
+<span class="font-semibold">600</span> <span class="font-label-sm text-label-sm text-tertiary">FCFA/kg</span>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-body-sm text-body-sm line-through text-outline-variant">1 100 FCFA</span>
+<div class="flex items-center gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary-container">700</span>
+<span class="font-label-sm text-label-sm text-secondary-container font-bold">FCFA</span>
+</div>
+<span class="font-label-sm text-[10px] text-secondary font-bold bg-secondary-fixed/50 px-1 rounded">-36% Flash</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">14.2%</span>
+<span class="font-body-sm text-body-sm text-primary">+100 FCFA/kg</span>
+</div>
+</td>
+<td class="py-3.5 px-space-sm align-middle text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                      Anti-Gaspi J+1
+                    </span>
+</td>
+<td class="py-3.5 px-space-md align-middle text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Table Footer -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span>Affichage de 5 sur 38 articles à réimprimer</span>
+<span>•</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Toutes les cases du lot sont cochées par défaut</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm hover:bg-surface-container">Précédent</button>
+<button class="px-2.5 py-1 rounded bg-primary-container text-on-primary font-label-sm font-bold">1</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm hover:bg-surface-container">2</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm hover:bg-surface-container">3</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm hover:bg-surface-container">Suivant</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (35%) - Studio & WYSIWYG Print Preview -->
+<div class="lg:col-span-4 space-y-space-md">
+<!-- WYSIWYG Live Preview Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">visibility</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Aperçu en direct (WYSIWYG)</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-mono">60 x 40 mm</span>
+</div>
+<!-- Modèle Selector Tabs -->
+<div class="grid grid-cols-2 gap-1 p-1 bg-surface-container-low rounded-lg">
+<button class="py-1.5 text-center font-label-sm text-label-sm font-bold rounded bg-surface-container-lowest text-on-surface shadow-xs">
+              Standard Gondole
+            </button>
+<button class="py-1.5 text-center font-label-sm text-label-sm font-semibold rounded text-on-surface-variant hover:text-on-surface">
+              Gondole Promo Flash
+            </button>
+</div>
+<!-- Realistic Shelf Label (60x40mm Aspect Ratio) -->
+<div class="relative bg-surface-container-lowest p-4 rounded-xl shadow-md overflow-hidden text-on-surface select-none">
+<!-- Top perforation notch decorative hint -->
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-surface"></div>
+<div class="flex flex-col justify-between h-[230px] font-sans">
+<!-- Header Bar of the Tag -->
+<div class="flex items-center justify-between pb-1.5">
+<span class="font-label-sm text-[9px] font-black uppercase tracking-wider text-on-surface">SUPERMARCHÉ CENTRAL • PLATEAU</span>
+<span class="font-label-sm text-[9px] font-bold px-1 rounded bg-surface-container text-on-surface">RAYON PRIMEUR</span>
+</div>
+<!-- Product Designation -->
+<div class="pt-1">
+<div class="font-headline-sm text-[16px] leading-tight font-extrabold uppercase text-on-surface tracking-tight">
+                  MANGUES KENT FRAÎCHES
+                </div>
+<div class="flex items-center justify-between text-[10px] text-tertiary font-semibold mt-0.5">
+<span>Origine : Korhogo (Côte d'Ivoire) • Calibre A</span>
+<span>Catégorie 1</span>
+</div>
+</div>
+<!-- Main Price Block -->
+<div class="flex items-baseline justify-between my-auto py-1">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="text-[11px] line-through text-outline-variant font-bold">1 400 FCFA</span>
+<span class="px-1 py-0.2 rounded bg-secondary-container text-on-secondary font-black text-[9px] uppercase tracking-wide">
+                      -14% PROMO
+                    </span>
+</div>
+<span class="text-[9px] text-tertiary">Prix au kg net pesé</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="text-[34px] leading-none font-black tracking-tighter text-on-surface">1 200</span>
+<div class="flex flex-col text-left">
+<span class="text-[11px] font-extrabold leading-none text-on-surface">FCFA</span>
+<span class="text-[9px] font-bold text-tertiary">/ kg</span>
+</div>
+</div>
+</div>
+<!-- Barcode, PLU & Regulatory Section -->
+<div class="pt-1.5 flex items-end justify-between">
+<div class="flex flex-col gap-0.5">
+<!-- Barcode Graphic Simulation -->
+<div class="flex items-end gap-[1.5px] h-7">
+<span class="w-[2px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[3px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[2px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[4px] h-full bg-on-surface"></span>
+<span class="w-[2px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[3px] h-full bg-on-surface"></span>
+<span class="w-[2px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[3px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[2px] h-full bg-on-surface"></span>
+<span class="w-[4px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[2px] h-full bg-on-surface"></span>
+<span class="w-[1px] h-full bg-on-surface"></span>
+<span class="w-[3px] h-full bg-on-surface"></span>
+</div>
+<span class="font-mono text-[8px] tracking-widest text-on-surface">2 004012 000000</span>
+<span class="text-[8px] text-tertiary">Du 18/06 au 25/06 • #LT-240611-KOR</span>
+</div>
+<!-- Big Scale PLU Box for Cashier and Shopper -->
+<div class="p-1 px-2 rounded-lg bg-surface-container flex flex-col items-center justify-center">
+<span class="text-[8px] uppercase font-bold text-tertiary leading-none">CODE PLU</span>
+<span class="text-[18px] font-black leading-none text-primary mt-0.5">#4012</span>
+<span class="text-[7px] font-bold text-on-surface-variant uppercase">BALANCE</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-tertiary font-label-sm text-label-sm pt-1">
+<span>Facing actif : 2 étiquettes</span>
+<span class="text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">qr_code</span>
+              EAN-13 conforme GS1
+            </span>
+</div>
+</div>
+<!-- Print Parameters & Hardware Control -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Paramètres d'impression</span>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              En ligne
+            </div>
+</div>
+<!-- Printer Selector -->
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Imprimante Thermique Dédiée</label>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-primary text-[22px]">print</span>
+<div class="min-w-0">
+<div class="font-label-md text-label-md font-bold text-on-surface truncate">Zebra ZD420 Thermique Direct</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">Rayon Primeur • IP: 192.168.1.84</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">tune</span>
+</div>
+</div>
+<!-- Quantity Stepper -->
+<div class="flex items-center justify-between py-1">
+<div class="space-y-0.5">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Exemplaires par référence</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Calibré sur le nombre de facings gondole</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-highest">-</button>
+<span class="font-label-lg text-label-lg font-bold w-6 text-center text-on-surface">2</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-highest">+</button>
+</div>
+</div>
+<!-- Checkboxes Options -->
+<div class="space-y-2 pt-1 font-label-md text-label-md text-on-surface">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+<span>Imprimer le prix barré promotionnel</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+<span>Ajouter le code balance PLU géant (Primeur)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0" type="checkbox"/>
+<span>Marquer comme imprimé dans l'ERP après sortie</span>
+</label>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-2 pt-2">
+<button class="w-full py-3 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_14px_rgba(52,168,53,0.28)] hover:bg-primary transition-all flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-on-primary">print</span>
+<span class="text-on-primary">Imprimer le lot sélectionné (38 étiquettes) [Entrée]</span>
+</button>
+<button class="w-full py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">document_scanner</span>
+<span>Imprimer une étiquette de test</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Keyboard Shortcuts & Spooler Footer -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex flex-wrap items-center gap-space-md">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider font-bold">Raccourcis Clavier :</span>
+<span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[10px] font-bold text-on-surface">F8</kbd> Lancer impression</span>
+<span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[10px] font-bold text-on-surface">F4</kbd> Nouvelle fiche tarif</span>
+<span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[10px] font-bold text-on-surface">Ctrl+A</kbd> Tout sélectionner</span>
+<span class="flex items-center gap-1.5"><kbd class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-[10px] font-bold text-on-surface">Ctrl+P</kbd> Aperçu avant impression</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>Spooler Zebra prêt (0 erreur)</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]">ray_logo</span>
+<span>Rouleau 60x40mm : 85% restant</span>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

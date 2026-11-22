@@ -1,0 +1,646 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-secondary-container":"#006f66","surface":"#faf8ff","surface-container-high":"#e2e7ff","surface-tint":"#006a63","surface-bright":"#faf8ff","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#6bd8cb","outline-variant":"#bdc9c6","on-primary":"#ffffff","primary-fixed-dim":"#80d5cb","tertiary":"#005f26","inverse-surface":"#283044","on-secondary-fixed-variant":"#005049","on-tertiary-fixed-variant":"#005320","on-tertiary":"#ffffff","primary":"#005c55","on-tertiary-container":"#a1ffad","on-secondary":"#ffffff","on-primary-container":"#a3faef","on-background":"#131b2e","primary-container":"#0f766e","on-error":"#ffffff","on-surface-variant":"#3e4947","surface-container":"#eaedff","primary-fixed":"#9cf2e8","secondary-fixed":"#89f5e7","on-tertiary-fixed":"#002109","on-surface":"#131b2e","error":"#ba1a1a","inverse-on-surface":"#eef0ff","tertiary-container":"#007a33","inverse-primary":"#80d5cb","surface-container-highest":"#dae2fd","tertiary-fixed-dim":"#62df7d","surface-dim":"#d2d9f4","error-container":"#ffdad6","surface-variant":"#dae2fd","surface-container-low":"#f2f3ff","tertiary-fixed":"#7ffc97","on-error-container":"#93000a","background":"#faf8ff","outline":"#6e7977","on-secondary-fixed":"#00201d","secondary":"#006a61","on-primary-fixed-variant":"#00504a","on-primary-fixed":"#00201d","secondary-container":"#86f2e4"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"1rem","space-lg":"1rem","margin-mobile":"0.5rem",margin:"1rem","space-xl":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","space-md":"0.75rem","gutter-mobile":"0.5rem"},fontFamily:{"body-md":["Inter"],"body-sm":["Inter"],"label-keypad":["Inter"],"headline-total-mobile":["Inter"],"headline-total":["Inter"],"label-lg":["Inter"],"headline-lg":["Inter"],"label-sm":["Inter"],"headline-md":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-keypad":["24px",{lineHeight:"28px",fontWeight:"600"}],"headline-total-mobile":["32px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-total":["44px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["16px",{lineHeight:"20px",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"headline-md":["22px",{lineHeight:"28px",fontWeight:"600"}],"label-md":["13px",{lineHeight:"16px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"22px",fontWeight:"500"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-[#f8fafc] font-body-md text-on-surface"><div><header class="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-xl border-b border-black/5 px-6 flex items-center justify-between gap-6 shadow-xs"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-2.5"><div class="w-9 h-9 rounded-2xl bg-[#0071e3] flex items-center justify-center text-white shadow-sm shadow-[#0071e3]/20"><span class="material-symbols-outlined text-[20px]">storefront</span></div><div class="flex flex-col"><span class="text-[15px] font-bold tracking-tight text-slate-900 leading-none">MarketPOS</span><span class="text-[10px] font-medium tracking-wide text-slate-400 uppercase mt-0.5">Point de Vente</span></div></div></div><div class="flex-1 max-w-2xl px-space-sm"><div class="relative w-full group"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#0071e3] text-[18px] transition-colors">search</span><input class="w-full h-10 pl-10 pr-20 rounded-full bg-black/[0.04] hover:bg-black/[0.06] text-slate-800 text-[13px] font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0071e3]/25 border border-black/[0.04] focus:border-[#0071e3]/40 transition-all placeholder:text-slate-400" id="barcode-input" placeholder="Rechercher un produit, code barre..." type="text"><div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1"><kbd class="px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 bg-white border border-black/10 rounded-md shadow-2xs">⌘K</kbd><kbd class="px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 bg-white border border-black/10 rounded-md shadow-2xs">Ctrl+/</kbd></div></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="flex items-center gap-1.5 shrink-0"><button class="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:bg-black/[0.05] hover:text-slate-800 transition-colors apple-btn-active" title="Disposition grille" type="button"><span class="material-symbols-outlined text-[19px]">grid_view</span></button><button class="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:bg-black/[0.05] hover:text-slate-800 transition-colors apple-btn-active" id="toggle-dark-btn" title="Mode sombre" type="button"><span class="material-symbols-outlined text-[19px]">dark_mode</span></button><div class="relative"><button class="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:bg-black/[0.05] hover:text-slate-800 transition-colors apple-btn-active" title="Notifications" type="button"><span class="material-symbols-outlined text-[19px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#ff3b30] ring-2 ring-white"></span></button></div><div class="h-5 w-[1px] bg-black/10 mx-1"></div><div class="flex items-center gap-2.5 pl-1 select-none"><div class="relative"><div class="w-9 h-9 rounded-full bg-gradient-to-tr from-slate-700 to-slate-500 text-white flex items-center justify-center shadow-xs text-[14px] font-semibold">AK</div><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#34c759] border-2 border-white"></span></div><div class="hidden sm:flex flex-col text-left leading-tight"><span class="font-semibold text-slate-900 text-[13px] tracking-tight">Awa Koné</span><span class="text-[11px] text-slate-400 font-medium">Caissière • Caisse 01</span></div></div></div></div></header><main class="w-full bg-[#f8fafc] min-h-[calc(100vh-64px)]"><div class="flex flex-col w-full"><!-- MAIN GROSTORE WORKSPACE --><div class="p-space-md grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start"><!-- LEFT COLUMN (8 cols): CATEGORIES + PRODUCT CATALOG --><div class="lg:col-span-8 flex flex-col gap-space-md"><!-- 1. CATEGORY NAV & HORIZONTAL CAROUSEL (AS IN GROSTORE) --><div class="flex flex-col gap-space-sm"><div class="flex items-center justify-between"><div class="flex items-center justify-between"><div class="inline-flex p-1 rounded-xl bg-black/[0.05] border border-black/[0.04]"><button class="px-4 py-1.5 rounded-lg bg-white text-slate-900 font-semibold text-[13px] shadow-xs active:scale-95 transition-all" id="btn-tab-cat" type="button">Catégories</button><button class="px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-medium text-[13px] active:scale-95 transition-all" type="button">Marques</button></div><div class="flex items-center gap-1.5"><button class="w-8 h-8 rounded-full bg-white/80 hover:bg-white text-slate-600 border border-black/5 flex items-center justify-center transition-all shadow-xs active:scale-95" title="Précédent" type="button"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button><button class="w-8 h-8 rounded-full bg-white/80 hover:bg-white text-slate-900 border border-black/5 flex items-center justify-center transition-all shadow-xs active:scale-95" title="Suivant" type="button"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button></div></div></div><!-- Category cards carousel matching Image 2 & 4 --><div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2.5 overflow-x-auto pb-1" id="category-cards"><div class="cat-pill p-3 rounded-2xl bg-white border border-slate-200/70 shadow-sm flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-300 hover:shadow-md transition-all group" data-cat="all"><div class="w-12 h-12 rounded-full bg-amber-50 text-amber-500 border border-amber-100/80 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform text-[22px]">🥕</div><span class="font-label-sm text-[12px] font-bold text-slate-800 truncate w-full">Légumes &amp; Fruits</span><span class="text-[11px] text-slate-400 font-medium">28 articles</span></div><div class="cat-pill p-3 rounded-2xl bg-white border border-slate-200/70 shadow-sm flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-300 hover:shadow-md transition-all group" data-cat="Boissons &amp; Café"><div class="w-12 h-12 rounded-full bg-yellow-50 text-yellow-600 border border-yellow-100/80 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform text-[22px]">☕</div><span class="font-label-sm text-[12px] font-bold text-slate-800 truncate w-full">Café &amp; Boissons</span><span class="text-[11px] text-slate-400 font-medium">16 articles</span></div><!-- Active item highlighted in green like in Grostore screenshot --><div class="cat-pill p-3 rounded-2xl text-white shadow-md shadow-emerald-500/20 flex flex-col items-center justify-center text-center cursor-pointer transition-all group bg-[#5bb81f]" data-cat="Produits laitiers"><div class="w-12 h-12 rounded-full bg-white/20 text-white flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform text-[22px]">🥛</div><span class="font-label-sm text-[12px] font-bold text-white truncate w-full">Lait &amp; Produits</span><span class="text-[11px] text-white/90 font-medium">25 articles</span></div><div class="cat-pill p-3 rounded-2xl bg-white border border-slate-200/70 shadow-sm flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-300 hover:shadow-md transition-all group" data-cat="Viandes &amp; Poissons"><div class="w-12 h-12 rounded-full bg-pink-50 text-pink-600 border border-pink-100/80 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform text-[22px]">🥩</div><span class="font-label-sm text-[12px] font-bold text-slate-800 truncate w-full">Viandes &amp; Poiss.</span><span class="text-[11px] text-slate-400 font-medium">18 articles</span></div><div class="cat-pill p-3 rounded-2xl bg-white border border-slate-200/70 shadow-sm flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-300 hover:shadow-md transition-all group" data-cat="Entretien"><div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100/80 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform text-[22px]">🧹</div><span class="font-label-sm text-[12px] font-bold text-slate-800 truncate w-full">Entretien Maison</span><span class="text-[11px] text-slate-400 font-medium">22 articles</span></div><div class="cat-pill p-3 rounded-2xl bg-white border border-slate-200/70 shadow-sm flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-300 hover:shadow-md transition-all group" data-cat="Fruits Frais"><div class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100/80 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform text-[22px]">🍎</div><span class="font-label-sm text-[12px] font-bold text-slate-800 truncate w-full">Fruits Frais</span><span class="text-[11px] text-slate-400 font-medium">25 articles</span></div><div class="cat-pill p-3 rounded-2xl bg-white border border-slate-200/70 shadow-sm flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-300 hover:shadow-md transition-all group" data-cat="Épicerie"><div class="w-12 h-12 rounded-full bg-orange-50 text-orange-600 border border-orange-100/80 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform text-[22px]">🌾</div><span class="font-label-sm text-[12px] font-bold text-slate-800 truncate w-full">Épicerie &amp; Riz</span><span class="text-[11px] text-slate-400 font-medium">34 articles</span></div></div></div><!-- 2. SECTION HEADER WITH SUB-SEARCH (MATCHING IMAGE 4) --><div class="flex flex-wrap items-center justify-between gap-space-sm pt-1"><div class="flex items-center gap-2.5"><h2 class="text-[19px] font-bold text-slate-900 tracking-tight">Nouveaux Produits &amp; Catalogue</h2><span class="px-2.5 py-0.5 rounded-full bg-black/[0.05] text-slate-600 text-[11px] font-semibold tracking-wide" id="product-count-badge">20 articles</span></div><div class="flex items-center gap-2 w-full sm:w-auto"><div class="relative flex-1 sm:w-60"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[17px]">search</span><input class="w-full h-8 pl-8 pr-3 rounded-lg bg-white/90 border border-black/5 text-slate-800 text-[12px] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0071e3]/20 shadow-xs" id="catalog-sub-search" placeholder="Filtrer articles..." type="text"></div><button class="h-8 px-3.5 rounded-lg bg-slate-900 text-white text-[12px] font-semibold flex items-center gap-1.5 shadow-xs hover:bg-black active:scale-95 transition-all" id="btn-search-catalog" type="button"><span class="material-symbols-outlined text-[15px]">tune</span><span>Filtrer</span></button></div></div><!-- 3. PRODUCT GRID MATCHING GROSTORE EXACT CARD STRUCTURE (Illustration Left, Title + Double Price Right) --><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3" id="product-grid"><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-amber-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🌾
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Riz Dinor Parfumé 5kg</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">4 750 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">5 200 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-red-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍓
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Fraises &amp; Fruits Rouges 500g</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 850 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">2 200 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-purple-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🫐
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Figues Douces &amp; Mûres</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 200 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 450 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-orange-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍊
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Oranges Sanguines de Côte</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">950 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 100 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-amber-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🥜
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Amandes &amp; Noix Entières</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">2 100 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">2 500 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-rose-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🥩
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Viande de Bœuf Steak 500g</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">3 400 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">3 800 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-red-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍎
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Pommes Rouges Gala x4</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 100 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 300 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-purple-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍑
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Prunes Noires Succulentes</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 350 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 500 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-lime-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍋
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Citrons Verts Frais x6</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">700 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">850 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-amber-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍗
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Poulet Fermier Entier</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">2 900 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">3 200 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-emerald-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🥦
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Brocoli Vert Bio 400g</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 250 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 500 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-pink-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍈
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Pamplemousse Rose 1kg</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 400 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 650 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-green-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍐
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Poire Williams Juteuse</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 150 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 300 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-purple-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍇
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Raisin Noir de Table 500g</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 750 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">2 000 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-rose-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🧅
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Oignons Rouges Frais 1kg</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">800 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">950 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-red-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍒
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Litchis Sucrés de Saison</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 600 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 900 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-blue-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🥛
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Lait Bonnet Rouge 410g</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">650 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">750 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-green-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍉
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Pastèque Entière Fraîche</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">2 000 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">2 400 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-red-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🍅
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Tomates Cerises Bio 250g</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">900 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 050 F</span>
+          </div>
+        </div>
+      </div><div class="p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-yellow-50 flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          🌻
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">Huile Aya Tournesol 1L</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="font-extrabold text-[13px] sm:text-[14px] text-[#5bb81f]">1 400 F</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">1 600 F</span>
+          </div>
+        </div>
+      </div></div></div><!-- RIGHT COLUMN (4 cols): BILLING SECTION (MATCHING GROSTORE IMAGE 4) --><div class="lg:col-span-4 flex flex-col bg-white/95 backdrop-blur-2xl rounded-3xl shadow-sm border border-black/[0.06] sticky top-20 overflow-hidden"><!-- Billing Header with Customer button --><div class="p-4 border-b border-slate-100 flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[20px] text-slate-500">receipt_long</span><h3 class="text-[17px] font-bold text-slate-900 tracking-tight">Section Facturation</h3></div><button class="px-3 py-1.5 rounded-full border border-black/10 bg-black/[0.03] hover:bg-black/[0.06] text-slate-800 font-semibold text-[12px] flex items-center gap-1.5 transition-all active:scale-95 shadow-2xs" id="btn-select-customer" type="button"><span class="material-symbols-outlined text-[15px] text-[#0071e3]">person_add</span><span>+ Client</span></button></div><!-- Barcode Search & Fast Add bar --><div class="p-3 bg-slate-50/80 border-b border-slate-100 flex items-center gap-2"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[17px]">qr_code_scanner</span><input class="w-full h-8 pl-8 pr-2 rounded-lg bg-black/[0.04] focus:bg-white border border-transparent focus:border-[#0071e3]/30 text-slate-800 text-[12px] placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0071e3]/15 transition-all" id="quick-add-input" placeholder="Code ou réf article..." type="text"></div><button class="h-8 px-3 rounded-lg text-white font-semibold text-[12px] shrink-0 hover:bg-[#30b753] active:scale-95 transition-all shadow-xs bg-[#5bb81f]" id="btn-quick-add" type="button">Ajouter</button><button class="h-8 px-2.5 rounded-lg bg-black/[0.04] text-slate-600 hover:text-red-600 hover:bg-red-50 font-medium text-[12px] shrink-0 transition-colors active:scale-95" id="btn-clear-cart" title="Vider le panier" type="button">Vider</button></div><!-- Cart Table Headers matching Grostore (Item, QTY, Price, Delete) --><div class="px-4 py-2 bg-black/[0.02] text-slate-400 font-semibold text-[11px] uppercase tracking-wider grid grid-cols-12 items-center border-b border-black/[0.04]"><div class="col-span-6">Article</div><div class="col-span-3 text-center">QTÉ</div><div class="col-span-2 text-right">Prix</div><div class="col-span-1 text-center">Suppr</div></div><!-- Cart Line Items Container (Populated with 4 items exactly as requested) --><div class="p-2 sm:p-3 flex flex-col gap-2 max-h-[380px] min-h-[260px] overflow-y-auto" id="cart-items-container"><div class="p-2 rounded-xl bg-slate-50/90 border border-slate-200/60 grid grid-cols-12 items-center gap-1.5 hover:bg-slate-100/80 transition-colors">
+        <!-- Col Article: Emoji/Icon + Name -->
+        <div class="col-span-6 flex items-center gap-2 min-w-0 pr-1">
+          <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-base shrink-0 border border-slate-200/40">
+            🌾
+          </div>
+          <div class="min-w-0 flex flex-col">
+            <span class="font-bold text-[12px] text-slate-800 truncate leading-tight">Riz Dinor Parfumé 5kg</span>
+            <span class="text-[10px] text-slate-400">4 750 F unitaire</span>
+          </div>
+        </div>
+        <!-- Col QTY: [-] QTY [+] -->
+        <div class="col-span-3 flex items-center justify-center gap-1">
+          <button type="button" class="btn-qty-minus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            -
+          </button>
+          <span class="w-6 text-center font-bold text-[12px] text-slate-800">2</span>
+          <button type="button" class="btn-qty-plus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            +
+          </button>
+        </div>
+        <!-- Col Price: Green Bold total -->
+        <div class="col-span-2 text-right pr-0.5">
+          <span class="font-extrabold text-[12px] text-[#5bb81f]">9 500 F</span>
+        </div>
+        <!-- Col Delete: Orange/Red trash icon -->
+        <div class="col-span-1 flex items-center justify-center">
+          <button type="button" class="btn-remove-row text-orange-400 hover:text-red-600 p-1 transition-colors" title="Supprimer">
+            <span class="material-symbols-outlined text-[17px]">delete</span>
+          </button>
+        </div>
+      </div><div class="p-2 rounded-xl bg-slate-50/90 border border-slate-200/60 grid grid-cols-12 items-center gap-1.5 hover:bg-slate-100/80 transition-colors">
+        <!-- Col Article: Emoji/Icon + Name -->
+        <div class="col-span-6 flex items-center gap-2 min-w-0 pr-1">
+          <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-base shrink-0 border border-slate-200/40">
+            🥛
+          </div>
+          <div class="min-w-0 flex flex-col">
+            <span class="font-bold text-[12px] text-slate-800 truncate leading-tight">Lait Bonnet Rouge 410g</span>
+            <span class="text-[10px] text-slate-400">650 F unitaire</span>
+          </div>
+        </div>
+        <!-- Col QTY: [-] QTY [+] -->
+        <div class="col-span-3 flex items-center justify-center gap-1">
+          <button type="button" class="btn-qty-minus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            -
+          </button>
+          <span class="w-6 text-center font-bold text-[12px] text-slate-800">1</span>
+          <button type="button" class="btn-qty-plus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            +
+          </button>
+        </div>
+        <!-- Col Price: Green Bold total -->
+        <div class="col-span-2 text-right pr-0.5">
+          <span class="font-extrabold text-[12px] text-[#5bb81f]">650 F</span>
+        </div>
+        <!-- Col Delete: Orange/Red trash icon -->
+        <div class="col-span-1 flex items-center justify-center">
+          <button type="button" class="btn-remove-row text-orange-400 hover:text-red-600 p-1 transition-colors" title="Supprimer">
+            <span class="material-symbols-outlined text-[17px]">delete</span>
+          </button>
+        </div>
+      </div><div class="p-2 rounded-xl bg-slate-50/90 border border-slate-200/60 grid grid-cols-12 items-center gap-1.5 hover:bg-slate-100/80 transition-colors">
+        <!-- Col Article: Emoji/Icon + Name -->
+        <div class="col-span-6 flex items-center gap-2 min-w-0 pr-1">
+          <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-base shrink-0 border border-slate-200/40">
+            🍗
+          </div>
+          <div class="min-w-0 flex flex-col">
+            <span class="font-bold text-[12px] text-slate-800 truncate leading-tight">Poulet Fermier Entier</span>
+            <span class="text-[10px] text-slate-400">2 900 F unitaire</span>
+          </div>
+        </div>
+        <!-- Col QTY: [-] QTY [+] -->
+        <div class="col-span-3 flex items-center justify-center gap-1">
+          <button type="button" class="btn-qty-minus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            -
+          </button>
+          <span class="w-6 text-center font-bold text-[12px] text-slate-800">2</span>
+          <button type="button" class="btn-qty-plus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            +
+          </button>
+        </div>
+        <!-- Col Price: Green Bold total -->
+        <div class="col-span-2 text-right pr-0.5">
+          <span class="font-extrabold text-[12px] text-[#5bb81f]">5 800 F</span>
+        </div>
+        <!-- Col Delete: Orange/Red trash icon -->
+        <div class="col-span-1 flex items-center justify-center">
+          <button type="button" class="btn-remove-row text-orange-400 hover:text-red-600 p-1 transition-colors" title="Supprimer">
+            <span class="material-symbols-outlined text-[17px]">delete</span>
+          </button>
+        </div>
+      </div><div class="p-2 rounded-xl bg-slate-50/90 border border-slate-200/60 grid grid-cols-12 items-center gap-1.5 hover:bg-slate-100/80 transition-colors">
+        <!-- Col Article: Emoji/Icon + Name -->
+        <div class="col-span-6 flex items-center gap-2 min-w-0 pr-1">
+          <div class="w-8 h-8 rounded-lg bg-yellow-50 flex items-center justify-center text-base shrink-0 border border-slate-200/40">
+            🌻
+          </div>
+          <div class="min-w-0 flex flex-col">
+            <span class="font-bold text-[12px] text-slate-800 truncate leading-tight">Huile Aya Tournesol 1L</span>
+            <span class="text-[10px] text-slate-400">1 400 F unitaire</span>
+          </div>
+        </div>
+        <!-- Col QTY: [-] QTY [+] -->
+        <div class="col-span-3 flex items-center justify-center gap-1">
+          <button type="button" class="btn-qty-minus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            -
+          </button>
+          <span class="w-6 text-center font-bold text-[12px] text-slate-800">1</span>
+          <button type="button" class="btn-qty-plus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            +
+          </button>
+        </div>
+        <!-- Col Price: Green Bold total -->
+        <div class="col-span-2 text-right pr-0.5">
+          <span class="font-extrabold text-[12px] text-[#5bb81f]">1 400 F</span>
+        </div>
+        <!-- Col Delete: Orange/Red trash icon -->
+        <div class="col-span-1 flex items-center justify-center">
+          <button type="button" class="btn-remove-row text-orange-400 hover:text-red-600 p-1 transition-colors" title="Supprimer">
+            <span class="material-symbols-outlined text-[17px]">delete</span>
+          </button>
+        </div>
+      </div></div><!-- Financial Summary Block matching Grostore style --><div class="p-4 bg-slate-50/70 border-t border-slate-100 flex flex-col gap-2 text-body-sm"><div class="flex items-center justify-between text-slate-500"><span>Sous-total brut :</span><span class="font-bold text-slate-800" id="summary-subtotal">17 350 F</span></div><div class="flex items-center justify-between text-slate-500"><span>Remise article :</span><span class="font-semibold text-[#5bb81f]" id="summary-discount">-500 F</span></div><div class="flex items-center justify-between text-slate-500"><span>Remise panier (F4) :</span><button class="hover:underline font-bold text-[12px] text-[#5bb81f]" id="btn-open-discount-modal" type="button">+ Code Promo</button></div><div class="flex items-center justify-between text-slate-400 text-[11px]"><span>TVA 18% incluse :</span><span id="summary-tax">2 570 F</span></div><!-- Total large display matching Image 4 --><div class="pt-2 mt-1 border-t border-slate-200 flex items-baseline justify-between"><span class="font-headline-sm text-[18px] font-bold text-slate-900 text-[#5bb81f]">Total Net :</span><div class="flex items-baseline gap-1"><span class="font-headline-total text-[32px] font-extrabold text-slate-900 tracking-tight" id="summary-total">16 850</span><span class="font-headline-sm text-[18px] font-bold text-[#5bb81f]">FCFA</span></div></div></div><!-- Dual Checkout Actions matching Image 4 (Cancel Order / Place Order) --><div class="p-3.5 bg-white border-t border-slate-100 grid grid-cols-2 gap-2.5"><button class="h-12 rounded-xl bg-[#f97316] hover:bg-orange-600 text-white font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all" id="btn-cancel-order" type="button"><span class="material-symbols-outlined text-[18px]">cancel</span><span>Annuler</span></button><button class="h-12 rounded-xl text-white hover:bg-emerald-600 font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-md shadow-emerald-500/20 active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed bg-[#5bb81f]" id="btn-checkout" type="button"><span class="material-symbols-outlined text-[20px]">check_circle</span><span id="btn-checkout-label">Encaisser [F9]</span></button></div></div></div></div>
+<script>
+(() => {
+  // 1. BASE DE DONNÉES PRODUITS STYLE GROSTORE (20 articles avec icônes réalistes, nom et double prix)
+  const PRODUCTS = [
+    { id: "P01", name: "Riz Dinor Parfumé 5kg", icon: "🌾", bg: "bg-amber-50", price: 4750, origPrice: 5200, cat: "Épicerie", code: "61811001", stock: 18 },
+    { id: "P02", name: "Fraises & Fruits Rouges 500g", icon: "🍓", bg: "bg-red-50", price: 1850, origPrice: 2200, cat: "Fruits Frais", code: "61811002", stock: 24 },
+    { id: "P03", name: "Figues Douces & Mûres", icon: "🫐", bg: "bg-purple-50", price: 1200, origPrice: 1450, cat: "Fruits Frais", code: "61811003", stock: 15 },
+    { id: "P04", name: "Oranges Sanguines de Côte", icon: "🍊", bg: "bg-orange-50", price: 950, origPrice: 1100, cat: "Fruits Frais", code: "61811004", stock: 40 },
+    { id: "P05", name: "Amandes & Noix Entières", icon: "🥜", bg: "bg-amber-50", price: 2100, origPrice: 2500, cat: "Épicerie", code: "61811005", stock: 32 },
+    { id: "P06", name: "Viande de Bœuf Steak 500g", icon: "🥩", bg: "bg-rose-50", price: 3400, origPrice: 3800, cat: "Viandes & Poissons", code: "61811006", stock: 12 },
+    { id: "P07", name: "Pommes Rouges Gala x4", icon: "🍎", bg: "bg-red-50", price: 1100, origPrice: 1300, cat: "Fruits Frais", code: "61811007", stock: 55 },
+    { id: "P08", name: "Prunes Noires Succulentes", icon: "🍑", bg: "bg-purple-50", price: 1350, origPrice: 1500, cat: "Fruits Frais", code: "61811008", stock: 22 },
+    { id: "P09", name: "Citrons Verts Frais x6", icon: "🍋", bg: "bg-lime-50", price: 700, origPrice: 850, cat: "Fruits Frais", code: "61811009", stock: 60 },
+    { id: "P10", name: "Poulet Fermier Entier", icon: "🍗", bg: "bg-amber-50", price: 2900, origPrice: 3200, cat: "Viandes & Poissons", code: "61811010", stock: 19 },
+    { id: "P11", name: "Brocoli Vert Bio 400g", icon: "🥦", bg: "bg-emerald-50", price: 1250, origPrice: 1500, cat: "Légumes & Fruits", code: "61811011", stock: 14 },
+    { id: "P12", name: "Pamplemousse Rose 1kg", icon: "🍈", bg: "bg-pink-50", price: 1400, origPrice: 1650, cat: "Fruits Frais", code: "61811012", stock: 28 },
+    { id: "P13", name: "Poire Williams Juteuse", icon: "🍐", bg: "bg-green-50", price: 1150, origPrice: 1300, cat: "Fruits Frais", code: "61811013", stock: 35 },
+    { id: "P14", name: "Raisin Noir de Table 500g", icon: "🍇", bg: "bg-purple-50", price: 1750, origPrice: 2000, cat: "Fruits Frais", code: "61811014", stock: 20 },
+    { id: "P15", name: "Oignons Rouges Frais 1kg", icon: "🧅", bg: "bg-rose-50", price: 800, origPrice: 950, cat: "Légumes & Fruits", code: "61811015", stock: 80 },
+    { id: "P16", name: "Litchis Sucrés de Saison", icon: "🍒", bg: "bg-red-50", price: 1600, origPrice: 1900, cat: "Fruits Frais", code: "61811016", stock: 16 },
+    { id: "P17", name: "Lait Bonnet Rouge 410g", icon: "🥛", bg: "bg-blue-50", price: 650, origPrice: 750, cat: "Produits laitiers", code: "61811017", stock: 95 },
+    { id: "P18", name: "Pastèque Entière Fraîche", icon: "🍉", bg: "bg-green-50", price: 2000, origPrice: 2400, cat: "Fruits Frais", code: "61811018", stock: 10 },
+    { id: "P19", name: "Tomates Cerises Bio 250g", icon: "🍅", bg: "bg-red-50", price: 900, origPrice: 1050, cat: "Légumes & Fruits", code: "61811019", stock: 45 },
+    { id: "P20", name: "Huile Aya Tournesol 1L", icon: "🌻", bg: "bg-yellow-50", price: 1400, origPrice: 1600, cat: "Épicerie", code: "61811020", stock: 48 }
+  ];
+
+  // 2. PANIER INITIALEMENT PRÉ-REMPLI EXACTEMENT SELON LA DEMANDE GROSTORE
+  // Article 1 : Riz Dinor Parfumé (qty 2)
+  // Article 2 : Lait Bonnet Rouge 410g (qty 1)
+  // Article 3 : Poulet Fermier Entier (qty 2)
+  // Article 4 : Huile Aya 1L (qty 1)
+  let cart = [
+    { ...PRODUCTS[0], qty: 2 }, // Riz Dinor Parfumé 5kg (2 x 4750)
+    { ...PRODUCTS[16], qty: 1 }, // Lait Bonnet Rouge 410g (1 x 650)
+    { ...PRODUCTS[9], qty: 2 }, // Poulet Fermier Entier (2 x 2900)
+    { ...PRODUCTS[19], qty: 1 }  // Huile Aya 1L (1 x 1400)
+  ];
+
+  let discountAmount = 500; // Remise appliquée par défaut pour refléter la maquette
+  let activeCategory = 'all';
+
+  const fmt = (num) => new Intl.NumberFormat('fr-FR').format(Math.round(num)) + ' F';
+
+  // 3. RENDU DE LA GRILLE DE PRODUITS SELON LE MODÈLE GROSTORE
+  const gridEl = document.getElementById('product-grid');
+
+  const renderCatalog = (filter = 'all', searchQuery = '') => {
+    gridEl.innerHTML = '';
+    const filtered = PRODUCTS.filter(p => {
+      const matchCat = filter === 'all' || p.cat === filter;
+      const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.code.includes(searchQuery);
+      return matchCat && matchSearch;
+    });
+
+    document.getElementById('product-count-badge').textContent = `${filtered.length} articles`;
+
+    filtered.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = "p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 flex items-center gap-3 cursor-pointer active:scale-[0.98] transition-all select-none group";
+      card.innerHTML = `
+        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl ${prod.bg} flex items-center justify-center text-3xl shrink-0 group-hover:scale-105 transition-transform">
+          ${prod.icon}
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col justify-center">
+          <h4 class="font-bold text-slate-800 text-[13px] leading-tight line-clamp-2 group-hover:text-emerald-700 transition-colors">${prod.name}</h4>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="text-[#22c55e] font-extrabold text-[13px] sm:text-[14px]">${fmt(prod.price)}</span>
+            <span class="text-orange-400 font-semibold text-[11px] sm:text-[12px] line-through">${fmt(prod.origPrice)}</span>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', () => addToCart(prod));
+      gridEl.appendChild(card);
+    });
+  };
+
+  // 4. GESTION DU PANIER & FACTURATION
+  const addToCart = (product) => {
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ ...product, qty: 1 });
+    }
+    renderCart();
+  };
+
+  const updateQty = (id, delta) => {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+    renderCart();
+  };
+
+  const removeItem = (id) => {
+    cart = cart.filter(i => i.id !== id);
+    renderCart();
+  };
+
+  const clearCart = () => {
+    cart = [];
+    discountAmount = 0;
+    renderCart();
+  };
+
+  const calculateTotals = () => {
+    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+    const total = Math.max(0, subtotal - discountAmount);
+    const tax = Math.round(total * 0.18 / 1.18);
+    const itemCount = cart.reduce((acc, item) => acc + item.qty, 0);
+    return { subtotal, discount: discountAmount, total, tax, itemCount };
+  };
+
+  const renderCart = () => {
+    const container = document.getElementById('cart-items-container');
+    const totals = calculateTotals();
+
+    document.getElementById('summary-subtotal').textContent = fmt(totals.subtotal);
+    document.getElementById('summary-discount').textContent = totals.discount > 0 ? `-${fmt(totals.discount)}` : '-0 F';
+    document.getElementById('summary-tax').textContent = fmt(totals.tax);
+    document.getElementById('summary-total').textContent = new Intl.NumberFormat('fr-FR').format(totals.total);
+
+    const checkoutBtn = document.getElementById('btn-checkout');
+    const checkoutLabel = document.getElementById('btn-checkout-label');
+    checkoutBtn.disabled = cart.length === 0;
+    checkoutLabel.textContent = `Encaisser [F9]`;
+
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="py-12 flex flex-col items-center justify-center text-center text-slate-400">
+          <span class="material-symbols-outlined text-[44px] text-slate-300 mb-1.5">shopping_bag</span>
+          <div class="font-bold text-slate-700 text-[14px]">Panier vide</div>
+          <p class="text-[12px] text-slate-400 mt-0.5">Cliquez sur un produit pour l'ajouter.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = '';
+    cart.forEach(item => {
+      const row = document.createElement('div');
+      row.className = "p-2 rounded-xl bg-slate-50/90 border border-slate-200/60 grid grid-cols-12 items-center gap-1.5 hover:bg-slate-100/80 transition-colors";
+      row.innerHTML = `
+        <!-- Col Article: Emoji/Icon + Name -->
+        <div class="col-span-6 flex items-center gap-2 min-w-0 pr-1">
+          <div class="w-8 h-8 rounded-lg ${item.bg || 'bg-slate-100'} flex items-center justify-center text-base shrink-0 border border-slate-200/40">
+            ${item.icon || '🛍️'}
+          </div>
+          <div class="min-w-0 flex flex-col">
+            <span class="font-bold text-[12px] text-slate-800 truncate leading-tight">${item.name}</span>
+            <span class="text-[10px] text-slate-400">${fmt(item.price)} unitaire</span>
+          </div>
+        </div>
+        <!-- Col QTY: [-] QTY [+] -->
+        <div class="col-span-3 flex items-center justify-center gap-1">
+          <button type="button" class="btn-qty-minus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            -
+          </button>
+          <span class="w-6 text-center font-bold text-[12px] text-slate-800">${item.qty}</span>
+          <button type="button" class="btn-qty-plus w-6 h-6 rounded bg-white text-slate-700 border border-slate-200 flex items-center justify-center font-bold text-[13px] hover:bg-slate-100 active:scale-95 shadow-2xs">
+            +
+          </button>
+        </div>
+        <!-- Col Price: Green Bold total -->
+        <div class="col-span-2 text-right pr-0.5">
+          <span class="font-extrabold text-[12px] text-[#22c55e]">${fmt(item.price * item.qty)}</span>
+        </div>
+        <!-- Col Delete: Orange/Red trash icon -->
+        <div class="col-span-1 flex items-center justify-center">
+          <button type="button" class="btn-remove-row text-orange-400 hover:text-red-600 p-1 transition-colors" title="Supprimer">
+            <span class="material-symbols-outlined text-[17px]">delete</span>
+          </button>
+        </div>
+      `;
+
+      row.querySelector('.btn-qty-minus').addEventListener('click', () => updateQty(item.id, -1));
+      row.querySelector('.btn-qty-plus').addEventListener('click', () => updateQty(item.id, 1));
+      row.querySelector('.btn-remove-row').addEventListener('click', () => removeItem(item.id));
+      container.appendChild(row);
+    });
+  };
+
+  // 5. GESTION DES RECHERCHES ET BOUTONS
+  const catalogSearch = document.getElementById('catalog-sub-search');
+  const mainSearch = document.getElementById('barcode-input');
+
+  const filterCatalog = () => {
+    const q = catalogSearch.value.trim() || mainSearch.value.trim();
+    renderCatalog(activeCategory, q);
+  };
+
+  catalogSearch.addEventListener('input', filterCatalog);
+  mainSearch.addEventListener('input', filterCatalog);
+  document.getElementById('btn-search-catalog').addEventListener('click', filterCatalog);
+
+  // Recherche rapide code barre facturation
+  const quickInput = document.getElementById('quick-add-input');
+  const quickAdd = () => {
+    const val = quickInput.value.trim();
+    if (!val) return;
+    const found = PRODUCTS.find(p => p.code === val || p.name.toLowerCase().includes(val.toLowerCase()));
+    if (found) {
+      addToCart(found);
+      quickInput.value = '';
+    } else {
+      // Ajout générique express
+      addToCart({
+        id: 'P_' + Date.now(),
+        name: val,
+        icon: '🏷️',
+        bg: 'bg-emerald-50',
+        price: 1000,
+        origPrice: 1200,
+        cat: 'Épicerie',
+        code: val,
+        stock: 50
+      });
+      quickInput.value = '';
+    }
+  };
+
+  document.getElementById('btn-quick-add').addEventListener('click', quickAdd);
+  quickInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      quickAdd();
+    }
+  });
+
+  document.getElementById('btn-clear-cart').addEventListener('click', clearCart);
+  document.getElementById('btn-cancel-order').addEventListener('click', clearCart);
+
+  // Filtres de catégories
+  document.querySelectorAll('.cat-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.cat-pill').forEach(p => {
+        p.className = "cat-pill p-3 rounded-2xl bg-white border border-slate-200/70 shadow-sm flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-300 hover:shadow-md transition-all group";
+        const title = p.querySelector('span:first-of-type');
+        const count = p.querySelector('span:last-of-type');
+        if (title) title.className = "font-label-sm text-[12px] font-bold text-slate-800 truncate w-full";
+        if (count) count.className = "text-[11px] text-slate-400 font-medium";
+      });
+      pill.className = "cat-pill p-3 rounded-2xl bg-[#22c55e] text-white shadow-md shadow-emerald-500/20 flex flex-col items-center justify-center text-center cursor-pointer transition-all group";
+      const activeTitle = pill.querySelector('span:first-of-type');
+      const activeCount = pill.querySelector('span:last-of-type');
+      if (activeTitle) activeTitle.className = "font-label-sm text-[12px] font-bold text-white truncate w-full";
+      if (activeCount) activeCount.className = "text-[11px] text-white/90 font-medium";
+
+      activeCategory = pill.getAttribute('data-cat');
+      filterCatalog();
+    });
+  });
+
+  // Client modal toggle simulation
+  document.getElementById('btn-select-customer').addEventListener('click', () => {
+    alert("Sélection du client : Client Régulier (Comptoir Plateau - Compte Fidélité N° #8492)");
+  });
+
+  document.getElementById('btn-checkout').addEventListener('click', () => {
+    const totals = calculateTotals();
+    alert(`Encaisser : ${fmt(totals.total)} FCFA validé avec succès ! Impression du ticket en cours.`);
+  });
+
+  document.getElementById('btn-open-discount-modal').addEventListener('click', () => {
+    const val = prompt("Entrez le montant de la remise promo en FCFA :", "500");
+    if (val !== null) {
+      discountAmount = parseInt(val, 10) || 0;
+      renderCart();
+    }
+  });
+
+  // Mode sombre
+  document.getElementById('toggle-dark-btn').addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+  });
+
+  // Raccourcis clavier
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'F2') {
+      e.preventDefault();
+      mainSearch.focus();
+    } else if (e.key === 'F9') {
+      e.preventDefault();
+      document.getElementById('btn-checkout').click();
+    } else if (e.key === 'Escape') {
+      clearCart();
+    }
+  });
+
+  // Initialisation
+  renderCatalog('all', '');
+  renderCart();
+})();
+</script></main></div>
+
+
+</body></html>

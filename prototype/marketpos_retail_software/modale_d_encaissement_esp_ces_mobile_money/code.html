@@ -1,0 +1,615 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-secondary-container":"#006f66","surface":"#faf8ff","surface-container-high":"#e2e7ff","surface-tint":"#006a63","surface-bright":"#faf8ff","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#6bd8cb","outline-variant":"#bdc9c6","on-primary":"#ffffff","primary-fixed-dim":"#80d5cb","tertiary":"#005f26","inverse-surface":"#283044","on-secondary-fixed-variant":"#005049","on-tertiary-fixed-variant":"#005320","on-tertiary":"#ffffff","primary":"#005c55","on-tertiary-container":"#a1ffad","on-secondary":"#ffffff","on-primary-container":"#a3faef","on-background":"#131b2e","primary-container":"#0f766e","on-error":"#ffffff","on-surface-variant":"#3e4947","surface-container":"#eaedff","primary-fixed":"#9cf2e8","secondary-fixed":"#89f5e7","on-tertiary-fixed":"#002109","on-surface":"#131b2e","error":"#ba1a1a","inverse-on-surface":"#eef0ff","tertiary-container":"#007a33","inverse-primary":"#80d5cb","surface-container-highest":"#dae2fd","tertiary-fixed-dim":"#62df7d","surface-dim":"#d2d9f4","error-container":"#ffdad6","surface-variant":"#dae2fd","surface-container-low":"#f2f3ff","tertiary-fixed":"#7ffc97","on-error-container":"#93000a","background":"#faf8ff","outline":"#6e7977","on-secondary-fixed":"#00201d","secondary":"#006a61","on-primary-fixed-variant":"#00504a","on-primary-fixed":"#00201d","secondary-container":"#86f2e4"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"1rem","space-lg":"1rem","margin-mobile":"0.5rem",margin:"1rem","space-xl":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","space-md":"0.75rem","gutter-mobile":"0.5rem"},fontFamily:{"body-md":["Inter"],"body-sm":["Inter"],"label-keypad":["Inter"],"headline-total-mobile":["Inter"],"headline-total":["Inter"],"label-lg":["Inter"],"headline-lg":["Inter"],"label-sm":["Inter"],"headline-md":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-keypad":["24px",{lineHeight:"28px",fontWeight:"600"}],"headline-total-mobile":["32px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-total":["44px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["16px",{lineHeight:"20px",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"headline-md":["22px",{lineHeight:"28px",fontWeight:"600"}],"label-md":["13px",{lineHeight:"16px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"22px",fontWeight:"500"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-[#f8fafc] font-body-md text-on-surface"><div><header class="sticky top-0 z-40 h-16 bg-white/80 backdrop-blur-xl border-b border-black/5 px-6 flex items-center justify-between gap-6 shadow-xs"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-2.5"><div class="w-9 h-9 rounded-2xl bg-[#0071e3] flex items-center justify-center text-white shadow-sm shadow-[#0071e3]/20"><span class="material-symbols-outlined text-[20px]">storefront</span></div><div class="flex flex-col"><span class="text-[15px] font-bold tracking-tight text-slate-900 leading-none">MarketPOS</span><span class="text-[10px] font-medium tracking-wide text-slate-400 uppercase mt-0.5">Point de Vente</span></div></div></div><div class="flex-1 max-w-2xl px-space-sm"><div class="relative w-full group"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#0071e3] text-[18px] transition-colors">search</span><input class="w-full h-10 pl-10 pr-20 rounded-full bg-black/[0.04] hover:bg-black/[0.06] text-slate-800 text-[13px] font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0071e3]/25 border border-black/[0.04] focus:border-[#0071e3]/40 transition-all placeholder:text-slate-400" id="barcode-input" placeholder="Rechercher un produit, code barre..." type="text"><div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1"><kbd class="px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 bg-white border border-black/10 rounded-md shadow-2xs">⌘K</kbd><kbd class="px-1.5 py-0.5 text-[10px] font-semibold text-slate-400 bg-white border border-black/10 rounded-md shadow-2xs">Ctrl+/</kbd></div></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="flex items-center gap-1.5 shrink-0"><button class="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:bg-black/[0.05] hover:text-slate-800 transition-colors apple-btn-active" title="Disposition grille" type="button"><span class="material-symbols-outlined text-[19px]">grid_view</span></button><button class="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:bg-black/[0.05] hover:text-slate-800 transition-colors apple-btn-active" id="toggle-dark-btn" title="Mode sombre" type="button"><span class="material-symbols-outlined text-[19px]">dark_mode</span></button><div class="relative"><button class="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:bg-black/[0.05] hover:text-slate-800 transition-colors apple-btn-active" title="Notifications" type="button"><span class="material-symbols-outlined text-[19px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#ff3b30] ring-2 ring-white"></span></button></div><div class="h-5 w-[1px] bg-black/10 mx-1"></div><div class="flex items-center gap-2.5 pl-1 select-none"><div class="relative"><div class="w-9 h-9 rounded-full bg-gradient-to-tr from-slate-700 to-slate-500 text-white flex items-center justify-center shadow-xs text-[14px] font-semibold">AK</div><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#34c759] border-2 border-white"></span></div><div class="hidden sm:flex flex-col text-left leading-tight"><span class="font-semibold text-slate-900 text-[13px] tracking-tight">Awa Koné</span><span class="text-[11px] text-slate-400 font-medium">Caissière • Caisse 01</span></div></div></div></div></header><main class="w-full bg-[#f8fafc] min-h-[calc(100vh-64px)]"><div class="flex flex-col w-full relative">
+<!-- POS Main Underlay Screen (MarketPOS Live Interface) -->
+<div class="w-full flex flex-col lg:flex-row gap-gutter p-gutter pointer-events-none select-none filter blur-[5px] brightness-90">
+<!-- Left Column: Cart & Items Ticket (38%) -->
+<div class="w-full lg:w-[400px] xl:w-[440px] flex flex-col gap-space-md shrink-0">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">shopping_bag</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Ticket #0182</span>
+</div>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wide">6 Articles</span>
+</div>
+<!-- Items Mini List -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Riz Parfumé Dinor 5kg</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2 x 5 500 FCFA</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">11 000 F</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Huile Végétale Aya 1.5L</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1 x 2 200 FCFA</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">2 200 F</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Lait Bonnet Rouge Concentré</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3 x 600 FCFA</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">1 800 F</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Pâtes Spaghetti Maman 500g</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4 x 450 FCFA</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">1 800 F</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Sucre Roux SucreIvoire 1kg</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2 x 1 100 FCFA</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">2 200 F</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Nescafé Classic Boîte 100g</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2 x 3 500 FCFA</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">7 000 F</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-sm bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Total Brut</span>
+<span>26 000 FCFA</span>
+</div>
+<div class="flex justify-between text-primary font-body-sm text-body-sm font-semibold">
+<span>Remise Fidélité OR (-5.8%)</span>
+<span>-1 500 FCFA</span>
+</div>
+<div class="flex justify-between items-baseline pt-1">
+<span class="font-headline-sm text-headline-sm text-on-surface">Net à payer</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">24 500 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Product Grid Catalogue (62%) -->
+<div class="flex-1 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm overflow-x-auto pb-1">
+<span class="px-space-md py-space-xs rounded-full bg-primary-container text-white font-label-md text-label-md shadow-xs">Tout</span>
+<span class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface font-label-md text-label-md">Épicerie Salée</span>
+<span class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface font-label-md text-label-md">Boissons &amp; Jus</span>
+<span class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface font-label-md text-label-md">Hygiène &amp; Soins</span>
+<span class="px-space-md py-space-xs rounded-full bg-surface-container text-on-surface font-label-md text-label-md">Frais &amp; Crèmerie</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col gap-1">
+<img class="w-full h-24 rounded-lg object-cover" data-alt="Packaging box of premium African long grain parboiled rice in modern retail packaging on clean white grocery studio background with natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5QrPycdJ2l9f_YotroaDZo011gPFXNqIkbfHQnDOTR2dheiJ4Sd1qp1FJ0eXL3aeJXrYBDAA7kMfFEs8YAFoj9d0d5e2MbEljAA_kUjTXcai9ETreDbVFo6XNlAhbijjcUYmTu4Z0WeG5YJiIN3GGAyS4vo87UK3RtEebGMkyHj-dkVlNwnQ2ZEaaTr1NiRzk-_FXVN6i3gUk9q9xhHkcaGNV6VEsi1YvcWX_x7Xj">
+<span class="font-label-md text-label-md text-on-surface truncate">Riz Parfumé 5kg</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">5 500 F</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col gap-1">
+<img class="w-full h-24 rounded-lg object-cover" data-alt="Clear golden sunflower cooking oil bottle on clean white backdrop supermarket visual product photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASx7rrHfG16SpU1U87TH_Zf9Y6iOWlUh--H_8r5kGcceMpsXFlPB25kRhzvlPTQ3e9G2myWKyr7eNYfAeQuQAnP8IQzw_VahKtxVcn1M9-N17LPCiLs426GsbOMHnFvt919DlVmR8pMpuf1Ggt-CLCOMY3ObrZJkS_EngpEruiddsjyRamb-I4iFlMXbeycJNxvQZTlzeEVQcSvAiW0RDkM4pGgURvgKUzpqHI2Xza">
+<span class="font-label-md text-label-md text-on-surface truncate">Huile Végétale 1.5L</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">2 200 F</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col gap-1">
+<img class="w-full h-24 rounded-lg object-cover" data-alt="Canned evaporated milk tin on minimalist grocery store background with clean commercial studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8YJBd1EEQxmk9jOE-sf2Th9g0umhsusamv9jkA_LlIm3H5lplCH05zss5SBPzCgjmeYXRgHkDJYTPExjv4hdjeB4GwiQkfnXoJipVxsVQdWG6oJB3CIQm9SL137S6eZE8JO2hV_1iVMbgsIlSX5yUwGP3ohe6opr_LjsQtoPzRsMYdHKg4FjSpFmJ2UrVWahzBDaX7aiQhnt6kPkJGCmGlrbFRxgVrQDnE2LcaaXM">
+<span class="font-label-md text-label-md text-on-surface truncate">Lait Concentré</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">600 F</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-col gap-1">
+<img class="w-full h-24 rounded-lg object-cover" data-alt="Pasta spaghetti carton packaging in warm tone retail setting high quality grocery photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu9ipQExK5pzfzWfF98gs5QLzyREAosh9kSFs5lPXvtEQ1YBIGpCk4n1LUWt97U4MMT2FygWSBA50NpU8a-dykVL7Kd1mN1elJldntLggm0xs4CAPmIF9DaPq-d2No6PTLmcPcMA5iOFKETCz9YueM5EtzDfAfJhIYZ3pDP2gSpiLYYfAa7ZG1Em128W3PaDs5aRp4moahi3pJeofm7sxs7ZmfkhT5qXS1pENWHXmB">
+<span class="font-label-md text-label-md text-on-surface truncate">Spaghetti 500g</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">450 F</span>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL BACKDROP (macOS style translucent blur) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/45 backdrop-blur-md transition-all duration-200">
+<!-- CENTRAL POS CHECKOUT MODAL -->
+<div class="w-full max-w-5xl max-h-[96vh] flex flex-col bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden relative" id="checkout-modal">
+<!-- Top Modal Header -->
+<div class="bg-surface-container-low px-space-md py-space-sm flex items-center justify-between shrink-0">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-white shadow-xs" style="background-color: rgb(52, 168, 53);">
+<span class="material-symbols-outlined text-[24px]">payments</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Règlement &amp; Encaissement</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider">Vente #2024-10-24-0182</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-primary" style="color: rgb(52, 168, 53);">person</span> Caissière: Awa Koné (Caisse 01)</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">inventory_2</span> 6 articles</span>
+<span>•</span>
+<span class="text-primary font-semibold" style="color: #34a835;">Remise fidélité: -1 500 FCFA</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="hidden sm:flex flex-col text-right">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Net à encaisser</span>
+<div class="flex items-baseline gap-1 justify-end">
+<span class="font-headline-lg text-headline-lg text-primary font-extrabold tracking-tight" id="header-total-display" style="color: #34a835;">24 500</span>
+<span class="font-label-md text-label-md text-primary font-bold" style="color: #34a835;">FCFA</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors apple-btn-active" id="btn-close-modal" title="Fermer (Échap)" type="button" style="background-color: rgb(52, 168, 53);">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Payment Method Navigation Bar -->
+<div class="bg-surface px-space-md py-space-xs flex items-center gap-space-xs overflow-x-auto shrink-0 shadow-2xs">
+<button class="payment-tab px-space-md py-space-sm rounded-xl flex items-center gap-2 bg-primary-container text-white shadow-xs font-label-md text-label-md transition-all" id="tab-cash" onclick="switchMethod('cash')" type="button" style="background-color: rgb(52, 168, 53); color: rgb(255, 255, 255);">
+<span class="material-symbols-outlined text-[20px] text-white">payments</span>
+<span>Espèces (Cash FCFA)</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full bg-black/15 text-[10px] font-bold text-white tracking-wider uppercase">F1</span>
+</button>
+<button class="payment-tab px-space-md py-space-sm rounded-xl flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" id="tab-wave" onclick="switchMethod('wave')" type="button">
+<div class="w-5 h-5 rounded-full bg-[#1da1f2] flex items-center justify-center text-white text-[10px] font-black">W</div>
+<span>Wave Côte d'Ivoire</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full bg-black/5 text-[10px] font-bold text-on-surface-variant tracking-wider uppercase">F2</span>
+</button>
+<button class="payment-tab px-space-md py-space-sm rounded-xl flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" id="tab-momo" onclick="switchMethod('momo')" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#ff7900]">cell_tower</span>
+<span>Orange Money / MoMo</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full bg-black/5 text-[10px] font-bold text-on-surface-variant tracking-wider uppercase">F3</span>
+</button>
+<button class="payment-tab px-space-md py-space-sm rounded-xl flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" id="tab-card" onclick="switchMethod('card')" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#0071e3]">credit_card</span>
+<span>Carte Bancaire (TPE)</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full bg-black/5 text-[10px] font-bold text-on-surface-variant tracking-wider uppercase">F4</span>
+</button>
+<button class="payment-tab px-space-md py-space-sm rounded-xl flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" id="tab-split" onclick="switchMethod('split')" type="button">
+<span class="material-symbols-outlined text-[20px] text-[#a9267b]">call_split</span>
+<span>Mixte / Multimode</span>
+<span class="ml-1 px-1.5 py-0.5 rounded-full bg-black/5 text-[10px] font-bold text-on-surface-variant tracking-wider uppercase">F5</span>
+</button>
+</div>
+<!-- Modal Body Content -->
+<div class="flex-1 overflow-y-auto p-space-md flex flex-col gap-space-md">
+<!-- VIEW: CASH PAYMENT (Default & Active) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md" id="method-cash-content">
+<!-- Left Sub-panel: Received, Change & Bills (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Amount Received Card -->
+<div class="bg-surface-container-low p-space-md rounded-2xl flex flex-col gap-space-xs shadow-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1.5" for="amount-received-input">
+<span class="material-symbols-outlined text-[18px] text-primary" style="color: #34a835;">account_balance_wallet</span>
+                  Montant Reçu du Client (FCFA)
+                </label>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tapez ou utilisez les raccourcis</span>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-16 pl-space-md pr-24 rounded-xl bg-surface-container-lowest text-on-surface font-headline-total text-headline-total tracking-tight font-extrabold focus:outline-none focus:ring-2 focus:ring-primary shadow-xs select-all text-left" id="amount-received-input" inputmode="numeric" placeholder="0" type="text" value="30000">
+<div class="absolute right-4 flex items-center gap-2 pointer-events-none">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-bold">FCFA</span>
+</div>
+</div>
+<!-- Quick FCFA Denomination Buttons -->
+<div class="flex flex-col gap-1.5 mt-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Coupures Rapides Afrique de l'Ouest</span>
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+<button class="quick-bill-btn h-12 rounded-xl bg-surface-container-lowest hover:bg-primary-container hover:text-white text-on-surface font-label-md text-label-md shadow-xs flex flex-col items-center justify-center transition-all group" onclick="setCashAmount(24500)" type="button">
+<span class="group-hover:text-white font-bold">Exact</span>
+<span class="text-[11px] font-normal group-hover:text-white opacity-85">24 500 F</span>
+</button>
+<button class="quick-bill-btn h-12 rounded-xl bg-surface-container-lowest hover:bg-primary-container hover:text-white text-on-surface font-label-md text-label-md shadow-xs flex flex-col items-center justify-center transition-all group" onclick="setCashAmount(25000)" type="button">
+<span class="group-hover:text-white font-bold">+25 000 F</span>
+<span class="text-[10px] font-normal group-hover:text-white opacity-80">Reste 500 F</span>
+</button>
+<button class="quick-bill-btn active-bill h-12 rounded-xl bg-primary-container text-white font-label-md text-label-md shadow-sm flex flex-col items-center justify-center transition-all" onclick="setCashAmount(30000)" type="button" style="background-color: rgb(52, 168, 53); color: rgb(255, 255, 255);">
+<span class="font-bold text-white">+30 000 F</span>
+<span class="text-[10px] font-normal text-white opacity-90">3 billets</span>
+</button>
+<button class="quick-bill-btn h-12 rounded-xl bg-surface-container-lowest hover:bg-primary-container hover:text-white text-on-surface font-label-md text-label-md shadow-xs flex flex-col items-center justify-center transition-all group" onclick="setCashAmount(40000)" type="button">
+<span class="group-hover:text-white font-bold">+40 000 F</span>
+<span class="text-[10px] font-normal group-hover:text-white opacity-80">4 billets 10k</span>
+</button>
+<button class="quick-bill-btn h-12 rounded-xl bg-surface-container-lowest hover:bg-primary-container hover:text-white text-on-surface font-label-md text-label-md shadow-xs flex flex-col items-center justify-center transition-all group" onclick="setCashAmount(50000)" type="button">
+<span class="group-hover:text-white font-bold">+50 000 F</span>
+<span class="text-[10px] font-normal group-hover:text-white opacity-80">5 billets 10k</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Big Change Return Display Box (Monnaie à Rendre) -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col justify-between gap-space-sm relative overflow-hidden" id="change-card">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-white flex items-center justify-center" style="background-color: rgb(52, 168, 53);">
+<span class="material-symbols-outlined text-[18px]">currency_exchange</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-bold uppercase tracking-wider block">Monnaie à Rendre</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Calculée automatiquement</span>
+</div>
+</div>
+<div class="px-space-sm py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1" style="background-color: rgb(232, 248, 232); color: rgb(52, 168, 53); border: 1px solid rgb(194, 236, 198);">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Solde Positif</span>
+</div>
+</div>
+<!-- Main Amount Number -->
+<div class="py-1 flex items-baseline justify-between flex-wrap gap-2">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-total text-headline-total text-primary font-black tracking-tight leading-none" id="change-display" style="color: rgb(52, 168, 53);">5 500</span>
+<span class="font-headline-sm text-headline-sm text-primary font-extrabold" style="color: rgb(52, 168, 53);">FCFA</span>
+</div>
+<div class="text-right flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Détail rendu suggéré</span>
+<span class="font-label-md text-label-md text-on-surface font-bold" id="change-breakdown">1x 5 000 F + 1x 500 F</span>
+</div>
+</div>
+<!-- Visual Denominations Helper -->
+<div class="flex items-center gap-2 pt-space-xs bg-surface-container-low p-space-xs rounded-xl">
+<span class="font-body-sm text-body-sm text-on-surface-variant pl-1">Tiroir caisse :</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-2xs font-semibold">1 billet de 5 000 FCFA</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-2xs font-semibold">1 pièce de 500 FCFA</span>
+</div>
+</div>
+<!-- Wave Quick Alternative Promo Strip -->
+<div class="p-space-sm rounded-xl bg-surface-container-high flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-[#1da1f2] flex items-center justify-center text-white font-black text-sm shadow-xs">W</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Le client n'a pas la monnaie exacte ?</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Basculez instantanément sur le QR Wave sans frais</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container-lowest hover:bg-surface-container text-[#1da1f2] font-label-md text-label-md shadow-xs transition-colors shrink-0 font-bold" onclick="switchMethod('wave')" type="button">
+                Afficher QR Wave
+              </button>
+</div>
+</div>
+<!-- Right Sub-panel: Tactile POS Numpad & Quick Keypad (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm bg-surface-container-low p-space-md rounded-2xl shadow-xs">
+<div class="flex items-center justify-between pb-1">
+<span class="font-label-md text-label-md text-on-surface font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" style="color: #34a835;">dialpad</span>
+                Pavé Tactile Caisse
+              </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Touches numériques</span>
+</div>
+<!-- 4x3 POS Keypad Grid with tactile buttons -->
+<div class="grid grid-cols-3 gap-2.5 flex-1">
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('7')" type="button">7</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('8')" type="button">8</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('9')" type="button">9</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('4')" type="button">4</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('5')" type="button">5</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('6')" type="button">6</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('1')" type="button">1</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('2')" type="button">2</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('3')" type="button">3</button>
+<button class="keypad-key h-14 rounded-xl bg-error-container hover:opacity-90 active:scale-95 text-on-error-container font-label-lg text-label-lg shadow-xs transition-all flex items-center justify-center font-extrabold" onclick="clearAmount()" type="button">C</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('0')" type="button">0</button>
+<button class="keypad-key h-14 rounded-xl bg-surface-container-lowest hover:bg-surface-container active:scale-95 text-on-surface font-label-keypad text-label-keypad shadow-xs transition-all flex items-center justify-center font-bold" onclick="appendDigit('00')" type="button">00</button>
+</div>
+<!-- Auxiliary Actions on Numpad -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="h-11 rounded-xl bg-surface-container-highest hover:bg-surface-container active:scale-95 text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 shadow-xs transition-all" onclick="backspaceDigit()" type="button">
+<span class="material-symbols-outlined text-[18px]">backspace</span>
+<span>Effacer</span>
+</button>
+<button class="h-11 rounded-xl bg-surface-container-highest hover:bg-surface-container active:scale-95 text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 shadow-xs transition-all font-bold" onclick="addHundredThousand()" type="button">
+<span>+10 000 F</span>
+</button>
+</div>
+</div>
+</div>
+<!-- VIEW: WAVE QR PAYMENT (Hidden by default, switched via tab) -->
+<div class="hidden grid-cols-1 lg:grid-cols-12 gap-space-md" id="method-wave-content">
+<div class="lg:col-span-6 flex flex-col items-center justify-center bg-surface-container-low p-space-lg rounded-2xl text-center gap-space-md">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-[#1da1f2] flex items-center justify-center text-white font-black text-sm">W</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Wave Côte d'Ivoire Instantané</span>
+</div>
+<!-- Stylized QR Code Visual -->
+<div class="p-4 bg-white rounded-2xl shadow-md flex flex-col items-center gap-2 relative">
+<div class="w-56 h-56 bg-surface-container-lowest rounded-xl flex items-center justify-center relative p-2 border-2 border-[#1da1f2]/30">
+<!-- SVG Vector QR Code -->
+<svg class="w-full h-full text-slate-900" fill="currentColor" viewBox="0 0 100 100">
+<path d="M0 0h30v30H0V0zm6 6h18v18H6V6zm4 4h10v10H10V10zM70 0h30v30H70V0zm6 6h18v18H76V6zm4 4h10v10H80V10zM0 70h30v30H0V70zm6 6h18v18H6V76zm4 4h10v10H10V80zm40-70h10v10H50V10zm0 20h10v10H50V30zm20 10h10v10H70V40zm-30 0h10v10H40V40zm20 20h10v10H60V60zm-20 0h10v10H40V60zm0 20h10v10H40V80zm20 10h10v10H60V90zm10-10h10v10H70V80zm20 0h10v10H90V80zm0-20h10v10H90V60zm-10-10h10v10H80V50zm-40-10h10v10H40V40z"></path>
+<circle cx="50" cy="50" fill="#1da1f2" r="12"></circle>
+<text fill="#ffffff" font-family="sans-serif" font-size="12" font-weight="900" text-anchor="middle" x="50" y="55">W</text>
+</svg>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold tracking-wide">Scanner avec l'application Wave</span>
+<span class="px-3 py-1 rounded-full bg-[#1da1f2]/10 text-[#1da1f2] font-label-sm text-label-sm font-semibold">Montant pré-rempli : 24 500 FCFA</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1da1f2] opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-[#1da1f2]"></span>
+</span>
+<span>En attente de confirmation du paiement par le serveur Wave...</span>
+</div>
+</div>
+<div class="lg:col-span-6 flex flex-col justify-between bg-surface-container-low p-space-md rounded-2xl gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Instructions Caissière</span>
+<div class="p-space-sm bg-surface-container-lowest rounded-xl flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-primary-container text-white font-bold flex items-center justify-center text-xs shrink-0">1</span>
+<span class="font-body-md text-body-md text-on-surface">Présenter le terminal ou l'écran client face au smartphone du client.</span>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-xl flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-primary-container text-white font-bold flex items-center justify-center text-xs shrink-0">2</span>
+<span class="font-body-md text-body-md text-on-surface">Le client valide sur son application sans saisie de montant.</span>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-xl flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-primary-container text-white font-bold flex items-center justify-center text-xs shrink-0">3</span>
+<span class="font-body-md text-body-md text-on-surface">La validation s'effectue automatiquement dès notification du webhook.</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<button class="w-full h-12 rounded-xl bg-[#1da1f2] hover:bg-[#1a90d9] text-white font-label-md text-label-md flex items-center justify-center gap-2 shadow-sm font-bold" onclick="simulateWaveSuccess()" type="button">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span>Simuler Réception Webhook Wave (Succès)</span>
+</button>
+<button class="w-full h-11 rounded-xl bg-surface-container-highest hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-2" onclick="switchMethod('cash')" type="button">
+<span>Revenir au paiement Espèces</span>
+</button>
+</div>
+</div>
+</div>
+<!-- VIEW: SPLIT PAYMENT (Multi-mode) -->
+<div class="hidden grid-cols-1 lg:grid-cols-2 gap-space-md" id="method-split-content">
+<div class="bg-surface-container-low p-space-md rounded-2xl flex flex-col gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Ventilation du Paiement</span>
+<div class="flex flex-col gap-2">
+<div class="p-space-sm bg-surface-container-lowest rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="color: rgb(52, 168, 53);">payments</span>
+<span class="font-label-md text-label-md text-on-surface">Partie 1 : Espèces</span>
+</div>
+<input class="w-32 h-10 px-2 text-right rounded-lg bg-surface font-bold text-on-surface focus:ring-1 focus:ring-primary" type="text" value="14 500">
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-[#1da1f2] text-white font-bold text-[10px] flex items-center justify-center">W</span>
+<span class="font-label-md text-label-md text-on-surface">Partie 2 : Wave Money</span>
+</div>
+<input class="w-32 h-10 px-2 text-right rounded-lg bg-surface font-bold text-on-surface focus:ring-1 focus:ring-primary" type="text" value="10 000">
+</div>
+</div>
+<div class="p-space-sm bg-secondary-container/40 rounded-xl flex justify-between items-center text-on-surface font-label-md text-label-md">
+<span>Total Réparti : <strong>24 500 FCFA</strong></span>
+<span class="text-primary font-bold" style="color: rgb(52, 168, 53);">Équilibré (Reste 0 F)</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-2xl flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-2">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Récapitulatif de répartition</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Cette commande sera enregistrée sous deux écritures distinctes dans le journal de caisse d'Awa Koné.</p>
+</div>
+<button class="w-full h-12 rounded-xl bg-primary-container text-white font-label-md text-label-md font-bold shadow-xs" onclick="switchMethod('cash')" type="button">
+              Confirmer la répartition
+            </button>
+</div>
+</div>
+</div>
+<!-- Modal Footer & Final Checkout Actions -->
+<div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-md shrink-0 shadow-lg">
+<!-- Printing & Digital Receipt Options -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-5 h-5 rounded text-primary-container focus:ring-primary-container border-outline-variant" id="checkbox-print-receipt" type="checkbox">
+<span class="font-label-md text-label-md text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[17px] text-on-surface-variant">print</span>
+              Ticket 80mm thermique
+            </span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input class="w-5 h-5 rounded text-primary-container focus:ring-primary-container border-outline-variant" id="checkbox-sms-receipt" type="checkbox">
+<span class="font-label-md text-label-md text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[17px] text-primary" style="color: rgb(52, 168, 53);">chat</span>
+              WhatsApp / SMS Client
+            </span>
+</label>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="h-14 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-colors" id="btn-cancel-checkout" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Retour [Échap]</span>
+</button>
+<button class="hidden md:flex h-14 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md items-center gap-1.5 transition-colors" id="btn-print-quote" title="Conserver en mémoire pour le prochain client" type="button">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+<span>En attente</span>
+</button>
+<!-- BIG PRIMARY VALIDATION BUTTON WITH PURE WHITE TEXT & ICON -->
+<button class="flex-1 sm:flex-none h-14 px-space-xl rounded-xl bg-primary-container hover:bg-primary active:scale-[0.98] text-white font-headline-sm text-headline-sm flex items-center justify-center gap-3 shadow-md shadow-primary-container/25 transition-all" id="btn-validate-payment" onclick="completePaymentSuccess()" type="button" style="background-color: rgb(52, 168, 53); color: rgb(255, 255, 255); box-shadow: rgba(52, 168, 53, 0.35) 0px 4px 14px;">
+<span class="material-symbols-outlined text-[24px] text-white">check_circle</span>
+<span class="text-white font-bold tracking-tight">Valider &amp; Ouvrir Tiroir [F9 / Entrée]</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Toast Simulation (Hidden by default) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-surface-container-lowest p-space-md rounded-2xl shadow-2xl" id="toast-success">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-white flex items-center justify-center" style="background-color: rgb(52, 168, 53);">
+<span class="material-symbols-outlined text-[22px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Vente Encaissée avec Succès !</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tiroir-caisse ouvert • Impression ticket #0182 en cours</span>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive logic for the Cashier Checkout Experience
+  const DUE_AMOUNT = 24500;
+  const inputReceived = document.getElementById('amount-received-input');
+  const changeDisplay = document.getElementById('change-display');
+  const changeBreakdown = document.getElementById('change-breakdown');
+  const changeCard = document.getElementById('change-card');
+
+  function calculateChange() {
+    let received = parseInt((inputReceived.value || "0").replace(/\D/g, ''), 10);
+    if (isNaN(received)) received = 0;
+    
+    const diff = received - DUE_AMOUNT;
+    
+    if (diff >= 0) {
+      changeDisplay.textContent = diff.toLocaleString('fr-FR');
+      changeDisplay.className = "font-headline-total text-headline-total text-primary font-black tracking-tight leading-none";
+      
+      // Compute bill breakdown
+      let remaining = diff;
+      let b10k = Math.floor(remaining / 10000); remaining %= 10000;
+      let b5k = Math.floor(remaining / 5000); remaining %= 5000;
+      let b2k = Math.floor(remaining / 2000); remaining %= 2000;
+      let b1k = Math.floor(remaining / 1000); remaining %= 1000;
+      let b500 = Math.floor(remaining / 500); remaining %= 500;
+      let b100 = Math.floor(remaining / 100); remaining %= 100;
+
+      let parts = [];
+      if (b10k > 0) parts.push(b10k + 'x 10 000 F');
+      if (b5k > 0) parts.push(b5k + 'x 5 000 F');
+      if (b2k > 0) parts.push(b2k + 'x 2 000 F');
+      if (b1k > 0) parts.push(b1k + 'x 1 000 F');
+      if (b500 > 0) parts.push(b500 + 'x 500 F');
+      if (b100 > 0) parts.push(b100 + 'x 100 F');
+
+      changeBreakdown.textContent = parts.length > 0 ? parts.join(' + ') : 'Montant exact (0 F de monnaie)';
+    } else {
+      changeDisplay.textContent = "Insuffisant (" + Math.abs(diff).toLocaleString('fr-FR') + " F)";
+      changeDisplay.className = "font-headline-md text-headline-md text-error font-black tracking-tight leading-none";
+      changeBreakdown.textContent = "Montant client insuffisant pour valider";
+    }
+  }
+
+  function appendDigit(val) {
+    let current = (inputReceived.value || "").replace(/\D/g, '');
+    if (current === "0") current = "";
+    inputReceived.value = current + val;
+    calculateChange();
+  }
+
+  function clearAmount() {
+    inputReceived.value = "";
+    calculateChange();
+  }
+
+  function backspaceDigit() {
+    let current = (inputReceived.value || "").replace(/\D/g, '');
+    inputReceived.value = current.slice(0, -1);
+    calculateChange();
+  }
+
+  function addHundredThousand() {
+    let received = parseInt((inputReceived.value || "0").replace(/\D/g, ''), 10);
+    inputReceived.value = (received + 10000).toString();
+    calculateChange();
+  }
+
+  function setCashAmount(val) {
+    inputReceived.value = val.toString();
+    // Highlight quick bill button
+    document.querySelectorAll('.quick-bill-btn').forEach(btn => {
+      btn.classList.remove('bg-primary-container', 'text-white', 'active-bill');
+      btn.classList.add('bg-surface-container-lowest', 'text-on-surface');
+      const innerTexts = btn.querySelectorAll('span');
+      innerTexts.forEach(s => s.classList.remove('text-white'));
+    });
+    
+    // Set active style to clicked button
+    const target = event.currentTarget;
+    if (target) {
+      target.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+      target.classList.add('bg-primary-container', 'text-white', 'active-bill');
+      target.querySelectorAll('span').forEach(s => s.classList.add('text-white'));
+    }
+    
+    calculateChange();
+  }
+
+  function switchMethod(method) {
+    // Hide all contents
+    document.getElementById('method-cash-content').classList.add('hidden');
+    document.getElementById('method-cash-content').classList.remove('grid');
+    document.getElementById('method-wave-content').classList.add('hidden');
+    document.getElementById('method-wave-content').classList.remove('grid');
+    document.getElementById('method-split-content').classList.add('hidden');
+    document.getElementById('method-split-content').classList.remove('grid');
+
+    // Reset tabs
+    document.querySelectorAll('.payment-tab').forEach(tab => {
+      tab.classList.remove('bg-primary-container', 'text-white', 'shadow-xs');
+      tab.classList.add('bg-surface-container', 'text-on-surface');
+      const icon = tab.querySelector('.material-symbols-outlined');
+      if (icon) icon.classList.remove('text-white');
+    });
+
+    const activeTab = document.getElementById('tab-' + method);
+    if (activeTab) {
+      activeTab.classList.add('bg-primary-container', 'text-white', 'shadow-xs');
+      activeTab.classList.remove('bg-surface-container', 'text-on-surface');
+      const icon = activeTab.querySelector('.material-symbols-outlined');
+      if (icon) icon.classList.add('text-white');
+    }
+
+    if (method === 'cash') {
+      document.getElementById('method-cash-content').classList.remove('hidden');
+      document.getElementById('method-cash-content').classList.add('grid');
+    } else if (method === 'wave') {
+      document.getElementById('method-wave-content').classList.remove('hidden');
+      document.getElementById('method-wave-content').classList.add('grid');
+    } else if (method === 'split') {
+      document.getElementById('method-split-content').classList.remove('hidden');
+      document.getElementById('method-split-content').classList.add('grid');
+    } else {
+      // Fallback
+      document.getElementById('method-cash-content').classList.remove('hidden');
+      document.getElementById('method-cash-content').classList.add('grid');
+    }
+  }
+
+  function simulateWaveSuccess() {
+    completePaymentSuccess();
+  }
+
+  function completePaymentSuccess() {
+    const toast = document.getElementById('toast-success');
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.add('translate-y-24', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3500);
+  }
+
+  // Keyboard shortcut listener (Escape & Enter/F9)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('checkout-modal');
+      modal.style.opacity = '0.4';
+      setTimeout(() => { modal.style.opacity = '1'; }, 200);
+    }
+    if (e.key === 'Enter' || e.key === 'F9') {
+      e.preventDefault();
+      completePaymentSuccess();
+    }
+    if (e.key === 'F1') { e.preventDefault(); switchMethod('cash'); }
+    if (e.key === 'F2') { e.preventDefault(); switchMethod('wave'); }
+    if (e.key === 'F3') { e.preventDefault(); switchMethod('momo'); }
+    if (e.key === 'F4') { e.preventDefault(); switchMethod('card'); }
+  });
+
+  inputReceived.addEventListener('input', calculateChange);
+  calculateChange();
+</script></main></div>
+
+
+</body></html>

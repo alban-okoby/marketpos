@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-bright":"#f8f9ff","surface-tint":"#006e11","on-background":"#0b1c30","tertiary-fixed":"#dbe2f9","on-primary-container":"#003404","surface-variant":"#d3e4fe","surface-container":"#e5eeff","on-error-container":"#93000a","tertiary":"#565e71","tertiary-fixed-dim":"#bfc6dc","primary-container":"#34a835","primary-fixed-dim":"#6cdf64","on-tertiary":"#ffffff","on-secondary-fixed":"#321200","secondary-fixed-dim":"#ffb68c","on-surface-variant":"#3f4a3b","on-secondary-fixed-variant":"#753400","surface":"#f8f9ff","error-container":"#ffdad6","inverse-surface":"#213145","on-primary-fixed":"#002202","secondary-fixed":"#ffdbc9","on-secondary":"#ffffff","outline":"#6e7b69","inverse-on-surface":"#eaf1ff","on-tertiary-fixed-variant":"#3f4759","surface-container-low":"#eff4ff","on-surface":"#0b1c30","primary":"#006e11","primary-fixed":"#88fc7d","error":"#ba1a1a","surface-container-high":"#dce9ff","secondary":"#9a4600","surface-container-highest":"#d3e4fe","inverse-primary":"#6cdf64","background":"#f8f9ff","on-error":"#ffffff","on-secondary-container":"#5a2600","surface-dim":"#cbdbf5","on-primary":"#ffffff","secondary-container":"#fd7700","outline-variant":"#becab6","on-tertiary-container":"#242c3d","tertiary-container":"#8b93a8","on-tertiary-fixed":"#141b2c","on-primary-fixed-variant":"#00530a","surface-container-lowest":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.25rem","space-xs":"0.25rem","space-sm":"0.5rem","gutter":"1rem","space-xl":"1.75rem","margin":"1.25rem","space-md":"0.75rem"},"fontFamily":{"body-sm":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["11px",{"lineHeight":"16px","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"500"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center shadow-[0_4px_14px_rgba(52,168,53,0.28)]"><span class="material-symbols-outlined text-on-primary text-[20px]">point_of_sale</span></div><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">MarketPOS</span></div><div class="hidden lg:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low"><span class="font-label-md text-label-md text-on-surface-variant">Caisse #02 • Plateau</span></div></div><div class="flex-1 max-w-md mx-space-md"><div class="relative flex items-center w-full h-11 rounded-xl bg-surface-container-lowest shadow-[0_2px_8px_rgba(15,23,42,0.04)] px-space-md gap-space-sm"><span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span><input class="w-full bg-transparent font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant focus:outline-none" placeholder="Rechercher produit ou scanner code-barres..." type="text"/><span class="material-symbols-outlined text-primary text-[20px] cursor-pointer">barcode_scanner</span></div></div><nav class="hidden xl:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-primary font-label-md rounded-lg px-space-md py-space-sm"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary font-label-md rounded-lg px-space-md py-space-sm" data-path="poste-caissier" href="#">Caisse</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="historique-ventes" href="#">Historique</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-primary-fixed/40"><span class="w-2 h-2 rounded-full bg-primary-container"></span><span class="font-label-sm text-label-sm text-on-primary-fixed-variant">En ligne</span></div><div class="flex items-center gap-space-sm"><div class="hidden sm:flex flex-col items-end"><span class="font-label-md text-label-md text-on-surface">Awa Koné</span><span class="font-body-sm text-body-sm text-on-surface-variant">Hôtesse de Caisse</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<div class="w-full px-space-lg py-space-lg flex flex-col lg:flex-row gap-space-lg items-start">
+<!-- LEFT PANE (60%): Categories & Tactile Product Grid -->
+<section class="w-full lg:w-[60%] flex flex-col gap-space-lg min-w-0">
+<!-- Touch Category Tabs (min 48px height) -->
+<div class="flex items-center gap-space-sm overflow-x-auto pb-space-xs" id="category-tabs">
+<button class="cat-tab shrink-0 min-h-[48px] px-space-lg rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_14px_rgba(52,168,53,0.28)] flex items-center gap-space-sm transition-all active:scale-95" data-cat="all" type="button">
+<span class="material-symbols-outlined text-[20px]">apps</span>
+<span>Tous</span>
+</button>
+<button class="cat-tab shrink-0 min-h-[48px] px-space-lg rounded-xl bg-surface-container-lowest text-on-surface-variant font-label-lg text-label-lg shadow-sm hover:bg-surface-container-low flex items-center gap-space-sm transition-all active:scale-95" data-cat="primeur" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">eco</span>
+<span>Primeur &amp; Fruits</span>
+</button>
+<button class="cat-tab shrink-0 min-h-[48px] px-space-lg rounded-xl bg-surface-container-lowest text-on-surface-variant font-label-lg text-label-lg shadow-sm hover:bg-surface-container-low flex items-center gap-space-sm transition-all active:scale-95" data-cat="epicerie" type="button">
+<span class="material-symbols-outlined text-[20px] text-secondary-container">inventory_2</span>
+<span>Épicerie</span>
+</button>
+<button class="cat-tab shrink-0 min-h-[48px] px-space-lg rounded-xl bg-surface-container-lowest text-on-surface-variant font-label-lg text-label-lg shadow-sm hover:bg-surface-container-low flex items-center gap-space-sm transition-all active:scale-95" data-cat="boissons" type="button">
+<span class="material-symbols-outlined text-[20px] text-tertiary">local_drink</span>
+<span>Boissons</span>
+</button>
+<button class="cat-tab shrink-0 min-h-[48px] px-space-lg rounded-xl bg-surface-container-lowest text-on-surface-variant font-label-lg text-label-lg shadow-sm hover:bg-surface-container-low flex items-center gap-space-sm transition-all active:scale-95" data-cat="cremerie" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">icecream</span>
+<span>Crémerie</span>
+</button>
+<button class="cat-tab shrink-0 min-h-[48px] px-space-lg rounded-xl bg-surface-container-lowest text-on-surface-variant font-label-lg text-label-lg shadow-sm hover:bg-surface-container-low flex items-center gap-space-sm transition-all active:scale-95" data-cat="hygiene" type="button">
+<span class="material-symbols-outlined text-[20px] text-tertiary">clean_hands</span>
+<span>Hygiène</span>
+</button>
+</div>
+<!-- Tactile Product Grid (3 columns on iPad Landscape) -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter" id="product-grid">
+<!-- 1. Mangues Kent -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="primeur">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Fresh ripe Kent mangoes with vibrant red and golden-yellow skin arranged in a clean wooden market crate, bright natural daylight, crisp grocery photography, soft white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBucfijQBFHySGU7DaDuYxOc5JrO56fdjHpIHYo5i7Vc104-d0aSXUtAK3Q2CeowvDYwx2yeq5TSE8MO3JWa2gZzapu91sUWyHRNxjtHXHhcOZ2BqYpbz-vZaCjHksn5OX-UveOth-b2rwsfSRva-x91vnzlDE08dC5gDN9Tt5jtq2VgUaEkDttFcPamA3xfFLxXTzdvlWLybIj46Lz46Ei_VVW5JnvJ8FA6bYmpEHG"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-primary">PRIMEUR</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Mangues Kent</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Origine Korhogo • Au poids</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">850 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ kg</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="mangue" data-name="Mangues Kent (1kg)" data-price="850" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 2. Ananas Pain de Sucre -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="primeur">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Fresh Ivory Coast Pain de Sucre pineapples with lush green crowns and golden-green skin, studio grocery photography, bright clean lighting, crisp organic market aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArOVdQVHaHz7T_1_OvbI_DoBRY_CDLY9oKoW8ZudSehj1M_q_wfLPoMNN3CN0HywNhFZYyq5iNlJOWYpC0vN1fP1t1XSC9hy_7UcbY4D8jC-YZ59MTBR351zqCZWrI99gmzaJvtvqTvSmRrIOto1PTtQyerK9IismolqNLsWN5rM4MYsS3hDnU-dxZPfe4dNv_81HmW6vDmi4LHrr3ZiCpo6_kq0rI2Ne20Hh2gXkl"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-primary">PRIMEUR</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Ananas Pain de Sucre</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bonoua • Calibre A</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">600 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ kg</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="ananas" data-name="Ananas Pain de Sucre (1kg)" data-price="600" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 3. Huile Dinor 1L -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="epicerie">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Clear 1 liter bottle of golden refined vegetable cooking oil on a bright clean retail shelf, crisp studio lighting, modern supermarket product photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsL2Qrjq9BQd8wKOUAgIuOpBHFKuZeMbD2PKfCXC5h1nUR0aUZtjQH6hDZoDgoz_5bgYEaKGYjoqQbQ3aM_VqkWnwAhdTua14iZMns-RQFTAeIT-nYwQ3-d-aBhNzK8v40qhvsqZxeomwAXa-DnZwUZjo31gP_zrnubCok4_otJgUeJVEwYpTvezZ7GyXgLo55DndgU2D6raYa9eJvnn0KhOeHrN47F-I94R4XPeWK"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-secondary">ÉPICERIE</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Huile Dinor 1L</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bouteille 1 Litre • Enrichie</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">1 450 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Unité</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="dinor" data-name="Huile Dinor 1L" data-price="1450" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 4. Riz Jasmin 5kg -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="epicerie">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="5kg woven sack of premium long-grain fragrant Jasmine rice with a wooden scoop of white rice grains, clean bright grocery photography, soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWMQGw7Sqnt75t32MdjpyeWT4t4OD1Bp6WOVB6h6Q-A5SUou8MqN4c8lwUuhmqRXzsMpzhyO6oGiSQlH-z6c1-DjusMSXIc6TuJjk6AU49aJ7DTI3Y8NxFcyz8LYFXXiO2sB6nxMdkgoXiL9GqErBndDPEPyvDAH3uNOqvUGjoyC_JsTNVH5L6UUI8vUg9F1H-6e5pOkhf6aNXte34IS6Z5nbku3WITo4E4H-GjkdM"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-secondary">ÉPICERIE</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Riz Jasmin 5kg</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sac 5kg • Parfumé</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">5 800 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sac</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="riz" data-name="Riz Jasmin 5kg" data-price="5800" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 5. Yaourt Fraise & Vanille -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="cremerie">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Pack of creamy strawberry and vanilla yogurt cups with fresh strawberries and vanilla bean on a clean white dairy counter, bright studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAi1mf1jcpphFcjyBT1XrHomM1C_3B21SZNXOgNuQEmpQ-cm-GMNfnk-xhKhFUX6o5s9lpijR5NNRLn0JOUd7BZXbzWhVszSKLnmgohWyOOOwD5NuLsDVs-xvjNGTuGPgvDlOqMiI4925pbNdTjLDe-tTNWdCQnHco6Ko65g76qytXcpv9jh479tc_T5xBRg2kitXPn6vlDk-a8EudNyATk5cNlWmoIguR3NqbsgRb"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-primary">CRÉMERIE</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Yaourt Fraise &amp; Vanille</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pack 4x125g • Frais</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">1 200 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pack</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="yaourt" data-name="Yaourt Fraise &amp; Vanille" data-price="1200" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 6. Lait Bonnet Rouge -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="cremerie">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Evaporated milk tin can with red and white label next to a glass of creamy milk, clean bright retail product photography, soft neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn5QbfpZy6N92IgwrYfUumZiw9SXvFy_ydEtuFqWBok1_bEDpKhsH92STSS-Qjsc9PBn5OJ5tZyZHTqsLXtCHGnHSH7S389hwoVS2mCeA1Wi3eQvro57Hcmi70Pqm-dNedRIBKuXtSmOib7IsQKL0A-RPikWFgxOxpaFTrAvPysr9jUIXTSy_uK2xzVkWD9ONA-ELRSVlaq8UN8_aQtBgU8sCxFwDDkKKnMNHuFxd-"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-primary">CRÉMERIE</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Lait Bonnet Rouge</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Boîte 410g • Concentré</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">900 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Unité</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="lait" data-name="Lait Bonnet Rouge" data-price="900" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 7. Banane Plantain -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="primeur">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Bunch of fresh yellow and green ripe plantain bananas on a clean market display, bright natural daylight, crisp organic grocery photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI48WmzB8J_krsZnGS5S5bPp4NYWfOVpKmjeTf-mZEvx8fm8v0-52IoxdSHQnaMlj4Y6RUkO8Vb0lPZwTYTjXhgUQnz18vXqWa_hxBwOvAv3pmAXpl-jc1eTrg3EyZj4AajxfgCJGF3JbXOUbI4GgMfHsDRJoC-HiTJgNwmmXRdx7ID0KpOseffiURX7E-al3NE5En-T_sJAumug2ORBgNrQd19KFGtfiYfSPeVV8y"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-primary">PRIMEUR</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Banane Plantain</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Alloco • Mûre à point</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">750 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ kg</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="plantain" data-name="Banane Plantain (1kg)" data-price="750" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 8. Tomates Bassam -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="primeur">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Fresh glossy red vine tomatoes from Grand-Bassam in a clean basket, bright natural lighting, crisp organic market photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAugo6r1nfwUuKXGkdND7bLAF9PWLClqAEPqs9Q567xVGaC71ULz41l67iR4D0wkj3wYZBmvqS4EU31JhxJb7_MdZTP8gD_klRDqQvkR4oL_BejkdmKxx1LCMDv0ysoGQab1qfE2voTJeBBWJtr-R_y_A9pxIVr9EQwfdWJGHImwG50W3donfmy8R51gNJSjbjDAIPUMJkxytoCT90F8ENGWuOmLPGgRFdrCfz5fUzi"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-primary">PRIMEUR</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Tomates Bassam</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Récolte locale • Fermes</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">1 200 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ kg</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="tomates" data-name="Tomates Bassam (1kg)" data-price="1200" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+<!-- 9. Avocats Hass -->
+<article class="product-card bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md transition-transform active:scale-[0.98]" data-category="primeur">
+<div class="relative w-full h-32 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Fresh Hass avocados, one sliced in half showing creamy green flesh, bright clean studio grocery photography, soft white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuMVg_GpW8FYNef7UvrNsVfHa3eSn0-x20NxmQ0SNqWyAeE7-x_lC9hXWbLt8U7F2wjZNu4F3wJq8dHjADxsV_lkmTdCZXvTM-Q9rj8QW_NIBfwHyvQJ_B760DWJUYxFs0exp0-Lkr8BrujFaM1X10Ilg-xS38x3qSR255urM83Is5JxUjEgIRukfGqYTNx9KDKu5qjXaUTxwivVMk-iQAopEbZLPJixB5iwXx_t5n"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface/90 backdrop-blur-sm font-label-sm text-label-sm text-primary">PRIMEUR</span>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Avocats Hass</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Crémeux • Prêts à consommer</p>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary-container tabular-nums">1 800 FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ kg</span>
+</div>
+<button class="add-to-cart min-w-[48px] min-h-[48px] px-space-md rounded-xl bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-90" data-id="avocat" data-name="Avocats Hass (1kg)" data-price="1800" type="button">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- RIGHT PANE (40%): Cart, Loyalty & Checkout Terminal -->
+<aside class="w-full lg:w-[40%] bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col gap-space-lg sticky top-20">
+<!-- Loyalty Customer Banner -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">M. Kouamé Adjoumani</span>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">GOLD #FD-9942</span>
+<span class="font-body-sm text-body-sm text-primary font-semibold tabular-nums">• 1 472 pts</span>
+</div>
+</div>
+</div>
+<button class="min-w-[44px] min-h-[44px] rounded-xl bg-surface-container-lowest text-on-surface-variant flex items-center justify-center shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">person_search</span>
+</button>
+</div>
+<!-- Scanned Items List with 44x44px Touch Steppers -->
+<div class="flex flex-col gap-space-md max-h-[300px] overflow-y-auto pr-1" id="cart-items">
+<!-- Cart Item 1 -->
+<div class="cart-row flex items-center justify-between gap-space-sm bg-surface rounded-xl p-space-sm" data-price="5800" data-qty="1">
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Riz Jasmin 5kg</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant tabular-nums">5 800 FCFA / sac</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="qty-minus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-on-surface shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="qty-val w-8 text-center font-headline-sm text-headline-sm text-on-surface tabular-nums">1</span>
+<button class="qty-plus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right font-label-lg text-label-lg text-on-surface tabular-nums row-total">5 800 F</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="cart-row flex items-center justify-between gap-space-sm bg-surface rounded-xl p-space-sm" data-price="1450" data-qty="2">
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Huile Dinor 1L</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant tabular-nums">1 450 FCFA / unité</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="qty-minus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-on-surface shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="qty-val w-8 text-center font-headline-sm text-headline-sm text-on-surface tabular-nums">2</span>
+<button class="qty-plus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right font-label-lg text-label-lg text-on-surface tabular-nums row-total">2 900 F</div>
+</div>
+<!-- Cart Item 3 -->
+<div class="cart-row flex items-center justify-between gap-space-sm bg-surface rounded-xl p-space-sm" data-price="1800" data-qty="2">
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Avocats Hass (1kg)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant tabular-nums">1 800 FCFA / kg</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="qty-minus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-on-surface shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="qty-val w-8 text-center font-headline-sm text-headline-sm text-on-surface tabular-nums">2</span>
+<button class="qty-plus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right font-label-lg text-label-lg text-on-surface tabular-nums row-total">3 600 F</div>
+</div>
+<!-- Cart Item 4 -->
+<div class="cart-row flex items-center justify-between gap-space-sm bg-surface rounded-xl p-space-sm" data-price="1200" data-qty="2">
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Yaourt Fraise &amp; Vanille</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant tabular-nums">1 200 FCFA / pack</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="qty-minus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-on-surface shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="qty-val w-8 text-center font-headline-sm text-headline-sm text-on-surface tabular-nums">2</span>
+<button class="qty-plus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right font-label-lg text-label-lg text-on-surface tabular-nums row-total">2 400 F</div>
+</div>
+<!-- Cart Item 5 -->
+<div class="cart-row flex items-center justify-between gap-space-sm bg-surface rounded-xl p-space-sm" data-price="880" data-qty="1">
+<div class="flex flex-col min-w-0 flex-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Mangues Kent (1.03kg)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant tabular-nums">850 FCFA / kg</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="qty-minus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-on-surface shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="qty-val w-8 text-center font-headline-sm text-headline-sm text-on-surface tabular-nums">1</span>
+<button class="qty-plus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right font-label-lg text-label-lg text-on-surface tabular-nums row-total">880 F</div>
+</div>
+</div>
+<!-- Financial Summary -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between text-on-surface-variant font-body-lg text-body-lg">
+<span>Sous-total</span>
+<span class="tabular-nums font-semibold text-on-surface" id="subtotal-val">15 580 FCFA</span>
+</div>
+<div class="flex items-center justify-between text-primary font-body-lg text-body-lg">
+<span>Remises Fidélité GOLD</span>
+<span class="tabular-nums font-semibold" id="discount-val">-1 180 FCFA</span>
+</div>
+<div class="flex items-center justify-between pt-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">Total Net à Payer</span>
+<span class="font-headline-lg text-headline-lg text-primary tabular-nums" id="total-val">14 400 FCFA</span>
+</div>
+</div>
+<!-- Tactile Payment Shortcuts -->
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Mode de règlement rapide</span>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm" id="payment-methods">
+<button class="pay-btn min-h-[48px] px-space-sm rounded-xl bg-primary-fixed/40 text-on-primary-fixed font-label-md text-label-md flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">waves</span>
+<span>Wave</span>
+</button>
+<button class="pay-btn min-h-[48px] px-space-sm rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary-container">smartphone</span>
+<span>Orange Money</span>
+</button>
+<button class="pay-btn min-h-[48px] px-space-sm rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">phone_iphone</span>
+<span>MTN MoMo</span>
+</button>
+<button class="pay-btn min-h-[48px] px-space-sm rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">payments</span>
+<span>Espèces</span>
+</button>
+</div>
+</div>
+<!-- Primary & Destructive Action Buttons -->
+<div class="grid grid-cols-2 gap-space-md pt-space-xs">
+<button class="min-h-[56px] rounded-xl bg-secondary-container hover:bg-secondary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-space-sm shadow-sm transition-all active:scale-95" id="btn-cancel" type="button">
+<span class="material-symbols-outlined text-[22px]">close</span>
+<span>Annuler</span>
+</button>
+<button class="min-h-[56px] rounded-xl bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-space-sm shadow-[0_4px_14px_rgba(52,168,53,0.28)] transition-all active:scale-95" id="btn-checkout" type="button">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+<span>Encaisser</span>
+</button>
+</div>
+</aside>
+</div>
+</div>
+<script>
+  (function() {
+    const formatFCFA = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' FCFA';
+    const formatShort = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' F';
+
+    const tabs = document.querySelectorAll('.cat-tab');
+    const cards = document.querySelectorAll('.product-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-[0_4px_14px_rgba(52,168,53,0.28)]');
+          t.classList.add('bg-surface-container-lowest', 'text-on-surface-variant', 'shadow-sm');
+        });
+        tab.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant', 'shadow-sm');
+        tab.classList.add('bg-primary-container', 'text-on-primary', 'shadow-[0_4px_14px_rgba(52,168,53,0.28)]');
+
+        const cat = tab.getAttribute('data-cat');
+        cards.forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-category') === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    const payBtns = document.querySelectorAll('.pay-btn');
+    payBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        payBtns.forEach(b => {
+          b.classList.remove('bg-primary-fixed/40', 'text-on-primary-fixed');
+          b.classList.add('bg-surface-container-low', 'text-on-surface');
+        });
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface');
+        btn.classList.add('bg-primary-fixed/40', 'text-on-primary-fixed');
+      });
+    });
+
+    const cartContainer = document.getElementById('cart-items');
+    const subtotalEl = document.getElementById('subtotal-val');
+    const discountEl = document.getElementById('discount-val');
+    const totalEl = document.getElementById('total-val');
+    const discountAmount = 1180;
+
+    function updateTotals() {
+      let subtotal = 0;
+      cartContainer.querySelectorAll('.cart-row').forEach(row => {
+        const price = parseInt(row.getAttribute('data-price'), 10);
+        const qty = parseInt(row.getAttribute('data-qty'), 10);
+        const rowTotal = price * qty;
+        subtotal += rowTotal;
+        row.querySelector('.row-total').textContent = formatShort(rowTotal);
+      });
+      const discount = subtotal > 0 ? Math.min(discountAmount, subtotal) : 0;
+      const net = Math.max(0, subtotal - discount);
+      subtotalEl.textContent = formatFCFA(subtotal);
+      discountEl.textContent = discount > 0 ? '-' + formatFCFA(discount) : '0 FCFA';
+      totalEl.textContent = formatFCFA(net);
+    }
+
+    cartContainer.addEventListener('click', (e) => {
+      const minusBtn = e.target.closest('.qty-minus');
+      const plusBtn = e.target.closest('.qty-plus');
+      if (!minusBtn && !plusBtn) return;
+
+      const row = e.target.closest('.cart-row');
+      let qty = parseInt(row.getAttribute('data-qty'), 10);
+      if (plusBtn) qty += 1;
+      if (minusBtn) qty -= 1;
+
+      if (qty <= 0) {
+        row.remove();
+      } else {
+        row.setAttribute('data-qty', qty);
+        row.querySelector('.qty-val').textContent = qty;
+      }
+      updateTotals();
+    });
+
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-name');
+        const price = parseInt(btn.getAttribute('data-price'), 10);
+
+        const existing = Array.from(cartContainer.querySelectorAll('.cart-row')).find(
+          r => r.querySelector('.truncate').textContent === name
+        );
+
+        if (existing) {
+          let qty = parseInt(existing.getAttribute('data-qty'), 10) + 1;
+          existing.setAttribute('data-qty', qty);
+          existing.querySelector('.qty-val').textContent = qty;
+        } else {
+          const row = document.createElement('div');
+          row.className = 'cart-row flex items-center justify-between gap-space-sm bg-surface rounded-xl p-space-sm';
+          row.setAttribute('data-price', price);
+          row.setAttribute('data-qty', '1');
+          row.innerHTML = `
+            <div class="flex flex-col min-w-0 flex-1">
+              <span class="font-label-lg text-label-lg text-on-surface truncate">${name}</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant tabular-nums">${formatFCFA(price)}</span>
+            </div>
+            <div class="flex items-center gap-space-xs shrink-0">
+              <button type="button" class="qty-minus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-on-surface shadow-sm flex items-center justify-center active:scale-90">
+                <span class="material-symbols-outlined text-[20px]">remove</span>
+              </button>
+              <span class="qty-val w-8 text-center font-headline-sm text-headline-sm text-on-surface tabular-nums">1</span>
+              <button type="button" class="qty-plus w-[44px] h-[44px] rounded-xl bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center active:scale-90">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+              </button>
+            </div>
+            <div class="w-24 text-right font-label-lg text-label-lg text-on-surface tabular-nums row-total">${formatShort(price)}</div>
+          `;
+          cartContainer.prepend(row);
+        }
+        updateTotals();
+      });
+    });
+
+    document.getElementById('btn-cancel').addEventListener('click', () => {
+      cartContainer.innerHTML = '';
+      updateTotals();
+    });
+
+    document.getElementById('btn-checkout').addEventListener('click', () => {
+      const btn = document.getElementById('btn-checkout');
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined text-[22px]">done_all</span><span>Valid&eacute; !</span>';
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+      }, 1500);
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-low py-space-md"><div class="w-full px-space-lg flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm"><span>MarketPOS • Terminal Tactile iPadOS</span><span>Caisse #02 • Plateau</span></div></footer></body></html>

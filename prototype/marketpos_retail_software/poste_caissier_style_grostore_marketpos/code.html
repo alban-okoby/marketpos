@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-secondary-container":"#006f66","surface":"#faf8ff","surface-container-high":"#e2e7ff","surface-tint":"#006a63","surface-bright":"#faf8ff","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#6bd8cb","outline-variant":"#bdc9c6","on-primary":"#ffffff","primary-fixed-dim":"#80d5cb","tertiary":"#005f26","inverse-surface":"#283044","on-secondary-fixed-variant":"#005049","on-tertiary-fixed-variant":"#005320","on-tertiary":"#ffffff","primary":"#005c55","on-tertiary-container":"#a1ffad","on-secondary":"#ffffff","on-primary-container":"#a3faef","on-background":"#131b2e","primary-container":"#0f766e","on-error":"#ffffff","on-surface-variant":"#3e4947","surface-container":"#eaedff","primary-fixed":"#9cf2e8","secondary-fixed":"#89f5e7","on-tertiary-fixed":"#002109","on-surface":"#131b2e","error":"#ba1a1a","inverse-on-surface":"#eef0ff","tertiary-container":"#007a33","inverse-primary":"#80d5cb","surface-container-highest":"#dae2fd","tertiary-fixed-dim":"#62df7d","surface-dim":"#d2d9f4","error-container":"#ffdad6","surface-variant":"#dae2fd","surface-container-low":"#f2f3ff","tertiary-fixed":"#7ffc97","on-error-container":"#93000a","background":"#faf8ff","outline":"#6e7977","on-secondary-fixed":"#00201d","secondary":"#006a61","on-primary-fixed-variant":"#00504a","on-primary-fixed":"#00201d","secondary-container":"#86f2e4"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{gutter:"1rem","space-lg":"1rem","margin-mobile":"0.5rem",margin:"1rem","space-xl":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","space-md":"0.75rem","gutter-mobile":"0.5rem"},fontFamily:{"body-md":["Inter"],"body-sm":["Inter"],"label-keypad":["Inter"],"headline-total-mobile":["Inter"],"headline-total":["Inter"],"label-lg":["Inter"],"headline-lg":["Inter"],"label-sm":["Inter"],"headline-md":["Inter"],"label-md":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-keypad":["24px",{lineHeight:"28px",fontWeight:"600"}],"headline-total-mobile":["32px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-total":["44px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["16px",{lineHeight:"20px",fontWeight:"600"}],"headline-lg":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"headline-md":["22px",{lineHeight:"28px",fontWeight:"600"}],"label-md":["13px",{lineHeight:"16px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"22px",fontWeight:"500"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface"><div class=""><header class="sticky top-0 z-40 h-16 bg-surface-container-lowest shadow-sm px-space-lg flex items-center justify-between gap-space-md border-b border-surface-container"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-2"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[22px]">local_mall</span></div><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">MarketPOS</span><span class="px-1.5 py-0.5 rounded text-[11px] font-bold bg-secondary-container text-on-secondary-container">CI-ABJ</span></div></div></div><div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant text-[12px] font-medium"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span>En ligne • Plateau</span></div></div><div class="flex-1 max-w-2xl px-space-sm"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full h-11 pl-10 pr-24 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary border border-transparent focus:border-primary transition-all" id="barcode-input" placeholder="Rechercher un produit ou scanner... (Ctrl+/)" type="text"/><span class="absolute right-3 top-1/2 -translate-y-1/2 px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-[11px] font-bold">F2 / Ctrl+/</span></div></div><div class="flex items-center gap-space-sm shrink-0"><button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Disposition grille" type="button"><span class="material-symbols-outlined text-[20px]">grid_view</span></button><button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" id="toggle-dark-btn" title="Mode sombre" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="relative"><button class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Notifications" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span></button></div><div class="flex items-center gap-2 pl-2 border-l border-outline-variant/40"><div class="w-9 h-9 rounded-full bg-primary-container text-on-primary font-bold flex items-center justify-center text-[13px] shadow-sm">AK</div><div class="hidden lg:flex flex-col text-left leading-tight"><span class="font-label-md text-[13px] font-bold text-on-surface">Awa Koné</span><span class="text-[11px] text-on-surface-variant">Caisse 01 (CI)</span></div></div></div></header><main class="w-full bg-background min-h-screen"><div class="flex flex-col w-full"><!-- BANDEAU SIMULATION RÉSEAU HORS-LIGNE (DYNAMIQUE) --><div class="hidden w-full bg-error-container text-on-error-container px-space-lg py-1.5 flex items-center justify-between shadow-sm animate-pulse" id="offline-banner"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px] text-error">cloud_off</span><span class="font-label-md text-label-md">Mode hors-ligne actif. Les ventes sont enregistrées localement dans la mémoire sécurisée.</span></div><span class="px-space-xs py-0.5 rounded bg-surface-container-lowest font-label-sm text-label-sm font-bold text-error">SYNCHRO SUSPENDUE</span></div><!-- MAIN GROSTORE WORKSPACE --><div class="p-space-md grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start"><!-- LEFT COLUMN (8 cols): CATEGORIES + PRODUCT CATALOG --><div class="lg:col-span-8 flex flex-col gap-space-md"><!-- 1. CATEGORY NAV & HORIZONTAL CAROUSEL (AS IN GROSTORE) --><div class="flex flex-col gap-space-sm"><div class="flex items-center justify-between"><div class="flex items-center gap-2"><button class="px-3.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold shadow-sm active:scale-95 transition-all" type="button">Catégories</button><button class="px-3.5 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md hover:bg-surface-container border border-outline-variant/40 active:scale-95 transition-all" type="button">Marques</button></div><div class="flex items-center gap-1.5"><button class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container flex items-center justify-center transition-colors" title="Précédent" type="button"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button><button class="w-8 h-8 rounded-full bg-primary text-on-primary hover:bg-primary-container flex items-center justify-center transition-colors shadow-sm" title="Suivant" type="button"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button></div></div><!-- Category cards carousel matching Image 2 --><div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2.5 overflow-x-auto pb-1" id="category-cards"><div class="cat-pill p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all group" data-cat="all"><div class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">nutrition</span></div><span class="font-label-sm text-[12px] font-semibold text-on-surface truncate w-full">Légumes &amp; Fruits</span><span class="text-[11px] text-on-surface-variant">28 articles</span></div><div class="cat-pill p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all group" data-cat="Boissons &amp; Eau"><div class="w-10 h-10 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">local_cafe</span></div><span class="font-label-sm text-[12px] font-semibold text-on-surface truncate w-full">Café &amp; Boissons</span><span class="text-[11px] text-on-surface-variant">16 articles</span></div><!-- Active item highlighted in emerald/green like in Grostore screenshot --><div class="cat-pill p-3 rounded-xl bg-primary text-on-primary flex flex-col items-center justify-center text-center cursor-pointer shadow-md transition-all group" data-cat="Produits laitiers"><div class="w-10 h-10 rounded-full bg-on-primary/20 text-on-primary flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">water_drop</span></div><span class="font-label-sm text-[12px] font-bold text-on-primary truncate w-full">Lait &amp; Produits</span><span class="text-[11px] text-on-primary/80 font-medium">25 articles</span></div><div class="cat-pill p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all group" data-cat="Frais &amp; Boulangerie"><div class="w-10 h-10 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">set_meal</span></div><span class="font-label-sm text-[12px] font-semibold text-on-surface truncate w-full">Viandes &amp; Poiss.</span><span class="text-[11px] text-on-surface-variant">18 articles</span></div><div class="cat-pill p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all group" data-cat="Entretien &amp; Hygiène"><div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">cleaning_services</span></div><span class="font-label-sm text-[12px] font-semibold text-on-surface truncate w-full">Entretien Maison</span><span class="text-[11px] text-on-surface-variant">22 articles</span></div><div class="cat-pill p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all group" data-cat="Huiles &amp; Riz"><div class="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">rice_bowl</span></div><span class="font-label-sm text-[12px] font-semibold text-on-surface truncate w-full">Huiles &amp; Céréales</span><span class="text-[11px] text-on-surface-variant">25 articles</span></div><div class="cat-pill p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-all group" data-cat="Épicerie salée"><div class="w-10 h-10 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[22px]">store</span></div><span class="font-label-sm text-[12px] font-semibold text-on-surface truncate w-full">Épicerie Salée</span><span class="text-[11px] text-on-surface-variant">34 articles</span></div></div></div><!-- 2. SECTION HEADER WITH SUB-SEARCH (MATCHING IMAGE 2) --><div class="flex flex-wrap items-center justify-between gap-space-sm pt-1"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm font-bold text-on-surface">Nouveaux Produits &amp; Catalogue</span><span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[12px]" id="product-count-badge">20 articles</span></div><div class="flex items-center gap-1.5 w-full sm:w-auto"><div class="relative flex-1 sm:w-64"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full h-9 pl-9 pr-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" id="catalog-sub-search" placeholder="Filtrer articles..." type="text"/></div><button class="h-9 px-4 rounded-lg bg-inverse-surface text-inverse-on-surface font-label-md text-label-md font-semibold flex items-center gap-1 shadow-sm active:scale-95 transition-all" id="btn-search-catalog" type="button"><span class="material-symbols-outlined text-[16px]">search</span><span>Rechercher</span></button></div></div><!-- 3. PRODUCT GRID MATCHING IMAGE 2 CARD STYLE (Illustration Left, Info Right) --><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3" id="product-grid"><!-- Injected dynamically --></div></div><!-- RIGHT COLUMN (4 cols): BILLING SECTION (MATCHING IMAGE 2) --><div class="lg:col-span-4 flex flex-col bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/30 sticky top-20 overflow-hidden"><!-- Billing Header with Customer button --><div class="p-4 border-b border-surface-container flex items-center justify-between"><div class="flex items-center gap-2"><span class="font-headline-sm text-[18px] font-bold text-on-surface">Section Facturation</span></div><button class="px-3 py-1.5 rounded-lg border border-primary text-primary hover:bg-primary hover:text-on-primary font-label-sm text-[12px] font-bold flex items-center gap-1.5 transition-colors" id="btn-select-customer" type="button"><span class="material-symbols-outlined text-[16px]">person_add</span><span>+ Client</span></button></div><!-- Barcode Search & Fast Add bar --><div class="p-3.5 bg-surface-container-low/50 border-b border-surface-container flex items-center gap-2"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">qr_code_scanner</span><input class="w-full h-9 pl-8 pr-2 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" id="quick-add-input" placeholder="Code ou référence..." type="text"/></div><button class="h-9 px-3 rounded-lg bg-primary text-on-primary font-label-sm text-[12px] font-bold shrink-0 hover:bg-primary-container active:scale-95 transition-all" id="btn-quick-add" type="button">Ajouter</button><button class="h-9 px-2.5 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100 font-label-sm text-[12px] font-semibold shrink-0 transition-colors" id="btn-clear-cart" title="Vider panier (Échap)" type="button">Vider</button></div><!-- Cart Table Headers --><div class="px-4 py-2 bg-surface-container text-on-surface-variant font-label-sm text-[11px] uppercase tracking-wider grid grid-cols-12 items-center"><div class="col-span-5">Article</div><div class="col-span-3 text-center">QTÉ</div><div class="col-span-3 text-right">Prix</div><div class="col-span-1 text-center">Suppr</div></div><!-- Cart Line Items Container --><div class="p-3 flex flex-col gap-2 max-h-[340px] min-h-[220px] overflow-y-auto divide-y divide-surface-container" id="cart-items-container"><!-- Dynamic cart rows --></div><!-- Financial Summary Block --><div class="p-4 bg-surface-container-low/60 border-t border-surface-container flex flex-col gap-1.5 text-body-sm"><div class="flex items-center justify-between text-on-surface-variant"><span>Sous-total brut :</span><span class="font-semibold text-on-surface" id="summary-subtotal">0 F</span></div><div class="flex items-center justify-between text-on-surface-variant"><span>Remise article :</span><span class="font-semibold text-tertiary" id="summary-discount">-0 F</span></div><div class="flex items-center justify-between text-on-surface-variant"><span>Remise panier (F4) :</span><button class="text-primary hover:underline font-bold text-[12px]" id="btn-open-discount-modal" type="button">+ Code Promo</button></div><div class="flex items-center justify-between text-on-surface-variant text-[11px]"><span>TVA 18% incluse :</span><span id="summary-tax">0 F</span></div><!-- Total large display matching Image 2 --><div class="pt-2 mt-1 border-t border-outline-variant/30 flex items-baseline justify-between"><span class="font-label-lg text-headline-sm font-bold text-on-surface">Total Net :</span><div class="flex items-baseline gap-1"><span class="font-headline-total text-[32px] font-bold text-on-surface tracking-tight" id="summary-total">0</span><span class="font-headline-sm text-[18px] font-bold text-primary">FCFA</span></div></div></div><!-- Dual Checkout Actions matching Image 2 (Cancel Order / Place Order) --><div class="p-3.5 bg-surface-container-lowest border-t border-surface-container grid grid-cols-2 gap-2.5"><button class="h-12 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-label-md text-label-md font-bold flex items-center justify-center gap-1 shadow-sm active:scale-95 transition-all" id="btn-cancel-order" type="button"><span class="material-symbols-outlined text-[18px]">cancel</span><span>Annuler</span></button><button class="h-12 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md font-bold flex items-center justify-center gap-1 shadow-md active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed" id="btn-checkout" type="button"><span class="material-symbols-outlined text-[20px]">check_circle</span><span id="btn-checkout-label">Encaisser [F9]</span></button></div></div></div></div>
+<script>
+(() => {
+  // 1. BASE DE DONNÉES PRODUITS IVOIRIENNE
+  const PRODUCTS = [
+    { id: "P01", name: "Riz Dinor parfumé 5kg", price: 4750, cat: "Huiles & Riz", stock: 18, code: "61811001" },
+    { id: "P02", name: "Huile Aya 1L", price: 1400, cat: "Huiles & Riz", stock: 42, code: "61811002" },
+    { id: "P03", name: "Lait Bonnet Rouge 410g", price: 650, cat: "Produits laitiers", stock: 85, code: "61811003" },
+    { id: "P04", name: "Eau Minérale Céleste 1.5L", price: 400, cat: "Boissons & Eau", stock: 120, code: "61811004" },
+    { id: "P05", name: "Boisson Youki Cocktail 50cl", price: 500, cat: "Boissons & Eau", stock: 64, code: "61811005" },
+    { id: "P06", name: "Savon BF 400g", price: 450, cat: "Entretien & Hygiène", stock: 90, code: "61811006" },
+    { id: "P07", name: "Pâtes Maman 500g", price: 450, cat: "Épicerie salée", stock: 110, code: "61811007" },
+    { id: "P08", name: "Cube Maggi tablette x25", price: 1000, cat: "Épicerie salée", stock: 75, code: "61811008" },
+    { id: "P09", name: "Sucre roux Sucrivoire 1kg", price: 850, cat: "Épicerie salée", stock: 50, code: "61811009" },
+    { id: "P10", name: "Nescafé Classic sachet", price: 100, cat: "Épicerie salée", stock: 300, code: "61811010" },
+    { id: "P11", name: "Chocolat Tartina pot 350g", price: 1600, cat: "Produits laitiers", stock: 24, code: "61811011" },
+    { id: "P12", name: "Farine de blé Grand Moulin 1kg", price: 700, cat: "Épicerie salée", stock: 40, code: "61811012" },
+    { id: "P13", name: "Jus Présséa Mangue 1L", price: 1200, cat: "Boissons & Eau", stock: 35, code: "61811013" },
+    { id: "P14", name: "Couscous Dari moyen 1kg", price: 1100, cat: "Épicerie salée", stock: 28, code: "61811014" },
+    { id: "P15", name: "Sardines à l'huile Titus", price: 600, cat: "Épicerie salée", stock: 80, code: "61811015" },
+    { id: "P16", name: "Tomate pâte Gino sachet 70g", price: 150, cat: "Épicerie salée", stock: 150, code: "61811016" },
+    { id: "P17", name: "Mayonnaise Calvé 450ml", price: 1850, cat: "Épicerie salée", stock: 32, code: "61811017" },
+    { id: "P18", name: "Biscuits Vitalo chocolat", price: 250, cat: "Frais & Boulangerie", stock: 95, code: "61811018" },
+    { id: "P19", name: "Détergent Madar 500g", price: 900, cat: "Entretien & Hygiène", stock: 45, code: "61811019" },
+    { id: "P20", name: "Papier hygiénique Lotus x4", price: 1300, cat: "Entretien & Hygiène", stock: 38, code: "61811020" }
+  ];
+
+  // 2. ÉTAT DU PANIER ET CAISSE
+  let cart = [
+    { ...PRODUCTS[0], qty: 1 }, // Riz Dinor
+    { ...PRODUCTS[1], qty: 2 }, // Huile Aya
+    { ...PRODUCTS[3], qty: 3 }  // Eau Céleste
+  ];
+  let discountAmount = 0;
+  let activeCategory = 'all';
+  let isOnline = true;
+  let selectedPaymentMethod = 'ESPÈCES';
+  let momoTimerInterval = null;
+
+  // Formateur FCFA
+  const fmt = (num) => new Intl.NumberFormat('fr-FR').format(Math.round(num)) + ' F';
+
+  // 3. RENDU DU CATALOGUE PRODUITS
+  const gridEl = document.getElementById('product-grid');
+  const renderCatalog = (filter = 'all', searchQuery = '') => {
+    gridEl.innerHTML = '';
+    const filtered = PRODUCTS.filter(p => {
+      const matchCat = filter === 'all' || p.cat === filter;
+      const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.code.includes(searchQuery);
+      return matchCat && matchSearch;
+    });
+
+    document.getElementById('product-count-badge').textContent = `${filtered.length} articles`;
+
+    filtered.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = "p-space-sm bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between cursor-pointer hover:shadow-md active:scale-95 transition-all select-none min-h-[110px]";
+      card.innerHTML = `
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center justify-between">
+            <span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">${prod.cat.split(' ')[0]}</span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">Stk: ${prod.stock}</span>
+          </div>
+          <div class="font-label-md text-label-md text-on-surface line-clamp-2 mt-1 leading-snug">${prod.name}</div>
+        </div>
+        <div class="flex items-center justify-between pt-2">
+          <span class="font-headline-sm text-headline-sm text-primary font-bold">${fmt(prod.price)}</span>
+          <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', () => addToCart(prod));
+      gridEl.appendChild(card);
+    });
+  };
+
+  // 4. GESTION DU PANIER
+  const addToCart = (product) => {
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ ...product, qty: 1 });
+    }
+    renderCart();
+  };
+
+  const updateQty = (id, delta) => {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+    renderCart();
+  };
+
+  const removeItem = (id) => {
+    cart = cart.filter(i => i.id !== id);
+    renderCart();
+  };
+
+  const clearCart = () => {
+    cart = [];
+    discountAmount = 0;
+    renderCart();
+  };
+
+  const calculateTotals = () => {
+    const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+    const total = Math.max(0, subtotal - discountAmount);
+    const tax = Math.round(total * 0.18 / 1.18);
+    const itemCount = cart.reduce((acc, item) => acc + item.qty, 0);
+    return { subtotal, discount: discountAmount, total, tax, itemCount };
+  };
+
+  const renderCart = () => {
+    const container = document.getElementById('cart-items-container');
+    const totals = calculateTotals();
+
+    document.getElementById('cart-item-count').textContent = `${totals.itemCount} article(s)`;
+    document.getElementById('summary-subtotal').textContent = fmt(totals.subtotal);
+    document.getElementById('summary-discount').textContent = totals.discount > 0 ? `-${fmt(totals.discount)}` : '0 F';
+    document.getElementById('summary-tax').textContent = fmt(totals.tax);
+    document.getElementById('summary-total').textContent = new Intl.NumberFormat('fr-FR').format(totals.total);
+    
+    // Bouton Encaisser
+    const checkoutBtn = document.getElementById('btn-checkout');
+    const checkoutLabel = document.getElementById('btn-checkout-label');
+    checkoutBtn.disabled = cart.length === 0;
+    checkoutLabel.textContent = `ENCAISSER [F9] — ${fmt(totals.total)}`;
+
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div id="cart-empty-placeholder" class="py-12 flex flex-col items-center justify-center text-center text-on-surface-variant">
+          <span class="material-symbols-outlined text-[48px] text-outline-variant mb-2">shopping_bag</span>
+          <div class="font-headline-sm text-headline-sm text-on-surface font-semibold">Panier vide</div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-[220px]">Scannez un code-barres ou touchez des articles dans la grille.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = '';
+    cart.forEach(item => {
+      const row = document.createElement('div');
+      row.className = "p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between gap-space-xs transition-colors hover:bg-surface-container";
+      row.innerHTML = `
+        <div class="flex-1 min-w-0 pr-2">
+          <div class="font-label-md text-label-md text-on-surface truncate">${item.name}</div>
+          <div class="font-body-sm text-body-sm text-on-surface-variant">${fmt(item.price)} unitaire</div>
+        </div>
+        <div class="flex items-center gap-1 shrink-0">
+          <button type="button" class="btn-qty-minus w-11 h-11 rounded-lg bg-surface-container-lowest text-on-surface flex items-center justify-center font-bold active:scale-95 shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">remove</span>
+          </button>
+          <span class="w-8 text-center font-label-md text-label-md font-bold text-on-surface">${item.qty}</span>
+          <button type="button" class="btn-qty-plus w-11 h-11 rounded-lg bg-surface-container-lowest text-on-surface flex items-center justify-center font-bold active:scale-95 shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+          </button>
+        </div>
+        <div class="text-right shrink-0 w-24">
+          <div class="font-label-md text-label-md font-bold text-primary">${fmt(item.price * item.qty)}</div>
+        </div>
+        <button type="button" class="btn-remove-row text-outline hover:text-error p-1">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      `;
+
+      row.querySelector('.btn-qty-minus').addEventListener('click', () => updateQty(item.id, -1));
+      row.querySelector('.btn-qty-plus').addEventListener('click', () => updateQty(item.id, 1));
+      row.querySelector('.btn-remove-row').addEventListener('click', () => removeItem(item.id));
+      container.appendChild(row);
+    });
+  };
+
+  // 5. INTERACTION CLAVIER & SCANNER CODE-BARRES (F2, F4, F9, Échap)
+  const barcodeInput = document.getElementById('barcode-input');
+  const clearSearchBtn = document.getElementById('clear-search-btn');
+
+  barcodeInput.addEventListener('input', (e) => {
+    const val = e.target.value.trim();
+    clearSearchBtn.classList.toggle('hidden', val.length === 0);
+    renderCatalog(activeCategory, val);
+  });
+
+  clearSearchBtn.addEventListener('click', () => {
+    barcodeInput.value = '';
+    clearSearchBtn.classList.add('hidden');
+    renderCatalog(activeCategory, '');
+    barcodeInput.focus();
+  });
+
+  document.getElementById('scan-trigger-btn').addEventListener('click', () => {
+    // Simuler le scan aléatoire d'un produit existant
+    const randomProduct = PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
+    addToCart(randomProduct);
+  });
+
+  document.getElementById('btn-clear-cart').addEventListener('click', clearCart);
+
+  // Filtres catégories
+  document.querySelectorAll('.cat-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-pill').forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary');
+        b.classList.add('bg-surface-container', 'text-on-surface');
+      });
+      btn.classList.add('bg-primary', 'text-on-primary');
+      btn.classList.remove('bg-surface-container', 'text-on-surface');
+      activeCategory = btn.getAttribute('data-cat');
+      renderCatalog(activeCategory, barcodeInput.value.trim());
+    });
+  });
+
+  // Bascule Mode Réseau (Hors-ligne / En-ligne)
+  const toggleNetBtn = document.getElementById('toggle-network-btn');
+  const netDot = document.getElementById('network-dot');
+  const netLabel = document.getElementById('network-label');
+  const netPending = document.getElementById('network-pending');
+  const offlineBanner = document.getElementById('offline-banner');
+
+  toggleNetBtn.addEventListener('click', () => {
+    isOnline = !isOnline;
+    if (isOnline) {
+      netDot.className = "w-3 h-3 rounded-full bg-tertiary";
+      netLabel.textContent = "En ligne";
+      netPending.textContent = "0 vente en attente";
+      offlineBanner.classList.add('hidden');
+    } else {
+      netDot.className = "w-3 h-3 rounded-full bg-error animate-ping";
+      netLabel.textContent = "Hors-ligne";
+      netPending.textContent = "1 vente en attente";
+      offlineBanner.classList.remove('hidden');
+    }
+  });
+
+  // Bascule Thème Sombre Local
+  document.getElementById('toggle-dark-btn').addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+  });
+
+  // 6. GESTION MODALE D'ENCAISSEMENT & ONGLET
+  const modalCheckout = document.getElementById('modal-checkout');
+  const modalPayTotal = document.getElementById('modal-pay-total');
+  const cashReceivedInput = document.getElementById('cash-received-input');
+  const changeMessage = document.getElementById('change-message');
+  const changeStatusBox = document.getElementById('change-status-box');
+  const btnValidateCash = document.getElementById('btn-validate-cash');
+  const tpeAmountDisplay = document.getElementById('tpe-amount-display');
+
+  const openCheckoutModal = () => {
+    if (cart.length === 0) return;
+    const totals = calculateTotals();
+    modalPayTotal.textContent = fmt(totals.total);
+    tpeAmountDisplay.textContent = fmt(totals.total);
+    cashReceivedInput.value = '';
+    updateCashChange();
+    modalCheckout.classList.remove('hidden');
+  };
+
+  const closeCheckoutModal = () => {
+    modalCheckout.classList.add('hidden');
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+  };
+
+  document.getElementById('btn-checkout').addEventListener('click', openCheckoutModal);
+  document.getElementById('btn-close-checkout-modal').addEventListener('click', closeCheckoutModal);
+
+  // Bascule onglets paiement
+  const tabCash = document.getElementById('tab-cash');
+  const tabMomo = document.getElementById('tab-momo');
+  const tabCard = document.getElementById('tab-card');
+  const panelCash = document.getElementById('panel-cash');
+  const panelMomo = document.getElementById('panel-momo');
+  const panelCard = document.getElementById('panel-card');
+
+  const setPaymentTab = (tab) => {
+    [tabCash, tabMomo, tabCard].forEach(t => {
+      t.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-transparent text-on-surface font-label-md text-label-md flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-colors";
+    });
+    [panelCash, panelMomo, panelCard].forEach(p => p.classList.add('hidden'));
+
+    if (tab === 'cash') {
+      tabCash.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm font-bold";
+      panelCash.classList.remove('hidden');
+      selectedPaymentMethod = 'ESPÈCES';
+    } else if (tab === 'momo') {
+      tabMomo.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm font-bold";
+      panelMomo.classList.remove('hidden');
+      selectedPaymentMethod = 'MOBILE MONEY (CI)';
+    } else if (tab === 'card') {
+      tabCard.className = "tab-btn flex-1 min-w-[130px] h-12 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm font-bold";
+      panelCard.classList.remove('hidden');
+      selectedPaymentMethod = 'CARTE BANCAIRE (TPE)';
+    }
+  };
+
+  tabCash.addEventListener('click', () => setPaymentTab('cash'));
+  tabMomo.addEventListener('click', () => setPaymentTab('momo'));
+  tabCard.addEventListener('click', () => setPaymentTab('card'));
+
+  // Pavé Numérique Tactile Espèces
+  const updateCashChange = () => {
+    const totals = calculateTotals();
+    const received = parseInt(cashReceivedInput.value, 10) || 0;
+    const diff = received - totals.total;
+
+    if (received === 0) {
+      changeStatusBox.className = "p-space-md rounded-xl bg-surface-container flex flex-col justify-center min-h-[90px]";
+      changeMessage.className = "font-headline-sm text-headline-sm text-on-surface mt-1";
+      changeMessage.textContent = "Saisir le montant remis par le client.";
+      btnValidateCash.disabled = true;
+    } else if (diff < 0) {
+      changeStatusBox.className = "p-space-md rounded-xl bg-error-container text-on-error-container flex flex-col justify-center min-h-[90px]";
+      changeMessage.className = "font-headline-sm text-headline-sm text-error mt-1 font-bold";
+      changeMessage.textContent = `Montant insuffisant (manque ${fmt(Math.abs(diff))})`;
+      btnValidateCash.disabled = true;
+    } else {
+      changeStatusBox.className = "p-space-md rounded-xl bg-secondary-container text-on-secondary-container flex flex-col justify-center min-h-[90px]";
+      changeMessage.className = "font-headline-sm text-headline-sm text-on-secondary-container mt-1 font-bold";
+      changeMessage.textContent = `À RENDRE : ${fmt(diff)}`;
+      btnValidateCash.disabled = false;
+    }
+  };
+
+  document.querySelectorAll('.numpad-key').forEach(k => {
+    k.addEventListener('click', () => {
+      const val = k.textContent.trim();
+      cashReceivedInput.value = (cashReceivedInput.value || '') + val;
+      updateCashChange();
+    });
+  });
+
+  document.querySelector('.numpad-action[data-action="clear"]').addEventListener('click', () => {
+    cashReceivedInput.value = '';
+    updateCashChange();
+  });
+
+  document.querySelectorAll('.cash-chip').forEach(c => {
+    c.addEventListener('click', () => {
+      const val = parseInt(c.getAttribute('data-val'), 10);
+      const current = parseInt(cashReceivedInput.value, 10) || 0;
+      cashReceivedInput.value = (current + val).toString();
+      updateCashChange();
+    });
+  });
+
+  document.getElementById('btn-cash-exact').addEventListener('click', () => {
+    const totals = calculateTotals();
+    cashReceivedInput.value = totals.total.toString();
+    updateCashChange();
+  });
+
+  // Mobile Money Handlers
+  document.querySelectorAll('.momo-op-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.momo-op-btn').forEach(b => b.classList.replace('bg-primary-container', 'bg-surface-container-low'));
+      btn.classList.replace('bg-surface-container-low', 'bg-primary-container');
+    });
+  });
+
+  const momoStatusScreen = document.getElementById('momo-status-screen');
+  const momoTimerEl = document.getElementById('momo-timer');
+
+  document.getElementById('btn-momo-push').addEventListener('click', () => {
+    momoStatusScreen.classList.remove('hidden');
+    let timeLeft = 60;
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+    momoTimerInterval = setInterval(() => {
+      timeLeft -= 1;
+      momoTimerEl.textContent = `${timeLeft}s`;
+      if (timeLeft <= 0) {
+        clearInterval(momoTimerInterval);
+        alert("Délai de validation push USSD expiré.");
+        momoStatusScreen.classList.add('hidden');
+      }
+    }, 1000);
+  });
+
+  document.getElementById('btn-momo-cancel').addEventListener('click', () => {
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+    momoStatusScreen.classList.add('hidden');
+  });
+
+  // Validation Finale & Affichage Ticket Succès
+  const showSuccessModal = (payMethod, changeVal = 0) => {
+    closeCheckoutModal();
+    const totals = calculateTotals();
+    document.getElementById('receipt-pay-method').textContent = payMethod;
+    document.getElementById('receipt-total').textContent = fmt(totals.total);
+    document.getElementById('receipt-change').textContent = fmt(changeVal);
+    document.getElementById('modal-success').classList.remove('hidden');
+  };
+
+  btnValidateCash.addEventListener('click', () => {
+    const received = parseInt(cashReceivedInput.value, 10) || 0;
+    const totals = calculateTotals();
+    showSuccessModal('ESPÈCES', Math.max(0, received - totals.total));
+  });
+
+  document.getElementById('btn-momo-simulate-ok').addEventListener('click', () => {
+    if (momoTimerInterval) clearInterval(momoTimerInterval);
+    showSuccessModal('WAVE / MOMO (0758421903)', 0);
+  });
+
+  document.getElementById('btn-validate-card').addEventListener('click', () => {
+    showSuccessModal('CARTE BANCAIRE (TPE)', 0);
+  });
+
+  document.getElementById('btn-new-sale').addEventListener('click', () => {
+    document.getElementById('modal-success').classList.add('hidden');
+    clearCart();
+    barcodeInput.focus();
+  });
+
+  document.getElementById('btn-print-receipt').addEventListener('click', () => {
+    alert("Impression du ticket ESC/POS envoyée à l'imprimante thermique de caisse.");
+    document.getElementById('modal-success').classList.add('hidden');
+    clearCart();
+    barcodeInput.focus();
+  });
+
+  // 7. SCÉNARIO ARTICLE INCONNU (CRÉATION EXPRESS)
+  const modalUnknown = document.getElementById('modal-unknown-item');
+  document.getElementById('btn-unknown-barcode').addEventListener('click', () => {
+    modalUnknown.classList.remove('hidden');
+  });
+
+  document.getElementById('btn-close-unknown-modal').addEventListener('click', () => {
+    modalUnknown.classList.add('hidden');
+  });
+
+  document.getElementById('form-quick-add').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('quick-item-name').value;
+    const price = parseInt(document.getElementById('quick-item-price').value, 10);
+    const cat = document.getElementById('quick-item-cat').value;
+    
+    const newProd = {
+      id: 'P_' + Date.now(),
+      name,
+      price,
+      cat,
+      stock: 50,
+      code: "789456"
+    };
+    PRODUCTS.unshift(newProd);
+    addToCart(newProd);
+    renderCatalog(activeCategory, '');
+    modalUnknown.classList.add('hidden');
+  });
+
+  // 8. MODALE REMISE (F4)
+  const modalDiscount = document.getElementById('modal-discount');
+  document.getElementById('btn-open-discount-modal').addEventListener('click', () => {
+    modalDiscount.classList.remove('hidden');
+  });
+  document.getElementById('btn-close-discount-modal').addEventListener('click', () => {
+    modalDiscount.classList.add('hidden');
+  });
+
+  document.querySelectorAll('.discount-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pct = parseInt(btn.getAttribute('data-percent'), 10);
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      discountAmount = Math.round(subtotal * (pct / 100));
+      renderCart();
+      modalDiscount.classList.add('hidden');
+    });
+  });
+
+  document.getElementById('btn-apply-custom-discount').addEventListener('click', () => {
+    const val = parseInt(document.getElementById('custom-discount-input').value, 10) || 0;
+    discountAmount = val;
+    renderCart();
+    modalDiscount.classList.add('hidden');
+  });
+
+  document.getElementById('btn-remove-discount').addEventListener('click', () => {
+    discountAmount = 0;
+    renderCart();
+    modalDiscount.classList.add('hidden');
+  });
+
+  // Raccourcis Clavier Globaux (F2, F4, F9, Échap, Entrée)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'F2') {
+      e.preventDefault();
+      barcodeInput.focus();
+    } else if (e.key === 'F4') {
+      e.preventDefault();
+      modalDiscount.classList.remove('hidden');
+    } else if (e.key === 'F9') {
+      e.preventDefault();
+      if (!modalCheckout.classList.contains('hidden')) {
+        if (!btnValidateCash.disabled) btnValidateCash.click();
+      } else {
+        openCheckoutModal();
+      }
+    } else if (e.key === 'Escape') {
+      if (!modalCheckout.classList.contains('hidden')) {
+        closeCheckoutModal();
+      } else if (!modalDiscount.classList.contains('hidden')) {
+        modalDiscount.classList.add('hidden');
+      } else if (!modalUnknown.classList.contains('hidden')) {
+        modalUnknown.classList.add('hidden');
+      } else {
+        clearCart();
+      }
+    } else if (e.key === 'Enter') {
+      if (!document.getElementById('modal-success').classList.contains('hidden')) {
+        document.getElementById('btn-new-sale').click();
+      }
+    }
+  });
+
+  // Initialisation au chargement
+  renderCatalog('all', '');
+  renderCart();
+})();
+</script></main></div></body></html>

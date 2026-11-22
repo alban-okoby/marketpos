@@ -1,0 +1,662 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-secondary": "#ffffff",
+        "on-secondary-container": "#327200",
+        "error-container": "#ffdad6",
+        "on-primary": "#ffffff",
+        "tertiary-fixed-dim": "#ffafd7",
+        "outline-variant": "#bfcab3",
+        "on-secondary-fixed-variant": "#215100",
+        "inverse-surface": "#283044",
+        "surface-container": "#eaedff",
+        "inverse-on-surface": "#eef0ff",
+        "tertiary": "#a9267b",
+        "on-background": "#131b2e",
+        "on-tertiary-fixed": "#3c0029",
+        "surface-dim": "#d2d9f4",
+        "on-tertiary": "#ffffff",
+        "surface-container-low": "#f2f3ff",
+        "on-error": "#ffffff",
+        "on-surface-variant": "#404a38",
+        "secondary-container": "#97fb5a",
+        "primary-container": "#5bb81f",
+        "on-surface": "#131b2e",
+        "secondary": "#2f6c00",
+        "secondary-fixed-dim": "#7dde3f",
+        "on-primary-fixed-variant": "#215100",
+        "on-primary-container": "#194200",
+        "surface-tint": "#2d6c00",
+        "on-primary-fixed": "#092100",
+        "on-tertiary-container": "#710050",
+        "outline": "#707a66",
+        "surface-bright": "#faf8ff",
+        "primary-fixed-dim": "#7ddd44",
+        "background": "#faf8ff",
+        "surface-variant": "#dae2fd",
+        "on-error-container": "#93000a",
+        "inverse-primary": "#7ddd44",
+        "surface-container-highest": "#dae2fd",
+        "surface": "#faf8ff",
+        "surface-container-high": "#e2e7ff",
+        "primary-fixed": "#98fb5e",
+        "on-secondary-fixed": "#092100",
+        "tertiary-container": "#ff6fc4",
+        "tertiary-fixed": "#ffd8e9",
+        "error": "#ba1a1a",
+        "on-tertiary-fixed-variant": "#890062",
+        "secondary-fixed": "#97fb5a"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-xs": "0.25rem",
+        "space-xl": "1.5rem",
+        "margin-mobile": "0.5rem",
+        "gutter-mobile": "0.5rem",
+        "space-sm": "0.5rem",
+        "space-lg": "1rem",
+        "gutter": "1rem",
+        "space-md": "0.75rem",
+        "margin": "1rem"
+      },
+      "fontFamily": {
+        "body-md": ["Inter"],
+        "headline-total-mobile": ["Inter"],
+        "label-lg": ["Inter"],
+        "headline-md": ["Inter"],
+        "headline-sm": ["Inter"],
+        "body-lg": ["Inter"],
+        "headline-lg": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-total": ["Inter"],
+        "body-sm": ["Inter"],
+        "label-md": ["Inter"],
+        "label-keypad": ["Inter"]
+      },
+      "fontSize": {
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "headline-total-mobile": ["32px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+        "label-lg": ["16px", {"lineHeight": "20px", "fontWeight": "600"}],
+        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "22px", "fontWeight": "500"}],
+        "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+        "headline-total": ["44px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "label-md": ["13px", {"lineHeight": "16px", "fontWeight": "600"}],
+        "label-keypad": ["24px", {"lineHeight": "28px", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex items-center justify-between px-gutter"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">point_of_sale</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface">Market<span class="text-primary">POS</span></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Supervision Caisse</span></div></div><div class="h-5 w-px bg-outline-variant/40 hidden md:block"></div><nav class="hidden md:flex items-center gap-space-xs font-label-md text-label-md"><span class="text-on-surface-variant">Supervision</span><span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span><span class="text-on-surface font-body-lg text-body-lg">Clôture &amp; Z</span></nav></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-xs px-space-md py-1 rounded-full bg-secondary-container/20 text-on-secondary-container"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm">Serveur Synchro</span></div><div class="hidden sm:flex items-center gap-space-sm px-space-md py-1 rounded-full bg-surface-container-high text-on-surface"><span class="material-symbols-outlined text-[16px] text-primary">verified_user</span><span class="font-label-md text-label-md">Mamadou Diallo</span><span class="text-outline">•</span><span class="font-label-sm text-label-sm text-on-surface-variant">Caisse 01</span></div><div class="hidden md:flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant bg-surface-container-low px-space-md py-1 rounded-full"><span class="material-symbols-outlined text-[16px]">schedule</span><span>18:42</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low/70 backdrop-blur-md z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-xs"><div class="px-space-md py-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Opérations Caisse</span></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-lg shadow-sm"><a class="flex items-center justify-between px-space-md py-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="poste-de-vente" href="#"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-label-md text-label-md">Poste Vente</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">F1</span></a><a class="flex items-center justify-between px-space-md py-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="cloture-de-caisse-et-z" href="#"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-label-md text-label-md">Clôture &amp; Z</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary text-on-primary font-bold">F2</span></a><a class="flex items-center justify-between px-space-md py-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="historique-des-ventes" href="#"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-[20px]">history</span><span class="font-label-md text-label-md">Historique Ventes</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">F3</span></a><a class="flex items-center justify-between px-space-md py-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="mouvements-de-coffre" href="#"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-[20px]">payments</span><span class="font-label-md text-label-md">Mouvements Coffre</span></div><span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">F4</span></a><a class="flex items-center justify-between px-space-md py-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="parametres-systeme" href="#"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-md text-label-md">Paramètres</span></div></a></nav></div><div class="p-space-sm bg-surface-container-high/60 rounded-xl flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface">Mode Hors-Ligne</span><span class="font-body-sm text-body-sm text-on-surface-variant">Base locale prête</span></div><div class="w-3 h-3 rounded-full bg-primary-container"></div></div></aside><div class="pl-64"><main class="w-full pt-16 bg-surface px-gutter min-h-screen"><div class="flex flex-col w-full pb-12">
+<!-- Top Session Summary & Action Bar -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-headline-md text-headline-md tracking-tight text-on-surface">Clôture de Session &amp; Rapport Z</span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Session #2024-10-24-003</span>
+<span class="px-space-sm py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+          En attente de validation
+        </span>
+</div>
+<div class="flex items-center gap-x-space-md gap-y-1 text-on-surface-variant font-body-sm text-body-sm flex-wrap">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">storefront</span>
+<span class="font-label-md text-label-md text-on-surface">Caisse 01</span>
+<span>(Allée Centrale)</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+<span>Caissière: <strong class="text-on-surface font-label-md">Awa Koné</strong> (CS-0418)</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>07:30 → 21:45 GMT (14h 15m)</span>
+</div>
+<span>•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">admin_panel_settings</span>
+<span>Superviseur: Mamadou Diallo</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="h-11 px-space-md rounded-xl bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">cached</span>
+<span>Recomptage</span>
+</button>
+<button class="h-11 px-space-md rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container-highest transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+<span>Ticket X (Provisoire)</span>
+</button>
+<button class="h-11 px-space-lg rounded-xl bg-primary-container font-label-lg text-label-lg shadow-md hover:opacity-95 transition-all flex items-center gap-space-sm text-on-primary" id="btn-valider-f10" style="background-color: rgb(52, 168, 53); color: rgb(255, 255, 255);">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+<span>Valider Clôture &amp; Z [F10]</span>
+</button>
+</div>
+</div>
+<!-- Primary Split Grid (65% Data & Cash Reconciliation, 35% Fiscal Receipt Preview & Approval) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT PANEL: Operations & Real-time Reconciliation (8 cols) -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Key Financial Metrics 4-Card Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Metric 1: CA Brut -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">C.A. Brut Réalisé</span>
+<span class="material-symbols-outlined text-primary text-[20px]">trending_up</span>
+</div>
+<div class="my-space-xs">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">1 485 500</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1 font-semibold">FCFA</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-space-xs">
+<span>184 transactions</span>
+<span class="text-secondary font-label-sm text-label-sm font-semibold">+8.4% vs J-1</span>
+</div>
+</div>
+<!-- Metric 2: Espèces -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Espèces Théorique</span>
+<span class="material-symbols-outlined text-primary-container text-[20px]">payments</span>
+</div>
+<div class="my-space-xs">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">825 000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1 font-semibold">FCFA</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-space-xs">
+<span>Dont fond : 50 000 F</span>
+<span class="text-on-surface font-label-sm text-label-sm">55.5% mix</span>
+</div>
+</div>
+<!-- Metric 3: Mobile Money -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Mobile Money</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">phonelink_ring</span>
+</div>
+<div class="my-space-xs">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">495 500</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1 font-semibold">FCFA</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-space-xs">
+<span>Wave, OM, MoMo</span>
+<span class="text-on-surface font-label-sm text-label-sm">72 trans.</span>
+</div>
+</div>
+<!-- Metric 4: Carte Bancaire -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">TPE Bancaire</span>
+<span class="material-symbols-outlined text-outline text-[20px]">credit_card</span>
+</div>
+<div class="my-space-xs">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">165 000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1 font-semibold">FCFA</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-space-xs">
+<span>Télécollecte OK</span>
+<span class="text-on-surface font-label-sm text-label-sm">18 trans.</span>
+</div>
+</div>
+</div>
+<!-- Payment Method Reconciliation Table -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-md">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">balance</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Rapprochement des Flux d'Encaissement</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-secondary-container bg-secondary-container/25 px-space-sm py-1 rounded-full" style="background-color: rgb(232, 248, 232); color: rgb(52, 168, 53); border: 1px solid rgb(194, 236, 198);">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Écart Net Global : 0 FCFA</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-low/60 rounded-lg">
+<th class="py-2.5 px-space-md rounded-l-lg">Mode de Règlement</th>
+<th class="py-2.5 px-space-md text-right">Théorique Système</th>
+<th class="py-2.5 px-space-md text-right">Compté / Télécollecté</th>
+<th class="py-2.5 px-space-md text-right">Écart Constaté</th>
+<th class="py-2.5 px-space-md text-center rounded-r-lg">Statut Clôture</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/40">
+<!-- Espèces -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Espèces (Fond + Ventes)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tiroir-caisse physique</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">825 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">825 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-secondary">0 F</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-semibold" style="background-color: rgb(232, 248, 232); color: rgb(52, 168, 53);">
+                    Équilibré
+                  </span>
+</td>
+</tr>
+<!-- Wave Money -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">waves</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Wave Côte d'Ivoire</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Intégration API QR Marchand</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">285 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">285 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-secondary">0 F</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-semibold" style="background-color: rgb(232, 248, 232); color: rgb(52, 168, 53);">
+                    Réconcilié API
+                  </span>
+</td>
+</tr>
+<!-- Orange Money -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">phone_android</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Orange Money</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Code Marchand #4812</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">145 500 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">145 500 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-secondary">0 F</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-semibold" style="background-color: rgb(232, 248, 232); color: rgb(52, 168, 53);">
+                    Réconcilié API
+                  </span>
+</td>
+</tr>
+<!-- MTN MoMo -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">contactless</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">MTN Mobile Money</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Terminal Passerelle MoMo</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">65 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">65 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-secondary">0 F</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-semibold" style="background-color: rgb(232, 248, 232); color: rgb(52, 168, 53);">
+                    Réconcilié API
+                  </span>
+</td>
+</tr>
+<!-- Carte Bancaire -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Carte Bancaire Visa / GIM</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">TPE Ingenico #0994</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">165 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-on-surface">165 000 F</td>
+<td class="py-space-sm px-space-md text-right font-label-md text-label-md tabular-nums text-secondary">0 F</td>
+<td class="py-space-sm px-space-md text-center">
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm font-semibold" style="background-color: rgb(232, 248, 232); color: rgb(52, 168, 53);">
+                    Télécollecte OK
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Denomination Breakdown & Cash Drawer Count (West African FCFA) -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md pb-space-sm border-b border-surface-container-high/40">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">calculate</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Dénombrement Physique des Espèces (FCFA)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Comptage à l'aveugle validé par l'opérateur de caisse</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total Tiroir :</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary-container tabular-nums" style="color: rgb(52, 168, 53);">825 000 FCFA</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Billets (Banknotes) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xs py-1 rounded bg-surface-container-low">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">money</span>
+                Billets de Banque BCEAO
+              </span>
+<span class="font-label-md text-label-md tabular-nums text-on-surface">775 000 F</span>
+</div>
+<div class="flex flex-col gap-1.5 mt-1">
+<!-- 10 000 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">10 000 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">45</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">450 000 F</span>
+</div>
+<!-- 5 000 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">5 000 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">40</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">200 000 F</span>
+</div>
+<!-- 2 000 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">2 000 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">35</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">70 000 F</span>
+</div>
+<!-- 1 000 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">1 000 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">40</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">40 000 F</span>
+</div>
+<!-- 500 F Billet -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">500 F (B)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">30</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">15 000 F</span>
+</div>
+</div>
+</div>
+<!-- Pièces de Monnaie (Coins) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xs py-1 rounded bg-surface-container-low">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">monetization_on</span>
+                Pièces Métalliques BCEAO
+              </span>
+<span class="font-label-md text-label-md tabular-nums text-on-surface">50 000 F</span>
+</div>
+<div class="flex flex-col gap-1.5 mt-1">
+<!-- 500 F Pièce -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">500 F (P)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">40</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">20 000 F</span>
+</div>
+<!-- 200 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">200 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">50</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">10 000 F</span>
+</div>
+<!-- 100 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">100 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">120</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">12 000 F</span>
+</div>
+<!-- 50 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">50 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">140</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">7 000 F</span>
+</div>
+<!-- 25 F -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/40">
+<span class="font-label-md text-label-md w-24 text-on-surface font-semibold">25 F</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">×</span>
+<span class="px-3 py-1 rounded-md bg-surface-container-lowest font-label-md text-label-md tabular-nums text-on-surface shadow-xs">40</span>
+<span class="font-label-md text-label-md tabular-nums w-28 text-right text-on-surface font-bold">1 000 F</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Safe Transfer / Cash Retain Callout -->
+<div class="mt-space-md pt-space-md border-t border-surface-container-high/40 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">lock</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Versement Coffre-Fort</span>
+<span class="font-label-md text-label-md text-on-surface">Sac sécurisé N° CF-8812</span>
+</div>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface tabular-nums">775 000 FCFA</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">account_balance_wallet</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fond Caisse Laissé</span>
+<span class="font-label-md text-label-md text-on-surface">Pour ouverture J+1</span>
+</div>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-secondary tabular-nums" style="color: rgb(52, 168, 53);">50 000 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Thermal Fiscal Z-Report Preview & Supervisor Authorization (4 cols) -->
+<div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Supervisor Authorization Card -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-md">
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<span class="font-label-lg text-label-lg text-on-surface">Validation Superviseur Caisse</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+          Entrez votre code d'autorisation pour verrouiller la caisse et sceller le Z fiscal.
+        </p>
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="relative flex-1">
+<input class="w-full h-11 px-space-md rounded-xl bg-surface-container-low font-headline-sm text-headline-sm tracking-widest text-on-surface outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" maxlength="6" type="password" value="••••••">
+<button class="absolute right-2 top-2.5 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<button class="h-11 px-space-md rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-container-highest transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">contactless</span>
+<span>Badge</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<button class="w-full h-13 py-3 rounded-xl bg-primary-container font-label-lg text-label-lg font-bold shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-space-xs text-on-primary" id="btn-print-z" style="background-color: rgb(52, 168, 53); color: rgb(255, 255, 255);">
+<span class="material-symbols-outlined text-[20px]">print</span>
+<span>Imprimer Z Fiscal &amp; Clôturer</span>
+</button>
+<button class="w-full h-10 rounded-xl bg-surface-container-low text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-all">
+              Mettre en attente (Sauvegarde X)
+            </button>
+</div>
+</div>
+</div>
+<!-- Thermal Z Ticket Preview Simulation -->
+<div class="relative bg-surface-container-lowest rounded-xl shadow-md p-space-md font-mono text-[11px] leading-tight text-on-surface select-none">
+<!-- Serrated top aesthetic -->
+<div class="flex justify-between items-center pb-space-sm mb-space-sm border-b border-dashed border-on-surface/20">
+<div class="flex items-center gap-1 text-on-surface-variant font-sans font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">receipt_long</span>
+<span>Aperçu Impression 80mm</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-sans text-[10px] text-on-surface-variant font-semibold">COPIE FISCALE</span>
+</div>
+<!-- Ticket Body Header -->
+<div class="text-center flex flex-col gap-0.5">
+<span class="font-bold text-[13px] tracking-wider text-on-surface">SUPERMARCHÉ CENTRAL</span>
+<span class="text-[10px] text-on-surface-variant">PLATEAU - BD DE LA RÉPUBLIQUE, ABIDJAN</span>
+<span class="text-[10px] text-on-surface-variant">RCCM: CI-ABJ-2018-B-14902 | CC: 1902847-X</span>
+<span class="text-[10px] text-on-surface-variant">RÉGIME DU RÉEL SIMPLIFIÉ DGI</span>
+</div>
+<div class="my-space-xs text-center py-1 bg-surface-container-low rounded">
+<span class="font-bold text-[12px] text-on-surface">*** RAPPORT Z DE CLÔTURE N° 00482 ***</span>
+</div>
+<div class="flex justify-between text-on-surface-variant text-[10px] py-1 border-b border-dashed border-on-surface/20">
+<span>Date: 24/10/2024 21:45:12</span>
+<span>Caisse: C01</span>
+</div>
+<div class="flex justify-between text-on-surface-variant text-[10px] py-0.5 border-b border-dashed border-on-surface/20">
+<span>Caissier: Awa Koné (CS-0418)</span>
+<span>Session: #003</span>
+</div>
+<!-- Ventes par Département -->
+<div class="py-space-xs">
+<div class="font-bold text-[11px] mb-1 text-on-surface">VENTES PAR RAYON :</div>
+<div class="flex justify-between py-0.5">
+<span>01 FRAIS &amp; LÉGUMES</span>
+<span class="font-bold tabular-nums">520 000 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>02 ÉPICERIE &amp; RIZ</span>
+<span class="font-bold tabular-nums">410 000 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>03 BOISSONS &amp; EAU</span>
+<span class="font-bold tabular-nums">295 500 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>04 HYGIÈNE &amp; ENTRETIEN</span>
+<span class="font-bold tabular-nums">260 000 F</span>
+</div>
+</div>
+<!-- Récapitulatif TVA -->
+<div class="py-space-xs border-t border-dashed border-on-surface/20">
+<div class="font-bold text-[11px] mb-1 text-on-surface">VENTILATION FISCALE (TVA 18%) :</div>
+<div class="flex justify-between py-0.5">
+<span>TOTAL H.T. :</span>
+<span class="tabular-nums">1 258 899 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>TVA COLLECTÉE (18%) :</span>
+<span class="tabular-nums">226 601 F</span>
+</div>
+<div class="flex justify-between py-1 font-bold text-[12px] border-t border-on-surface/20 text-on-surface">
+<span>TOTAL C.A. TTC :</span>
+<span class="tabular-nums">1 485 500 F</span>
+</div>
+</div>
+<!-- Règlements Détaillés -->
+<div class="py-space-xs border-t border-dashed border-on-surface/20">
+<div class="font-bold text-[11px] mb-1 text-on-surface">MODES DE PAIEMENT :</div>
+<div class="flex justify-between py-0.5">
+<span>ESPÈCES NET (HORS FOND)</span>
+<span class="tabular-nums font-bold">775 000 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>WAVE CI (API DIRECT)</span>
+<span class="tabular-nums">285 000 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>ORANGE MONEY MARCHAND</span>
+<span class="tabular-nums">145 500 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>MTN MOBILE MONEY</span>
+<span class="tabular-nums">65 000 F</span>
+</div>
+<div class="flex justify-between py-0.5">
+<span>CARTE BANCAIRE TPE GIM</span>
+<span class="tabular-nums">165 000 F</span>
+</div>
+</div>
+<!-- Remises & Corrections -->
+<div class="py-space-xs border-t border-dashed border-on-surface/20 text-[10px]">
+<div class="flex justify-between">
+<span>Remises accordées (4 art.):</span>
+<span class="tabular-nums">-18 500 F</span>
+</div>
+<div class="flex justify-between">
+<span>Annulations / Retours :</span>
+<span class="tabular-nums">0 F (0)</span>
+</div>
+<div class="flex justify-between">
+<span>Nb. Clients servis :</span>
+<span class="tabular-nums">184</span>
+</div>
+<div class="flex justify-between">
+<span>Panier Moyen :</span>
+<span class="tabular-nums font-bold">8 073 F</span>
+</div>
+</div>
+<!-- Grand Total Fiscal Inaltérable -->
+<div class="py-space-xs border-t-2 border-on-surface text-center">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider block">GRAND TOTAL CUMULÉ INALTÉRABLE (GT)</span>
+<span class="font-bold text-[13px] tracking-wider tabular-nums text-on-surface">48 920 400 FCFA</span>
+</div>
+<!-- Electronic Signature & QR Verification Simulation -->
+<div class="mt-space-sm pt-space-sm border-t border-dashed border-on-surface/20 flex flex-col items-center gap-1 text-center">
+<!-- Simplified inline SVG QR code representing DGI Fiscal Seal -->
+<svg class="w-16 h-16 text-on-surface" fill="currentColor" viewBox="0 0 33 33">
+<path d="M0 0h7v7H0zm2 2v3h3V2zm6-2h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm3 0h1v2h-1zm3 0h1v1h-1zm2 0h1v1h-1zm3 0h7v7h-7zm2 2v3h3V2zM8 2h2v1H8zm4 0h1v1h-1zm5 0h1v1h-1zm3 0h1v1h-1zM9 3h1v1H9zm2 0h2v1h-2zm4 0h1v1h-1zm2 0h1v2h-1zm-9 1h1v1H8zm4 0h1v1h-1zm2 0h1v1h-1zm5 0h1v1h-1zm-9 1h2v1H8zm3 0h1v1h-1zm3 0h1v1h-1zm3 0h1v1h-1zm-9 1h1v1H8zm3 0h1v1h-1zm3 0h2v1h-2zm3 0h1v1h-1zm5-6h1v1h-1zm-2 2h1v1h-1zm-1 3h2v1h-2zm-19 2h1v1H0zm2 0h1v1H2zm2 0h1v1H4zm5 0h1v2H9zm3 0h1v1h-1zm2 0h2v1h-2zm4 0h1v1h-1zm3 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zm-24 1h1v1H1zm2 0h1v1H3zm2 0h1v1H5zm6 0h1v1h-1zm3 0h2v1h-2zm5 0h2v1h-2zm4 0h2v1h-2zM0 10h7v7H0zm2 2v3h3v-3zm7-2h2v1H9zm3 0h1v1h-1zm2 0h1v2h-1zm3 0h2v1h-2zm3 0h1v1h-1zm2 0h1v2h-1zm2 0h1v1h-1zm-11 1h1v1h-1zm6 0h1v1h-1zm5 0h1v1h-1z"></path>
+</svg>
+<span class="text-[9px] text-on-surface-variant font-mono">DGI-CI-SIGN-SHA256: 7F4A8C9E...B204</span>
+<span class="text-[9px] text-on-surface-variant font-sans">Scellé fiscal électronique certifié</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for confirmation toast
+  document.getElementById('btn-valider-f10')?.addEventListener('click', () => {
+    alert('Clôture validée. Impression du Rapport Z fiscal et verrouillage du tiroir-caisse en cours...');
+  });
+  document.getElementById('btn-print-z')?.addEventListener('click', () => {
+    alert('Rapport Z fiscal envoyé à l\'imprimante thermique Caisse 01.');
+  });
+</script></main></div>
+
+</body></html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary":"#ffffff","on-primary-fixed-variant":"#00530a","error":"#ba1a1a","secondary-container":"#fd7700","surface-container-low":"#eff4ff","tertiary":"#565e71","primary-fixed":"#88fc7d","secondary-fixed":"#ffdbc9","tertiary-fixed-dim":"#bfc6dc","outline":"#6e7b69","inverse-surface":"#213145","surface-bright":"#f8f9ff","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","primary-container":"#34a835","on-secondary-fixed":"#321200","outline-variant":"#becab6","on-tertiary-fixed-variant":"#3f4759","on-surface-variant":"#3f4a3b","error-container":"#ffdad6","surface-container-lowest":"#ffffff","surface-dim":"#cbdbf5","tertiary-container":"#8b93a8","surface":"#f8f9ff","on-error-container":"#93000a","secondary":"#9a4600","primary":"#006e11","on-error":"#ffffff","on-tertiary":"#ffffff","on-secondary":"#ffffff","background":"#f8f9ff","on-tertiary-container":"#242c3d","tertiary-fixed":"#dbe2f9","on-secondary-fixed-variant":"#753400","surface-container":"#e5eeff","on-secondary-container":"#5a2600","on-surface":"#0b1c30","inverse-primary":"#6cdf64","primary-fixed-dim":"#6cdf64","surface-container-highest":"#d3e4fe","surface-tint":"#006e11","on-primary-fixed":"#002202","on-primary-container":"#003404","secondary-fixed-dim":"#ffb68c","surface-variant":"#d3e4fe","on-tertiary-fixed":"#141b2c","surface-container-high":"#dce9ff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xs":"0.25rem",gutter:"1rem",margin:"1.25rem","space-xl":"1.75rem","space-sm":"0.5rem","space-md":"0.75rem","space-lg":"1.25rem"},fontFamily:{"headline-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"]},fontSize:{"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-sm":["11px",{lineHeight:"16px",fontWeight:"400"}],"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",fontWeight:"600"}],"body-md":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"body-lg":["15px",{lineHeight:"22px",fontWeight:"500"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-gutter flex items-center gap-space-sm bg-surface-container-low"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary font-headline-md text-headline-sm shadow-sm"><span class="material-symbols-outlined text-[20px]">storefront</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-sm text-on-surface tracking-tight leading-none">MarketPOS</span><span class="font-label-sm text-label-sm text-primary uppercase tracking-wider mt-0.5">Afrique Ouest</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm pt-space-lg" data-active-classes="bg-primary-container text-on-primary font-headline-sm shadow-sm"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="poste-de-vente" href="#"><span class="material-symbols-outlined text-[20px]">point_of_sale</span><span>Poste Vente</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="tickets-et-historique" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Tickets &amp; Historique</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="cloture-de-caisse" href="#"><span class="material-symbols-outlined text-[20px]">lock_clock</span><span>Clôture de Caisse</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="clients" href="#"><span class="material-symbols-outlined text-[20px]">groups</span><span>Clients</span></a></nav></div><div class="p-space-md bg-surface-container-low mx-space-sm mb-space-md rounded-xl flex flex-col gap-space-xs"><div class="flex items-center justify-between text-on-surface-variant"><span class="font-label-sm text-label-sm uppercase tracking-wider">Format Ticket</span><span class="font-label-sm text-label-sm bg-surface-container px-1.5 py-0.5 rounded text-on-surface font-semibold">80mm</span></div><div class="flex items-center gap-space-xs text-primary font-body-sm text-body-sm"><span class="material-symbols-outlined text-[16px]">print</span><span>Imprimante Thermique OK</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-gutter flex items-center justify-between"><div class="flex items-center gap-gutter"><div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">En ligne (Sync Serveur)</span></div><div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md"><span class="material-symbols-outlined text-[18px]">desk</span><span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Caisse:</span><span class="font-label-md text-label-md text-on-surface">Caisse #02 - Plateau</span></div></div><div class="flex items-center gap-gutter"><div class="hidden xl:flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant"><span class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-on-surface">F1</span><span>Recherche</span><span class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-on-surface">F4</span><span>Encaisser</span><span class="px-1.5 py-0.5 rounded bg-surface-container font-mono text-on-surface">F8</span><span>Réimprimer</span></div><div class="flex items-center gap-space-md pl-gutter"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Awa Koné</span><span class="font-label-sm text-label-sm text-tertiary">Caissière Principale</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 w-full px-gutter min-h-screen bg-surface"><div class="flex flex-col w-full pb-12">
+<!-- Top Navigation & Action Banner -->
+<div class="w-full flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-lg">
+<div class="flex flex-wrap items-center gap-space-md">
+<a class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Retour au Poste Vente</span>
+<kbd class="ml-1 px-1.5 py-0.5 rounded bg-surface-container font-mono text-[10px] text-tertiary">Échap</kbd>
+</a>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>AVOIR CLIENT GÉNÉRÉ AVEC SUCCÈS</span>
+</div>
+<div class="flex items-center gap-space-xs text-body-md font-body-md text-tertiary">
+<span class="font-headline-sm text-headline-sm text-on-surface">#AV-2024-10-24-0041</span>
+<span class="text-outline-variant">•</span>
+<span>Réf. Ticket Origine <strong class="text-on-surface font-semibold">#0182</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface">Epson TM-T20III prête</span>
+<span class="text-tertiary text-body-sm font-body-sm">(Coupe auto)</span>
+</div>
+<div class="hidden lg:inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm">
+<span>Raccourci:</span>
+<kbd class="px-2 py-1 rounded bg-surface-container-lowest shadow-sm font-mono text-on-surface font-bold text-[11px]">Entrée / F12</kbd>
+</div>
+</div>
+</div>
+<!-- Dual-Pane Stage -->
+<div class="w-full grid grid-cols-1 xl:grid-cols-12 gap-gutter items-start">
+<!-- LEFT COLUMN: Realistic 80mm Thermal Receipt (Sticky on desktop) -->
+<div class="xl:col-span-5 flex flex-col items-center xl:sticky xl:top-20">
+<div class="w-full max-w-[390px] flex items-center justify-between px-2 mb-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">straighten</span> Aperçu réel 80mm
+        </span>
+<span class="font-label-sm text-label-sm bg-surface-container-highest px-2 py-0.5 rounded text-on-surface">Zoom: 100%</span>
+</div>
+<!-- Thermal Paper Container with Perforations -->
+<div class="relative w-full max-w-[390px] bg-white text-[#111827] shadow-[0_10px_35px_rgba(11,28,48,0.1)] rounded-sm overflow-hidden select-none font-mono">
+<!-- Top Jagged Guillotine Cut Edge -->
+<div class="w-full h-3 bg-white" style="background-image: radial-gradient(circle, #f8f9ff 3px, transparent 3.5px); background-size: 10px 10px; background-position: -5px -5px;"></div>
+<!-- Receipt Body Content -->
+<div class="px-6 py-4 text-[12px] leading-[17px]">
+<!-- Store Header -->
+<div class="text-center flex flex-col items-center">
+<div class="w-12 h-12 mb-1.5 flex items-center justify-center rounded-full bg-black text-white">
+<span class="material-symbols-outlined text-[26px]">storefront</span>
+</div>
+<h1 class="text-[15px] font-bold tracking-tight text-black leading-tight">SUPERMARCHÉ CENTRAL MARKETPOS</h1>
+<p class="text-[11px] leading-tight text-neutral-700 mt-1">Plateau - Boulevard de la République, Abidjan</p>
+<p class="text-[11px] leading-tight text-neutral-700">Tél : +225 27 20 25 30 00</p>
+<p class="text-[10px] leading-tight text-neutral-600 mt-1">RCCM : CI-ABJ-2018-B-14902 | CC : 1902847-X</p>
+<p class="text-[10px] leading-tight text-neutral-600">Régime du Réel Simplifié - DGI</p>
+</div>
+<div class="my-2.5 text-center font-bold tracking-widest text-neutral-500 text-[11px]">
+            =========================================
+          </div>
+<!-- Title Banner -->
+<div class="text-center my-1">
+<p class="text-[14px] font-black tracking-wider text-black">*** BON D'AVOIR / REÇU RETOUR ***</p>
+</div>
+<div class="my-2 text-center font-bold tracking-widest text-neutral-500 text-[11px]">
+            =========================================
+          </div>
+<!-- Metadata Grid -->
+<div class="flex flex-col gap-1 text-[11px] text-neutral-800">
+<div class="flex justify-between items-center">
+<span>N° AVOIR :</span>
+<span class="font-bold text-black">#AV-2024-10-24-0041</span>
+</div>
+<div class="flex justify-between items-center">
+<span>DATE : 24/10/2024</span>
+<span>HEURE : 21:55:12</span>
+</div>
+<div class="flex justify-between items-center">
+<span>TICKET ORIGINE :</span>
+<span class="font-bold text-black">#0182 (24/10/2024)</span>
+</div>
+<div class="flex justify-between items-center">
+<span>CAISSIÈRE : Awa Koné (CS-0418)</span>
+<span>POSTE : C01</span>
+</div>
+<div class="flex justify-between items-center">
+<span>CLIENT : M. Kouamé Adjoumani</span>
+<span class="font-semibold text-black">#FD-9942</span>
+</div>
+</div>
+<div class="my-2 text-neutral-400 overflow-hidden whitespace-nowrap text-[10px]">
+            ----------------------------------------------------------------------
+          </div>
+<!-- Returned Items -->
+<div class="text-[11px] font-bold tracking-wider text-black uppercase mb-1">
+            Détail des Articles Retournés :
+          </div>
+<div class="flex flex-col gap-2.5 text-[11px]">
+<!-- Item 1 -->
+<div class="flex flex-col">
+<div class="flex justify-between font-bold text-black">
+<span>1 x Lait Conc. Sucré B. Rouge 397g</span>
+<span>900 F</span>
+</div>
+<div class="flex justify-between text-[10px] text-neutral-600">
+<span>PU: 900 FCFA | Motif: Boîte cabossée</span>
+<span class="uppercase font-semibold">[Rebut]</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col">
+<div class="flex justify-between font-bold text-black">
+<span>0.500 kg x Pommes Golden Af. Sud</span>
+<span>1 200 F</span>
+</div>
+<div class="flex justify-between text-[10px] text-neutral-600">
+<span>PU: 2 400 F/kg | Motif: Produit abîmé</span>
+<span class="uppercase font-semibold">[Rebut]</span>
+</div>
+</div>
+</div>
+<div class="my-2 text-neutral-400 overflow-hidden whitespace-nowrap text-[10px]">
+            ----------------------------------------------------------------------
+          </div>
+<!-- Computations -->
+<div class="flex flex-col gap-1 text-[11px] text-neutral-800">
+<div class="flex justify-between">
+<span>Total Brut Articles Retournés :</span>
+<span class="font-semibold text-black">2 100 FCFA</span>
+</div>
+<div class="flex justify-between text-neutral-600">
+<span>Régularisation Remise Fid. (-5%) :</span>
+<span>-105 FCFA</span>
+</div>
+<div class="flex justify-between text-neutral-600">
+<span>Arrondi comptable caisse :</span>
+<span>+5 FCFA</span>
+</div>
+</div>
+<div class="my-2 text-center font-bold tracking-widest text-neutral-500 text-[11px]">
+            =========================================
+          </div>
+<!-- Total Callout Box (Thermal Inverted/Double Style) -->
+<div class="p-3 bg-neutral-900 text-white rounded text-center my-1 shadow-inner">
+<span class="block text-[11px] uppercase tracking-wider text-neutral-300 font-sans">Montant Net de l'Avoir</span>
+<span class="block text-[24px] font-black tracking-tight text-white my-0.5">2 000 FCFA</span>
+<span class="block text-[10px] italic text-neutral-300 font-sans">(Deux mille francs CFA)</span>
+</div>
+<div class="my-2 text-center font-bold tracking-widest text-neutral-500 text-[11px]">
+            =========================================
+          </div>
+<!-- Terms & Conditions -->
+<div class="flex flex-col gap-0.5 text-[10px] leading-[14px] text-neutral-700">
+<span class="font-bold text-black tracking-wider uppercase mb-0.5">Conditions d'Utilisation :</span>
+<div>• <strong>Valable 30 jours</strong> (Jusqu'au : <strong>23/11/2024</strong>)</div>
+<div>• Utilisable en 1 seule fois sur tout le supermarché</div>
+<div>• Présentation obligatoire du présent ticket original</div>
+<div>• Non remboursable &amp; non échangeable en espèces</div>
+</div>
+<div class="my-2 text-neutral-400 overflow-hidden whitespace-nowrap text-[10px]">
+            ----------------------------------------------------------------------
+          </div>
+<!-- Loyalty Impact -->
+<div class="flex justify-between items-center text-[11px] bg-neutral-100 p-2 rounded">
+<div>
+<span class="block text-[10px] text-neutral-600 uppercase">Impact Fidélité</span>
+<span class="font-bold text-red-600 text-[11px]">-2 points</span>
+</div>
+<div class="text-right">
+<span class="block text-[10px] text-neutral-600 uppercase">Nouveau Solde</span>
+<span class="font-bold text-black text-[12px]">1 472 pts</span>
+</div>
+</div>
+<!-- 1D Barcode Simulation (Code 128) -->
+<div class="mt-4 flex flex-col items-center">
+<div class="w-full flex items-center justify-center gap-[2px] h-12 bg-white px-2">
+<span class="w-[2px] h-full bg-black"></span>
+<span class="w-[1px] h-full bg-transparent"></span>
+<span class="w-[3px] h-full bg-black"></span>
+<span class="w-[2px] h-full bg-transparent"></span>
+<span class="w-[1px] h-full bg-black"></span>
+<span class="w-[4px] h-full bg-black"></span>
+<span class="w-[2px] h-full bg-transparent"></span>
+<span class="w-[2px] h-full bg-black"></span>
+<span class="w-[1px] h-full bg-transparent"></span>
+<span class="w-[3px] h-full bg-black"></span>
+<span class="w-[3px] h-full bg-transparent"></span>
+<span class="w-[1px] h-full bg-black"></span>
+<span class="w-[4px] h-full bg-black"></span>
+<span class="w-[2px] h-full bg-transparent"></span>
+<span class="w-[2px] h-full bg-black"></span>
+<span class="w-[1px] h-full bg-black"></span>
+<span class="w-[3px] h-full bg-transparent"></span>
+<span class="w-[2px] h-full bg-black"></span>
+<span class="w-[4px] h-full bg-black"></span>
+<span class="w-[1px] h-full bg-transparent"></span>
+<span class="w-[3px] h-full bg-black"></span>
+<span class="w-[2px] h-full bg-transparent"></span>
+<span class="w-[1px] h-full bg-black"></span>
+<span class="w-[3px] h-full bg-black"></span>
+<span class="w-[2px] h-full bg-transparent"></span>
+<span class="w-[4px] h-full bg-black"></span>
+<span class="w-[1px] h-full bg-transparent"></span>
+<span class="w-[2px] h-full bg-black"></span>
+<span class="w-[2px] h-full bg-black"></span>
+<span class="w-[3px] h-full bg-transparent"></span>
+<span class="w-[1px] h-full bg-black"></span>
+<span class="w-[3px] h-full bg-black"></span>
+<span class="w-[2px] h-full bg-transparent"></span>
+<span class="w-[2px] h-full bg-black"></span>
+</div>
+<span class="text-[11px] font-mono tracking-widest text-black mt-1">AV2024102400412000</span>
+</div>
+<!-- Fiscal QR Code & Hash -->
+<div class="mt-3 flex items-center justify-center gap-3 p-2 bg-neutral-50 rounded">
+<!-- Inline SVG QR Code simulation -->
+<svg class="w-16 h-16 shrink-0" fill="currentColor" viewbox="0 0 100 100">
+<!-- Position detection patterns -->
+<rect fill="black" height="30" width="30" x="0" y="0"></rect>
+<rect fill="white" height="20" width="20" x="5" y="5"></rect>
+<rect fill="black" height="12" width="12" x="9" y="9"></rect>
+<rect fill="black" height="30" width="30" x="70" y="0"></rect>
+<rect fill="white" height="20" width="20" x="75" y="5"></rect>
+<rect fill="black" height="12" width="12" x="79" y="9"></rect>
+<rect fill="black" height="30" width="30" x="0" y="70"></rect>
+<rect fill="white" height="20" width="20" x="5" y="75"></rect>
+<rect fill="black" height="12" width="12" x="9" y="79"></rect>
+<!-- Data dots pattern -->
+<rect height="6" width="6" x="36" y="6"></rect>
+<rect height="6" width="8" x="48" y="12"></rect>
+<rect height="8" width="8" x="38" y="24"></rect>
+<rect height="6" width="6" x="52" y="28"></rect>
+<rect height="8" width="8" x="12" y="38"></rect>
+<rect height="6" width="6" x="26" y="42"></rect>
+<rect height="14" width="14" x="42" y="42"></rect>
+<rect height="8" width="6" x="62" y="40"></rect>
+<rect height="6" width="8" x="76" y="38"></rect>
+<rect height="8" width="8" x="88" y="48"></rect>
+<rect height="6" width="6" x="36" y="64"></rect>
+<rect height="8" width="8" x="48" y="70"></rect>
+<rect height="6" width="8" x="64" y="66"></rect>
+<rect height="8" width="6" x="78" y="76"></rect>
+<rect height="8" width="8" x="88" y="88"></rect>
+<rect height="6" width="10" x="42" y="86"></rect>
+</svg>
+<div class="flex flex-col text-[10px] leading-tight text-neutral-600">
+<span class="font-bold text-black uppercase">Contrôle Fiscal DGI-CI</span>
+<span>Régularisation Avoir #41</span>
+<span class="font-mono text-[9px] text-neutral-500 mt-1 break-all">SHA-256 : d8f2...71e4</span>
+<span class="text-[9px] text-green-700 font-semibold mt-0.5">● Signature électronique OK</span>
+</div>
+</div>
+<!-- Signatures -->
+<div class="mt-4 pt-2 flex justify-between text-[10px] text-neutral-600">
+<div>
+<span>Visa Caissière :</span>
+<div class="font-handwriting font-semibold text-black mt-1">Awa K.</div>
+</div>
+<div class="text-right">
+<span>Signature Client :</span>
+<div class="mt-3 text-neutral-400">........................</div>
+</div>
+</div>
+<!-- Footer Notice -->
+<div class="mt-4 pt-2 text-center text-[10px] text-neutral-500">
+<p>Conservez précieusement ce ticket pour vos prochains achats chez MarketPOS !</p>
+<p class="text-[9px] text-neutral-400 mt-1">Imprimé sur papier certifié FSC sans bisphénol</p>
+</div>
+</div>
+<!-- Realistic Thermal Guillotine Bottom Cut -->
+<div class="w-full h-4 bg-white" style="background-image: radial-gradient(circle, #f8f9ff 3.5px, transparent 4px); background-size: 10px 10px; background-position: -5px 6px;"></div>
+</div>
+<!-- Quick Zoom / Download Bar Under Ticket -->
+<div class="flex items-center gap-space-sm mt-3 text-tertiary font-label-sm text-label-sm">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest shadow-sm hover:text-on-surface flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">zoom_in</span> Agrandir
+        </button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest shadow-sm hover:text-on-surface flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">download</span> SVG Brut
+        </button>
+</div>
+</div>
+<!-- RIGHT COLUMN: POS Action Console & Thermal Hardware Management -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- 1. Main Hardware Print Terminal Card -->
+<div class="w-full bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">print</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Imprimante Thermique Ticket</h2>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                  Connectée (USB001)
+                </span>
+</div>
+<p class="text-body-sm font-body-sm text-tertiary">Spooler d'impression directe ESC/POS pour reçus et avoirs de caisse</p>
+</div>
+</div>
+</div>
+<!-- Printer Selector Options -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<!-- Active Epson -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-1 cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Epson TM-T20III</span>
+<span class="w-4 h-4 rounded-full bg-primary-container flex items-center justify-center text-on-primary text-[12px]">✓</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">80mm • Coupe auto</span>
+<div class="flex items-center justify-between text-[10px] text-tertiary mt-1">
+<span>Papier therm. OK</span>
+<span class="font-semibold text-on-surface">91%</span>
+</div>
+</div>
+<!-- Star TSP143 -->
+<div class="p-space-md rounded-lg bg-surface hover:bg-surface-container cursor-pointer transition-colors flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Star TSP143III</span>
+<span class="w-3.5 h-3.5 rounded-full bg-surface-container"></span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Réseau LAN (192.168.1.84)</span>
+<span class="text-[10px] text-tertiary mt-1">En veille</span>
+</div>
+<!-- PDF Virtual Spooler -->
+<div class="p-space-md rounded-lg bg-surface hover:bg-surface-container cursor-pointer transition-colors flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Spooler Virtuel</span>
+<span class="w-3.5 h-3.5 rounded-full bg-surface-container"></span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Export PDF Direct</span>
+<span class="text-[10px] text-tertiary mt-1">Format A4 / 80mm</span>
+</div>
+</div>
+<!-- Printing Checkbox Options & Copies -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pt-space-xs">
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary-container" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Imprimer souche comptable (exemplaire caisse)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary-container" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Logo supermarché en tête</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary-container" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Ouvrir tiroir-caisse pour classement reçu</span>
+</label>
+</div>
+<div class="flex flex-col gap-1.5 self-start md:self-auto bg-surface-container-low p-2.5 rounded-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Nombre d'exemplaires</span>
+<div class="inline-flex rounded-lg overflow-hidden bg-surface-container p-0.5">
+<button class="px-3 py-1 text-on-surface font-label-md text-label-md rounded" type="button">1</button>
+<button class="px-3 py-1 bg-primary-container text-on-primary font-headline-sm text-headline-sm shadow-sm rounded" type="button">2 (Actif)</button>
+<button class="px-3 py-1 text-on-surface font-label-md text-label-md rounded" type="button">3</button>
+</div>
+</div>
+</div>
+<!-- BIG PRIMARY PRINT BUTTON -->
+<button class="w-full h-14 bg-primary-container hover:bg-[#2e952f] text-on-primary rounded-xl font-headline-md text-headline-md shadow-[0_4px_16px_rgba(52,168,53,0.3)] transition-all flex items-center justify-center gap-3 active:scale-[0.99]" id="btnPrintTicket" type="button">
+<span class="material-symbols-outlined text-[28px] text-on-primary">print</span>
+<span class="text-on-primary tracking-wide">Imprimer l'Avoir [F12 / Entrée]</span>
+<span class="px-2.5 py-0.5 rounded-full bg-white/20 text-on-primary font-label-sm text-label-sm uppercase tracking-wider">
+            2 Copies (Client + Caisse)
+          </span>
+</button>
+</div>
+<!-- 2. Dematerialization & Digital Dispatch Card -->
+<div class="w-full bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined text-[24px]">send_to_mobile</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Envoi Dématérialisé au Client</h2>
+<p class="text-body-sm font-body-sm text-tertiary">M. Kouamé Adjoumani (Fidélité #FD-9942)</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">Reçu Écologique</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- WhatsApp Channel -->
+<div class="flex flex-col gap-2 p-space-md rounded-xl bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[18px]">chat</span>
+<span>WhatsApp Direct</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Instantané</span>
+</div>
+<div class="flex items-center gap-space-xs mt-1">
+<input class="w-full h-10 px-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md outline-none focus:bg-white" type="text" value="+225 07 58 42 19 30"/>
+<button class="h-10 px-4 rounded-lg bg-primary-container hover:bg-[#2e952f] text-on-primary font-label-md text-label-md flex items-center gap-1.5 shrink-0 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-on-primary">send</span>
+<span class="text-on-primary">Envoyer</span>
+</button>
+</div>
+<span class="text-[11px] text-tertiary">Inclut le QR code scannable en caisse à l'achat</span>
+</div>
+<!-- SMS Channel -->
+<div class="flex flex-col gap-2 p-space-md rounded-xl bg-surface-container-low">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-secondary-container text-[18px]">sms</span>
+<span>SMS Sécurisé</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">Routeur Orange CI</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest text-[11px] font-mono leading-tight text-on-surface-variant line-clamp-2">
+              "MarketPOS Plateau : M. Kouamé, votre bon d'avoir de 2 000 FCFA (#AV-0041) valable jusqu'au 23/11/2024 est disponible : https://mpos.ci/av/0041"
+            </div>
+<div class="flex justify-end mt-1">
+<button class="h-9 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">cell_tower</span>
+<span>Transmettre par SMS</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Download Certified PDF -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-2">
+<div class="flex items-center gap-2 text-tertiary text-body-sm font-body-sm">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Document numérique fiscalement signé avec horodatage DGI</span>
+</div>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Télécharger PDF Certifié (80mm &amp; A4)</span>
+</button>
+</div>
+</div>
+<!-- 3. POS Quick Actions Workflow Card -->
+<div class="w-full bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[24px]">point_of_sale</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Enchaînement Opérations Caisse</h2>
+<p class="text-body-sm font-body-sm text-tertiary">Poursuivre la session ou réutiliser l'avoir immédiatement</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<!-- Action: Apply immediately to new sale -->
+<button class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors text-left flex items-start gap-space-sm" type="button">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Déduire sur Nouvelle Vente</span>
+<span class="font-body-sm text-body-sm text-tertiary">Charge immédiatement les 2 000 FCFA comme moyen de paiement au panier actuel</span>
+</div>
+</button>
+<!-- Action: Return to original ticket #0182 -->
+<button class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors text-left flex items-start gap-space-sm" type="button">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Retour au Ticket #0182</span>
+<span class="font-body-sm text-body-sm text-tertiary">Consulter le ticket d'origine de la vente initiale avec statut régularisé</span>
+</div>
+</button>
+<!-- Action: Duplicate cashier copy -->
+<button class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors text-left flex items-start gap-space-sm" type="button">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Duplicata Souche Caisse</span>
+<span class="font-body-sm text-body-sm text-tertiary">Réimpression directe de l'exemplaire comptable pour le classeur de caisse</span>
+</div>
+</button>
+<!-- Action: Close & New Sale -->
+<a class="p-space-md rounded-xl bg-secondary-container hover:bg-[#e66c00] text-on-secondary transition-colors text-left flex items-start gap-space-sm" href="#">
+<div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-white shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">fast_forward</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-white">Clôturer &amp; Nouvelle Vente</span>
+<span class="font-body-sm text-body-sm text-white/90">Terminer le retour client et réinitialiser le panier caisse [Échap]</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Keyboard Shortcuts handler for POS efficiency
+    document.addEventListener('keydown', function(event) {
+      // Enter or F12 -> Print receipt
+      if (event.key === 'F12' || (event.key === 'Enter' && !event.target.matches('input, textarea'))) {
+        event.preventDefault();
+        const printBtn = document.getElementById('btnPrintTicket');
+        if (printBtn) {
+          printBtn.classList.add('scale-[0.98]');
+          setTimeout(() => printBtn.classList.remove('scale-[0.98]'), 150);
+          window.print();
+        }
+      }
+      // Escape -> Return to POS
+      if (event.key === 'Escape') {
+        const backLink = document.querySelector('a[data-path="poste-de-vente"]');
+        if (backLink) backLink.click();
+      }
+    });
+
+    // Interactive Print button feedback
+    const btnPrint = document.getElementById('btnPrintTicket');
+    if (btnPrint) {
+      btnPrint.addEventListener('click', function() {
+        window.print();
+      });
+    }
+  })();
+</script></main></div></body></html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#bfc6dc","on-error":"#ffffff","surface-tint":"#006e11","primary-fixed":"#88fc7d","surface-container-low":"#eff4ff","secondary-fixed":"#ffdbc9","inverse-on-surface":"#eaf1ff","inverse-surface":"#213145","on-secondary-fixed":"#321200","on-surface":"#0b1c30","on-secondary-fixed-variant":"#753400","surface-variant":"#d3e4fe","on-error-container":"#93000a","surface-bright":"#f8f9ff","on-primary-container":"#003404","inverse-primary":"#6cdf64","outline-variant":"#becab6","primary-container":"#34a835","primary":"#006e11","surface-container":"#e5eeff","tertiary":"#565e71","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","on-tertiary-container":"#242c3d","error-container":"#ffdad6","tertiary-container":"#8b93a8","on-surface-variant":"#3f4a3b","on-secondary":"#ffffff","primary-fixed-dim":"#6cdf64","on-primary-fixed-variant":"#00530a","surface-container-highest":"#d3e4fe","error":"#ba1a1a","on-secondary-container":"#5a2600","tertiary-fixed":"#dbe2f9","surface":"#f8f9ff","surface-container-high":"#dce9ff","on-tertiary-fixed":"#141b2c","background":"#f8f9ff","on-tertiary-fixed-variant":"#3f4759","secondary-fixed-dim":"#ffb68c","secondary-container":"#fd7700","surface-container-lowest":"#ffffff","secondary":"#9a4600","on-primary":"#ffffff","on-background":"#0b1c30","outline":"#6e7b69","on-primary-fixed":"#002202"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"0.75rem","space-xl":"1.75rem","margin":"1.25rem","space-xs":"0.25rem","gutter":"1rem","space-sm":"0.5rem","space-lg":"1.25rem"},"fontFamily":{"headline-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},"fontSize":{"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["11px",{"lineHeight":"16px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-[0_4px_14px_rgba(52,168,53,0.28)]"><span class="material-symbols-outlined text-[20px]">local_mall</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-none tracking-tight">MarketPOS</span><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase mt-0.5">Plateau • Abidjan</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Navigation Opérationnelle</div><nav class="mt-space-xs flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-[0_4px_14px_rgba(52,168,53,0.28)]"><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="tableau-de-bord" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Tableau de Bord</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="caisse-ventes" href="#"><span class="material-symbols-outlined text-[20px]">point_of_sale</span><span>Caisse &amp; Ventes</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="stocks-inventaire" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Stocks &amp; Inventaire</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="receptions-fournisseurs" href="#"><span class="material-symbols-outlined text-[20px]">conveyor_belt</span><span>Réceptions &amp; Fournisseurs</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="tarifs-etiquettes" href="#"><span class="material-symbols-outlined text-[20px]">sell</span><span>Tarifs &amp; Étiquettes</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="rapports-compta" href="#"><span class="material-symbols-outlined text-[20px]">finance</span><span>Rapports &amp; Compta</span></a></nav></div></div><div class="p-space-md flex flex-col gap-space-xs"><div class="px-space-sm font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Système</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg"><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="parametres" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Paramètres</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="aide-support" href="#"><span class="material-symbols-outlined text-[20px]">help_center</span><span>Aide &amp; Support</span></a></nav><div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px]">verified</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface">MarketPOS v4.2 Pro</span><span class="font-body-sm text-body-sm text-on-surface-variant">Connecté Serveur Abidjan</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm px-space-md py-1.5 rounded-full bg-surface-container text-on-surface"><span class="material-symbols-outlined text-primary text-[18px]">storefront</span><span class="font-label-md text-label-md font-semibold">Supermarché Central</span><span class="text-outline-variant font-label-sm">•</span><span class="font-label-sm text-label-sm text-on-surface-variant">Quai Réception</span><span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm font-semibold text-primary">En direct</span></div></div><div class="flex-1 max-w-md mx-space-lg"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full h-9 pl-9 pr-14 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" placeholder="Rechercher article, lot, code-barres, BL..." type="text"/><div class="absolute right-2 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Ctrl+K</div></div></div><div class="flex items-center gap-space-md"><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container"></span></button><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">qr_code_scanner</span></button><div class="h-6 w-px bg-surface-container-highest"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-md text-label-md text-on-surface leading-tight">K. N'Dri</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Resp. Stock &amp; Réceptions</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg flex flex-col gap-space-lg">
+<!-- Section 1: Header / Breadcrumbs & Live Summary -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-tertiary">
+<span class="hover:text-primary transition-colors cursor-pointer">Tarifs &amp; Étiquettes</span>
+<span class="text-tertiary-container">/</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Matériel &amp; IoT</span>
+<span class="text-tertiary-container">/</span>
+<span class="text-on-surface font-semibold">Supervision du Parc Balises EEG (Supermarché Central Plateau - Abidjan)</span>
+</div>
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Supervision &amp; Monitoring du Parc EEG e-Paper</h1>
+<span class="px-space-sm py-0.5 rounded-full bg-primary-container/15 text-primary font-label-sm text-label-sm font-bold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+              1 420 Balises Connectées
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+            Supervision radio Sub-GHz 868.3 MHz en temps réel, santé des piles lithium CR2450, état des 4 passerelles Gateway et détection proactive des pannes d'affichage en rayon.
+          </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="h-11 px-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:bg-surface-container text-on-surface font-label-lg text-label-lg flex items-center gap-space-xs transition-all">
+<span class="material-symbols-outlined text-[18px] text-tertiary">picture_as_pdf</span>
+<span>Exporter Rapport (PDF/CSV)</span>
+</button>
+<button class="h-11 px-space-md rounded-xl bg-surface-container-high hover:bg-surface-dim text-on-surface font-label-lg text-label-lg flex items-center gap-space-xs transition-all" onclick="flashAllLeds()">
+<span class="material-symbols-outlined text-[18px] text-secondary-container">highlight</span>
+<span>Test Clignotement LEDs <kbd class="ml-1 text-[10px] bg-surface px-1.5 py-0.5 rounded text-tertiary">F8</kbd></span>
+</button>
+<button class="h-11 px-space-lg rounded-xl bg-primary-container hover:bg-primary shadow-[0_4px_14px_rgba(52,168,53,0.28)] text-on-primary font-label-lg text-label-lg flex items-center gap-space-xs transition-all">
+<span class="material-symbols-outlined text-[20px] text-on-primary">add_circle</span>
+<span class="text-on-primary">+ Appairer une Nouvelle Balise</span>
+<kbd class="ml-1.5 text-[10px] bg-primary-container/40 text-on-primary px-1.5 py-0.5 rounded">F9</kbd>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 2: Top KPI Overview Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Parc Total Déployé</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+</div>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface">1 420</span>
+<span class="font-label-md text-label-md text-primary font-semibold">98.6%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Actives sur 24 rayons opérationnels</p>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 98.6%"></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Passerelles Radio (Gateways)</span>
+<div class="w-8 h-8 rounded-lg bg-primary-container/15 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">router</span>
+</div>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface">4 <span class="text-tertiary text-base font-normal">/ 4</span></span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-primary-container/15 text-primary">100% UP</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Latence moyenne radio : <span class="font-semibold text-on-surface">12 ms</span></p>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-label-sm text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span>Plateau, Central, Frais, Caisses</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Batteries Faibles (&lt; 15%)</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">battery_alert</span>
+</div>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-secondary">18</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">À changer sous 7j</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">99.1% autonomie nominale globale</p>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 14%"></div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Signal Dégradé / Pannes</span>
+<div class="w-8 h-8 rounded-lg bg-error-container/50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">wifi_tethering_error</span>
+</div>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-error">5</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hors portée / timeouts</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Taux de succès RF : <span class="font-semibold text-primary">99.65%</span></p>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm text-error">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>1 non joignable &gt; 1h</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Dernière Synchronisation</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</div>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">Il y a 4 min</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Prochain cycle auto : 11 min</p>
+</div>
+<button class="w-full py-1 rounded bg-surface-container hover:bg-surface-dim text-on-surface font-label-sm text-label-sm transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+<span>Forcer Sync Globale</span>
+</button>
+</div>
+</div>
+<!-- Section 3: Toolbar & Multi-criteria Filtering -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<!-- Status Tabs -->
+<div class="flex items-center gap-1 p-1 bg-surface-container-low rounded-xl">
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-sm transition-all">
+            Toutes (1 420)
+          </button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all">
+            Opérationnelles (1 397)
+          </button>
+<button class="px-space-md py-1.5 rounded-lg text-secondary font-label-md text-label-md flex items-center gap-1 hover:bg-surface-container transition-all">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+            Batterie Faible (18)
+          </button>
+<button class="px-space-md py-1.5 rounded-lg text-error font-label-md text-label-md flex items-center gap-1 hover:bg-surface-container transition-all">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+            Signal / Hors Ligne (5)
+          </button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all">
+            En Attente (0)
+          </button>
+</div>
+<!-- View mode toggle -->
+<div class="flex items-center gap-space-xs">
+<button class="h-9 px-space-md rounded-lg bg-surface-container text-on-surface font-label-md text-label-md flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">table_rows</span>
+<span>Vue Tableau</span>
+</button>
+<button class="h-9 px-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">map</span>
+<span>Plan Magasin RF</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm pt-space-xs">
+<!-- Search bar -->
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full h-10 pl-9 pr-14 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" placeholder="Rechercher UID (ex: EEG-A14), EAN, libellé article, gondole..." type="text"/>
+<div class="absolute right-2.5 top-2.5 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Ctrl+K</div>
+</div>
+<!-- Department Filter -->
+<div class="md:col-span-3">
+<div class="relative">
+<select class="w-full h-10 px-3 pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none focus:ring-2 focus:ring-primary-container appearance-none cursor-pointer">
+<option>Tous les Rayons (Primeur, Frais, Épicerie...)</option>
+<option>Primeurs &amp; Fruits Locaux</option>
+<option>Poissonnerie &amp; Produits Frais</option>
+<option>Crèmerie &amp; Surgelés</option>
+<option>Épicerie Sucrée &amp; Biscuiterie</option>
+<option>Boissons &amp; Eaux Minérales</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Format Model Filter -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full h-10 px-3 pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none focus:ring-2 focus:ring-primary-container appearance-none cursor-pointer">
+<option>Tous Formats e-Paper</option>
+<option>2.1" Standard (Petits conditionnements)</option>
+<option>2.9" Promo Flash (Avec bandeau jaune/rouge)</option>
+<option>4.2" Tête de Gondole / Frais</option>
+<option>7.5" Fruits &amp; Légumes / VRAC</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 pointer-events-none text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Quick filter battery/signal -->
+<div class="md:col-span-2 flex items-center gap-space-xs">
+<button class="w-full h-10 rounded-lg bg-surface-container hover:bg-surface-dim text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Filtres Avancés</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 4: Main Master-Detail Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Column: Primary Data Table (65% -> col-span-8) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">Étiquettes Électroniques en Surveillance Directe</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Affichage 1 à 6 sur 1 420</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:text-on-surface" title="Rafraîchir les données">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:text-on-surface" title="Colonnes visibles">
+<span class="material-symbols-outlined text-[18px]">view_column</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-lowest text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
+<th class="px-space-md py-space-sm">Balise UID &amp; Format</th>
+<th class="px-space-md py-space-sm">Article &amp; Code PLU</th>
+<th class="px-space-md py-space-sm">Emplacement</th>
+<th class="px-space-md py-space-sm">Gateway / RSSI</th>
+<th class="px-space-md py-space-sm">Batterie</th>
+<th class="px-space-md py-space-sm">Affichage / Statut</th>
+<th class="px-space-md py-space-sm text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-md text-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-primary-container/15 text-primary flex items-center justify-center font-bold text-xs">
+                        4.2
+                      </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">EEG-A14-9021</span>
+<span class="font-body-sm text-body-sm text-tertiary">3-Couleurs (N/B/R)</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Mangues Kent Fraîches Odienné</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">PLU #4012 • 1 850 FCFA/kg</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                      Gondole Primeur #03 Face A
+                    </span>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">wifi</span>
+<span class="font-label-sm text-label-sm font-semibold">98% (-52 dBm)</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Quai Plateau #01</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 98%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">98%</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/15 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                      En ligne OK (24°C)
+                    </span>
+</td>
+<td class="px-space-md py-3.5 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary flex items-center justify-center text-on-surface-variant transition-colors" onclick="pingSingle('EEG-A14-9021')" title="Clignoter LED verte">
+<span class="material-symbols-outlined text-[16px]">flare</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Forcer MàJ Radio">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Détails techniques">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-surface-container text-on-surface flex items-center justify-center font-bold text-xs">
+                        7.5
+                      </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">EEG-A15-9034</span>
+<span class="font-body-sm text-body-sm text-tertiary">Grand Format Vrac</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Ananas Pain de Sucre Bonoua</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">PLU #4028 • 950 FCFA/pièce</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                      Tête Gondole Primeur #01
+                    </span>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">wifi</span>
+<span class="font-label-sm text-label-sm font-semibold">95% (-54 dBm)</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Quai Plateau #01</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 100%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">100%</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/15 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                      En ligne OK (23°C)
+                    </span>
+</td>
+<td class="px-space-md py-3.5 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary flex items-center justify-center text-on-surface-variant transition-colors" onclick="pingSingle('EEG-A15-9034')" title="Clignoter LED verte">
+<span class="material-symbols-outlined text-[16px]">flare</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Forcer MàJ Radio">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Détails techniques">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Signal Faible Warning -->
+<tr class="hover:bg-surface-container-low transition-colors bg-secondary-container/5">
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-secondary-fixed/50 text-secondary flex items-center justify-center font-bold text-xs">
+                        2.9
+                      </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">EEG-F03-2104</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Bandeau Promo Écran</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Filet de Capitaine Frais Pêche</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">PLU #5102 • 7 400 FCFA/kg</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                      Banc Poissonnerie - Bac 02
+                    </span>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary-container">wifi_2_bar</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary-container">42% (-86 dBm)</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Rayon Frais #03</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 88%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">88%</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                      Signal Atténué (Cold Box)
+                    </span>
+</td>
+<td class="px-space-md py-3.5 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary flex items-center justify-center text-on-surface-variant transition-colors" onclick="pingSingle('EEG-F03-2104')" title="Clignoter LED verte">
+<span class="material-symbols-outlined text-[16px]">flare</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-secondary-container transition-colors" title="Forcer Test RF">
+<span class="material-symbols-outlined text-[16px]">network_check</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Détails techniques">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Critical Battery Warning -->
+<tr class="hover:bg-surface-container-low transition-colors bg-error-container/10">
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-error-container text-error flex items-center justify-center font-bold text-xs">
+                        2.1
+                      </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">EEG-B08-4419</span>
+<span class="font-body-sm text-body-sm text-error font-medium">Pile CR2450 requise</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Lait Concentré Sucré Bonnet Rouge 410g</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">EAN 618110023401 • 750 FCFA</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                      Allée Crèmerie - Rayon 04 Niveau 3
+                    </span>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">wifi</span>
+<span class="font-label-sm text-label-sm font-semibold">94% (-56 dBm)</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Allée Centrale #02</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-error h-full rounded-full animate-pulse" style="width: 14%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-error font-bold">14% ⚠️</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+                      Batterie Critique (&lt; 7j)
+                    </span>
+</td>
+<td class="px-space-md py-3.5 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-7 h-7 rounded bg-error/10 hover:bg-error hover:text-white flex items-center justify-center text-error transition-colors" onclick="pingSingle('EEG-B08-4419')" title="Localiser par clignotement">
+<span class="material-symbols-outlined text-[16px]">fmd_good</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Ajouter à la tournée de remplacement">
+<span class="material-symbols-outlined text-[16px]">playlist_add</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Détails techniques">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Normal -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-surface-container text-on-surface flex items-center justify-center font-bold text-xs">
+                        2.1
+                      </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">EEG-C12-8802</span>
+<span class="font-body-sm text-body-sm text-tertiary">3-Couleurs Standard</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Sablés Pur Beurre Artisanal Ivoire 250g</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">EAN 618200118831 • 1 200 FCFA</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                      Biscuiterie - Gondole 07 Face B
+                    </span>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">wifi</span>
+<span class="font-label-sm text-label-sm font-semibold">91% (-58 dBm)</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Épicerie/Caisses #04</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<div class="w-12 bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 92%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">92%</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/15 text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                      En ligne OK (25°C)
+                    </span>
+</td>
+<td class="px-space-md py-3.5 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary flex items-center justify-center text-on-surface-variant transition-colors" onclick="pingSingle('EEG-C12-8802')" title="Clignoter LED verte">
+<span class="material-symbols-outlined text-[16px]">flare</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Forcer MàJ Radio">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+<button class="w-7 h-7 rounded bg-surface-container-low hover:bg-surface-dim flex items-center justify-center text-on-surface-variant transition-colors" title="Détails techniques">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Completely Offline / Timeout -->
+<tr class="hover:bg-surface-container-low transition-colors bg-error-container/15">
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-surface-dim text-error flex items-center justify-center font-bold text-xs">
+                        2.1
+                      </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">EEG-E09-1029</span>
+<span class="font-body-sm text-body-sm text-error font-bold">Hors Portée RF</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Huile Végétale Raffinée Dinor 1L</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">EAN 618110000102 • 1 350 FCFA</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                      Épicerie Huiles - Gondole 11 Face A
+                    </span>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 text-error">
+<span class="material-symbols-outlined text-[16px]">wifi_off</span>
+<span class="font-label-sm text-label-sm font-bold">Inaccessible (-98 dBm)</span>
+</div>
+<span class="font-body-sm text-body-sm text-tertiary">Allée Centrale #02</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-tertiary">Inconnu (?)</span>
+</div>
+</td>
+<td class="px-space-md py-3.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error text-white font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[12px] text-white">error</span>
+                      Déconnecté depuis 1h20
+                    </span>
+</td>
+<td class="px-space-md py-3.5 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="h-7 px-2 rounded bg-error text-white hover:bg-on-error-container flex items-center gap-1 text-[11px] font-semibold transition-colors" title="Forcer diagnostic radio">
+<span class="material-symbols-outlined text-[14px]">troubleshoot</span>
+<span>Diagnostiquer</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="px-space-lg py-space-sm bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm text-body-sm text-on-surface-variant">
+<span>Afficher</span>
+<select class="h-7 px-2 rounded bg-surface-container-low text-on-surface font-label-sm text-label-sm focus:outline-none">
+<option>25 lignes</option>
+<option selected="">50 lignes</option>
+<option>100 lignes</option>
+</select>
+<span>sur 1 420 balises</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-low text-tertiary hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-bold">1</button>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label-sm text-label-sm">2</button>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label-sm text-label-sm">3</button>
+<span class="px-1 text-tertiary">...</span>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-low font-label-sm text-label-sm">29</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Embedded Visual Asset: Micro Spectrum Radio Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">equalizer</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Spectre Radio RF Sub-GHz (868.0 - 868.6 MHz)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Occupation du canal et bruit de fond dans l'hypermarché de Plateau</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/15 text-primary font-label-sm text-label-sm font-semibold">
+              Bruit RF Faible : -104 dBm
+            </span>
+</div>
+<!-- Mini Inline SVG Chart for RF activity -->
+<div class="w-full h-16 bg-surface-container-low rounded-lg p-2 flex items-end justify-between gap-1 overflow-hidden">
+<div class="w-full h-8 bg-primary/20 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-10 bg-primary/30 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-6 bg-primary/15 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-12 bg-primary/40 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-14 bg-primary-container rounded-t hover:bg-primary transition-all"></div>
+<div class="w-full h-11 bg-primary/30 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-7 bg-primary/20 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-4 bg-primary/10 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-9 bg-primary/25 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-13 bg-primary-container rounded-t hover:bg-primary transition-all"></div>
+<div class="w-full h-8 bg-primary/20 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-5 bg-primary/15 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-11 bg-primary/30 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-7 bg-primary/20 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-10 bg-primary/25 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-6 bg-primary/15 rounded-t hover:bg-primary-container transition-all"></div>
+<div class="w-full h-4 bg-primary/10 rounded-t hover:bg-primary-container transition-all"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-tertiary px-1">
+<span>Canal 01 (868.10 MHz)</span>
+<span>Canal 04 Principal (868.30 MHz)</span>
+<span>Canal 08 Balises Têtes (868.55 MHz)</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Diagnostics, Gateways & Action Center (35% -> col-span-4) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Card 1: Gateways Realtime Topology -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Topologie des 4 Passerelles</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Firmware v3.4.1</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Passerelles PoE ethernet industrielles couvrant l'ensemble des 1 420 balises du magasin.</p>
+<div class="flex flex-col gap-space-xs mt-1">
+<!-- Gateway 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">GW-01 • Quai Plateau</span>
+<span class="font-body-sm text-body-sm text-tertiary">IP: 192.168.10.201 • Latence: 10ms</span>
+</div>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm font-bold text-primary">340 Balises</span>
+<span class="text-[10px] text-on-surface-variant">Perte: 0.01%</span>
+</div>
+</div>
+<!-- Gateway 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">GW-02 • Allée Centrale</span>
+<span class="font-body-sm text-body-sm text-tertiary">IP: 192.168.10.202 • Latence: 12ms</span>
+</div>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm font-bold text-primary">410 Balises</span>
+<span class="text-[10px] text-on-surface-variant">Perte: 0.02%</span>
+</div>
+</div>
+<!-- Gateway 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">GW-03 • Rayon Frais</span>
+<span class="font-body-sm text-body-sm text-tertiary">IP: 192.168.10.203 • Latence: 14ms</span>
+</div>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm font-bold text-primary">315 Balises</span>
+<span class="text-[10px] text-on-surface-variant">Perte: 0.04%</span>
+</div>
+</div>
+<!-- Gateway 4 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">GW-04 • Épicerie &amp; Caisses</span>
+<span class="font-body-sm text-body-sm text-tertiary">IP: 192.168.10.204 • Latence: 9ms</span>
+</div>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm font-bold text-primary">355 Balises</span>
+<span class="text-[10px] text-on-surface-variant">Perte: 0.00%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Field Maintenance & Intervention Assistant -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">assignment_late</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Actions Terrain Recommandées</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">
+              3 Tâches
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Feuille de route pour l'agent de maintenance et le chef de rayon du Plateau aujourd'hui.
+          </p>
+<div class="flex flex-col gap-2">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<input class="mt-1 accent-primary rounded cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Remplacer 2 piles lithium CR2450</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Crèmerie (Lait Bonnet Rouge EEG-B08) &amp; Surgelés</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium mt-0.5">Échéance : Aujourd'hui avant 18h00</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<input class="mt-1 accent-primary rounded cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Repositionner balise Huile Dinor</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">EEG-E09 hors portée : obstruction par gondole métallique</span>
+<span class="font-label-sm text-label-sm text-error font-medium mt-0.5">Priorité Haute</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-sm">
+<input class="mt-1 accent-primary rounded cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Vérifier étanchéité banc poissonnerie</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Vérification condensation boîtier 2.9" EEG-F03</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-1 h-10 rounded-xl bg-surface-container hover:bg-surface-dim text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">download</span>
+<span>Imprimer Feuille de Tournée (PDF)</span>
+</button>
+</div>
+<!-- Card 3: Interactive Visual LED Locator & Calibration -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">lightbulb_circle</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Recherche Visuelle en Magasin</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Déclenchez le clignotement ultra-lumineux des LEDs des étiquettes ciblées pour les repérer instantanément dans les rayons de 4 mètres de haut.
+          </p>
+<div class="grid grid-cols-2 gap-space-xs mt-1">
+<button class="py-2.5 px-3 rounded-lg bg-secondary-fixed/40 hover:bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm flex flex-col items-center justify-center gap-1 transition-all" onclick="flashWarningTags()">
+<span class="material-symbols-outlined text-secondary text-[20px]">battery_alert</span>
+<span class="font-bold">Clignoter Piles Faibles (18)</span>
+</button>
+<button class="py-2.5 px-3 rounded-lg bg-error-container/40 hover:bg-error-container text-on-error-container font-label-sm text-label-sm flex flex-col items-center justify-center gap-1 transition-all" onclick="flashOfflineTags()">
+<span class="material-symbols-outlined text-error text-[20px]">wifi_off</span>
+<span class="font-bold">Clignoter Pannes Signal (5)</span>
+</button>
+</div>
+<div class="hidden p-space-sm rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center gap-2" id="statusToast">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span id="toastMsg">Ordre de clignotement diffusé aux passerelles Sub-GHz.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function flashAllLeds() {
+    showNotification("Signal broadcast envoyé: Les 1 420 balises clignotent pendant 15 secondes.");
+  }
+  function flashWarningTags() {
+    showNotification("Ordre envoyé : 18 balises à batterie faible clignotent en ambre.");
+  }
+  function flashOfflineTags() {
+    showNotification("Sondage radio lancé : tentative de réveil des 5 balises en alerte.");
+  }
+  function pingSingle(uid) {
+    showNotification("Ping envoyé à la balise " + uid + " : LED verte activée.");
+  }
+  function showNotification(msg) {
+    const toast = document.getElementById("statusToast");
+    const label = document.getElementById("toastMsg");
+    if (toast && label) {
+      label.textContent = msg;
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 4000);
+    }
+  }
+</script></main></div></body></html>

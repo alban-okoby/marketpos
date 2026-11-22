@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {"darkMode":"class","theme":{"extend":{"colors":{"secondary-container":"#fd7700","on-error-container":"#93000a","surface-container-high":"#dce9ff","secondary-fixed-dim":"#ffb68c","on-surface-variant":"#3f4a3b","inverse-surface":"#213145","outline":"#6e7b69","surface-container":"#e5eeff","surface-tint":"#006e11","on-tertiary-fixed":"#141b2c","on-tertiary":"#ffffff","primary-fixed-dim":"#6cdf64","tertiary-fixed-dim":"#bfc6dc","primary-container":"#34a835","on-primary-fixed":"#002202","surface-container-low":"#eff4ff","tertiary":"#565e71","on-surface":"#0b1c30","on-secondary-container":"#5a2600","on-background":"#0b1c30","error":"#ba1a1a","on-secondary":"#ffffff","surface":"#f8f9ff","on-primary-fixed-variant":"#00530a","surface-container-lowest":"#ffffff","outline-variant":"#becab6","surface-bright":"#f8f9ff","on-secondary-fixed":"#321200","surface-container-highest":"#d3e4fe","on-secondary-fixed-variant":"#753400","primary":"#006e11","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-tertiary-container":"#242c3d","tertiary-fixed":"#dbe2f9","error-container":"#ffdad6","background":"#f8f9ff","on-primary-container":"#003404","secondary-fixed":"#ffdbc9","surface-variant":"#d3e4fe","on-primary":"#ffffff","inverse-primary":"#6cdf64","primary-fixed":"#88fc7d","surface-dim":"#cbdbf5","on-tertiary-fixed-variant":"#3f4759","tertiary-container":"#8b93a8","secondary":"#9a4600"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-xs":"0.25rem","space-sm":"0.5rem","margin":"1.25rem","space-md":"0.75rem","gutter":"1rem","space-lg":"1.25rem","space-xl":"1.75rem"},"fontFamily":{"label-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"]},"fontSize":{"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["11px",{"lineHeight":"16px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"500"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-container text-on-primary-container font-headline-sm text-headline-sm"><span class="material-symbols-outlined text-[22px]">eco</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface">MarketPOS</span><span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">Lane 04</span></div><span class="font-body-sm text-body-sm text-on-surface-variant">Fresh Groceries &amp; Organics</span></div></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-xl bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-md text-label-md text-on-surface-variant">Ready to Scan</span></div><div class="flex items-center gap-space-sm pl-space-md bg-surface-container-low/50 py-1.5 px-space-md rounded-xl"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface">Cashier: Elena R.</span><span class="font-body-sm text-body-sm text-on-surface-variant">Station ID #2488</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Sub-header / Customer Identification & Lane Status Bar -->
+<section class="w-full px-gutter py-space-sm bg-surface-container-low">
+<div class="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<!-- Left: Supermarket Node & Active Lane -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-primary-container text-on-primary font-label-md text-label-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-on-primary animate-ping"></span>
+<span>Caisse #02 en cours</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">storefront</span>
+<span class="font-label-md text-label-md text-on-surface">Supermarché Central</span>
+<span>• Abidjan Plateau</span>
+</div>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">support_agent</span>
+<span>Caissière : <strong class="text-on-surface font-label-md text-label-md">Awa Koné</strong></span>
+</div>
+</div>
+<!-- Right: Loyalty Account Banner -->
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-1.5 rounded-xl shadow-sm">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">workspace_premium</span>
+</div>
+<div class="flex flex-col leading-tight">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface">M. Kouamé Adjoumani</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm tracking-wide">GOLD #FD-9942</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-semibold">Cagnotte : 1 472 pts (7 360 FCFA dispo)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Two-Column Main Stage -->
+<section class="w-full px-gutter py-space-md">
+<div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- ============================================== -->
+<!-- LEFT COLUMN: Live Basket & Instant Scan Feedback (~62%) -->
+<!-- ============================================== -->
+<div class="lg:col-span-7 xl:col-span-7 flex flex-col gap-space-md min-w-0">
+<!-- Hero Callout: Last Scanned Item -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-md transition-all duration-300">
+<!-- Live Scan Ping Strip -->
+<div class="flex items-center justify-between pb-space-sm mb-space-sm bg-surface-container-low px-space-sm py-1.5 rounded-lg">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+<span class="material-symbols-outlined text-[18px]">barcode_scanner</span>
+<span>Bip ! Article scanné à l'instant</span>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">schedule</span>
+<span>15:42:08</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md">
+<!-- Product Thumbnail -->
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-surface-container flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Bottle of Dinor vegetable cooking oil 1 liter with bright green palm tree label and clear golden oil texture, clean retail photography on light gradient background with warm lighting, studio packshot 4k quality" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt4wtaUZRdc5M7esYifanwS1iiZ-U_-w2qvqO1gBpRHk3olF8IMXd28_va9baPVcUqeM6r9qsarg6UwfAK8ojS-uS0DrK9cx3UJErVl75NpBtQZzfi8ZbprouPGzSpvbVAreubmHqkgivfE0HrFS9-JpBZw1AYmLaFFS-umv2vYsexVO6q_jLncp0kYMZxcSvF5QjMvN_ZkoUt9ZGCTRqzE1HpSDOzPXTrB49kvVAX"/>
+<span class="absolute top-1 left-1 px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm uppercase">Nouveau</span>
+</div>
+<!-- Product Data Details -->
+<div class="flex-1 min-w-0 w-full sm:w-auto">
+<div class="flex items-start justify-between gap-space-xs mb-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Huile Végétale Dinor 1L</h2>
+<span class="font-headline-md text-headline-md text-on-surface whitespace-nowrap">1 450 <span class="font-label-sm text-label-sm text-on-surface-variant">FCFA</span></span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-xs">Conditionnement : 1 bouteille PET recyclée • Rayon Épicerie Salée</p>
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">savings</span>
+                  Économie 15% appliquée : -250 FCFA
+                </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+                  Réf: #DIN-0142
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Receipt Itemized List -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col flex-1">
+<div class="flex items-center justify-between pb-space-sm mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">shopping_cart</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Articles dans votre panier</h3>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm">5 articles</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden sm:inline">Défilement automatique à chaque scan</span>
+</div>
+<!-- Items Container -->
+<div class="flex flex-col gap-space-xs overflow-y-auto max-h-[460px] pr-1">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low/70 transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="5kg bag of premium fragrant jasmine white rice packaging with golden grain design on light background, sharp grocery store product photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGvW8cNsry4Wv4h3SDPskk5VhEEqw7E8zNSjYv4jHJTaSqWMvO2tTRJOw6sVZA48D0gnVEyosOo_U4agBSwABdpmk5rcIvPX3LTQ5pa92KrqeZVVSfgNShdWLR3YSznNOok1YeRZKUTQstDlDJCBOzBz_pWxpyPOl8cb4Wonwk8zY-zj2CzrBmgSyYy4gipHcP8K4lCKQEzLQ7caMMmlDShOtgH0H-0GU9xP5ZwUuv"/>
+</div>
+<div class="min-w-0 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface truncate">Riz Parfumé Jasmin Royal 5kg</span>
+<div class="flex items-center gap-space-xs mt-0.5 flex-wrap">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm">Qté : 1</span>
+<span class="font-body-sm text-body-sm text-primary font-semibold">Remise Club -700 FCFA</span>
+</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-label-lg text-label-lg text-on-surface">5 800 <span class="font-label-sm text-label-sm text-on-surface-variant">FCFA</span></span>
+<div class="font-body-sm text-body-sm text-outline line-through">6 500 FCFA</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low/70 transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Pack of 4 creamy strawberry and vanilla yogurts in plastic pots with fresh red berries decoration, clean organic grocery look, bright light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD24no_vw_fkXnSlwpTidnar1DmmQAW7lFYZtphzIZ_d6g69Zu_-C7vvNJNte_zCjR-fYjx6pFnrriwjuoJBwYhjF4a4_Bc5UG5pm83DrtC0ZOSzzeAcov7NaKO1qXOevvdQOe1dgAL0gGear_MRn3GK9eUK5tQTOiaD-XUohUAXHyRCO4UI7XfiqWkNXYlcEqY3t41IVg_YBfh7CuTKp3Escvwnxe2ZNLguu279yo"/>
+</div>
+<div class="min-w-0 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface truncate">Yaourt Onctueux Fraise &amp; Vanille (x4)</span>
+<div class="flex items-center gap-space-xs mt-0.5 flex-wrap">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm">Qté : 2 packs</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary font-label-sm text-label-sm">2 achetés = 1 offert !</span>
+</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-label-lg text-label-lg text-on-surface">1 200 <span class="font-label-sm text-label-sm text-on-surface-variant">FCFA</span></span>
+<div class="font-body-sm text-body-sm text-primary font-semibold">Économie 600 FCFA</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low/70 transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Bonnet Rouge sweetened condensed milk tin can 397g with iconic red chef cap logo, high resolution grocery packshot with studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArUGP435kR4nr7hoFl3RYB4eMS5XWTg0gk5smtp35epq1Yp61Sz2nI4FnIFL3VGtjRAuxU0Jzv4ef1nY-R5Ee37hzwhGUF5EWnxUCxmIkqe5ctUMaboCyTXRehqX2O3ZPdYTcC6lZ6tzfTib9aD1mYtMSw9HtLPjRa30MuGsUj1pdCS-5aDJG4zJUbSkfkKjTmeIh7HuxWJoZ1-ByPuwwDsYx16F0eu4PoAf_YsAoX"/>
+</div>
+<div class="min-w-0 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface truncate">Lait Concentré Sucré Bonnet Rouge 397g</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm">Qté : 3</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">900 FCFA / unité</span>
+</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-label-lg text-label-lg text-on-surface">2 700 <span class="font-label-sm text-label-sm text-on-surface-variant">FCFA</span></span>
+<div class="font-body-sm text-body-sm text-on-surface-variant">TVA incluse</div>
+</div>
+</div>
+<!-- Item 4 (Weighed produce) -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low/70 transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Fresh ripe Golden Delicious yellow apples with natural drops of water in a market crate, organic farm harvest vibrant produce close-up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-cjF5xNNEgiAkTSoVPPYRhkrAY8K2R6cz0G3mSM9F6hggA6BofaGXlv5DudM5o1ogV93mY7-jbH9NTcokn7lc2F2URYiJVJIeWTMoI54u7GsiJ4nDWz4nNwXq_UsledYtsgYDO5lxTK6flAcGIw0nrH-B5lCp47rueVonnIydI_dUaYcPQkS3r9FNiY2ivTksPFGr5vtlmIozkc_MAo3UV056_waLaWU0CPhYA-WT"/>
+</div>
+<div class="min-w-0 flex flex-col">
+<span class="font-label-md text-label-md text-on-surface truncate">Pommes Golden Afrique du Sud (Pesée)</span>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-label-sm text-label-sm">Pesée certifiée</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1,450 kg @ 2 400 F/kg</span>
+</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-label-lg text-label-lg text-on-surface">3 480 <span class="font-label-sm text-label-sm text-on-surface-variant">FCFA</span></span>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Rayon Primeur</div>
+</div>
+</div>
+<!-- Item 5 (Recently Scanned Highlight) -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Oil bottle Dinor 1 liter product packshot with pure natural light and soft reflection, clean packaging design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYC1ffZrhjMT_hVLztmWrlLdG0Oo5knuHDJE8XweGMIz5yDB_eL0QRhEY7cUZflq9WmcPQhwozIxhIoUyPkThzJRbGqwDSqGtJCMUyURkDhvOMi1o9v0lWodgGgEZCqa236kBMiQqDRHXLwBfgFOgLZhiqzlyBlT6FgiT4fXd7Q6WEGfeEqZNOS5V4135cq7pVwHpPqv1Sfb9yoaPO6vtTfdD3Z4MSa-k14aKhFHiB"/>
+<span class="absolute inset-0 bg-primary/10"></span>
+</div>
+<div class="min-w-0 flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface truncate">Huile Végétale Dinor 1L</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div class="flex items-center gap-space-xs mt-0.5">
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-label-sm text-label-sm">Qté : 1</span>
+<span class="font-body-sm text-body-sm text-primary font-semibold">Remise immédiate -250 F</span>
+</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-label-lg text-label-lg text-primary font-bold">1 450 <span class="font-label-sm text-label-sm text-on-surface-variant">FCFA</span></span>
+<div class="font-body-sm text-body-sm text-outline line-through">1 700 FCFA</div>
+</div>
+</div>
+</div>
+<!-- Basket Quick Statistics Bar -->
+<div class="mt-space-md pt-space-sm bg-surface-container-low px-space-md py-space-xs rounded-xl flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">scale</span>
+<span>Poids total estimé : <strong>7,85 kg</strong></span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_activity</span>
+<span>3 offres spéciales appliquées</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- RIGHT COLUMN: Financial Summary & Payments (~38%) -->
+<!-- ============================================== -->
+<div class="lg:col-span-5 xl:col-span-5 flex flex-col gap-space-md min-w-0">
+<!-- Main Financial Summary Card -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-md flex flex-col">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Total des courses</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+              En direct
+            </span>
+</div>
+<!-- Breakdown Rows -->
+<div class="flex flex-col gap-space-xs pb-space-md font-body-md text-body-md text-on-surface-variant">
+<div class="flex items-center justify-between">
+<span>Sous-total brut (5 articles)</span>
+<span class="font-label-md text-label-md text-on-surface">15 580 FCFA</span>
+</div>
+<div class="flex items-center justify-between text-primary font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sell</span>
+                Remises immédiates &amp; promos
+              </span>
+<span class="font-label-md text-label-md font-bold">-950 FCFA</span>
+</div>
+<div class="flex items-center justify-between text-primary font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+                Avantage Carte MarketClub (-5% frais)
+              </span>
+<span class="font-label-md text-label-md font-bold">-230 FCFA</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span>TVA totale collectée (18%)</span>
+<span>2 196 FCFA</span>
+</div>
+</div>
+<!-- Massive Total Net Display -->
+<div class="p-space-lg rounded-xl bg-primary-container text-on-primary shadow-lg flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-on-primary/10 pointer-events-none"></div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/90 mb-1">Total Net à Payer</span>
+<div class="font-headline-lg text-headline-lg text-on-primary tracking-tight font-extrabold text-[36px] leading-[44px]">
+              14 400 <span class="text-headline-md font-bold">FCFA</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary/90 mt-1 italic">
+              « Quatorze mille quatre cents francs CFA »
+            </p>
+</div>
+<!-- Loyalty Points Gained on This Ticket -->
+<div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">add_circle</span>
+<span>Points crédités sur ce panier</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">+144 pts</span>
+</div>
+</div>
+<!-- Loyalty Points Usage Prompt (Interactive Opportunity) -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">redeem</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Le saviez-vous ?</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold">Offre cagnotte</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+                Vos <strong>1 472 points</strong> permettent de déduire <strong class="text-secondary font-bold">7 000 FCFA</strong> immédiatement sur ce paiement.
+              </p>
+<div class="mt-space-xs flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface bg-surface-container-lowest px-2 py-1 rounded-md font-bold">
+                  Indiquez votre choix à la caissière Awa
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Accepted Payment Methods -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">Moyens de paiement acceptés</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sans contact</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+            Préparez votre téléphone ou votre carte bancaire dès maintenant :
+          </p>
+<!-- Badges Grid for Mobile Money & Cards -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-space-xs">
+<!-- Wave -->
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-md bg-sky-500 text-white flex items-center justify-center font-bold text-xs">
+                W
+              </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Wave</span>
+<span class="font-body-sm text-body-sm text-primary font-semibold text-[10px]">Sans frais</span>
+</div>
+</div>
+<!-- Orange Money -->
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-md bg-secondary-container text-on-secondary flex items-center justify-center font-bold text-xs">
+                OM
+              </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Orange M.</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[10px]">#144*39#</span>
+</div>
+</div>
+<!-- MTN MoMo -->
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-md bg-amber-400 text-slate-900 flex items-center justify-center font-bold text-xs">
+                MoMo
+              </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">MTN MoMo</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[10px]">*133#</span>
+</div>
+</div>
+<!-- Visa / Mastercard -->
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-md bg-inverse-surface text-inverse-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">credit_card</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Visa/Mastercard</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[10px]">NFC / Puce</span>
+</div>
+</div>
+<!-- Cash -->
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-md bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Espèces FCFA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[10px]">Rendu exact</span>
+</div>
+</div>
+<!-- WhatsApp Digital Ticket QR -->
+<div class="flex items-center gap-space-xs p-space-xs rounded-lg bg-surface-container-high">
+<div class="w-7 h-7 rounded-md bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Reçu digital</span>
+<span class="font-body-sm text-body-sm text-primary font-semibold text-[10px]">WhatsApp</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Status Micro-Bar before footer -->
+<section class="w-full px-gutter py-space-xs bg-surface-container-lowest shadow-sm mb-space-xs">
+<div class="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-label-sm text-label-sm uppercase text-on-surface">Garantie Fraîcheur &amp; Échange 72h</span>
+</div>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">support</span>
+<span>Besoin d'aide ? Notre hôtesse Awa Koné est à votre écoute</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-low text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span>Scanner laser actif ⚡</span>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-md shadow-[0_-1px_8px_rgba(0,0,0,0.03)]"><div class="w-full px-gutter flex flex-col md:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-center gap-space-md"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">verified_user</span><span>Contactless &amp; Chip Enabled</span></div><span class="text-outline-variant">•</span><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-secondary">eco</span><span>100% Sustainable Packaging Guarantee</span></div></div><div class="flex items-center gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Thank You For Shopping Fresh</span></div></div></footer></body></html>

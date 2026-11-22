@@ -1,0 +1,18 @@
+# Claude Code: local instructions and agent skills are not versioned
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+
+# macOS
+.DS_Store
+
+# Dependencies and build output
+node_modules/
+dist/
+.angular/
+coverage/
+
+# Local environment
+.env
+.env.*
+!.env.example

@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_blank" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-low":"#f2f3ff","surface-variant":"#dae2fd","tertiary-fixed":"#7ffc97","secondary-container":"#86f2e4","inverse-on-surface":"#eef0ff","on-surface-variant":"#3e4947","primary-fixed":"#9cf2e8","primary-fixed-dim":"#80d5cb","on-background":"#131b2e","surface-bright":"#faf8ff","tertiary-container":"#007a33","secondary":"#006a61","surface-tint":"#006a63","outline":"#6e7977","on-primary":"#ffffff","tertiary-fixed-dim":"#62df7d","on-tertiary-fixed":"#002109","on-secondary":"#ffffff","surface-container-lowest":"#ffffff","inverse-surface":"#283044","on-tertiary-container":"#a1ffad","on-primary-container":"#a3faef","surface-container-highest":"#dae2fd","on-surface":"#131b2e","on-secondary-fixed":"#00201d","secondary-fixed-dim":"#6bd8cb","on-secondary-container":"#006f66","on-tertiary-fixed-variant":"#005320","error-container":"#ffdad6","on-primary-fixed-variant":"#00504a","inverse-primary":"#80d5cb","surface-container":"#eaedff","surface-dim":"#d2d9f4","on-error":"#ffffff","primary-container":"#0f766e","error":"#ba1a1a","background":"#faf8ff","on-secondary-fixed-variant":"#005049","outline-variant":"#bdc9c6","primary":"#005c55","on-primary-fixed":"#00201d","tertiary":"#005f26","on-tertiary":"#ffffff","on-error-container":"#93000a","secondary-fixed":"#89f5e7","surface-container-high":"#e2e7ff","surface":"#faf8ff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xs":"0.25rem","space-md":"0.75rem","space-sm":"0.5rem","margin":"1rem","gutter":"1rem","margin-mobile":"0.5rem","gutter-mobile":"0.5rem","space-lg":"1rem","space-xl":"1.5rem"},"fontFamily":{"label-md":["Inter"],"label-keypad":["Inter"],"label-lg":["Inter"],"headline-total":["Inter"],"body-sm":["Inter"],"headline-total-mobile":["Inter"],"body-md":["Inter"],"headline-md":["Inter"],"body-lg":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"headline-sm":["Inter"]},"fontSize":{"label-md":["13px",{"lineHeight":"16px","fontWeight":"600"}],"label-keypad":["24px",{"lineHeight":"28px","fontWeight":"600"}],"label-lg":["16px",{"lineHeight":"20px","fontWeight":"600"}],"headline-total":["44px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-total-mobile":["32px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["22px",{"lineHeight":"28px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"22px","fontWeight":"500"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}]}}}};</script></head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen selection:bg-secondary-container selection:text-on-secondary-container"><main class="w-full min-h-screen flex flex-col justify-between items-center"><div class="flex flex-col w-full">
+<div class="relative w-full min-h-screen bg-surface flex flex-col justify-between items-center p-4 sm:p-6 lg:p-8 overflow-hidden select-none">
+<!-- Ambient Depth Elements -->
+<div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-40 -right-20 w-[30rem] h-[30rem] rounded-full bg-surface-container-high/60 blur-3xl pointer-events-none"></div>
+<!-- Top Status Bar (Airport / System Header) -->
+<header class="w-full max-w-4xl flex items-center justify-between z-10 py-1"><div class="flex items-center gap-3">
+<div class="h-9 px-3 rounded-full bg-surface-container-lowest shadow-sm flex items-center gap-2 text-on-surface">
+<span class="w-2 h-2 rounded-full animate-pulse" style="background-color: #5bb81f;"></span>
+<span class="font-label-md text-label-md tracking-tight font-semibold">Caisse 01</span>
+<span class="text-outline-variant font-label-md text-label-md">•</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Abidjan Plateau — Supermarché Central</span>
+</div>
+
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-tight" id="liveClock">12:01</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant -mt-0.5">Mercredi 24 Octobre • GMT</div>
+</div>
+<button aria-label="Paramètres de caisse" class="w-10 h-10 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface-variant flex items-center justify-center shadow-sm transition-transform active:scale-95" onclick="openSupervisorModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div></header>
+<!-- Main Central Card: Apple System Lock Style -->
+<main class="w-full max-w-[520px] my-auto z-10">
+<div class="w-full bg-surface-container-lowest rounded-full sm:rounded-[2rem] shadow-xl p-6 sm:p-8 flex flex-col items-center">
+<!-- POS Brand & Terminal Context -->
+<div class="flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-xl flex items-center justify-center text-on-primary shadow-md shadow-primary/20 mb-3" style="background-color: #5bb81f;">
+<span class="material-symbols-outlined text-[26px]">point_of_sale</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">MarketPOS</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Caisse 01</span>
+<span class="text-outline-variant font-label-md text-label-md">•</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rayon Frais &amp; Allée Centrale</span>
+</div>
+</div>
+
+<!-- Identification Inputs (Matricule & PIN) -->
+<div class="w-full mt-6 mb-4 flex flex-col gap-3.5">
+<!-- Cashier ID / Badge Scan Field -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between px-1">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline" for="cashierIdField">Matricule Caissier / Badge</label>
+<button type="button" onclick="simulateBadgeScan()" class="font-label-sm text-[11px] text-primary hover:underline flex items-center gap-1 font-semibold" style="color: #5bb81f;">
+<span class="material-symbols-outlined text-[14px]">badge</span>
+<span>Scanner badge</span>
+</button>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px]">badge</span>
+<input id="cashierIdField" readonly="" value="CS-0418" class="w-full h-12 pl-11 pr-24 rounded-xl bg-surface-container-low border border-transparent focus:border-primary text-on-surface font-label-lg text-label-lg tracking-wider font-semibold transition-all select-none cursor-pointer text-center" onclick="focusField('id')" style="--tw-ring-color: #5bb81f;">
+<div class="absolute right-2 flex items-center gap-1">
+<button type="button" onclick="clearActiveField()" class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">backspace</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- PIN Code Input Field -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between px-1">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Code Secret PIN</label>
+<span class="font-body-sm text-[11px] text-outline" id="pinStatusNotice">4 chiffres requis</span>
+</div>
+<div class="relative flex items-center justify-center h-12 rounded-xl bg-surface-container-low border border-transparent cursor-pointer" onclick="focusField('pin')" id="pinFieldWrapper">
+<span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px]">lock</span>
+<!-- Apple-style PIN dots -->
+<div class="flex items-center gap-4" id="pinContainer">
+<span class="pin-dot w-3 h-3 rounded-full bg-surface-container-highest transition-all duration-150 transform scale-100"></span>
+<span class="pin-dot w-3 h-3 rounded-full bg-surface-container-highest transition-all duration-150 transform scale-100"></span>
+<span class="pin-dot w-3 h-3 rounded-full bg-surface-container-highest transition-all duration-150 transform scale-100"></span>
+<span class="pin-dot w-3 h-3 rounded-full bg-surface-container-highest transition-all duration-150 transform scale-100"></span>
+</div>
+<span class="material-symbols-outlined absolute right-3.5 text-primary text-[20px]" id="pinValidCheck" style="display:none; color: #5bb81f;">check_circle</span>
+</div>
+</div>
+</div>
+
+<!-- Active Field Indicator / Status message -->
+<div class="h-4 font-body-sm text-body-sm text-outline transition-opacity opacity-100 mb-3 text-center" id="statusMessage">
+Saisie active : Code Secret PIN
+</div>
+
+<!-- Ergonomic Industrial Keypad (3x4 Grid) -->
+<div class="grid grid-cols-3 gap-2.5 w-full max-w-[320px]">
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('1')">1</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('2')">2</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('3')">3</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('4')">4</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('5')">5</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('6')">6</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('7')">7</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('8')">8</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('9')">9</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container hover:bg-error-container hover:text-on-error-container text-on-surface-variant font-label-lg text-label-lg font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="clearEntireField()">
+<span>Effacer [C]</span>
+</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-surface-variant text-on-surface font-headline-md text-headline-md font-semibold flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="inputDigit('0')">0</button>
+<button type="button" class="keypad-btn h-14 rounded-xl bg-surface-container-low hover:bg-surface-container active:bg-error-container text-on-surface-variant hover:text-error flex items-center justify-center transition-all duration-75 active:scale-95 shadow-sm" onclick="backspaceDigit()" aria-label="Effacer un chiffre">
+<span class="material-symbols-outlined text-[24px]">backspace</span>
+</button>
+</div>
+
+<!-- Main POS Action Button (Grostore #5BB81F) -->
+<div class="w-full max-w-[320px] mt-3">
+<button type="button" onclick="validateSession()" class="w-full h-12 rounded-xl text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-md shadow-primary/20 transition-all duration-75 active:scale-95" style="background-color: #5bb81f;">
+<span>Ouvrir la session [Entrée]</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+
+<!-- Hardware & Quick Help Footer -->
+<div class="w-full max-w-[320px] mt-4 pt-3 flex items-center justify-between text-on-surface-variant border-t border-surface-container">
+<button type="button" onclick="forgotPinAlert()" class="font-body-sm text-body-sm hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">help</span>
+<span>Code oublié ?</span>
+</button>
+<button type="button" onclick="openSupervisorModal()" class="font-label-md text-label-md hover:underline flex items-center gap-1" style="color: #5bb81f;">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+<span>Espace Gérant</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Operational Bottom Dock (Hardware Terminal Controls & Telemetry) -->
+<footer class="w-full max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-3 z-10 pt-2 pb-1"><!-- Hardware Telemetry: Cash drawer, Printer, Online Mode -->
+<div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest shadow-sm text-on-surface">
+<span class="w-2 h-2 rounded-full" style="background-color: #5bb81f;"></span>
+<span class="font-label-sm text-label-sm">Tiroir-caisse :</span>
+<span class="font-label-sm text-[11px] uppercase font-bold tracking-wider" style="color: #5bb81f;">Verrouillé</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest shadow-sm text-on-surface">
+<span class="material-symbols-outlined text-[15px] text-tertiary" style="color: #5bb81f;">print</span>
+<span class="font-body-sm text-body-sm">Imprimante ticket 80mm prête</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px]">sync_saved_locally</span>
+<span class="font-body-sm text-body-sm">Mode Hors-ligne synchronisé</span>
+</div>
+</div>
+<!-- POS Terminal Controls -->
+<div class="flex items-center gap-2">
+<button class="h-9 px-3.5 rounded-full bg-surface-container-lowest hover:bg-surface-container text-on-surface-variant font-label-md text-label-md shadow-sm flex items-center gap-1.5 transition-transform active:scale-95" onclick="lockTerminal()" type="button">
+<span class="material-symbols-outlined text-[17px]">lock_reset</span>
+<span>Verrouiller</span>
+</button>
+<button aria-label="Redémarrer le terminal" class="w-9 h-9 rounded-full bg-surface-container-lowest hover:bg-error-container hover:text-on-error-container text-on-surface-variant flex items-center justify-center shadow-sm transition-transform active:scale-95" onclick="confirmReboot()" type="button">
+<span class="material-symbols-outlined text-[18px]">power_settings_new</span>
+</button>
+</div></footer>
+</div>
+</div>
+<script>
+  let enteredPin = "";
+  const maxPinLength = 4;
+  let activeUser = "Awa Koné";
+
+  function updateClock() {
+    const now = new Date();
+    const hours = String(now.getUTCHours()).padStart(2, '0');
+    const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+    const clockEl = document.getElementById('liveClock');
+    if (clockEl) {
+      clockEl.textContent = `${hours}:${minutes}`;
+    }
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  function renderPinDots() {
+    const dots = document.querySelectorAll('.pin-dot');
+    dots.forEach((dot, index) => {
+      if (index < enteredPin.length) {
+        dot.classList.remove('bg-surface-container-highest', 'scale-100');
+        dot.classList.add('bg-primary', 'scale-110');
+      } else {
+        dot.classList.remove('bg-primary', 'scale-110');
+        dot.classList.add('bg-surface-container-highest', 'scale-100');
+      }
+    });
+  }
+
+  function inputDigit(digit) {
+    if (enteredPin.length < maxPinLength) {
+      enteredPin += digit;
+      renderPinDots();
+
+      if (enteredPin.length === maxPinLength) {
+        setTimeout(validateSession, 120);
+      }
+    }
+  }
+
+  function clearPin() {
+    if (enteredPin.length > 0) {
+      enteredPin = enteredPin.slice(0, -1);
+      renderPinDots();
+      resetStatusMessage();
+    }
+  }
+
+  function resetStatusMessage() {
+    const status = document.getElementById('statusMessage');
+    if (status) {
+      status.textContent = "Saisissez votre code secret à 4 chiffres";
+      status.className = "h-4 mt-2 font-body-sm text-body-sm text-outline transition-opacity opacity-100";
+    }
+  }
+
+  function selectCashier(name, role, element) {
+    activeUser = name;
+    document.getElementById('activeCashierName').textContent = name;
+    document.getElementById('activeCashierRole').textContent = role;
+
+    document.querySelectorAll('.cashier-chip').forEach(btn => {
+      btn.classList.remove('bg-surface-container', 'ring-2', 'ring-primary');
+      btn.classList.add('hover:bg-surface-container-low');
+    });
+
+    element.classList.remove('hover:bg-surface-container-low');
+    element.classList.add('bg-surface-container', 'ring-2', 'ring-primary');
+
+    enteredPin = "";
+    renderPinDots();
+    resetStatusMessage();
+  }
+
+  function promptOtherUser(el) {
+    const customUser = prompt("Entrez le matricule ou l'identifiant caissier :");
+    if (customUser && customUser.trim() !== "") {
+      selectCashier(customUser.trim(), "Opérateur externe", el);
+    }
+  }
+
+  function validateSession() {
+    const status = document.getElementById('statusMessage');
+    const container = document.getElementById('pinContainer');
+
+    if (enteredPin.length < maxPinLength) {
+      if (status) {
+        status.textContent = "Veuillez saisir les 4 chiffres requis";
+        status.className = "h-4 mt-2 font-body-sm text-body-sm text-error transition-opacity opacity-100 font-medium";
+      }
+      return;
+    }
+
+    if (enteredPin === "1234" || enteredPin.length === 4) {
+      if (status) {
+        status.textContent = `Ouverture réussie • Bienvenue ${activeUser}`;
+        status.className = "h-4 mt-2 font-body-sm text-body-sm text-tertiary transition-opacity opacity-100 font-semibold";
+      }
+      setTimeout(() => {
+        alert(`Session validée pour ${activeUser}. Redirection vers le registre de vente...`);
+        enteredPin = "";
+        renderPinDots();
+        resetStatusMessage();
+      }, 350);
+    } else {
+      if (status) {
+        status.textContent = "Code PIN invalide. Réessayez.";
+        status.className = "h-4 mt-2 font-body-sm text-body-sm text-error transition-opacity opacity-100 font-medium";
+      }
+      if (container) {
+        container.classList.add('translate-x-2');
+        setTimeout(() => container.classList.remove('translate-x-2'), 100);
+      }
+      setTimeout(() => {
+        enteredPin = "";
+        renderPinDots();
+      }, 500);
+    }
+  }
+
+  function forgotPinAlert() {
+    alert("Veuillez demander une réinitialisation temporaire de PIN à votre gérant ou superviseur de magasin.");
+  }
+
+  function openSupervisorModal() {
+    const supPin = prompt("Accès Superviseur / Gérant\nVeuillez renseigner votre code administrateur :");
+    if (supPin) {
+      alert("Authentification superviseur validée. Ouverture du panneau de gestion.");
+    }
+  }
+
+  function lockTerminal() {
+    enteredPin = "";
+    renderPinDots();
+    resetStatusMessage();
+    alert("Terminal verrouillé en mode sécurisé.");
+  }
+
+  function confirmReboot() {
+    if (confirm("Voulez-vous redémarrer le poste de caisse (Caisse 01) ?")) {
+      location.reload();
+    }
+  }
+
+  // Hardware Physical Keypad listener
+  window.addEventListener('keydown', (e) => {
+    if (e.key >= '0' && e.key <= '9') {
+      inputDigit(e.key);
+    } else if (e.key === 'Backspace') {
+      clearPin();
+    } else if (e.key === 'Enter') {
+      validateSession();
+    } else if (e.key === 'Escape') {
+      enteredPin = "";
+      renderPinDots();
+      resetStatusMessage();
+    }
+  });
+</script></main>
+
+</body></html>

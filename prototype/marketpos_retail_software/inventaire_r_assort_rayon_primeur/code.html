@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#9a4600","outline-variant":"#becab6","surface-container-high":"#dce9ff","inverse-primary":"#6cdf64","surface-dim":"#cbdbf5","surface-container-highest":"#d3e4fe","secondary-fixed":"#ffdbc9","on-primary-fixed-variant":"#00530a","secondary-container":"#fd7700","primary-container":"#34a835","surface-variant":"#d3e4fe","error-container":"#ffdad6","on-primary-container":"#003404","on-tertiary-fixed":"#141b2c","error":"#ba1a1a","on-tertiary-container":"#242c3d","primary-fixed":"#88fc7d","secondary-fixed-dim":"#ffb68c","background":"#f8f9ff","primary":"#006e11","tertiary-container":"#8b93a8","on-error-container":"#93000a","on-secondary":"#ffffff","surface-container-lowest":"#ffffff","on-secondary-container":"#5a2600","tertiary":"#565e71","on-tertiary":"#ffffff","on-primary-fixed":"#002202","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","inverse-surface":"#213145","surface":"#f8f9ff","primary-fixed-dim":"#6cdf64","on-primary":"#ffffff","on-surface":"#0b1c30","tertiary-fixed-dim":"#bfc6dc","on-tertiary-fixed-variant":"#3f4759","tertiary-fixed":"#dbe2f9","on-surface-variant":"#3f4a3b","surface-bright":"#f8f9ff","outline":"#6e7b69","surface-tint":"#006e11","on-secondary-fixed-variant":"#753400","on-secondary-fixed":"#321200","surface-container-low":"#eff4ff","surface-container":"#e5eeff","on-background":"#0b1c30"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-sm":"0.5rem","space-xs":"0.25rem","gutter":"1rem","margin":"1.25rem","space-xl":"1.75rem","space-md":"0.75rem","space-lg":"1.25rem"},fontFamily:{"label-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"]},fontSize:{"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-sm":["11px",{"lineHeight":"16px","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[20px]">storefront</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">MarketPOS</span><span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant px-1.5 py-0.5 rounded-full">PRO</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Plateau • Abidjan</span></div></div><div class="px-space-md py-space-sm"><div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">En Ligne</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">Caisse 01-08 OK</span></div></div><div class="px-space-md py-space-xs"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider px-space-sm">Gestion Magasin</span></div><nav class="flex flex-col gap-1 px-space-md py-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-sm"><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="tableau-de-bord-ventes" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span class="font-label-lg text-label-lg">Tableau de bord Ventes</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="inventaire-stocks-primeur" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-lg text-label-lg">Inventaire &amp; Stocks Primeur</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="sessions-clotures-caisses" href="#"><span class="material-symbols-outlined text-[20px]">point_of_sale</span><span class="font-label-lg text-label-lg">Sessions &amp; Clôtures Caisses</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="gestion-equipe-caissiers" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span class="font-label-lg text-label-lg">Gestion Équipe &amp; Caissiers</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="clients-fidelite" href="#"><span class="material-symbols-outlined text-[20px]">loyalty</span><span class="font-label-lg text-label-lg">Clients &amp; Fidélité</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="parametres-magasin" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-lg text-label-lg">Paramètres Magasin</span></a></nav></div><div class="p-space-md"><div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">support_agent</span></div><div><p class="font-label-md text-label-md text-on-surface">Support Technique</p><p class="font-body-sm text-body-sm text-on-surface-variant">+225 27 20 00</p></div></div><span class="material-symbols-outlined text-on-surface-variant text-[18px]">open_in_new</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary-container text-[20px]">location_on</span><span class="font-headline-sm text-headline-sm text-on-surface">Supermarché Central • Plateau</span></div><span class="font-body-sm text-body-sm text-outline-variant">|</span><div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded-md"><span class="w-2 h-2 rounded-full bg-primary-container"></span><span class="font-label-sm text-label-sm text-on-surface-variant">Serveur Local Connecté</span></div></div><div class="flex items-center gap-space-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-64 h-9 pl-9 pr-14 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Rechercher article, code barre..." type="text"/><kbd class="absolute right-2 font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant px-1.5 py-0.5 rounded">Ctrl+K</kbd></div><div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md bg-surface-container-low px-space-sm py-1.5 rounded-lg"><span class="material-symbols-outlined text-[18px]">schedule</span><span>Abidjan 14:32</span></div><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-secondary-container rounded-full"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="relative"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">M. Bakayoko</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Gérant Principal</span></div></div></div></header><main class="w-full pt-16 bg-background px-gutter min-h-screen"><div class="flex flex-col w-full pb-12 gap-space-lg">
+<!-- TOP CONTEXT BANNER / ACTION BAR -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pt-2">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface">Inventaire &amp; Réassort Rayon Primeur &amp; Frais</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-semibold">
+          LIVE BALANCE SYNC
+        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Suivi des stocks au kilo, contrôle des arrivages Bonoua / Korhogo, gestion de la démarque et alertes DLC
+      </p>
+</div>
+<!-- Quick Action Shortcut Hub -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shadow-sm font-label-md text-label-md" onclick="triggerQuickAction('bon-reception')">
+<span class="material-symbols-outlined text-[18px] text-tertiary">local_shipping</span>
+<span>Arrivage / Réception</span>
+<span class="font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant px-1 rounded">F4</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim transition-all shadow-sm font-label-md text-label-md" onclick="triggerQuickAction('demarque')">
+<span class="material-symbols-outlined text-[18px] text-secondary">trending_down</span>
+<span>Démarque / Perte</span>
+<span class="font-label-sm text-label-sm bg-secondary-container text-on-primary px-1 rounded">F8</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-all shadow-md font-label-md text-label-md font-semibold" onclick="triggerQuickAction('pesee')">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+<span>Pesée &amp; Ajustement</span>
+<span class="font-label-sm text-label-sm bg-on-primary-fixed-variant text-on-primary px-1.5 py-0.5 rounded">F9</span>
+</button>
+<div class="relative inline-block">
+<button class="p-2 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-all shadow-sm" id="exportDropdownBtn" onclick="toggleExportMenu()">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-44 bg-surface-container-lowest rounded-lg shadow-xl py-1 z-30" id="exportMenu">
+<a class="flex items-center gap-2 px-3 py-2 text-on-surface font-label-md text-label-md hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined text-error text-[18px]">picture_as_pdf</span> Export Fiche PDF
+          </a>
+<a class="flex items-center gap-2 px-3 py-2 text-on-surface font-label-md text-label-md hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined text-primary text-[18px]">table_view</span> Export Tableur Excel
+          </a>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 1: 4 KPI CARDS -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary-fixed/20 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Valeur du Stock Primeur</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed-variant text-[18px]">payments</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">4 850 000</span>
+<span class="font-label-md text-label-md text-outline font-semibold">FCFA</span>
+</div>
+<div class="flex items-center gap-1 mt-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span class="font-label-md text-label-md font-bold">+5.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">vs semaine précédente</span>
+</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Volume Total en Rayon</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[18px]">shopping_basket</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">2 340</span>
+<span class="font-label-md text-label-md text-outline font-semibold">kg</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface-variant font-semibold">
+            187 réf. actives
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">dont 14 conditionnés</span>
+</div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Alertes Rupture &amp; Seuil</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[18px]">warning</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary-container tracking-tight">4</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-semibold">articles critiques</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-body-sm text-body-sm text-secondary font-semibold">Réappro urgent requis (Bananes, Tomates)</span>
+</div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Taux Démarque &amp; Freinte</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[18px]">pie_chart</span>
+</div>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">2.1%</span>
+<span class="font-label-md text-label-md text-outline font-semibold">/ Objectif &lt; 3%</span>
+</div>
+<div class="flex items-center gap-1 mt-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+<span class="font-label-md text-label-md font-bold">-0.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">conforme norme magasin</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 2: SEARCH, CATEGORY TABS & FILTER BAR -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<!-- Category Filter Tabs -->
+<div class="flex items-center justify-between gap-space-sm border-b-0 pb-1 overflow-x-auto">
+<div class="flex items-center gap-1.5 min-w-max" id="categoryTabGroup">
+<button class="category-tab px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-1.5" onclick="switchCategoryTab(this, 'all')">
+<span>Tous les Primeurs</span>
+<span class="bg-on-primary-fixed-variant text-on-primary px-1.5 py-0.2 rounded-full font-label-sm text-label-sm">187</span>
+</button>
+<button class="category-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" onclick="switchCategoryTab(this, 'fruits')">
+<span>Fruits Locaux &amp; Exotiques</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.2 rounded-full font-label-sm text-label-sm">64</span>
+</button>
+<button class="category-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" onclick="switchCategoryTab(this, 'legumes')">
+<span>Légumes &amp; Maraîchage</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.2 rounded-full font-label-sm text-label-sm">78</span>
+</button>
+<button class="category-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" onclick="switchCategoryTab(this, 'agrumes')">
+<span>Agrumes &amp; Tubercules</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.2 rounded-full font-label-sm text-label-sm">25</span>
+</button>
+<button class="category-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5" onclick="switchCategoryTab(this, 'herbes')">
+<span>Herbes &amp; Aromates</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-1.5 py-0.2 rounded-full font-label-sm text-label-sm">20</span>
+</button>
+<button class="category-tab px-3 py-1.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim font-label-md text-label-md transition-all flex items-center gap-1.5" onclick="switchCategoryTab(this, 'alertes')">
+<span class="material-symbols-outlined text-[16px] text-secondary">error</span>
+<span>En Alerte Stock</span>
+<span class="bg-secondary-container text-on-primary px-1.5 py-0.2 rounded-full font-label-sm text-label-sm">4</span>
+</button>
+</div>
+<div class="hidden xl:flex items-center gap-1 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Dernière synchro balances : 14:30</span>
+</div>
+</div>
+<!-- Live Search & Detailed Filters Controls -->
+<div class="flex flex-col lg:flex-row items-center justify-between gap-space-sm">
+<div class="relative w-full lg:w-96 flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px]">barcode_scanner</span>
+<input class="w-full h-10 pl-10 pr-24 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" id="inventorySearch" oninput="filterTableRows()" placeholder="Scanner EAN ou saisir PLU (#4012, Bassam...)" type="text"/>
+<span class="absolute right-2 px-1.5 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-highest text-on-surface-variant font-mono">PLU / EAN</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs w-full lg:w-auto">
+<!-- Fournisseur Select -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">nature_people</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="filterSupplier" onchange="filterTableRows()">
+<option value="all">Tous Fournisseurs</option>
+<option value="Bonoua">Coopérative Bonoua</option>
+<option value="Korhogo">Vergers de Korhogo</option>
+<option value="Azaguié">Maraîchers d'Azaguié</option>
+<option value="Bassam">Plantations Bassam</option>
+<option value="Import">Import Sud-Africain</option>
+</select>
+</div>
+<!-- Statut Select -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">tune</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="filterStatus" onchange="filterTableRows()">
+<option value="all">Tous Statuts</option>
+<option value="optimal">Optimal</option>
+<option value="reappro">À réapprovisionner</option>
+<option value="alerte">Stock Critique / Rupture</option>
+</select>
+</div>
+<!-- Tri Select -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">sort</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="sortOption" onchange="sortTableRows()">
+<option value="name">Tri: Nom Produit</option>
+<option value="stock-asc">Tri: Stock (Croissant)</option>
+<option value="stock-desc">Tri: Stock (Décroissant)</option>
+<option value="valeur-desc">Tri: Plus Forte Valeur</option>
+</select>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors" onclick="resetFilters()" title="Réinitialiser filtres">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ROW 3: MAIN INVENTORY TABLE & REAL-TIME WEIGHING HUB -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Table Header Info Bar -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Articles Primeurs Référencés</span>
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container text-on-surface-variant font-bold" id="activeCountBadge">8 affichés sur 187</span>
+</div>
+<div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span> Optimal</span>
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-secondary-container"></span> À réappro</span>
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-error"></span> Alerte Critique</span>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left" id="primeurTable">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider select-none">
+<th class="py-3 px-space-md">Produit &amp; Origine</th>
+<th class="py-3 px-space-sm">Code PLU / Réf</th>
+<th class="py-3 px-space-sm text-right">Prix Vente</th>
+<th class="py-3 px-space-sm text-right">Stock Théo</th>
+<th class="py-3 px-space-sm text-right">Stock Réel Pesé</th>
+<th class="py-3 px-space-sm text-right">Écart</th>
+<th class="py-3 px-space-sm text-right">Valeur Stock</th>
+<th class="py-3 px-space-sm text-center">Seuil Alerte</th>
+<th class="py-3 px-space-sm text-center">Statut &amp; DLC</th>
+<th class="py-3 px-space-md text-right">Actions Pesée</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-md text-body-md text-on-surface" id="inventoryTableBody">
+<!-- ROW 1: Mangues Kent -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-category="fruits" data-name="Mangues Kent Extra Douces" data-status="optimal" data-stock="320" data-supplier="Korhogo" data-valeur="272000">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up fresh tropical ripe mangoes in a wooden crate under bright natural light market in Korhogo Ivory Coast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt-pbDqf6n9ng7F6tR4bPq-NrZacansbKSVJ3CsXsovtW-f6_UEQx4LyzbIz3MeX92cQxEsKvkVRr4MA3Rc9VaROOrr-cTfem2sSiO9GeDR0Nd8e3M81pIjAtKxqPh9vM2TJRmpB7i4GALilEX4NvCIv0Gh0uHM6Ywk3SpY7_p_TyAwuRbPHsICFfHSwWt801CzDDcMMbOPO-3kCi3mEGyLJvyO7ngSwD7nt6qeBPt"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Mangues Kent Extra Douces</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">eco</span>
+                    Vergers de Korhogo • Calibre A
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#4012</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">850 <span class="text-on-surface-variant font-label-sm">F/kg</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">320.0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">318.5 kg</td>
+<td class="py-3 px-space-sm text-right font-mono text-secondary font-semibold">-1.5 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">270 725 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-outline">50 kg</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">Optimal</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">DLC: +4 jours</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Mangues Kent', '#4012', 318.5)" title="Pesée rapide balance">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Mangues Kent')" title="Historique mouvements">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#4012', 'Mangues Kent', 850)" title="Imprimer étiquette code barre PLU">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Ananas Pain de Sucre -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-category="fruits" data-name="Ananas Pain de Sucre" data-status="reappro" data-stock="45" data-supplier="Bonoua" data-valeur="27000">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Fresh golden pineapples from Bonoua displayed on clean market surface warm ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiBXxjFVu4XKgutu6u4ZF0ohtOCNZne4sbJEJds-nKGjaacy0YMH_ll69M7EU2iQUHOwuZwPxoAP9YvvPpqNbCCuVksR_tY0-z8lSaw9JRQWMfbbofJSe9BNNDNIP4ERIF2KfvL5BjZXf25LsiSDVvGRlUmyzo7WnoeW4f3r6GuE2NmBx9wOtacJTXNazxbx0h5aIoda9CUg-z6bZdiQhc6IxVd9gVxSUlg8fExOs-"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Ananas Pain de Sucre</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">location_on</span>
+                    Coopérative Bonoua • Récolte J-1
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#4024</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">600 <span class="text-on-surface-variant font-label-sm">F/kg</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">45.0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-secondary">42.8 kg</td>
+<td class="py-3 px-space-sm text-right font-mono text-secondary font-semibold">-2.2 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">25 680 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-secondary-container font-bold">50 kg</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-bold">À Réappro</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">DLC: +3 jours</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Ananas Pain de Sucre', '#4024', 42.8)">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Ananas Pain de Sucre')">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#4024', 'Ananas Bonoua', 600)">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Huile Végétale Dinor 1L (Conditionné) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-category="agrumes" data-name="Huile Végétale Dinor 1L" data-status="optimal" data-stock="180" data-supplier="Azaguié" data-valeur="261000">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[24px]">liquor</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Huile Végétale Dinor 1L</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                    Conditionné Rayon Huiles • Carton 15 u.
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#DIN-0142</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">1 450 <span class="text-on-surface-variant font-label-sm">F/u</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">180 blles</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">180 blles</td>
+<td class="py-3 px-space-sm text-right font-mono text-outline">0</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">261 000 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-outline">30 blles</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">Optimal</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">DLC: 14/11/2026</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Huile Dinor 1L', '#DIN-0142', 180)">
+<span class="material-symbols-outlined text-[18px]">qr_code_scanner</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Huile Dinor 1L')">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#DIN-0142', 'Huile Dinor 1L', 1450)">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Riz Parfumé Jasmin 5kg -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-category="agrumes" data-name="Riz Parfumé Jasmin 5kg" data-status="optimal" data-stock="85" data-supplier="Import" data-valeur="493000">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[24px]">grain</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Riz Parfumé Jasmin 5kg</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                    Sac scellé • Qualité Supérieure AAA
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#RZ-990</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">5 800 <span class="text-on-surface-variant font-label-sm">F/sac</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">85 sacs</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">85 sacs</td>
+<td class="py-3 px-space-sm text-right font-mono text-outline">0</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">493 000 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-outline">20 sacs</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">Optimal</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">DLC: 08/2027</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Riz Jasmin 5kg', '#RZ-990', 85)">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Riz Jasmin 5kg')">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#RZ-990', 'Riz Jasmin 5kg', 5800)">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Tomates Fraîches de Bassam -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-category="legumes" data-name="Tomates Fraîches de Bassam" data-status="reappro" data-stock="28" data-supplier="Bassam" data-valeur="33600">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Plump ripe red fresh tomatoes in modern supermarket grocery crate soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtMcUIk1MArJQN6JKCRX37q5_LVjL9M83oQY4Aju_Agzkpe_eYjb6ds0z0LVg2UPOMPBiaUUoG31UVstVh5DsSyb08DcKMDyQudMQLlTRUTJerGzrJcYB1rBJFqTk12a1_8d8fiRlWy06bSQv9Vjxb8dgyDcVyfgIP_lOme_OwWpP5jfX8J-5kQEJWPt6XysvaLLzdMy4sM30XXdNbfvJze4zqnEYJ_9gTCdZAGksp"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Tomates Fraîches de Bassam</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-error">water_drop</span>
+                    Maraîchers Bassam • Triée Catégorie 1
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#4105</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">1 200 <span class="text-on-surface-variant font-label-sm">F/kg</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">28.0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-secondary">23.5 kg</td>
+<td class="py-3 px-space-sm text-right font-mono text-error font-semibold">-4.5 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">28 200 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-secondary-container font-bold">40 kg</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-bold">Stock Faible</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">DLC: +2 jours</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Tomates Fraîches Bassam', '#4105', 23.5)">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Tomates Fraîches Bassam')">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#4105', 'Tomates Bassam', 1200)">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6: Pommes Golden (Afrique du Sud) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-category="fruits" data-name="Pommes Golden" data-status="optimal" data-stock="142" data-supplier="Import" data-valeur="340800">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[24px]">nutrition</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Pommes Golden Delicious</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                    Origine Afrique du Sud • Froid contrôlé
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#4055</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">2 400 <span class="text-on-surface-variant font-label-sm">F/kg</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">142.0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">142.0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono text-outline">0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">340 800 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-outline">35 kg</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">Optimal</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">DLC: +12 jours</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Pommes Golden', '#4055', 142.0)">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Pommes Golden')">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#4055', 'Pommes Golden', 2400)">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 7: Banane Plantain Mûre (Alépé) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group bg-error-container/20" data-category="agrumes" data-name="Banane Plantain Mûre" data-status="alerte" data-stock="12" data-supplier="Azaguié" data-valeur="9000">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Fresh yellow plantains bunched in African grocery store stall soft sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcx_Y9iCcM0lmbzcUUxIghVFqbGm_Y6A2eVLXay9UcLD3Ypcsw5_C-M-3s8RRuCcXSkBKA-jBR7g19D5XzwsGieSnso0W8vKkj_-GbmZb3zdRDW_hnKWKlDeWknRNZ2frFAZ-p2qob1a2zlIA6V-18p2xsYIeIDW-LQVmG1HzaQCkvDlfIaDjXHBD-brAs_b1eD2xSXs1eviHu96nXluXUCgxyEZqGwjIeasx9lEvn"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Banane Plantain Mûre (Alépé)</span>
+<span class="px-1.5 py-0.2 rounded font-label-sm text-label-sm bg-secondary-container text-on-primary font-bold">URGENT</span>
+</div>
+<span class="font-body-sm text-body-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+                    Stock sous le seuil d'épuisement
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#4088</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">750 <span class="text-on-surface-variant font-label-sm">F/kg</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">12.0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-error">11.4 kg</td>
+<td class="py-3 px-space-sm text-right font-mono text-error font-semibold">-0.6 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">8 550 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-error font-bold">30 kg</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-error text-on-error font-bold">Rupture Rayon</span>
+<span class="font-body-sm text-[10px] text-error font-semibold mt-0.5">DLC: +1 jour</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Banane Plantain', '#4088', 11.4)">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Banane Plantain')">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#4088', 'Banane Plantain', 750)">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 8: Avocats Hass (Divo) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group" data-category="fruits" data-name="Avocats Hass" data-status="optimal" data-stock="64" data-supplier="Korhogo" data-valeur="115200">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[24px]">spa</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg font-bold text-on-surface truncate">Avocats Hass Extra (Divo)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                    Producteurs Divo • Prêt à consommer
+                  </span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm">
+<span class="font-mono font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container text-on-surface">#4032</span>
+</td>
+<td class="py-3 px-space-sm text-right font-mono font-medium">1 800 <span class="text-on-surface-variant font-label-sm">F/kg</span></td>
+<td class="py-3 px-space-sm text-right font-mono text-on-surface-variant">64.0 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">63.2 kg</td>
+<td class="py-3 px-space-sm text-right font-mono text-secondary font-semibold">-0.8 kg</td>
+<td class="py-3 px-space-sm text-right font-mono font-bold text-on-surface">113 760 <span class="font-label-sm text-outline">F</span></td>
+<td class="py-3 px-space-sm text-center">
+<span class="font-mono font-label-md text-label-md text-outline">25 kg</span>
+</td>
+<td class="py-3 px-space-sm text-center">
+<div class="inline-flex flex-col items-center">
+<span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">Optimal</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant mt-0.5">DLC: +5 jours</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary transition-all" onclick="openWeightModal('Avocats Hass', '#4032', 63.2)">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="openHistoryModal('Avocats Hass')">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors" onclick="printBarcodeLabel('#4032', 'Avocats Hass', 1800)">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination / Status Footer -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lignes par page :</span>
+<select class="bg-surface-container-lowest rounded px-2 py-1 font-label-sm text-label-sm text-on-surface border-0 focus:ring-1 focus:ring-primary-container">
+<option>8 (Aperçu)</option>
+<option>25</option>
+<option>50</option>
+<option>Toutes (187)</option>
+</select>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Affichage 1 à 8 sur 187 articles</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high disabled:opacity-50">
+<span class="material-symbols-outlined text-[18px]">first_page</span>
+</button>
+<button class="p-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high disabled:opacity-50">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="px-2.5 py-1 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-bold">1</span>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high">2</button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high">3</button>
+<button class="p-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="p-1 rounded bg-surface-container text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[18px]">last_page</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ROW 4: BOTTOM MOVEMENTS & REASSORT LOG + LIVE RECEPTION SUMMARY -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Log des Mouvements du Jour -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between border-b-0 pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">timeline</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Mouvements de Réassort &amp; Freinte du Jour</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">
+          Plateau • Caisse &amp; Réserve
+        </span>
+</div>
+<div class="flex flex-col gap-space-sm mt-space-sm">
+<!-- Event 1 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-on-primary-fixed-variant text-[18px]">local_shipping</span>
+</div>
+<div class="flex flex-col flex-grow min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">Réception Arrivage Bonoua &amp; Alépé</span>
+<span class="font-label-sm text-label-sm text-outline">08:30 Aujourd'hui</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              +250 kg Ananas Pain de Sucre, +180 kg Bananes Plantains. Contrôle qualité température OK, validé par <span class="text-on-surface font-semibold">M. Bakayoko (Gérant)</span>.
+            </p>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-secondary-fixed/40 hover:bg-secondary-fixed/60 transition-colors">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center flex-shrink-0 mt-0.5 text-on-primary">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+</div>
+<div class="flex flex-col flex-grow min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-secondary-container">Démarque Déclarée (Perte Humidité / Tri)</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">11:15</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              4.5 kg Tomates fraîches flétries retirées du rayon frais. Perte chiffrée : <span class="font-semibold text-secondary">5 400 FCFA</span>.
+            </p>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary-container text-[18px]">scale</span>
+</div>
+<div class="flex flex-col flex-grow min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-bold text-on-surface">Scan Inventaire Balance Électronique #02</span>
+<span class="font-label-sm text-label-sm text-outline">14:00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Pesée certifiée lot Mangues Kent (318.5 kg). Écart freinte normal (-1.5 kg). Ajustement de stock validé sans anomalie.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Scale Recheck Card / Tare Widget -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">monitor_weight</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Terminal Pesée Direct</span>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse" title="Balance Connectée RS-232"></span>
+</div>
+<div class="my-space-sm bg-surface-container-low rounded-xl p-space-md flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Balance Caisse #01 (Plateau)</span>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-headline-lg text-4xl font-extrabold text-on-surface font-mono tracking-tight" id="liveWeightDisplay">0.000</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-bold">kg</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Stable • Prêt pour tare
+        </span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="py-2.5 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high font-label-md text-label-md text-on-surface font-semibold flex items-center justify-center gap-1 transition-colors" onclick="tareScale()">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Faire Tare [T]</span>
+</button>
+<button class="py-2.5 px-3 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-1 transition-colors shadow-sm" onclick="simulateWeighing()">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Capturer Poids</span>
+</button>
+</div>
+</div>
+</div>
+<!-- MODAL: AJUSTEMENT DE PESÉE & SAISIE RAPIDE (F9) -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-on-surface/40 backdrop-blur-sm p-4" id="weightAdjustmentModal">
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-150">
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="modalProductName">Ajustement Pesée</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="modalProductCode">PLU #0000</p>
+</div>
+</div>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container" onclick="closeWeightModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Stock Théorique</span>
+<p class="font-headline-sm text-headline-sm font-mono text-on-surface mt-1" id="modalTheoStock">320.0 kg</p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dernier Écart Constaté</span>
+<p class="font-headline-sm text-headline-sm font-mono text-secondary mt-1" id="modalDiffStock">-1.5 kg</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Nouveau Poids Constaté sur Balance (kg)</label>
+<div class="relative flex items-center">
+<input class="w-full h-12 pl-4 pr-16 bg-surface-container-low rounded-lg font-headline-md text-headline-md font-mono text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container" id="modalInputWeight" step="0.05" type="number" value="318.5"/>
+<span class="absolute right-4 font-label-md text-label-md text-on-surface-variant font-bold">KG</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Motif de l'ajustement</label>
+<select class="w-full h-10 px-3 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container" id="modalReason">
+<option>Freinte naturelle (évaporation / dessèchement)</option>
+<option>Démarque casse / manipulation client</option>
+<option>Correction après arrivage camion</option>
+<option>Contrôle hebdomadaire contradictoire</option>
+</select>
+</div>
+<div class="flex items-center gap-2 p-space-sm rounded-lg bg-surface-container-low text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span>Enregistré avec la signature agent de : <strong>M. Bakayoko</strong></span>
+</div>
+</div>
+<div class="px-space-lg py-space-sm bg-surface-container-low flex items-center justify-end gap-space-xs">
+<button class="px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container" onclick="closeWeightModal()">
+          Annuler
+        </button>
+<button class="px-5 py-2 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md font-semibold shadow-sm transition-all" onclick="confirmWeightAdjustment()">
+          Enregistrer &amp; Valider Stock
+        </button>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATION -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toastNotification">
+<div class="bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-inverse-primary text-[20px]" id="toastIcon">check_circle</span>
+<span class="font-label-md text-label-md" id="toastMessage">Action réalisée avec succès</span>
+</div>
+</div>
+</div>
+<!-- INTERACTIVE SCRIPT LOGIC -->
+<script>
+  // Filter state
+  let currentCategory = 'all';
+
+  function switchCategoryTab(buttonEl, categoryKey) {
+    currentCategory = categoryKey;
+    
+    // Update button visual styles
+    document.querySelectorAll('.category-tab').forEach(btn => {
+      btn.className = 'category-tab px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all flex items-center gap-1.5';
+    });
+
+    if (categoryKey === 'alertes') {
+      buttonEl.className = 'category-tab px-3 py-1.5 rounded-lg bg-secondary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-1.5 font-bold';
+    } else {
+      buttonEl.className = 'category-tab px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm transition-all flex items-center gap-1.5 font-semibold';
+    }
+
+    filterTableRows();
+  }
+
+  function filterTableRows() {
+    const searchVal = document.getElementById('inventorySearch').value.toLowerCase().trim();
+    const supplierVal = document.getElementById('filterSupplier').value;
+    const statusVal = document.getElementById('filterStatus').value;
+    const rows = document.querySelectorAll('#inventoryTableBody tr');
+
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const name = (row.getAttribute('data-name') || '').toLowerCase();
+      const category = row.getAttribute('data-category');
+      const supplier = row.getAttribute('data-supplier');
+      const status = row.getAttribute('data-status');
+      const textContent = row.textContent.toLowerCase();
+
+      let matchCategory = (currentCategory === 'all') || 
+                            (currentCategory === 'alertes' && (status === 'alerte' || status === 'reappro')) ||
+                            (category === currentCategory);
+
+      let matchSupplier = (supplierVal === 'all') || (supplier === supplierVal);
+      let matchStatus = (statusVal === 'all') || (status === statusVal);
+      let matchSearch = searchVal === '' || textContent.includes(searchVal);
+
+      if (matchCategory && matchSupplier && matchStatus && matchSearch) {
+        row.style.display = '';
+        visibleCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    const badge = document.getElementById('activeCountBadge');
+    if (badge) {
+      badge.textContent = `${visibleCount} affichés sur 187`;
+    }
+  }
+
+  function sortTableRows() {
+    const sortVal = document.getElementById('sortOption').value;
+    const tbody = document.getElementById('inventoryTableBody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+
+    rows.sort((a, b) => {
+      if (sortVal === 'name') {
+        return (a.getAttribute('data-name') || '').localeCompare(b.getAttribute('data-name') || '');
+      } else if (sortVal === 'stock-asc') {
+        return parseFloat(a.getAttribute('data-stock') || 0) - parseFloat(b.getAttribute('data-stock') || 0);
+      } else if (sortVal === 'stock-desc') {
+        return parseFloat(b.getAttribute('data-stock') || 0) - parseFloat(a.getAttribute('data-stock') || 0);
+      } else if (sortVal === 'valeur-desc') {
+        return parseFloat(b.getAttribute('data-valeur') || 0) - parseFloat(a.getAttribute('data-valeur') || 0);
+      }
+      return 0;
+    });
+
+    rows.forEach(r => tbody.appendChild(r));
+  }
+
+  function resetFilters() {
+    document.getElementById('inventorySearch').value = '';
+    document.getElementById('filterSupplier').value = 'all';
+    document.getElementById('filterStatus').value = 'all';
+    document.getElementById('sortOption').value = 'name';
+    const defaultTab = document.querySelector('#categoryTabGroup button:first-child');
+    if (defaultTab) switchCategoryTab(defaultTab, 'all');
+    filterTableRows();
+    showToast('Filtres réinitialisés', 'filter_alt');
+  }
+
+  function toggleExportMenu() {
+    const menu = document.getElementById('exportMenu');
+    menu.classList.toggle('hidden');
+  }
+
+  // Weight Adjustment Modal Interactions
+  function openWeightModal(productName, code, currentWeight) {
+    document.getElementById('modalProductName').textContent = productName;
+    document.getElementById('modalProductCode').textContent = code;
+    document.getElementById('modalTheoStock').textContent = currentWeight + ' kg';
+    document.getElementById('modalInputWeight').value = currentWeight;
+    document.getElementById('weightAdjustmentModal').classList.remove('hidden');
+  }
+
+  function closeWeightModal() {
+    document.getElementById('weightAdjustmentModal').classList.add('hidden');
+  }
+
+  function confirmWeightAdjustment() {
+    const pName = document.getElementById('modalProductName').textContent;
+    const newWeight = document.getElementById('modalInputWeight').value;
+    closeWeightModal();
+    showToast(`Pesée enregistrée : ${pName} (${newWeight} kg)`, 'scale');
+  }
+
+  function openHistoryModal(productName) {
+    showToast(`Historique 30 jours ouvert pour : ${productName}`, 'history');
+  }
+
+  function printBarcodeLabel(code, name, price) {
+    showToast(`Étiquette code-barre générée pour ${name} (${price} F)`, 'print');
+  }
+
+  function triggerQuickAction(actionType) {
+    if (actionType === 'bon-reception') {
+      showToast('Ouverture Bon de Réception Arrivage Bonoua...', 'local_shipping');
+    } else if (actionType === 'demarque') {
+      showToast('Formulaire Démarque & Freinte prêt à la saisie', 'trending_down');
+    } else if (actionType === 'pesee') {
+      openWeightModal('Pesée Manuelle Générale', 'BALANCE #01', 0.0);
+    }
+  }
+
+  // Balance Direct Widget Simulator
+  function tareScale() {
+    document.getElementById('liveWeightDisplay').textContent = '0.000';
+    showToast('Tare de la balance réinitialisée à 0.000 kg', 'restart_alt');
+  }
+
+  function simulateWeighing() {
+    const randomWeights = ['4.850', '12.400', '2.150', '18.750', '0.980'];
+    const selected = randomWeights[Math.floor(Math.random() * randomWeights.length)];
+    const display = document.getElementById('liveWeightDisplay');
+    display.textContent = selected;
+    showToast(`Poids stabilisé capturé : ${selected} kg`, 'check_circle');
+  }
+
+  function showToast(message, icon = 'check_circle') {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMessage');
+    const toastIco = document.getElementById('toastIcon');
+
+    toastMsg.textContent = message;
+    toastIco.textContent = icon;
+
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0');
+    }, 2800);
+  }
+
+  // Global Keyboard Shortcuts
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'F4') {
+      e.preventDefault();
+      triggerQuickAction('bon-reception');
+    } else if (e.key === 'F8') {
+      e.preventDefault();
+      triggerQuickAction('demarque');
+    } else if (e.key === 'F9') {
+      e.preventDefault();
+      triggerQuickAction('pesee');
+    } else if (e.key === 'Escape') {
+      closeWeightModal();
+      document.getElementById('exportMenu').classList.add('hidden');
+    }
+  });
+
+  // Close export dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const btn = document.getElementById('exportDropdownBtn');
+    const menu = document.getElementById('exportMenu');
+    if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.add('hidden');
+    }
+  });
+</script></main></div></body></html>

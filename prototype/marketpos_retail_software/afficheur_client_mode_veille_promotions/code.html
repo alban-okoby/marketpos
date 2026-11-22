@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-surface":"#213145","secondary-fixed-dim":"#ffb68c","surface-container-high":"#dce9ff","surface":"#f8f9ff","on-error":"#ffffff","secondary":"#9a4600","primary-container":"#34a835","secondary-fixed":"#ffdbc9","on-tertiary-container":"#242c3d","primary":"#006e11","surface-dim":"#cbdbf5","on-secondary-container":"#5a2600","error-container":"#ffdad6","outline":"#6e7b69","outline-variant":"#becab6","on-tertiary-fixed-variant":"#3f4759","on-primary":"#ffffff","surface-bright":"#f8f9ff","inverse-on-surface":"#eaf1ff","surface-container-lowest":"#ffffff","on-background":"#0b1c30","surface-tint":"#006e11","on-tertiary-fixed":"#141b2c","tertiary-fixed-dim":"#bfc6dc","primary-fixed-dim":"#6cdf64","on-primary-container":"#003404","tertiary":"#565e71","surface-container-low":"#eff4ff","primary-fixed":"#88fc7d","on-surface":"#0b1c30","on-secondary-fixed-variant":"#753400","on-secondary":"#ffffff","surface-container":"#e5eeff","on-primary-fixed":"#002202","tertiary-fixed":"#dbe2f9","error":"#ba1a1a","tertiary-container":"#8b93a8","on-primary-fixed-variant":"#00530a","on-tertiary":"#ffffff","on-error-container":"#93000a","surface-variant":"#d3e4fe","inverse-primary":"#6cdf64","secondary-container":"#fd7700","surface-container-highest":"#d3e4fe","on-secondary-fixed":"#321200","background":"#f8f9ff","on-surface-variant":"#3f4a3b"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-sm":"0.5rem","space-md":"0.75rem","space-lg":"1.25rem","margin":"1.25rem","gutter":"1rem","space-xl":"1.75rem","space-xs":"0.25rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"body-sm":["11px",{"lineHeight":"16px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"500"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed"><main class="w-full min-h-screen"><div class="flex flex-col w-full p-4 lg:p-6 gap-5 select-none bg-surface text-on-surface">
+<!-- TOP HEADER: STORE IDENTITY & CASHIER STATUS -->
+<header class="flex flex-col md:flex-row items-center justify-between gap-4 bg-surface-container-lowest p-4 lg:px-6 lg:py-3.5 rounded-xl shadow-sm">
+<!-- Brand Info -->
+<div class="flex items-center gap-3.5 w-full md:w-auto">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md tracking-tight text-on-surface">MarketPOS</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Plateau</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Supermarché Central • Abidjan Plateau</p>
+</div>
+</div>
+<!-- Active Register Status Center Pill -->
+<div class="flex flex-col items-center justify-center px-6 py-2 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-2.5">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary-container"></span>
+</span>
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-wide uppercase">Caisse 02 Ouverte</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-medium flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">front_loader</span>
+        Déposez vos articles sur le tapis roulant
+      </span>
+</div>
+<!-- Live Ambient Meta & Cashier Badge -->
+<div class="flex items-center justify-end gap-3.5 w-full md:w-auto">
+<div class="text-right hidden sm:flex flex-col">
+<div class="flex items-center justify-end gap-1.5 font-label-md text-label-md text-on-surface">
+<span id="cfd-clock">21:58</span>
+<span class="text-outline-variant">•</span>
+<span>Abidjan 29°C</span>
+<span class="material-symbols-outlined text-[16px] text-secondary-container">partly_cloudy_day</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Vendredi 24 Octobre</span>
+</div>
+<div class="flex items-center gap-2.5 bg-surface-container px-3.5 py-1.5 rounded-xl">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-md text-label-md font-bold">
+          AK
+        </div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-outline leading-tight">À votre service</span>
+<span class="font-label-md text-label-md text-on-surface">Awa Koné</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN DUAL STAGE: HERO BANNER & FLASH DEALS / LOYALTY -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5 min-h-[580px]">
+<!-- HERO PROMOTIONAL STAGE (7/12 desktop col) -->
+<div class="lg:col-span-7 flex flex-col justify-between rounded-xl overflow-hidden relative shadow-md bg-surface-container-lowest">
+<!-- Media Background with rich gradient scrim -->
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full" data-alt="Vibrant top-down visual of an abundant West African artisanal fresh food market stall in Abidjan. Ripe golden Bonoua pineapples, fresh Kent mangoes, sweet plantains, crisp market greens, and tropical papayas bathed in warm natural golden-hour sunlight with crisp contrast and dew drops on organic fruits." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAJYrS7Aa9tPHHD9Ov02psAxb6Vu6eimQhzZfUW1u-7k33rRXOsD73wTK5T-PubIe_fLPUQHGkt_me-fjVJ2HVrPKza3NLcRwPwS9DNmN5furR_yfHo5CKytiVsfiFXbWAaTYyGq44i5b-ZKhm8_U2-PqIC_59pIt9KhKFkxlMZOBs_j_qxdKqiQ3bG0_otuxYnqeT0DPcQshioG2je-4AkilnpC-li2IDCqGkmKTt')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/60 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-inverse-surface/80 via-transparent to-transparent"></div>
+</div>
+<!-- Top Overlay Badges -->
+<div class="relative z-10 p-6 flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md tracking-wider uppercase shadow-sm">
+            Offre de Saison
+          </span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-md text-label-md flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+            100% Fraîcheur Bonoua
+          </span>
+</div>
+<div class="bg-surface-container-lowest/95 backdrop-blur-md px-3.5 py-1.5 rounded-xl shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">timer</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Jusqu'au Dimanche</span>
+</div>
+</div>
+<!-- Hero Bottom Content Block -->
+<div class="relative z-10 p-6 lg:p-8 flex flex-col gap-4">
+<!-- Big Tagline -->
+<div class="flex flex-col gap-1 max-w-xl">
+<span class="font-label-lg text-label-lg text-primary-fixed-dim uppercase tracking-widest font-bold">Terroir &amp; Saveurs d'Afrique de l'Ouest</span>
+<h1 class="font-headline-lg text-headline-lg lg:text-[34px] lg:leading-[42px] text-inverse-on-surface font-extrabold tracking-tight">
+            FESTIVAL DE LA FRAÎCHEUR &amp; DU TERROIR
+          </h1>
+<p class="font-body-lg text-body-lg text-surface-container-highest max-w-lg">
+            Savourez les récoltes fraîches du matin : ananas doux de Bonoua, mangues Kent parfumées et maraîchage local à prix cassés.
+          </p>
+</div>
+<!-- Featured Choc Offer Strip -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-headline-md font-bold">
+              %
+            </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold tracking-wider uppercase">Prix Choc du Jour</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Mangues Kent Extra Douces</span>
+</div>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-headline-md text-headline-md lg:text-[26px] text-primary-container font-extrabold">
+              850 <span class="text-sm font-semibold">FCFA / kg</span>
+</span>
+<span class="font-body-md text-body-md text-outline line-through">
+              1 200 FCFA
+            </span>
+<span class="px-2 py-0.5 rounded bg-error-container text-error font-label-sm text-label-sm font-bold">
+              -30%
+            </span>
+</div>
+</div>
+<!-- Carousel Navigation & Interactive Flyer QR -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+<!-- Slide Bars -->
+<div class="flex flex-col gap-1.5 w-full sm:w-1/2">
+<div class="flex items-center justify-between text-surface-container-highest font-label-sm text-label-sm">
+<span>Promo 1 sur 4</span>
+<span class="text-primary-fixed-dim">Suivant : Pack Lait x6 (dans 5s)</span>
+</div>
+<div class="grid grid-cols-4 gap-1.5 w-full">
+<div class="h-1.5 rounded-full bg-primary-container"></div>
+<div class="h-1.5 rounded-full bg-surface-container-lowest/30"></div>
+<div class="h-1.5 rounded-full bg-surface-container-lowest/30"></div>
+<div class="h-1.5 rounded-full bg-surface-container-lowest/30"></div>
+</div>
+</div>
+<!-- Digital Flyer QR Scan -->
+<div class="flex items-center gap-3 bg-inverse-surface/80 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-sm self-stretch sm:self-auto">
+<!-- Inline Mini QR Vector -->
+<div class="w-10 h-10 bg-surface-container-lowest p-1 rounded-lg flex items-center justify-center shrink-0">
+<svg class="w-full h-full text-on-surface fill-current" viewbox="0 0 24 24">
+<path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h4v2h-4v-2zm-4 0h2v4h-2v-4zm2 4h4v4h-2v-2h-2v-2zm-2 2h2v2h-2v-2zm-6-2v2H6v-2h2zm10 2v2h2v-2h-2z"></path>
+</svg>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-surface-bright font-bold">Flyer Hebdo WhatsApp</span>
+<span class="font-body-sm text-body-sm text-surface-variant">Scannez pour recevoir les promos</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT STAGE: FLASH BONS PLANS & MARKETCLUB (5/12 desktop col) -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<!-- FLASH OFFERS CONTAINER -->
+<div class="bg-surface-container-lowest p-4 lg:p-5 rounded-xl shadow-sm flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Bons Plans Express du Rayon</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider bg-surface-container px-2 py-0.5 rounded">En Stock</span>
+</div>
+<!-- Deal Item 1: Huile Dinor -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0">
+<img class="w-full h-full object-cover" data-alt="1 liter bottle of premium vegetable cooking oil in clean retail packaging placed on crisp grocery shelf background with golden reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLcBOPAGqX2CJ-hWtftvkuewsQY6h8M98YHY7Hfe6uXHls7tBQLvNe0PIItpn3hqzNKfMJLQMp1BTvEFcoCNe4MaihMuxknowYJQgU4OnoOaiKyPf0FgoI7_bVFuIllLbICfC7famVhqOgTQPgDBGsAOqkcMoPnTGXFydRtPYsJ_o7UbmIlqbQNH7lJaKakuG7tV0UB8Yen21JwCFV8x6FZBhh32ZYCXwyjISn_vxO"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface line-clamp-1">Huile Végétale Dinor • 1L</span>
+<span class="font-body-sm text-body-sm text-outline">Bouteille individuelle</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary font-label-sm text-label-sm font-bold mb-0.5">
+              Économisez 15%
+            </span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">1 450 <span class="text-xs">FCFA</span></span>
+<span class="font-body-sm text-body-sm text-outline line-through">1 650</span>
+</div>
+</div>
+</div>
+<!-- Deal Item 2: Riz Parfumé Jasmin -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0">
+<img class="w-full h-full object-cover" data-alt="5kg bag of premium aromatic jasmine rice sealed pack placed in an upscale supermarket display in clean studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ3hawRPWgopG3RtLIFsphUJsZW7QUuWwL3ZswgtIh0eTvFE954wiY8HEyn60LBHUjsZ3pwKGLrFjFf3Xp_5pKJP9bYWqv2qLY9jcMeFvjfbde0NEEkR41vkTlWf6NpB72UT_3ckT70zU0KLpPZoBQ5ZUONRBlGEw6aZWRteXEf8-V8LasfPsyEPyLX7w5nTL-WJ2c24QBiquhDYwyIxJTEzNLDNrHip7uvAXUWfgp"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface line-clamp-1">Riz Parfumé Jasmin • Sac 5kg</span>
+<span class="font-body-sm text-body-sm text-primary font-medium">Grain long supérieur</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-bold mb-0.5">
+              -700 FCFA
+            </span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">5 800 <span class="text-xs">FCFA</span></span>
+<span class="font-body-sm text-body-sm text-outline line-through">6 500</span>
+</div>
+</div>
+</div>
+<!-- Deal Item 3: Pack Yaourts -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container-lowest shrink-0">
+<img class="w-full h-full object-cover" data-alt="Fresh creamy stirred flavored yogurt pots pack in natural dairy section with fresh strawberry accents and clean packaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvn0Pymt8JCffDIeRUT_RPGi672MFuI0dUabOX_pntJcXDDvGcJTqps0lki5R8OtRC5MFFxBoh2GSSal2Biaqgu7o7PsJKtApDBNSPKrtsvuKBpHl_l-X6FVYHmbqzJaQRHssi_wfvS_O_3IV_Zzd8637JkD_du2nJ9aKMbP07vC4UJZulpzSzwDw1AIJ-j5SqWH3XmBk9K3Qb5u999-mCkjCYuAxo_RbKMKtIER9B"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface line-clamp-1">Yaourt Onctueux Fraise &amp; Vanille</span>
+<span class="font-body-sm text-body-sm text-secondary font-bold">Offre Exceptionnelle Rayon Frais</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-1 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold uppercase tracking-tight shadow-sm">
+              2 Achetés = 1 Offert !
+            </span>
+</div>
+</div>
+</div>
+<!-- MARKETCLUB LOYALTY CARD -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex flex-col justify-between flex-1 relative overflow-hidden">
+<!-- Subtle Ambient Background Glow -->
+<div class="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-primary-fixed-dim/20 blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-3 relative z-10">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">loyalty</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Club Fidélité MarketClub</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Payez vos courses moins cher toute l'année</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">
+            Adhésion 100% Gratuite
+          </span>
+</div>
+<!-- Value Proposition Formula Graphic -->
+<div class="my-3 grid grid-cols-2 gap-2 relative z-10">
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-body-sm text-body-sm text-outline">À chaque passage :</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold mt-0.5">1 000 FCFA</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">= 10 points fidélité</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-body-sm text-body-sm text-outline">En caisse :</span>
+<span class="font-headline-sm text-headline-sm text-secondary-container font-bold mt-0.5">100 Points</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">= 500 FCFA de remise</span>
+</div>
+</div>
+<!-- QR Code Registration Strip -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container relative z-10">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">Pas encore inscrit ?</span>
+<span class="font-body-sm text-body-sm text-outline">Inscription express en 30 sec via votre mobile</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-2.5 py-1.5 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center">
+<svg class="w-full h-full text-on-surface fill-current" viewbox="0 0 24 24">
+<path d="M3 3h6v6H3V3zm2 2v2h2V5H5zm8-2h6v6h-6V3zm2 2v2h2V5h-2zM3 13h6v6H3v-6zm2 2v2h2v-2H5zm13-2h3v2h-3v-2zm-5 0h2v2h-2v-2zm2 2h2v2h-2v-2zm2 2h3v3h-3v-3zm-4 1h2v2h-2v-2z"></path>
+</svg>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Scanner</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- BOTTOM BAR: ACCEPTED PAYMENTS, QUALITY COMMITMENTS & POS READY STATE -->
+<footer class="bg-surface-container-lowest p-4 lg:px-6 lg:py-3.5 rounded-xl shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+<!-- West African Mobile Money & Payment Methods -->
+<div class="flex flex-wrap items-center gap-3">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-bold shrink-0">Paiements Acceptés :</span>
+<!-- Wave -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low font-label-md text-label-md font-bold text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
+        Wave
+      </div>
+<!-- Orange Money -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low font-label-md text-label-md font-bold text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container inline-block"></span>
+        Orange Money
+      </div>
+<!-- MTN MoMo -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low font-label-md text-label-md font-bold text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-500 inline-block"></span>
+        MTN MoMo
+      </div>
+<!-- Moov Money -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low font-label-md text-label-md font-bold text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block"></span>
+        Moov
+      </div>
+<!-- Carte Bancaire -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-outline">credit_card</span>
+        Visa / Mastercard
+      </div>
+<!-- Espèces FCFA -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary">payments</span>
+        Espèces FCFA
+      </div>
+</div>
+<!-- Central Supermarket Commitments -->
+<div class="hidden xl:flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+<span>100% Frais &amp; Terroir</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">assignment_return</span>
+<span>Reprise garantie 72h</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span>Sacs recyclables dispo</span>
+</div>
+</div>
+<!-- Active Readiness Signal -->
+<div class="flex items-center gap-2 bg-primary-container text-on-primary px-4 py-2 rounded-xl shadow-sm self-stretch lg:self-auto justify-center">
+<span class="material-symbols-outlined text-[20px] animate-pulse">barcode_scanner</span>
+<span class="font-label-md text-label-md font-bold tracking-tight">Prêt pour le scan de vos articles</span>
+</div>
+</footer>
+</div>
+<!-- Inline Clock Micro-interaction for CFD Realtime Precision -->
+<script>
+  (function updateLiveTime() {
+    const clockEl = document.getElementById('cfd-clock');
+    if (!clockEl) return;
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    clockEl.textContent = `${hours}:${minutes}`;
+    setTimeout(updateLiveTime, 30000);
+  })();
+</script></main></body></html>

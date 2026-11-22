@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#bfc6dc","on-error":"#ffffff","surface-tint":"#006e11","primary-fixed":"#88fc7d","surface-container-low":"#eff4ff","secondary-fixed":"#ffdbc9","inverse-on-surface":"#eaf1ff","inverse-surface":"#213145","on-secondary-fixed":"#321200","on-surface":"#0b1c30","on-secondary-fixed-variant":"#753400","surface-variant":"#d3e4fe","on-error-container":"#93000a","surface-bright":"#f8f9ff","on-primary-container":"#003404","inverse-primary":"#6cdf64","outline-variant":"#becab6","primary-container":"#34a835","primary":"#006e11","surface-container":"#e5eeff","tertiary":"#565e71","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","on-tertiary-container":"#242c3d","error-container":"#ffdad6","tertiary-container":"#8b93a8","on-surface-variant":"#3f4a3b","on-secondary":"#ffffff","primary-fixed-dim":"#6cdf64","on-primary-fixed-variant":"#00530a","surface-container-highest":"#d3e4fe","error":"#ba1a1a","on-secondary-container":"#5a2600","tertiary-fixed":"#dbe2f9","surface":"#f8f9ff","surface-container-high":"#dce9ff","on-tertiary-fixed":"#141b2c","background":"#f8f9ff","on-tertiary-fixed-variant":"#3f4759","secondary-fixed-dim":"#ffb68c","secondary-container":"#fd7700","surface-container-lowest":"#ffffff","secondary":"#9a4600","on-primary":"#ffffff","on-background":"#0b1c30","outline":"#6e7b69","on-primary-fixed":"#002202"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"0.75rem","space-xl":"1.75rem","margin":"1.25rem","space-xs":"0.25rem","gutter":"1rem","space-sm":"0.5rem","space-lg":"1.25rem"},"fontFamily":{"headline-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},"fontSize":{"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["11px",{"lineHeight":"16px","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-lg":["15px",{"lineHeight":"22px","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-[0_4px_14px_rgba(52,168,53,0.28)]"><span class="material-symbols-outlined text-[20px]">local_mall</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-none tracking-tight">MarketPOS</span><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase mt-0.5">Plateau • Abidjan</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Navigation Opérationnelle</div><nav class="mt-space-xs flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-[0_4px_14px_rgba(52,168,53,0.28)]"><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="tableau-de-bord" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Tableau de Bord</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="caisse-ventes" href="#"><span class="material-symbols-outlined text-[20px]">point_of_sale</span><span>Caisse &amp; Ventes</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="stocks-inventaire" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Stocks &amp; Inventaire</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="receptions-fournisseurs" href="#"><span class="material-symbols-outlined text-[20px]">conveyor_belt</span><span>Réceptions &amp; Fournisseurs</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="tarifs-etiquettes" href="#"><span class="material-symbols-outlined text-[20px]">sell</span><span>Tarifs &amp; Étiquettes</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="rapports-compta" href="#"><span class="material-symbols-outlined text-[20px]">finance</span><span>Rapports &amp; Compta</span></a></nav></div></div><div class="p-space-md flex flex-col gap-space-xs"><div class="px-space-sm font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Système</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg"><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="parametres" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Paramètres</span></a><a class="flex items-center gap-space-md px-space-md py-2.5 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="aide-support" href="#"><span class="material-symbols-outlined text-[20px]">help_center</span><span>Aide &amp; Support</span></a></nav><div class="mt-space-sm p-space-sm rounded-lg bg-surface-container-low flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px]">verified</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface">MarketPOS v4.2 Pro</span><span class="font-body-sm text-body-sm text-on-surface-variant">Connecté Serveur Abidjan</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm px-space-md py-1.5 rounded-full bg-surface-container text-on-surface"><span class="material-symbols-outlined text-primary text-[18px]">storefront</span><span class="font-label-md text-label-md font-semibold">Supermarché Central</span><span class="text-outline-variant font-label-sm">•</span><span class="font-label-sm text-label-sm text-on-surface-variant">Quai Réception</span><span class="material-symbols-outlined text-on-surface-variant text-[16px]">expand_more</span></div><div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm font-semibold text-primary">En direct</span></div></div><div class="flex-1 max-w-md mx-space-lg"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">search</span><input class="w-full h-9 pl-9 pr-14 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" placeholder="Rechercher article, lot, code-barres, BL..." type="text"/><div class="absolute right-2 px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Ctrl+K</div></div></div><div class="flex items-center gap-space-md"><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container"></span></button><button class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">qr_code_scanner</span></button><div class="h-6 w-px bg-surface-container-highest"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-md text-label-md text-on-surface leading-tight">K. N'Dri</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Resp. Stock &amp; Réceptions</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full relative min-h-[calc(100vh-4rem)]">
+<!-- Contexte d'arrière-plan sous-jacent (Gestion des Tarifs & Générateur d'Étiquettes) avec flou contrôlé -->
+<div class="w-full p-space-lg select-none opacity-45 blur-[2.5px] pointer-events-none transition-all">
+<!-- Header simulé sous-jacent -->
+<div class="flex items-center justify-between pb-space-lg">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface">Tarifs &amp; Générateur d'Étiquettes</span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant">Rayon Primeur</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Supervision de 1 482 références actives • 18 balises EEG en attente de synchronisation</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="h-9 px-space-md rounded-lg bg-surface-container-low text-on-surface-variant flex items-center gap-2 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">print</span>
+          File d'impression (28)
+        </div>
+<div class="h-9 px-space-md rounded-lg bg-primary-container text-on-primary flex items-center gap-2 font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+          Nouvelle Campagne
+        </div>
+</div>
+</div>
+<!-- Grille de cartes sous-jacente floutée -->
+<div class="grid grid-cols-4 gap-gutter mb-space-lg">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Articles en Promotion</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-2">64 Réf.</span>
+<span class="font-body-sm text-body-sm text-primary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12% cette semaine
+        </span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Marge Moyenne Rayon</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-2">38.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Seuil cible &gt; 32.0%</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Étiquettes EEG Connectées</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-2">99.2%</span>
+<span class="font-body-sm text-body-sm text-primary mt-1">1 420 balises en ligne</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Alertes Anti-Gaspi DLC</span>
+<span class="font-headline-md text-headline-md text-secondary mt-2">9 Lots</span>
+<span class="font-body-sm text-body-sm text-secondary-container mt-1">Action requise &lt; 24h</span>
+</div>
+</div>
+<!-- Table simulée sous-jacente -->
+<div class="w-full rounded-xl bg-surface-container-lowest shadow-sm p-space-md">
+<div class="h-10 w-full bg-surface-container-low rounded-lg mb-space-sm flex items-center px-space-md justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">DESIGNATION PRODUIT / PLU</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">PRIX RECOMMANDÉ</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">STATUT EEG</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="h-14 rounded-lg bg-surface-container/60 w-full"></div>
+<div class="h-14 rounded-lg bg-surface-container/40 w-full"></div>
+<div class="h-14 rounded-lg bg-surface-container/30 w-full"></div>
+</div>
+</div>
+</div>
+<!-- BACKDROP MODAL SOMBRE & FLOUTÉ HAUTE FIDÉLITÉ (MACOS LUXE) -->
+<div class="fixed inset-0 top-16 left-64 z-50 flex items-center justify-center p-space-lg bg-on-surface/40 backdrop-blur-md transition-opacity">
+<!-- CONTENEUR MODAL PRINCIPAL -->
+<div class="w-full max-w-5xl rounded-2xl bg-surface-container-lowest shadow-2xl flex flex-col overflow-hidden max-h-[92vh] animate-in fade-in zoom-in-95 duration-200" id="fast-price-modal">
+<!-- 1. EN-TÊTE DE LA MODALE -->
+<div class="px-space-xl py-space-lg bg-surface-container-low/80 flex items-start justify-between">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[26px]">flash_on</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">
+                Ajustement Tarifaire &amp; Promotion Flash
+              </h2>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                En rayon (14 facings)
+              </span>
+</div>
+<div class="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="font-semibold text-on-surface">Mangues Kent Fraîches de Korhogo</span>
+<span>•</span>
+<span>Rayon Primeur</span>
+<span>•</span>
+<span class="font-mono bg-surface-container px-1.5 py-0.5 rounded text-on-surface">PLU #4012</span>
+<span>•</span>
+<span class="font-mono text-tertiary">EAN 2004012000000</span>
+</div>
+</div>
+</div>
+<!-- Bouton Fermeture discret -->
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-colors" title="Fermer (Échap)" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- 2. CORPS EN DEUX COLONNES ERGONOMIQUES -->
+<div class="grid grid-cols-12 flex-1 overflow-y-auto divide-x-0">
+<!-- COLONNE GAUCHE (7 cols) : Paramétrage & Calculs temps réel -->
+<div class="col-span-7 p-space-xl flex flex-col gap-space-lg bg-surface-container-lowest">
+<!-- Segmented Controls / Mode d'opération -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Type d'ajustement commercial</label>
+<div class="grid grid-cols-4 p-1 rounded-xl bg-surface-container-low gap-1" id="operation-type-selector">
+<button class="py-2 px-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold text-center transition-all shadow-sm flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">percent</span>
+<span>Promo Flash %</span>
+</button>
+<button class="py-2 px-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-md text-label-md font-medium text-center transition-all flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+<span>Prix Direct</span>
+</button>
+<button class="py-2 px-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-md text-label-md font-medium text-center transition-all flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">loyalty</span>
+<span>Remise Lot</span>
+</button>
+<button class="py-2 px-1.5 rounded-lg text-on-surface-variant hover:bg-secondary/10 hover:text-secondary font-label-md text-label-md font-medium text-center transition-all flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">eco</span>
+<span>Anti-Gaspi</span>
+</button>
+</div>
+</div>
+<!-- Repères Économiques & Données de Référence -->
+<div class="p-space-md rounded-xl bg-surface-container-low grid grid-cols-3 gap-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">PMP Quai (Achat)</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1">750 FCFA</span>
+<span class="font-body-sm text-body-sm text-tertiary">par kg net pesé</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Prix Actuel Rayon</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1">1 400 FCFA</span>
+<span class="font-body-sm text-body-sm text-tertiary">TTC standard</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Marge Brute Base</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-headline-sm text-headline-sm text-primary font-bold">46.4%</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">+650 F</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-medium">Rentabilité élevée</span>
+</div>
+</div>
+<!-- Zone de Saisie Interactive Active -->
+<div class="p-space-lg rounded-xl bg-surface shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">calculate</span>
+                Calculateur Instantané
+              </label>
+<span class="font-body-sm text-body-sm text-on-surface-variant">TVA Primeur : Taux 0% (Exonéré)</span>
+</div>
+<div class="grid grid-cols-2 gap-space-lg items-end">
+<!-- Champ Saisie % Remise -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Taux de rabais flash</span>
+<div class="relative flex items-center">
+<input class="w-full h-12 px-space-md rounded-xl bg-surface-container-lowest font-headline-sm text-headline-sm font-bold text-secondary focus:outline-none focus:ring-2 focus:ring-secondary transition-all" id="input-discount" type="text" value="-14.28%"/>
+<span class="absolute right-3 font-label-md text-label-md text-secondary font-bold">REMISE</span>
+</div>
+</div>
+<!-- Champ Grand Format Nouveau Prix -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Nouveau Prix TTC Rayon</span>
+<div class="relative flex items-center">
+<input class="w-full h-12 pl-space-md pr-16 rounded-xl bg-surface-container-lowest font-headline-lg text-headline-lg font-bold text-primary focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" id="input-new-price" type="text" value="1 200"/>
+<span class="absolute right-3 font-label-md text-label-md text-on-surface-variant font-bold">FCFA/kg</span>
+</div>
+</div>
+</div>
+<!-- Raccourcis Rapides de Rabais -->
+<div class="flex items-center gap-2 pt-1 flex-wrap">
+<span class="font-label-sm text-label-sm text-tertiary mr-1">Raccourcis :</span>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-colors" type="button">-10%</button>
+<button class="px-2.5 py-1 rounded-lg bg-secondary-container text-on-primary font-label-sm text-label-sm font-semibold transition-colors shadow-xs" type="button">-14.3% (1 200 F)</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-colors" type="button">-15%</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-colors" type="button">-20%</button>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold transition-colors" type="button">-30%</button>
+<button class="px-2.5 py-1 rounded-lg bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold transition-colors" type="button">-50% Anti-Gaspi</button>
+</div>
+<!-- Calculateur d'impact économique en direct -->
+<div class="grid grid-cols-2 gap-space-md pt-space-xs">
+<div class="p-space-sm rounded-lg bg-primary-fixed/30 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface">Marge brute 37.5%</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">(+450 FCFA/kg)</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-medium mt-0.5">Marge saine (&gt; 30% cible rayon)</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0 mt-0.5">speed</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-on-surface">Vélocité attendue</span>
+<span class="font-label-sm text-label-sm px-1 rounded bg-secondary-fixed text-on-secondary-fixed font-bold">+35%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Écoulement estimé : 180 kg/jour</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Calendrier & Période de validité de la promo -->
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Durée de l'opération promotionnelle</span>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Date &amp; heure d'activation</span>
+<div class="h-10 px-space-md rounded-lg bg-surface-container-low flex items-center justify-between text-on-surface font-body-md text-body-md">
+<span class="font-medium flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                    Aujourd'hui (Immédiat)
+                  </span>
+<span class="font-mono text-tertiary">14:30</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Échéance programmée</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Valide 3 jours</span>
+</div>
+<div class="h-10 px-space-md rounded-lg bg-surface-container flex items-center justify-between text-on-surface font-body-md text-body-md">
+<span class="font-semibold">Dimanche 23 Juin 2024</span>
+<span class="font-mono text-on-surface-variant">23:59</span>
+</div>
+</div>
+</div>
+<!-- Option checkbox rétablissement auto -->
+<label class="flex items-center gap-space-sm mt-1 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary-container focus:ring-primary-container accent-primary-container" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Rétablir automatiquement le prix normal (1 400 FCFA) à l'échéance</span>
+</label>
+</div>
+</div>
+<!-- COLONNE DROITE (5 cols) : Prévisualisation live & Synchronisation matérielle -->
+<div class="col-span-5 p-space-xl flex flex-col gap-space-lg bg-surface-container-low/40">
+<!-- Prévisualisation WYSIWYG de l'étiquette gondole (Format 60x40mm) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">remove_red_eye</span>
+                Aperçu Direct Balise EEG (60 x 40 mm)
+              </span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Rendu E-Paper 3 couleurs
+              </span>
+</div>
+<!-- CARTE ÉTIQUETTE PHYSIQUE STYLE E-PAPER (Noir, Blanc, Rouge/Orange) -->
+<div class="relative w-full aspect-[3/2] rounded-xl bg-surface-container-lowest p- space-md p-4 shadow-md flex flex-col justify-between overflow-hidden">
+<!-- Rayon & Catégorie -->
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary tracking-widest uppercase font-mono">RAYON PRIMEUR FRAIS</span>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface uppercase tracking-tight leading-tight">
+                    MANGUES KENT FRAÎCHES
+                  </h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Origine Côte d'Ivoire (Korhogo) • Cat. 1</span>
+</div>
+<!-- Badge Promotionnel Flash -->
+<div class="px-2 py-1 rounded bg-secondary-container text-on-primary flex flex-col items-center justify-center font-bold leading-none shadow-xs">
+<span class="text-[13px] tracking-tight font-extrabold">-14%</span>
+<span class="text-[8px] uppercase tracking-wider mt-0.5">FLASH</span>
+</div>
+</div>
+<!-- Zone de prix contrastée -->
+<div class="flex items-end justify-between my-auto py-1">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-tertiary line-through leading-none">1 400 FCFA</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Prix au kilo</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-black tracking-tight text-on-surface leading-none text-[34px]">
+                    1 200
+                  </span>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm font-bold text-secondary leading-none">FCFA</span>
+<span class="font-body-sm text-body-sm text-tertiary leading-none mt-0.5">/ kg</span>
+</div>
+</div>
+</div>
+<!-- Bas de l'étiquette : Barcode & PLU -->
+<div class="pt-2 flex items-center justify-between">
+<div class="flex flex-col">
+<!-- Simulation de code-barres SVG compact -->
+<svg class="h-6 w-32 text-on-surface" fill="currentColor" viewbox="0 0 120 24">
+<rect height="24" width="3" x="0" y="0"></rect>
+<rect height="24" width="1.5" x="5" y="0"></rect>
+<rect height="24" width="4" x="9" y="0"></rect>
+<rect height="24" width="2" x="15" y="0"></rect>
+<rect height="24" width="1" x="19" y="0"></rect>
+<rect height="24" width="3.5" x="23" y="0"></rect>
+<rect height="24" width="2" x="29" y="0"></rect>
+<rect height="24" width="1.5" x="33" y="0"></rect>
+<rect height="24" width="4" x="37" y="0"></rect>
+<rect height="24" width="2" x="44" y="0"></rect>
+<rect height="24" width="3" x="48" y="0"></rect>
+<rect height="24" width="1" x="53" y="0"></rect>
+<rect height="24" width="3" x="56" y="0"></rect>
+<rect height="24" width="2" x="62" y="0"></rect>
+<rect height="24" width="4" x="66" y="0"></rect>
+<rect height="24" width="1.5" x="73" y="0"></rect>
+<rect height="24" width="3" x="77" y="0"></rect>
+<rect height="24" width="2" x="83" y="0"></rect>
+<rect height="24" width="3.5" x="88" y="0"></rect>
+<rect height="24" width="1" x="94" y="0"></rect>
+<rect height="24" width="3" x="98" y="0"></rect>
+<rect height="24" width="2" x="104" y="0"></rect>
+<rect height="24" width="4" x="108" y="0"></rect>
+<rect height="24" width="2" x="115" y="0"></rect>
+</svg>
+<span class="font-mono text-[9px] text-tertiary tracking-wider mt-0.5">2004012000000</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-headline-sm font-extrabold text-on-surface font-mono leading-none">PLU #4012</span>
+<span class="font-label-sm text-label-sm text-tertiary mt-0.5">BALISE E04-14</span>
+</div>
+</div>
+<!-- Effet filigrane tactile d'étiquette électronique -->
+<div class="absolute bottom-1 right-2 opacity-15 pointer-events-none">
+<span class="material-symbols-outlined text-[16px]">sensors</span>
+</div>
+</div>
+</div>
+<!-- Canaux de synchronisation immédiate -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Périphériques cibles à mettre à jour</span>
+<div class="flex flex-col gap-2">
+<!-- Sync 1 : EEG -->
+<label class="p-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors flex items-center gap-space-sm cursor-pointer shadow-xs">
+<input checked="" class="w-4 h-4 rounded text-primary-container accent-primary-container" type="checkbox"/>
+<span class="material-symbols-outlined text-primary text-[20px]">sensors</span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Étiquettes électroniques (EEG)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">14 balises actives du rayon Primeur</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-semibold">&lt; 30 sec</span>
+</label>
+<!-- Sync 2 : Balances Tactiles -->
+<label class="p-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors flex items-center gap-space-sm cursor-pointer shadow-xs">
+<input checked="" class="w-4 h-4 rounded text-primary-container accent-primary-container" type="checkbox"/>
+<span class="material-symbols-outlined text-primary text-[20px]">scale</span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Balances tactiles de pesée libre-service</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Touches rapides &amp; code PLU #4012</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-semibold">Instantané</span>
+</label>
+<!-- Sync 3 : Écrans Clients & Carrousel Promos -->
+<label class="p-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors flex items-center gap-space-sm cursor-pointer shadow-xs">
+<input checked="" class="w-4 h-4 rounded text-primary-container accent-primary-container" type="checkbox"/>
+<span class="material-symbols-outlined text-secondary text-[20px]">monitor</span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Afficheur client caisse (CFD)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bandeau promo &amp; carrousel écran 7"</span>
+</div>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-semibold">En direct</span>
+</label>
+<!-- Sync 4 : Impression Papier Zebra (Optionnelle) -->
+<label class="p-space-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container transition-colors flex items-center gap-space-sm cursor-pointer shadow-xs">
+<input class="w-4 h-4 rounded text-primary-container accent-primary-container" type="checkbox"/>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">print</span>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Imprimer étiquettes adhésives de rechange</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">14 étiquettes sur imprimante Zebra ZD420</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary">En attente</span>
+</label>
+</div>
+</div>
+<!-- Alerte Gouvernance & Conformité Marge Plancher -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-start gap-space-sm shadow-xs">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0 mt-0.5">verified</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Conforme à la politique tarifaire</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Prix supérieur au seuil plancher magasin (850 FCFA). Marge brute résiduelle conforme aux exigences de rentabilité.
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. PIED DE MODALE (ACTIONS STRATÉGIQUES) -->
+<div class="px-space-xl py-space-md bg-surface-container-low flex items-center justify-between shadow-[0_-2px_10px_rgba(0,0,0,0.02)]">
+<!-- Raccourcis gauche -->
+<div class="flex items-center gap-space-lg">
+<button class="px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors" type="button">
+            Annuler [Échap]
+          </button>
+<button class="text-tertiary hover:text-primary font-body-sm text-body-sm flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">history</span>
+            Historique des prix du produit
+          </button>
+</div>
+<!-- Boutons d'action droits -->
+<div class="flex items-center gap-space-md">
+<button class="px-space-lg py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg font-semibold transition-all" type="button">
+            Appliquer sans imprimer
+          </button>
+<!-- Bouton Vert Signature Grostore (#34a835) : Texte et Icône BLANC PUR obligatoires -->
+<button class="h-11 px-space-xl rounded-xl bg-primary-container hover:brightness-105 active:scale-[0.99] text-on-primary font-label-lg text-label-lg font-bold flex items-center gap-2 shadow-[0_4px_14px_rgba(52,168,53,0.35)] transition-all" type="button">
+<span class="material-symbols-outlined text-on-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">send_and_archive</span>
+<span class="text-on-primary">Appliquer &amp; Diffuser la Promotion [F9]</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interactions ergonomiques POS
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('fast-price-modal');
+        if (modal) {
+          modal.parentElement.classList.add('opacity-0', 'pointer-events-none');
+        }
+      }
+    });
+  </script>
+</div></main></div></body></html>
