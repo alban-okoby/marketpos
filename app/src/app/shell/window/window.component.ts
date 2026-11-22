@@ -66,7 +66,7 @@ gsap.registerPlugin(Draggable);
         </div>
       </header>
 
-      <div class="content">
+      <div class="content" [class.flush]="state().appId === 'parametres'">
         @switch (state().appId) {
           @case ('parametres') {
             <app-settings-app />

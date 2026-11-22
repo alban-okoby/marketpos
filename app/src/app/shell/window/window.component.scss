@@ -95,4 +95,10 @@
   min-height: 0;
   overflow: auto;
   padding: 18px;
+
+  // Apps with their own layout (Paramètres has a sidebar) fill the window edge to edge.
+  &.flush {
+    padding: 0;
+    overflow: hidden;
+  }
 }

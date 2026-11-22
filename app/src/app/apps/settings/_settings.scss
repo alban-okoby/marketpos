@@ -1,0 +1,119 @@
+// Shared building blocks for the settings pages. Import with: @use '../settings' as s;
+
+@mixin muted-text {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@mixin option-grid($min-width: 160px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+
+// A selectable card: the selected one gets the accent border.
+@mixin option-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  background: var(--fill-subtle);
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover {
+    background: var(--fill-hover);
+  }
+
+  &.selected {
+    border-color: var(--accent-strong);
+  }
+}
+
+@mixin option-label {
+  font-weight: 600;
+}
+
+@mixin option-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+// Toggle switch: the track turns green when on, and the knob slides across.
+@mixin switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--fill-active);
+  border: 1px solid var(--stroke);
+  transition: background 0.2s;
+
+  .knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--text);
+    transition: transform 0.2s;
+  }
+
+  &.on {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+
+    .knob {
+      transform: translateX(20px);
+      background: #fff;
+    }
+  }
+}
+
+@mixin row-with-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--fill-subtle);
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@mixin page-title {
+  h2 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+  }
+
+  .subtitle,
+  .hint {
+    @include muted-text;
+  }
+
+  .group-title {
+    margin: 14px 0 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+}

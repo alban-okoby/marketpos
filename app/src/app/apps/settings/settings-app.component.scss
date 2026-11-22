@@ -1,164 +1,79 @@
 :host {
   display: block;
+  height: 100%;
 }
 
-.settings {
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  height: 100%;
+  min-height: 0;
+}
+
+.sidebar {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  max-width: 620px;
+  gap: 6px;
+  padding: 20px 12px;
+  background: var(--fill-subtle);
+  border-right: 1px solid var(--stroke);
+  overflow: auto;
 }
 
-h2 {
+.sidebar-title {
+  margin: 0 10px 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   margin: 0;
-  font-size: 1.4rem;
+  padding: 0;
+  list-style: none;
 }
 
-h3 {
-  margin: 0 0 6px;
-  font-size: 1rem;
-}
-
-.subtitle,
-.hint,
-.current {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.current {
-  margin-top: 4px;
-}
-
-.group-title {
-  margin: 14px 0 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.options-two {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.option-compact {
-  padding: 12px;
-}
-
-.switch-row {
+.nav-item {
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
-  padding: 14px;
-  border-radius: var(--radius-md);
-  background: var(--fill-subtle);
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
 
-  > div {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-}
-
-// Toggle switch: the track turns green when on, and the knob slides across.
-.switch {
-  position: relative;
-  flex: 0 0 auto;
-  width: 46px;
-  height: 26px;
-  border-radius: 999px;
-  background: var(--fill-active);
-  border: 1px solid var(--stroke);
-  transition: background 0.2s;
-
-  .knob {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--text);
-    transition: transform 0.2s;
+  &:hover {
+    background: var(--fill-hover);
+    color: var(--text);
   }
 
-  &.on {
-    background: var(--accent-strong);
-    border-color: var(--accent-strong);
+  // The selected page: a stronger background and a short accent bar on the left edge.
+  &.active {
+    background: var(--fill-active);
+    color: var(--text);
+    font-weight: 600;
 
-    .knob {
-      transform: translateX(20px);
-      background: #fff;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      bottom: 9px;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--accent-indicator);
     }
   }
 }
 
-.options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
-  margin: 12px 0;
-}
-
-.option {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 14px;
-  border-radius: var(--radius-md);
-  border: 2px solid transparent;
-  background: var(--fill-subtle);
-  text-align: left;
-  transition: border-color 0.15s, background 0.15s;
-
-  &:hover {
-    background: var(--fill-hover);
-  }
-
-  &.selected {
-    border-color: var(--accent-strong);
-  }
-}
-
-.option-label {
-  font-weight: 600;
-}
-
-.option-hint {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-// Theme previews use flat colours only.
-.swatch {
-  position: relative;
-  width: 100%;
-  height: 64px;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid var(--stroke);
-
-  &[data-kind='light'] {
-    background: #f4f8f5;
-  }
-
-  &[data-kind='dark'] {
-    background: #0d1412;
-  }
-
-  // Split preview: light half on the left, dark half on the right.
-  &[data-kind='system']::before {
-    content: '';
-    position: absolute;
-    inset: 0 50% 0 0;
-    background: #f4f8f5;
-  }
-
-  &[data-kind='system'] {
-    background: #0d1412;
-  }
+.content {
+  min-width: 0;
+  overflow: auto;
+  padding: 26px 30px;
 }

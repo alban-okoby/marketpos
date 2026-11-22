@@ -1,0 +1,50 @@
+@use '../settings' as s;
+
+:host {
+  display: block;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 620px;
+
+  @include s.page-title;
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.options {
+  @include s.option-grid;
+  margin: 10px 0 0;
+}
+
+.options-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.option {
+  @include s.option-card;
+  padding: 12px;
+}
+
+.option-label {
+  @include s.option-label;
+}
+
+.option-hint {
+  @include s.option-hint;
+}
+
+.switch-row {
+  @include s.row-with-switch;
+  margin-top: 14px;
+}
+
+.switch {
+  @include s.switch;
+}

@@ -13,6 +13,8 @@ export type IconName =
   | 'online'
   | 'offline'
   | 'user'
+  | 'display'
+  | 'taskbar'
   | 'minus'
   | 'square'
   | 'close'
@@ -35,6 +37,8 @@ const COLOR_ICONS: Partial<Record<IconName, string>> = {
   online: 'satellite-antenna.svg',
   offline: 'mobile-phone-off.svg',
   user: 'office-worker-default.svg',
+  display: 'desktop-computer.svg',
+  taskbar: 'triangular-ruler.svg',
 };
 
 /**

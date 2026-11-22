@@ -1,148 +1,59 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
-import { ThemePreference, ThemeService } from '../../core/theme/theme.service';
-import {
-  TaskbarAlignment,
-  TaskbarPosition,
-  TaskbarSettingsService,
-} from '../../core/taskbar/taskbar-settings.service';
+import { IconComponent } from '../../shared/icon/icon.component';
+import { DisplaySettingsComponent } from './sections/display-settings.component';
+import { TaskbarSettingsComponent } from './sections/taskbar-settings.component';
+import { SETTINGS_SECTIONS, SettingsSectionId } from './settings-sections';
 
-interface ThemeOption {
-  readonly value: ThemePreference;
-  readonly label: string;
-  readonly hint: string;
-}
-
-interface TaskbarPositionOption {
-  readonly value: TaskbarPosition;
-  readonly label: string;
-  readonly hint: string;
-}
-
-interface TaskbarAlignmentOption {
-  readonly value: TaskbarAlignment;
-  readonly label: string;
-  readonly hint: string;
-}
-
-/** Settings window: appearance (theme) and taskbar sections. */
+/**
+ * Settings window, in the style of Windows 11 and macOS: a sidebar lists the pages,
+ * and the selected page fills the content area.
+ */
 @Component({
   selector: 'app-settings-app',
+  imports: [IconComponent, DisplaySettingsComponent, TaskbarSettingsComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <article class="settings">
-      <header>
-        <h2>Paramètres</h2>
-        <p class="subtitle">Préférences de MarketPOS sur cet appareil</p>
-      </header>
-
-      <section aria-labelledby="appearance-title">
-        <h3 id="appearance-title">Apparence</h3>
-        <p class="hint">
-          « Automatique » suit le réglage du système (clair ou sombre). Le choix est mémorisé sur cet appareil.
-        </p>
-
-        <div class="options" role="radiogroup" aria-labelledby="appearance-title">
-          @for (option of themeOptions; track option.value) {
-            <button
-              type="button"
-              role="radio"
-              class="option"
-              [class.selected]="theme.preference() === option.value"
-              [attr.aria-checked]="theme.preference() === option.value"
-              (click)="theme.setPreference(option.value)"
-            >
-              <span class="swatch" [attr.data-kind]="option.value" aria-hidden="true"></span>
-              <span class="option-label">{{ option.label }}</span>
-              <span class="option-hint">{{ option.hint }}</span>
-            </button>
+    <div class="layout">
+      <nav class="sidebar" aria-label="Catégories des paramètres">
+        <h2 class="sidebar-title">Paramètres</h2>
+        <ul class="nav">
+          @for (section of sections; track section.id) {
+            <li>
+              <button
+                type="button"
+                class="nav-item"
+                [class.active]="current() === section.id"
+                [attr.aria-current]="current() === section.id ? 'page' : null"
+                (click)="select(section.id)"
+              >
+                <app-icon [name]="section.icon" [size]="20" />
+                <span>{{ section.label }}</span>
+              </button>
+            </li>
           }
-        </div>
+        </ul>
+      </nav>
 
-        <p class="current" aria-live="polite">Thème affiché : {{ currentLabel() }}</p>
-      </section>
-
-      <section aria-labelledby="taskbar-title">
-        <h3 id="taskbar-title">Barre des tâches</h3>
-        <p class="hint">Où la barre apparaît sur l'écran, comment ses éléments sont placés, et si elle se cache.</p>
-
-        <h4 class="group-title" id="taskbar-position-title">Position</h4>
-        <div class="options" role="radiogroup" aria-labelledby="taskbar-position-title">
-          @for (option of positionOptions; track option.value) {
-            <button
-              type="button"
-              role="radio"
-              class="option option-compact"
-              [class.selected]="taskbar.position() === option.value"
-              [attr.aria-checked]="taskbar.position() === option.value"
-              (click)="taskbar.update({ position: option.value })"
-            >
-              <span class="option-label">{{ option.label }}</span>
-              <span class="option-hint">{{ option.hint }}</span>
-            </button>
+      <div class="content">
+        @switch (current()) {
+          @case ('display') {
+            <app-display-settings />
           }
-        </div>
-
-        <h4 class="group-title" id="taskbar-alignment-title">Alignement des éléments</h4>
-        <div class="options options-two" role="radiogroup" aria-labelledby="taskbar-alignment-title">
-          @for (option of alignmentOptions; track option.value) {
-            <button
-              type="button"
-              role="radio"
-              class="option option-compact"
-              [class.selected]="taskbar.alignment() === option.value"
-              [attr.aria-checked]="taskbar.alignment() === option.value"
-              (click)="taskbar.update({ alignment: option.value })"
-            >
-              <span class="option-label">{{ option.label }}</span>
-              <span class="option-hint">{{ option.hint }}</span>
-            </button>
+          @case ('taskbar') {
+            <app-taskbar-settings />
           }
-        </div>
-
-        <div class="switch-row">
-          <div>
-            <span class="option-label" id="autohide-label">Masquer automatiquement</span>
-            <span class="option-hint">La barre glisse hors de l'écran. Approchez le bord pour la faire réapparaître.</span>
-          </div>
-          <button
-            type="button"
-            role="switch"
-            class="switch"
-            [class.on]="taskbar.autoHide()"
-            [attr.aria-checked]="taskbar.autoHide()"
-            aria-labelledby="autohide-label"
-            (click)="taskbar.update({ autoHide: !taskbar.autoHide() })"
-          >
-            <span class="knob"></span>
-          </button>
-        </div>
-      </section>
-    </article>
+        }
+      </div>
+    </div>
   `,
   styleUrl: './settings-app.component.scss',
 })
 export class SettingsAppComponent {
-  readonly theme = inject(ThemeService);
-  readonly taskbar = inject(TaskbarSettingsService);
+  readonly sections = SETTINGS_SECTIONS;
+  readonly current = signal<SettingsSectionId>('display');
 
-  readonly themeOptions: readonly ThemeOption[] = [
-    { value: 'system', label: 'Automatique', hint: 'Suit le système' },
-    { value: 'light', label: 'Clair', hint: 'Toujours clair' },
-    { value: 'dark', label: 'Sombre', hint: 'Toujours sombre' },
-  ];
-
-  readonly positionOptions: readonly TaskbarPositionOption[] = [
-    { value: 'bottom', label: 'Bas', hint: 'Par défaut' },
-    { value: 'top', label: 'Haut', hint: 'En haut de l\'écran' },
-    { value: 'left', label: 'Gauche', hint: 'Colonne à gauche' },
-    { value: 'right', label: 'Droite', hint: 'Colonne à droite' },
-  ];
-
-  readonly alignmentOptions: readonly TaskbarAlignmentOption[] = [
-    { value: 'center', label: 'Centrée', hint: 'Éléments au milieu' },
-    { value: 'start', label: 'Au début', hint: 'Collés au bord de départ' },
-  ];
-
-  readonly currentLabel = computed(() => (this.theme.resolved() === 'dark' ? 'sombre' : 'clair'));
+  select(id: SettingsSectionId): void {
+    this.current.set(id);
+  }
 }

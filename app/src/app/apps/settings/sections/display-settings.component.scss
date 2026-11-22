@@ -1,0 +1,65 @@
+@use '../settings' as s;
+
+:host {
+  display: block;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 620px;
+
+  @include s.page-title;
+}
+
+.options {
+  @include s.option-grid;
+}
+
+.option {
+  @include s.option-card;
+}
+
+.option-label {
+  @include s.option-label;
+}
+
+.option-hint {
+  @include s.option-hint;
+}
+
+.current {
+  @include s.muted-text;
+  margin-top: 4px;
+}
+
+// Theme previews use flat colours only.
+.swatch {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--stroke);
+
+  &[data-kind='light'] {
+    background: #f4f8f5;
+  }
+
+  &[data-kind='dark'] {
+    background: #0d1412;
+  }
+
+  // Split preview: light half on the left, dark half on the right.
+  &[data-kind='system'] {
+    background: #0d1412;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0 50% 0 0;
+      background: #f4f8f5;
+    }
+  }
+}
