@@ -15,6 +15,23 @@ export type IconName =
   | 'user'
   | 'display'
   | 'taskbar'
+  | 'modules'
+  | 'label'
+  | 'shopping-bags'
+  | 'card'
+  | 'bank'
+  | 'abacus'
+  | 'money'
+  | 'briefcase'
+  | 'key'
+  | 'printer'
+  | 'cloud'
+  | 'backup'
+  | 'bell'
+  | 'scroll'
+  | 'building'
+  | 'truck'
+  | 'laptop'
   | 'minus'
   | 'square'
   | 'close'
@@ -39,6 +56,23 @@ const COLOR_ICONS: Partial<Record<IconName, string>> = {
   user: 'office-worker-default.svg',
   display: 'desktop-computer.svg',
   taskbar: 'triangular-ruler.svg',
+  modules: 'card-index.svg',
+  label: 'label.svg',
+  'shopping-bags': 'shopping-bags.svg',
+  card: 'credit-card.svg',
+  bank: 'bank.svg',
+  abacus: 'abacus.svg',
+  money: 'money-bag.svg',
+  briefcase: 'briefcase.svg',
+  key: 'key.svg',
+  printer: 'printer.svg',
+  cloud: 'cloud.svg',
+  backup: 'floppy-disk.svg',
+  bell: 'bell.svg',
+  scroll: 'scroll.svg',
+  building: 'office-building.svg',
+  truck: 'delivery-truck.svg',
+  laptop: 'laptop.svg',
 };
 
 /**

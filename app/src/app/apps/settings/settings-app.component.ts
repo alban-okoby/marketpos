@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/c
 
 import { IconComponent } from '../../shared/icon/icon.component';
 import { DisplaySettingsComponent } from './sections/display-settings.component';
+import { ModulesSettingsComponent } from './sections/modules-settings.component';
 import { TaskbarSettingsComponent } from './sections/taskbar-settings.component';
 import { SettingsSectionId, filterSettingsSections } from './settings-sections';
 
@@ -11,7 +12,7 @@ import { SettingsSectionId, filterSettingsSections } from './settings-sections';
  */
 @Component({
   selector: 'app-settings-app',
-  imports: [IconComponent, DisplaySettingsComponent, TaskbarSettingsComponent],
+  imports: [IconComponent, DisplaySettingsComponent, TaskbarSettingsComponent, ModulesSettingsComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="layout">
@@ -57,6 +58,9 @@ import { SettingsSectionId, filterSettingsSections } from './settings-sections';
           }
           @case ('taskbar') {
             <app-taskbar-settings />
+          }
+          @case ('modules') {
+            <app-modules-settings />
           }
         }
       </div>

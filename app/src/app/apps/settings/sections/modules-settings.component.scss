@@ -1,0 +1,129 @@
+@use '../settings' as s;
+
+:host {
+  display: block;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 680px;
+
+  @include s.page-title;
+
+  h2 {
+    margin: 0;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--fill-subtle);
+}
+
+.count {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.reset {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--fill-active);
+  font-size: 0.85rem;
+
+  &:hover {
+    background: var(--fill-hover);
+  }
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--fill-subtle);
+}
+
+.row-icon {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--fill-active);
+}
+
+.row-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.option-label {
+  @include s.option-label;
+}
+
+.option-hint {
+  @include s.option-hint;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.badge {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--fill-active);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+
+  &.warn {
+    background: var(--warn-bg);
+    color: var(--warn-text);
+  }
+}
+
+.requires {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.switch {
+  @include s.switch;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

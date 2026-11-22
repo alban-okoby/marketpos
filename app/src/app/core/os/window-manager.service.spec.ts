@@ -3,6 +3,15 @@ import { beforeEach, describe, expect, it } from 'vitest';
 
 import { WindowManagerService } from './window-manager.service';
 
+/** Opens a module and fails the test if it is switched off. */
+function openApp(wm: WindowManagerService, appId: Parameters<WindowManagerService['open']>[0]): string {
+  const id = wm.open(appId);
+  if (id === null) {
+    throw new Error(`${appId} should be enabled by default`);
+  }
+  return id;
+}
+
 describe('WindowManagerService', () => {
   let wm: WindowManagerService;
 
@@ -12,16 +21,16 @@ describe('WindowManagerService', () => {
   });
 
   it('opens one window per app and brings the existing one to the front', () => {
-    const first = wm.open('caisse');
-    const second = wm.open('caisse');
+    const first = openApp(wm, 'caisse');
+    const second = openApp(wm, 'caisse');
 
     expect(second).toBe(first);
     expect(wm.windows().length).toBe(1);
   });
 
   it('makes the most recently opened or focused window active', () => {
-    const caisse = wm.open('caisse');
-    const stock = wm.open('stock');
+    const caisse = openApp(wm, 'caisse');
+    const stock = openApp(wm, 'stock');
     expect(wm.activeId()).toBe(stock);
 
     wm.focus(caisse);
@@ -29,8 +38,8 @@ describe('WindowManagerService', () => {
   });
 
   it('ignores minimized windows when choosing the active one', () => {
-    const caisse = wm.open('caisse');
-    const stock = wm.open('stock');
+    const caisse = openApp(wm, 'caisse');
+    const stock = openApp(wm, 'stock');
 
     wm.minimize(stock);
     expect(wm.activeId()).toBe(caisse);
@@ -40,8 +49,8 @@ describe('WindowManagerService', () => {
   });
 
   it('restores a minimized window and brings it to the front', () => {
-    const caisse = wm.open('caisse');
-    wm.open('stock');
+    const caisse = openApp(wm, 'caisse');
+    openApp(wm, 'stock');
     wm.minimize(caisse);
 
     wm.restore(caisse);
@@ -52,7 +61,7 @@ describe('WindowManagerService', () => {
   });
 
   it('toggles maximize without losing the stored position', () => {
-    const id = wm.open('rapports');
+    const id = openApp(wm, 'rapports');
     const before = wm.windows().find((w) => w.id === id);
 
     wm.toggleMaximize(id);
@@ -66,7 +75,7 @@ describe('WindowManagerService', () => {
   });
 
   it('stores a new position after a move', () => {
-    const id = wm.open('stock');
+    const id = openApp(wm, 'stock');
 
     wm.moveTo(id, 200, 120);
 
@@ -76,7 +85,7 @@ describe('WindowManagerService', () => {
   });
 
   it('removes a closed window', () => {
-    const id = wm.open('parametres');
+    const id = openApp(wm, 'parametres');
 
     wm.close(id);
 

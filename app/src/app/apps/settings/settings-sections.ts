@@ -1,6 +1,6 @@
 import { IconName } from '../../shared/icon/icon.component';
 
-export type SettingsSectionId = 'display' | 'taskbar';
+export type SettingsSectionId = 'display' | 'taskbar' | 'modules';
 
 /**
  * Sidebar entries of the Settings app, in display order. Add a new page here and in the
@@ -26,6 +26,12 @@ export const SETTINGS_SECTIONS: readonly SettingsSection[] = [
     label: 'Barre des tâches',
     icon: 'taskbar',
     keywords: 'barre position haut bas gauche droite alignement masquer automatiquement',
+  },
+  {
+    id: 'modules',
+    label: 'Modules',
+    icon: 'modules',
+    keywords: 'modules activer désactiver comptabilité rh ressources humaines stock achats clients fiscalité mobile money',
   },
 ];
 

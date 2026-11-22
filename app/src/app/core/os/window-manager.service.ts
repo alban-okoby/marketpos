@@ -1,6 +1,7 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 
 import { AppId, getAppDefinition } from './apps';
+import { ModuleSettingsService } from './module-settings.service';
 
 export interface WindowState {
   readonly id: string;
@@ -27,6 +28,7 @@ const CASCADE_LENGTH = 6;
 @Injectable({ providedIn: 'root' })
 export class WindowManagerService {
   private readonly state = signal<readonly WindowState[]>([]);
+  private readonly modules = inject(ModuleSettingsService);
   private topZ = 1;
   private windowCount = 0;
 
@@ -41,8 +43,14 @@ export class WindowManagerService {
     return visible.reduce((top, win) => (win.z > top.z ? win : top)).id;
   });
 
-  /** Opens the app's window, or restores and focuses it if it is already open. Returns the window id. */
-  open(appId: AppId): string {
+  /**
+   * Opens the module's window, or restores and focuses it if it is already open.
+   * Returns the window id, or null when the module is turned off.
+   */
+  open(appId: AppId): string | null {
+    if (!this.modules.isEnabled(appId)) {
+      return null;
+    }
     const existing = this.state().find((win) => win.appId === appId);
     if (existing) {
       this.restore(existing.id);
@@ -92,6 +100,11 @@ export class WindowManagerService {
 
   close(id: string): void {
     this.state.update((list) => list.filter((win) => win.id !== id));
+  }
+
+  /** Closes the window of a module, for example when the module is turned off. */
+  closeApp(appId: AppId): void {
+    this.state.update((list) => list.filter((win) => win.appId !== appId));
   }
 
   private patch(id: string, change: (win: WindowState) => Partial<WindowState>): void {

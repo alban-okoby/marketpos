@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
-import { AppId, getAppDefinition } from '../../core/os/apps';
+import { AppId, MODULE_CATEGORIES, getAppDefinition } from '../../core/os/apps';
 import { IconComponent } from '../../shared/icon/icon.component';
 
 /**
@@ -21,7 +21,14 @@ import { IconComponent } from '../../shared/icon/icon.component';
         </div>
       </header>
 
-      <p class="status">En conception · phase {{ app().phase }}</p>
+      <p class="status" [class.outside]="app().scope === 'outside'">
+        {{ categoryLabel() }} ·
+        @if (app().scope === 'outside') {
+          Hors périmètre actuel, à valider
+        } @else {
+          En conception · phase {{ app().phase }}
+        }
+      </p>
 
       <h3>Exigences couvertes</h3>
       <ul>
@@ -38,4 +45,7 @@ import { IconComponent } from '../../shared/icon/icon.component';
 export class ModuleAppComponent {
   readonly appId = input.required<AppId>();
   readonly app = computed(() => getAppDefinition(this.appId()));
+  readonly categoryLabel = computed(
+    () => MODULE_CATEGORIES.find((category) => category.id === this.app().category)?.label ?? '',
+  );
 }

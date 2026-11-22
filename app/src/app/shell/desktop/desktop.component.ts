@@ -2,7 +2,8 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, computed
 import { gsap } from 'gsap';
 
 import { duration, reducedMotion } from '../../core/motion';
-import { AppId, APPS } from '../../core/os/apps';
+import { AppId } from '../../core/os/apps';
+import { ModuleSettingsService } from '../../core/os/module-settings.service';
 import { WindowManagerService } from '../../core/os/window-manager.service';
 import { WallpaperService } from '../../core/wallpaper/wallpaper.service';
 import { IconComponent } from '../../shared/icon/icon.component';
@@ -22,7 +23,7 @@ import { WindowComponent } from '../window/window.component';
   template: `
     <main class="desktop">
       <nav class="icons" aria-label="Applications">
-        @for (app of apps; track app.id) {
+        @for (app of modules.enabledApps(); track app.id) {
           <button type="button" class="icon" [attr.aria-label]="'Ouvrir ' + app.title" (click)="launch(app.id)">
             <span class="icon-tile glass"><app-icon [name]="app.icon" [size]="28" /></span>
             <span class="icon-label">{{ app.title }}</span>
@@ -47,7 +48,7 @@ import { WindowComponent } from '../window/window.component';
 })
 export class DesktopComponent implements AfterViewInit {
   readonly wm = inject(WindowManagerService);
-  readonly apps = APPS;
+  readonly modules = inject(ModuleSettingsService);
   readonly startOpen = signal(false);
   private readonly wallpaper = inject(WallpaperService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);

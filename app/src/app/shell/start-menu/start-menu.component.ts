@@ -13,7 +13,8 @@ import {
 import { gsap } from 'gsap';
 
 import { duration, reducedMotion } from '../../core/motion';
-import { APPS, AppId } from '../../core/os/apps';
+import { AppId } from '../../core/os/apps';
+import { ModuleSettingsService } from '../../core/os/module-settings.service';
 import { SessionService } from '../../core/session/session.service';
 import { TaskbarSettingsService } from '../../core/taskbar/taskbar-settings.service';
 import { IconComponent } from '../../shared/icon/icon.component';
@@ -84,6 +85,7 @@ export class StartMenuComponent implements AfterViewInit {
   readonly launch = output<AppId>();
 
   private readonly session = inject(SessionService);
+  private readonly modules = inject(ModuleSettingsService);
   private readonly taskbar = inject(TaskbarSettingsService);
   private readonly panel = viewChild.required<ElementRef<HTMLElement>>('panel');
   private readonly search = viewChild.required<ElementRef<HTMLInputElement>>('search');
@@ -94,11 +96,12 @@ export class StartMenuComponent implements AfterViewInit {
 
   readonly query = signal('');
   readonly filtered = computed(() => {
+    const apps = this.modules.enabledApps();
     const term = this.query().trim().toLowerCase();
     if (!term) {
-      return APPS;
+      return apps;
     }
-    return APPS.filter((app) => `${app.title} ${app.description}`.toLowerCase().includes(term));
+    return apps.filter((app) => `${app.title} ${app.description}`.toLowerCase().includes(term));
   });
   readonly userName = computed(() => this.session.user()?.name ?? '');
 
