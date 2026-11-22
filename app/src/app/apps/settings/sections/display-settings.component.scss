@@ -73,6 +73,69 @@
   transition: box-shadow 0.15s;
 }
 
+// Wallpaper gallery: thumbnails in a 16:10 frame, the selected one outlined in the accent colour.
+.wallpapers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+  margin: 12px 0 0;
+}
+
+.wallpaper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  text-align: left;
+  font-size: 0.85rem;
+
+  &:hover {
+    background: var(--fill-hover);
+  }
+
+  &.selected {
+    border-color: var(--accent-strong);
+  }
+}
+
+.thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--stroke);
+  background: var(--body-bg);
+
+  &.plain {
+    background: var(--body-bg);
+  }
+}
+
+.import-row {
+  margin-top: 14px;
+}
+
+.import {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--fill-active);
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  &:hover {
+    background: var(--fill-hover);
+  }
+}
+
+.error {
+  margin: 8px 0 0;
+  color: var(--danger-text);
+  font-size: 0.85rem;
+}
+
 // Theme previews use flat colours only.
 .swatch {
   position: relative;

@@ -1,0 +1,19 @@
+// Wallpaper layer behind the lock screen and the desktop. Without an image it is invisible,
+// and the flat background colour of the theme shows through.
+.wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--body-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  // A flat scrim keeps the clock and the windows readable over a busy image.
+  &.has-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--wallpaper-scrim);
+  }
+}
