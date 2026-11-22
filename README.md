@@ -18,9 +18,9 @@ The current deliverable is a static, single-file prototype of the cashier sales 
 - Sequential ticket numbering
 - Local sales journal
 
-## Application (PWA)
+## Application
 
-The application lives in `app/`: an Angular progressive web app that behaves like a desktop operating system. A lock screen with PIN login comes first, then a desktop with draggable windows, a taskbar, and a start menu. Animations use GSAP, and the app works offline once installed.
+The application lives in `app/`: an Angular web app.
 
 Requirements: Node.js 24 (or 22.22+). Then:
 
