@@ -52,6 +52,14 @@
   text-shadow: var(--label-shadow);
 }
 
+// Over a wallpaper image, the label sits on a translucent pill so its contrast does not depend on the picture.
+:host(.on-image) .icon-label {
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--label-bg);
+  text-shadow: none;
+}
+
 // The windows area excludes the space taken by the taskbar, so windows never sit under it.
 .windows {
   position: absolute;

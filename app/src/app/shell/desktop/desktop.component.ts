@@ -1,9 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, computed, inject, signal } from '@angular/core';
 import { gsap } from 'gsap';
 
 import { duration, reducedMotion } from '../../core/motion';
 import { AppId, APPS } from '../../core/os/apps';
 import { WindowManagerService } from '../../core/os/window-manager.service';
+import { WallpaperService } from '../../core/wallpaper/wallpaper.service';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { StartMenuComponent } from '../start-menu/start-menu.component';
 import { TaskbarComponent } from '../taskbar/taskbar.component';
@@ -14,6 +15,10 @@ import { WindowComponent } from '../window/window.component';
   selector: 'app-desktop',
   imports: [IconComponent, WindowComponent, TaskbarComponent, StartMenuComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    // Labels get a backing pill when a wallpaper image is shown, so they stay readable on any picture.
+    '[class.on-image]': 'onImage()',
+  },
   template: `
     <main class="desktop">
       <nav class="icons" aria-label="Applications">
@@ -44,7 +49,10 @@ export class DesktopComponent implements AfterViewInit {
   readonly wm = inject(WindowManagerService);
   readonly apps = APPS;
   readonly startOpen = signal(false);
+  private readonly wallpaper = inject(WallpaperService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  readonly onImage = computed(() => this.wallpaper.imageUrl() !== null);
 
   ngAfterViewInit(): void {
     if (reducedMotion()) {
