@@ -12,6 +12,8 @@ import { StartMenuComponent } from '../start-menu/start-menu.component';
 import { TaskbarComponent } from '../taskbar/taskbar.component';
 import { WindowComponent } from '../window/window.component';
 
+const MAX_LABEL_LENGTH = 15;
+
 /** The desktop: app icons, open windows, the start menu and the taskbar. */
 @Component({
   selector: 'app-desktop',
@@ -27,7 +29,7 @@ import { WindowComponent } from '../window/window.component';
         @for (app of modules.enabledApps(); track app.id) {
           <button type="button" class="icon" [attr.aria-label]="'Ouvrir ' + app.title" (click)="launch(app.id)">
             <span class="icon-tile glass"><app-icon [name]="app.icon" [size]="28" /></span>
-            <span class="icon-label">{{ app.title }}</span>
+            <span class="icon-label" [attr.title]="app.title">{{ shortLabel(app.title) }}</span>
           </button>
         }
       </nav>
@@ -74,6 +76,11 @@ export class DesktopComponent implements AfterViewInit {
       stagger: 0.05,
       delay: 0.2,
     });
+  }
+
+  /** Desktop labels show at most 15 characters, then "..". The full name is in the tooltip. */
+  shortLabel(title: string): string {
+    return title.length > MAX_LABEL_LENGTH ? `${title.slice(0, MAX_LABEL_LENGTH)}..` : title;
   }
 
   toggleStart(): void {
