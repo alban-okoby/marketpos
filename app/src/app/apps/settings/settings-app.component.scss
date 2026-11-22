@@ -83,11 +83,16 @@
     color: var(--text);
   }
 
-  // The selected page: a stronger background and bold text, no coloured edge.
+  // The selected page is filled with the accent colour, like the selected item in macOS settings.
   &.active {
-    background: var(--fill-active);
-    color: var(--text);
+    background: var(--accent-strong);
+    color: var(--on-accent);
     font-weight: 600;
+
+    &:hover {
+      background: var(--accent-strong);
+      color: var(--on-accent);
+    }
   }
 }
 

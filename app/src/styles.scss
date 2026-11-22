@@ -21,6 +21,7 @@
 
   /* Brand colours: green for primary actions, orange for prices and secondary actions. */
   --accent-strong: #1e7a3a; /* button backgrounds with white text (WCAG AA) */
+  --on-accent: #ffffff; /* text and icons placed on the accent colour */
   --danger: #d64545;
 
   /* Dark theme (default, before the theme script runs). */
