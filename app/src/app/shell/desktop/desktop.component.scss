@@ -45,10 +45,15 @@
   background: var(--fill-active);
 }
 
+// One line only: a label longer than the icon is cut with an ellipsis.
 .icon-label {
+  max-width: 100%;
+  overflow: hidden;
   font-size: 0.8rem;
   line-height: 1.2;
   text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   text-shadow: var(--label-shadow);
 }
 
