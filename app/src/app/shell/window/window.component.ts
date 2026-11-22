@@ -15,10 +15,13 @@ import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 
 import { CaisseAppComponent } from '../../apps/caisse/caisse-app.component';
+import { ClotureAppComponent } from '../../apps/cloture/cloture-app.component';
+import { SyncAppComponent } from '../../apps/synchronisation/sync-app.component';
+import { AlertsAppComponent } from '../../apps/alertes/alerts-app.component';
 import { ModuleAppComponent } from '../../apps/module-app/module-app.component';
 import { SettingsAppComponent } from '../../apps/settings/settings-app.component';
 import { duration } from '../../core/motion';
-import { getAppDefinition } from '../../core/os/apps';
+import { AppId, getAppDefinition } from '../../core/os/apps';
 import { WindowManagerService, WindowState } from '../../core/os/window-manager.service';
 import { IconComponent } from '../../shared/icon/icon.component';
 
@@ -30,7 +33,15 @@ gsap.registerPlugin(Draggable);
  */
 @Component({
   selector: 'app-window',
-  imports: [IconComponent, ModuleAppComponent, SettingsAppComponent, CaisseAppComponent],
+  imports: [
+    IconComponent,
+    ModuleAppComponent,
+    SettingsAppComponent,
+    CaisseAppComponent,
+    ClotureAppComponent,
+    SyncAppComponent,
+    AlertsAppComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'window-host',
@@ -67,13 +78,22 @@ gsap.registerPlugin(Draggable);
         </div>
       </header>
 
-      <div class="content" [class.flush]="state().appId === 'parametres' || state().appId === 'caisse'">
+      <div class="content" [class.flush]="flushed.has(state().appId)">
         @switch (state().appId) {
           @case ('parametres') {
             <app-settings-app />
           }
           @case ('caisse') {
             <app-caisse-app />
+          }
+          @case ('cloture') {
+            <app-cloture-app />
+          }
+          @case ('synchronisation') {
+            <app-sync-app />
+          }
+          @case ('alertes') {
+            <app-alerts-app />
           }
           @default {
             <app-module-app [appId]="state().appId" />
@@ -91,6 +111,9 @@ export class WindowComponent implements AfterViewInit {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly frame = viewChild.required<ElementRef<HTMLElement>>('frame');
   private readonly titlebar = viewChild.required<ElementRef<HTMLElement>>('titlebar');
+
+  /** Apps with their own layout fill the window edge to edge. */
+  readonly flushed = new Set<AppId>(['parametres', 'caisse', 'cloture']);
 
   readonly hidden = signal(false);
   readonly isActive = computed(() => this.wm.activeId() === this.state().id);

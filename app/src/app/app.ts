@@ -3,6 +3,7 @@ import { SwUpdate, VersionEvent } from '@angular/service-worker';
 import { filter } from 'rxjs';
 
 import { CustomerDisplayComponent } from './apps/caisse/customer-display.component';
+import { SyncService } from './apps/caisse/sync.service';
 import { SessionService } from './core/session/session.service';
 import { AccentService } from './core/theme/accent.service';
 import { WallpaperService } from './core/wallpaper/wallpaper.service';
@@ -36,6 +37,8 @@ export class App {
   readonly session = inject(SessionService);
   // Created at start-up so the saved accent colour applies before the settings are opened.
   private readonly accent = inject(AccentService);
+  // Starts the offline queue: sales waiting on this device are sent when the network is back.
+  private readonly sync = inject(SyncService);
   private readonly wallpaper = inject(WallpaperService);
 
   /** CSS value for the wallpaper layer, or null to show the flat background colour. */

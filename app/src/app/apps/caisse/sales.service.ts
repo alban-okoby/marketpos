@@ -6,9 +6,12 @@ export const CASH_REGISTER_ID = 'CAISSE-01';
 /** Quick banknote buttons in the payment dialog, in FCFA. */
 export const BANKNOTE_SHORTCUTS: readonly number[] = [500, 1000, 2000, 5000, 10000, 20000];
 
-export type SaleStatus = 'EN_ATTENTE_SYNC';
+/** EN_ATTENTE_SYNC: kept on this device until the server acknowledges it. */
+export type SaleStatus = 'EN_ATTENTE_SYNC' | 'SYNCHRONISEE';
 
 export interface Sale {
+  /** Unique operation id (OF-03). The server uses it to ignore a sale it has already received. */
+  readonly id: string;
   readonly number: string;
   readonly date: string;
   readonly cashier: string;
@@ -16,7 +19,6 @@ export interface Sale {
   readonly total: number;
   readonly received: number;
   readonly change: number;
-  /** Waiting to be sent to the server (offline queue, OF-02). */
   readonly status: SaleStatus;
 }
 
@@ -44,6 +46,14 @@ export function cashPaymentStatus(total: number, received: number): {
   };
 }
 
+/** Unique id for an operation. Falls back when crypto.randomUUID is not available. */
+export function newOperationId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return `op-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
 const COUNTER_KEY = 'marketpos.caisse.compteur';
 const JOURNAL_KEY = 'marketpos.caisse.ventes';
 
@@ -60,7 +70,11 @@ function readJournal(): Sale[] {
   try {
     const stored = localStorage.getItem(JOURNAL_KEY);
     const parsed: unknown = stored ? JSON.parse(stored) : [];
-    return Array.isArray(parsed) ? (parsed as Sale[]) : [];
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    // Sales written before operation ids existed get a stable id from their ticket number.
+    return (parsed as Sale[]).map((sale) => (sale.id ? sale : { ...sale, id: `legacy-${sale.number}` }));
   } catch {
     return [];
   }
@@ -74,10 +88,12 @@ export class SalesService {
 
   /** Number the next ticket will get. */
   readonly nextNumber = computed(() => formatTicketNumber(this.counter() + 1));
-  readonly pendingSync = computed(() => this.journal().filter((sale) => sale.status === 'EN_ATTENTE_SYNC').length);
+  readonly pending = computed(() => this.journal().filter((sale) => sale.status === 'EN_ATTENTE_SYNC'));
+  readonly pendingSync = computed(() => this.pending().length);
 
   /**
    * Records a cash sale. Throws if the amount received does not cover the total.
+   * Sales are never removed: a synchronised sale only changes status (OF-06).
    */
   record(lines: readonly CartLine[], received: number, cashier: string): Sale {
     const total = lines.reduce((sum, line) => sum + line.price * line.qty, 0);
@@ -86,6 +102,7 @@ export class SalesService {
     }
     const next = this.counter() + 1;
     const sale: Sale = {
+      id: newOperationId(),
       number: formatTicketNumber(next),
       date: new Date().toISOString(),
       cashier,
@@ -100,6 +117,16 @@ export class SalesService {
     this.save(COUNTER_KEY, String(next));
     this.save(JOURNAL_KEY, JSON.stringify(this.journal()));
     return sale;
+  }
+
+  /** Marks sales as acknowledged by the server. Unknown ids are ignored. */
+  markSynced(ids: readonly string[]): void {
+    const acknowledged = new Set(ids);
+    const next = this.journal().map((sale) =>
+      acknowledged.has(sale.id) ? { ...sale, status: 'SYNCHRONISEE' as const } : sale,
+    );
+    this.journal.set(next);
+    this.save(JOURNAL_KEY, JSON.stringify(next));
   }
 
   private save(key: string, value: string): void {

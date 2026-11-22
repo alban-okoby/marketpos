@@ -1,0 +1,36 @@
+.print-area {
+  display: none;
+}
+
+// Shown only when printing. styles.scss hides the rest of the page during print.
+@media print {
+  .print-area {
+    display: block;
+    width: 80mm;
+    padding: 4mm;
+    background: #fff;
+    color: #000;
+    font-family: 'Courier New', monospace;
+    font-size: 10pt;
+  }
+
+  p {
+    margin: 2mm 0;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed #000;
+    margin: 2mm 0;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 4mm;
+  }
+
+  .center {
+    text-align: center;
+  }
+}
