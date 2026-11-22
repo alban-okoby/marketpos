@@ -22,19 +22,23 @@
   gap: 6px;
 }
 
+// Date and time on the lock screen are always white, with a soft shadow so they read on any wallpaper.
 .clock {
   margin: 12px 0 0;
   font-size: clamp(56px, 10vw, 96px);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
   font-variant-numeric: tabular-nums;
 }
 
 .date {
   margin: 0;
-  color: var(--text-muted);
+  color: #ffffff;
   font-size: 1.1rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 
 .card {
