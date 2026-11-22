@@ -13,6 +13,12 @@
   --taskbar-height: 56px;
   --taskbar-space: calc(var(--taskbar-height) + 28px);
 
+  /* Space the taskbar takes on each side of the screen. TaskbarSettingsService sets these at runtime. */
+  --reserve-top: 0px;
+  --reserve-right: 0px;
+  --reserve-left: 0px;
+  --reserve-bottom: var(--taskbar-space);
+
   /* Brand colours: green for primary actions, orange for prices and secondary actions. */
   --accent-strong: #1e7a3a; /* button backgrounds with white text (WCAG AA) */
   --danger: #d64545;

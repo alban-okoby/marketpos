@@ -27,6 +27,41 @@
   background: var(--glass-strong);
 }
 
+// The menu sits on the side of the screen where the taskbar is.
+:host(.anchor-top) .start {
+  top: calc(var(--taskbar-height) + 26px);
+  bottom: auto;
+}
+
+:host(.anchor-left) .start {
+  left: calc(var(--taskbar-height) + 40px);
+  right: auto;
+  margin: 0;
+  bottom: 12px;
+}
+
+:host(.anchor-right) .start {
+  left: auto;
+  right: calc(var(--taskbar-height) + 40px);
+  margin: 0;
+  bottom: 12px;
+}
+
+// Horizontal bar aligned to the start: the start button is on the left, so is the menu.
+:host(.anchor-bottom.anchor-start) .start,
+:host(.anchor-top.anchor-start) .start {
+  left: 12px;
+  right: auto;
+  margin: 0;
+}
+
+// With the bar aligned to the start, the start button is at the top of a vertical bar.
+:host(.anchor-left.anchor-start) .start,
+:host(.anchor-right.anchor-start) .start {
+  top: 12px;
+  bottom: auto;
+}
+
 .search {
   height: 42px;
   display: flex;

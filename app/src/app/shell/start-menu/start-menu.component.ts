@@ -15,15 +15,17 @@ import { gsap } from 'gsap';
 import { duration, reducedMotion } from '../../core/motion';
 import { APPS, AppId } from '../../core/os/apps';
 import { SessionService } from '../../core/session/session.service';
+import { TaskbarSettingsService } from '../../core/taskbar/taskbar-settings.service';
 import { IconComponent } from '../../shared/icon/icon.component';
 
-/** Start menu: search, app grid, and user actions (lock, sign out). It rises from the taskbar. */
+/** Start menu: search, app grid, and user actions (lock, sign out). It opens next to the taskbar. */
 @Component({
   selector: 'app-start-menu',
   imports: [IconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(keydown.escape)': 'close()',
+    '[class]': 'anchorClass()',
   },
   template: `
     <div class="backdrop" (click)="close()" aria-hidden="true"></div>
@@ -82,9 +84,13 @@ export class StartMenuComponent implements AfterViewInit {
   readonly launch = output<AppId>();
 
   private readonly session = inject(SessionService);
+  private readonly taskbar = inject(TaskbarSettingsService);
   private readonly panel = viewChild.required<ElementRef<HTMLElement>>('panel');
   private readonly search = viewChild.required<ElementRef<HTMLInputElement>>('search');
   private closing = false;
+
+  /** Classes that place the menu next to the start button: the taskbar side and its alignment. */
+  readonly anchorClass = computed(() => `anchor-${this.taskbar.position()} anchor-${this.taskbar.alignment()}`);
 
   readonly query = signal('');
   readonly filtered = computed(() => {

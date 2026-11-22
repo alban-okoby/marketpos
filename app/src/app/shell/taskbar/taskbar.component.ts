@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, input, output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, computed, inject, input, output, signal } from '@angular/core';
 import { gsap } from 'gsap';
 
 import { ClockService } from '../../core/clock.service';
@@ -6,11 +6,15 @@ import { ConnectivityService } from '../../core/connectivity.service';
 import { duration, reducedMotion } from '../../core/motion';
 import { getAppDefinition } from '../../core/os/apps';
 import { WindowManagerService, WindowState } from '../../core/os/window-manager.service';
+import { TaskbarSettingsService } from '../../core/taskbar/taskbar-settings.service';
 import { IconComponent, IconName } from '../../shared/icon/icon.component';
 import { LogoComponent } from '../../shared/logo/logo.component';
 
+const HIDE_DELAY_MS = 500;
+
 /**
- * Bottom bar: start button and open windows in the centre, system tray (network, pending sales, clock) on the right.
+ * Taskbar: start button and open windows, plus the system tray (network, pending sales, clock).
+ * Position, alignment and auto-hide come from TaskbarSettingsService.
  */
 @Component({
   selector: 'app-taskbar',
@@ -47,16 +51,24 @@ import { LogoComponent } from '../../shared/logo/logo.component';
     <aside class="tray glass" aria-label="État du système">
       <span class="status" [class.offline]="!connectivity.online()">
         <app-icon [name]="connectivity.online() ? 'online' : 'offline'" [size]="18" />
-        <span>{{ connectivity.online() ? 'En ligne' : 'Hors ligne' }}</span>
+        <span class="label">{{ connectivity.online() ? 'En ligne' : 'Hors ligne' }}</span>
       </span>
       @if (connectivity.pendingSales() > 0) {
-        <span class="pending" aria-live="polite">{{ connectivity.pendingSales() }} en attente</span>
+        <span class="pending" aria-live="polite">
+          {{ connectivity.pendingSales() }} <span class="label">en attente</span>
+        </span>
       }
       <time class="time">{{ clock.time() }}</time>
     </aside>
+
+    @if (settings.autoHide()) {
+      <div class="edge" aria-hidden="true" (mouseenter)="reveal()" (mouseleave)="scheduleHide()"></div>
+    }
   `,
   host: {
-    class: 'taskbar-host',
+    '[class]': 'hostClasses()',
+    '(mouseenter)': 'reveal()',
+    '(mouseleave)': 'scheduleHide()',
   },
   styleUrl: './taskbar.component.scss',
 })
@@ -67,17 +79,34 @@ export class TaskbarComponent implements AfterViewInit {
   readonly wm = inject(WindowManagerService);
   readonly clock = inject(ClockService);
   readonly connectivity = inject(ConnectivityService);
+  readonly settings = inject(TaskbarSettingsService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  /** True while the pointer is on the bar or its edge, or while the start menu is open. */
+  private readonly revealed = signal(false);
+  private hideTimer: ReturnType<typeof setTimeout> | undefined;
+
+  readonly hidden = computed(() => this.settings.autoHide() && !this.revealed() && !this.startOpen());
+
+  readonly hostClasses = computed(() =>
+    [
+      'taskbar-host',
+      `pos-${this.settings.position()}`,
+      `align-${this.settings.alignment()}`,
+      this.hidden() ? 'hidden-state' : '',
+    ]
+      .filter(Boolean)
+      .join(' '),
+  );
 
   ngAfterViewInit(): void {
     if (reducedMotion()) {
       return;
     }
     gsap.from(this.host.nativeElement, {
-      y: 90,
       opacity: 0,
       duration: duration(0.6),
-      ease: 'back.out(1.4)',
+      ease: 'power2.out',
     });
   }
 
@@ -94,5 +123,16 @@ export class TaskbarComponent implements AfterViewInit {
     } else {
       this.wm.focus(win.id);
     }
+  }
+
+  reveal(): void {
+    clearTimeout(this.hideTimer);
+    this.revealed.set(true);
+  }
+
+  /** Hides the bar after a short delay, so moving across the edge does not make it flicker. */
+  scheduleHide(): void {
+    clearTimeout(this.hideTimer);
+    this.hideTimer = setTimeout(() => this.revealed.set(false), HIDE_DELAY_MS);
   }
 }

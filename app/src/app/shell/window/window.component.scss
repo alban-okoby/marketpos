@@ -10,11 +10,12 @@
   display: none;
 }
 
+// Maximized fills the windows area, which already excludes the taskbar.
 :host(.maximized) {
   left: 0;
   top: 0;
   right: 0;
-  bottom: var(--taskbar-space);
+  bottom: 0;
   width: auto;
   height: auto;
 }

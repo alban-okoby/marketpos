@@ -31,6 +31,71 @@ h3 {
   margin-top: 4px;
 }
 
+.group-title {
+  margin: 14px 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.options-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.option-compact {
+  padding: 12px;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--fill-subtle);
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+// Toggle switch: the track turns green when on, and the knob slides across.
+.switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--fill-active);
+  border: 1px solid var(--stroke);
+  transition: background 0.2s;
+
+  .knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--text);
+    transition: transform 0.2s;
+  }
+
+  &.on {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+
+    .knob {
+      transform: translateX(20px);
+      background: #fff;
+    }
+  }
+}
+
 .options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));

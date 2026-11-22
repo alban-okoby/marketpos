@@ -12,9 +12,9 @@
 
 .icons {
   position: absolute;
-  top: 20px;
-  left: 14px;
-  bottom: var(--taskbar-space);
+  top: calc(20px + var(--reserve-top));
+  left: calc(14px + var(--reserve-left));
+  bottom: var(--reserve-bottom);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -52,8 +52,9 @@
   text-shadow: var(--label-shadow);
 }
 
+// The windows area excludes the space taken by the taskbar, so windows never sit under it.
 .windows {
   position: absolute;
-  inset: 0 0 var(--taskbar-space) 0;
+  inset: var(--reserve-top) var(--reserve-right) var(--reserve-bottom) var(--reserve-left);
   pointer-events: none;
 }
