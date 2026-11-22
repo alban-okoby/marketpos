@@ -21,9 +21,39 @@
 }
 
 .sidebar-title {
-  margin: 0 10px 12px;
+  margin: 0 10px 10px;
   font-size: 1.1rem;
   font-weight: 700;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  margin: 0 4px 10px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: var(--glass-strong);
+  border: 1px solid var(--stroke);
+  color: var(--text-muted);
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.88rem;
+  }
+}
+
+.empty {
+  padding: 8px 12px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
 
 .nav {
@@ -53,22 +83,11 @@
     color: var(--text);
   }
 
-  // The selected page: a stronger background and a short accent bar on the left edge.
+  // The selected page: a stronger background and bold text, no coloured edge.
   &.active {
     background: var(--fill-active);
     color: var(--text);
     font-weight: 600;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 9px;
-      bottom: 9px;
-      width: 3px;
-      border-radius: 2px;
-      background: var(--accent-indicator);
-    }
   }
 }
 

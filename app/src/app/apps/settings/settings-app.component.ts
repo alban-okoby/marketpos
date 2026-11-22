@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 import { IconComponent } from '../../shared/icon/icon.component';
 import { DisplaySettingsComponent } from './sections/display-settings.component';
 import { TaskbarSettingsComponent } from './sections/taskbar-settings.component';
-import { SETTINGS_SECTIONS, SettingsSectionId } from './settings-sections';
+import { SettingsSectionId, filterSettingsSections } from './settings-sections';
 
 /**
- * Settings window, in the style of Windows 11 and macOS: a sidebar lists the pages,
- * and the selected page fills the content area.
+ * Settings window, in the style of Windows 11 and macOS: a sidebar with a search field and the list of pages,
+ * and the selected page in the content area.
  */
 @Component({
   selector: 'app-settings-app',
@@ -17,8 +17,21 @@ import { SETTINGS_SECTIONS, SettingsSectionId } from './settings-sections';
     <div class="layout">
       <nav class="sidebar" aria-label="Catégories des paramètres">
         <h2 class="sidebar-title">Paramètres</h2>
+
+        <label class="search">
+          <app-icon name="search" [size]="16" />
+          <input
+            type="search"
+            placeholder="Rechercher"
+            aria-label="Rechercher un paramètre"
+            [value]="query()"
+            (input)="onSearch($event)"
+            (keydown.escape)="query.set('')"
+          />
+        </label>
+
         <ul class="nav">
-          @for (section of sections; track section.id) {
+          @for (section of visibleSections(); track section.id) {
             <li>
               <button
                 type="button"
@@ -31,6 +44,8 @@ import { SETTINGS_SECTIONS, SettingsSectionId } from './settings-sections';
                 <span>{{ section.label }}</span>
               </button>
             </li>
+          } @empty {
+            <li class="empty">Aucun paramètre ne correspond.</li>
           }
         </ul>
       </nav>
@@ -50,10 +65,15 @@ import { SETTINGS_SECTIONS, SettingsSectionId } from './settings-sections';
   styleUrl: './settings-app.component.scss',
 })
 export class SettingsAppComponent {
-  readonly sections = SETTINGS_SECTIONS;
   readonly current = signal<SettingsSectionId>('display');
+  readonly query = signal('');
+  readonly visibleSections = computed(() => filterSettingsSections(this.query()));
 
   select(id: SettingsSectionId): void {
     this.current.set(id);
+  }
+
+  onSearch(event: Event): void {
+    this.query.set((event.target as HTMLInputElement).value);
   }
 }
