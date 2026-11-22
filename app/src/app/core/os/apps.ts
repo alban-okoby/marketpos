@@ -230,7 +230,7 @@ export const APPS: readonly AppDefinition[] = [
   {
     id: 'rh',
     title: 'Ressources humaines',
-    description: 'Employés et présences. La paie est hors périmètre actuel.',
+    description: 'Employés et présences',
     icon: 'briefcase',
     category: 'rh',
     phase: 3,

@@ -21,23 +21,16 @@ import { IconComponent } from '../../shared/icon/icon.component';
         </div>
       </header>
 
-      <p class="status" [class.outside]="app().scope === 'outside'">
-        {{ categoryLabel() }} ·
-        @if (app().scope === 'outside') {
-          Hors périmètre actuel, à valider
-        } @else {
-          En conception · phase {{ app().phase }}
-        }
-      </p>
+      <p class="status">{{ categoryLabel() }}</p>
 
-      <h3>Exigences couvertes</h3>
-      <ul>
-        @for (id of app().requirements; track id) {
-          <li><code>{{ id }}</code></li>
-        }
-      </ul>
-
-      <p class="note">Cette fenêtre sera branchée au moteur de vente. Détails dans docs/fr/cahier-des-charges.md.</p>
+      @if (app().requirements.length > 0) {
+        <h3>Fonctions</h3>
+        <ul>
+          @for (id of app().requirements; track id) {
+            <li><code>{{ id }}</code></li>
+          }
+        </ul>
+      }
     </article>
   `,
   styleUrl: './module-app.component.scss',

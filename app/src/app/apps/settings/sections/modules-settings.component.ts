@@ -47,12 +47,6 @@ interface CategoryGroup {
                     @if (app.core) {
                       <span class="badge">Toujours actif</span>
                     }
-                    @if (app.phase > 1) {
-                      <span class="badge">Phase {{ app.phase }}</span>
-                    }
-                    @if (app.scope === 'outside') {
-                      <span class="badge warn">Hors périmètre</span>
-                    }
                     @if (app.requires.length > 0) {
                       <span class="requires">Nécessite : {{ requiresLabel(app) }}</span>
                     }

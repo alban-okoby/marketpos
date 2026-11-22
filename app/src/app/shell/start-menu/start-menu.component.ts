@@ -52,9 +52,6 @@ import { IconComponent } from '../../shared/icon/icon.component';
           <button type="button" class="tile" (click)="launchApp(app.id)">
             <span class="tile-icon"><app-icon [name]="app.icon" [size]="26" /></span>
             <span class="tile-title">{{ app.title }}</span>
-            @if (app.phase === 2) {
-              <span class="badge">Phase 2</span>
-            }
           </button>
         } @empty {
           <p class="empty">Aucune application ne correspond.</p>
