@@ -6,62 +6,61 @@ Point-of-sale (POS) and store-management software for supermarkets and grocery s
 
 > **Status: early draft (v0.1).** Nothing has been validated yet with an accountant, the tax authority (DGI), or a store. Open points are marked *"à valider"* (to be validated) in the specifications.
 
-## Features
+## What it is
 
-The current deliverable is a static, single-file prototype of the cashier sales screen:
+MarketPOS is an Angular progressive web app (PWA) that behaves like a desktop operating system: a lock screen with PIN login, a desktop with draggable windows, a taskbar and a start menu. Each business function is a module, and only the modules a shop needs are switched on.
 
-- Cashier login with PIN
-- Catalogue of 200 test items (15 named, 185 generated)
-- Shopping cart and cash payment with change calculation
-- Printable receipt, using the browser's print dialog
-- Customer-facing display in a separate window, synced in real time
-- Sequential ticket numbering
-- Local sales journal
+Implemented so far:
 
-## Application (PWA)
+- **Lock screen and session**: user choice, PIN entry (keyboard or touch), unlock transition.
+- **Desktop**: wallpapers (built-in or your own image), accent colour, light, dark or automatic theme, date and time, taskbar at any screen edge, auto-hide.
+- **Settings**: display, taskbar, modules (switch on what you need, with dependencies), with a search field.
+- **Cashier**: search or scan an article, 200 test articles, cart, cash payment with change, 80 mm receipt, continuous numbering, stock updates, customer display in its own window.
+- **Offline**: every sale has a unique id and waits in a queue until the server acknowledges it. The queue is shown in the Synchronisation window.
+- **Cash closings**: X report (no reset), Z closing protected by the manager's PIN, cash gap with justification, rectifications instead of edits, printing and CSV export.
+- **Alerts**: negative stock, failed synchronisation, cash gap, each open until acknowledged.
 
-The application lives in `app/`: an Angular progressive web app that behaves like a desktop operating system. A lock screen with PIN login comes first, then a desktop with draggable windows, a taskbar, and a start menu. Animations use GSAP, and the app works offline once installed.
+Still to build: mobile money, discounts, held sales, returns, stock and reports screens, a synchronisation server. The full plan is in the requirements specification.
 
-Requirements: Node.js 24 (or 22.22+). Then:
+## Running the application
+
+Requirements: **Node.js 24** (or 22.22 and later).
 
 ```bash
 cd app
 npm install
-npm run dev        # development server on http://localhost:4250
-npm test           # unit tests
-npm run build      # production build in app/dist/app/browser
+npm run dev        # development server on http://localhost:4250, reachable on the local network
 ```
 
-The app is not yet connected to the sales engine. Each window currently shows its purpose and the requirements it covers.
+| Command | What it does |
+|---------|--------------|
+| `npm run dev` | Development server on port 4250, listening on all network interfaces |
+| `npm start` | Development server on the default port 4200 |
+| `npm test` | Unit tests (Vitest, through `ng test`) |
+| `npm run build` | Production build in `app/dist/app/browser` |
 
-## Getting started (prototype)
+Notes:
 
-The prototype has no dependencies, no build step, and no server.
+- The service worker (offline cache and automatic updates) runs only in **production builds**. In development, the app always loads the latest code.
+- Demo PINs for testing: caissier1 = 1111, caissier2 = 2222, gérant = 9999. They are stored in plain text and must be replaced by hashed PINs before any real use.
+- Settings and data are stored in the browser's `localStorage`. To reset the application, clear the site's stored data.
 
-1. Open `prototype/caisse/index.html` in Chrome or Edge.
-2. Log in with a test PIN:
+## Prototype (reference)
 
-   | Role      | PIN  |
-   |-----------|------|
-   | Cashier 1 | 1111 |
-   | Cashier 2 | 2222 |
-   | Manager   | 9999 |
+`prototype/caisse/index.html` is the original single-file sales-screen prototype. It needs no build and no server: open it in Chrome or Edge. It remains the reference for the sales logic that the Angular cashier screen reproduces.
 
-To open the customer display, load the same file with the query parameter `?client=1` in a second window.
-
-Data is stored in the browser's `localStorage`. To reset the prototype, clear the site's stored data.
-
-The prototype's interface is in French, as required for the target market.
+Test PINs: caissier1 = 1111, caissier2 = 2222, gérant = 9999. Open `index.html?client=1` in a second window for the customer display.
 
 ## Known limitations
 
-- No VAT (TVA) yet; the rate is not specified
-- No server or multi-device sync
-- No mobile money
-- No FNE (electronic invoice) integration
-- No scale (balance) integration
-- Printing relies on the browser's print dialog
-- Offline behavior has not been tested in real conditions
+- No VAT (TVA) yet; the rate is not specified (FC-01).
+- No synchronisation server: offline sales wait in the queue and an alert says so.
+- Cash only: no mobile money, no split payment.
+- No FNE (electronic invoice) integration.
+- No scale (balance) integration.
+- Printing relies on the browser's print dialog.
+- Offline behaviour has not been tested on real networks.
+- Demo PINs are in plain text.
 
 ## Documentation
 
@@ -81,11 +80,19 @@ Design prompts stay in French, because the generated interface is in French.
 
 | Path | Description |
 |------|-------------|
+| `app/` | Angular 22 PWA: the application |
+| `app/src/app/core/` | Services: session, window manager, modules, theme, taskbar, wallpaper, alerts, clock |
+| `app/src/app/shell/` | Lock screen, desktop, windows, taskbar, start menu |
+| `app/src/app/apps/` | Modules: `caisse` (cashier), `cloture` (cash closings), `synchronisation`, `alertes`, `settings` |
+| `app/public/` | Static assets: wallpapers, colour icons (Fluent Emoji), PWA manifest and icons |
 | `docs/en/`, `docs/fr/` | Documentation, in English and French (same files in each folder) |
 | `docs/references/` | Shared images used by the documentation |
-| `app/` | Angular 22 PWA: lock screen, desktop shell, windows, taskbar, start menu |
-| `prototype/caisse/index.html` | Sales-screen prototype (CSS, JavaScript, and markup in one file) |
-| `prototype/marketpos_retail_software/` | Design exports: one folder per screen, with HTML source and screenshot |
+| `prototype/caisse/index.html` | Original sales-screen prototype (single file) |
+| `prototype/marketpos_retail_software/` | Design exports: one folder per screen |
+
+## Testing
+
+Run `npm test` in `app/` before each change. The suite covers the module dependency rules, the window manager, the session, the theme, the accent colour, the wallpaper, the taskbar settings, the cashier (catalogue, cart, sales, payment rules), the offline queue (acknowledgement, duplicates, offline behaviour) and the cash closings (justification, period reset, rectifications).
 
 ## Credits
 
@@ -93,22 +100,22 @@ Colour icons in the application come from [Fluent Emoji](https://github.com/micr
 
 ## Roadmap
 
-The build order, from section 17 of the requirements specification:
+Build order, from section 17 of the requirements specification:
 
-1. Login
-2. Sales screen
-3. Offline testing
-4. Mobile money
-5. Z and X cash-desk closings
-6. Stock management and reports
+1. Login: done
+2. Sales screen: done (cash only)
+3. Offline operation: sales are queued locally with unique ids; the server side is still to be built
+4. Mobile money: waiting for the choice of payment aggregator (MM-01)
+5. X and Z cash closings: done; the cash-gap threshold is still to be defined (CL-03)
+6. Stock, then reports: to do
 
-Offline synchronization is the main technical risk and is tracked as the `OF-*` requirements.
+Offline synchronisation is the main technical risk and is tracked as the `OF-*` requirements.
 
 ## Contributing
 
 Feedback is welcome, especially from accountants familiar with Ivorian tax rules, POS vendors, and store operators. Many requirements are still waiting for external confirmation, so domain expertise is the most useful contribution at this stage.
 
-When you change a document, update both the English and the French version in the same change.
+Before proposing a change, run `npm test` and `npm run build` in `app/`. When you change a document, update both the English and the French version in the same change.
 
 ## License
 

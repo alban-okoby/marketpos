@@ -2,64 +2,65 @@
 
 # MarketPOS
 
-Logiciel de caisse (POS) et de gestion de magasin pour supermarchés et épiceries. Le premier marché visé est la Côte d'Ivoire, puis le reste de l'Afrique de l'Ouest francophone.
+Logiciel de caisse (POS) et de gestion pour supermarchés et épiceries. Le premier marché visé est la Côte d'Ivoire, puis le reste de l'Afrique de l'Ouest francophone.
 
 > **Statut : brouillon précoce (version 0.1).** Rien n'est encore validé avec un expert-comptable, la DGI ni un magasin. Les points ouverts sont marqués « à valider » dans les spécifications.
 
-## Fonctionnalités
+## Ce que c'est
 
-Le livrable actuel est un prototype statique, en un seul fichier, de l'écran de vente du caissier :
+MarketPOS est une application web progressive (PWA) Angular qui se comporte comme un système d'exploitation de bureau : un écran de verrouillage avec connexion par code PIN, un bureau avec des fenêtres déplaçables, une barre des tâches et un menu Démarrer. Chaque fonction métier est un module, et seuls les modules dont un magasin a besoin sont activés.
 
-- Connexion du caissier par code PIN
-- Catalogue de 200 articles de test (15 nommés, 185 générés)
-- Panier et paiement en espèces avec calcul du rendu de monnaie
-- Ticket imprimable, via la boîte d'impression du navigateur
-- Écran client dans une fenêtre séparée, synchronisé en temps réel
-- Numérotation continue des tickets
-- Journal local des ventes
+Déjà en place :
 
-## Application (PWA)
+- **Écran de verrouillage et session** : choix de l'utilisateur, saisie du code PIN (clavier ou écran tactile), transition de déverrouillage.
+- **Bureau** : fonds d'écran (fournis ou image personnelle), couleur d'accentuation, thème clair, sombre ou automatique, date et heure, barre des tâches sur n'importe quel bord, masquage automatique.
+- **Paramètres** : affichage, barre des tâches, modules (on n'active que ce qu'on utilise, avec les dépendances), avec un champ de recherche.
+- **Caisse** : recherche ou scan d'un article, 200 articles de test, panier, paiement en espèces avec rendu, ticket 80 mm, numérotation continue, mise à jour du stock, afficheur client dans sa propre fenêtre.
+- **Hors ligne** : chaque vente a un identifiant unique et attend dans une file jusqu'à l'acquittement du serveur. La file est visible dans la fenêtre Synchronisation.
+- **Clôtures de caisse** : rapport X (sans remise à zéro), clôture Z protégée par le code PIN du gérant, écart de caisse avec justification, rectifications au lieu de modifications, impression et export CSV.
+- **Alertes** : stock négatif, échec de synchronisation, écart de caisse, chacune reste ouverte jusqu'à son acquittement.
 
-L'application est dans `app/` : une application web progressive Angular qui se comporte comme un système d'exploitation de bureau. Un écran de verrouillage avec connexion par code PIN vient en premier, puis un bureau avec des fenêtres déplaçables, une barre des tâches et un menu Démarrer. Les animations utilisent GSAP, et l'application fonctionne hors ligne une fois installée.
+Reste à construire : le mobile money, les remises, les ventes en attente, les retours, les écrans de stock et de rapports, un serveur de synchronisation. Le plan complet est dans le cahier des charges.
 
-Prérequis : Node.js 24 (ou 22.22+). Ensuite :
+## Lancer l'application
+
+Prérequis : **Node.js 24** (ou 22.22 et plus).
 
 ```bash
 cd app
 npm install
-npm run dev        # serveur de développement sur http://localhost:4250
-npm test           # tests unitaires
-npm run build      # build de production dans app/dist/app/browser
+npm run dev        # serveur de développement sur http://localhost:4250, accessible sur le réseau local
 ```
 
-L'application n'est pas encore reliée au moteur de vente. Chaque fenêtre présente pour l'instant sa fonction et les exigences qu'elle couvre.
+| Commande | Ce qu'elle fait |
+|----------|-----------------|
+| `npm run dev` | Serveur de développement sur le port 4250, sur toutes les interfaces réseau |
+| `npm start` | Serveur de développement sur le port par défaut 4200 |
+| `npm test` | Tests unitaires (Vitest, via `ng test`) |
+| `npm run build` | Build de production dans `app/dist/app/browser` |
 
-## Démarrage rapide (prototype)
+Remarques :
 
-Le prototype n'a aucune dépendance, aucune étape de compilation et aucun serveur.
+- Le service worker (cache hors ligne et mises à jour automatiques) ne fonctionne que dans les **builds de production**. En développement, l'application charge toujours le dernier code.
+- Codes PIN de test : caissier1 = 1111, caissier2 = 2222, gérant = 9999. Ils sont stockés en clair et doivent être remplacés par des codes hachés avant tout usage réel.
+- Les réglages et les données sont stockés dans le `localStorage` du navigateur. Pour réinitialiser l'application, effacez les données du site.
 
-1. Ouvrir `prototype/caisse/index.html` dans Chrome ou Edge.
-2. Se connecter avec un PIN de test :
+## Prototype (référence)
 
-   | Rôle       | PIN  |
-   |------------|------|
-   | Caissier 1 | 1111 |
-   | Caissier 2 | 2222 |
-   | Gérant     | 9999 |
+`prototype/caisse/index.html` est le prototype initial de l'écran de vente, dans un seul fichier. Il ne demande ni build ni serveur : ouvrez-le dans Chrome ou Edge. Il reste la référence de la logique de vente que reproduit l'écran de caisse Angular.
 
-Pour ouvrir l'écran client, charger le même fichier avec le paramètre `?client=1` dans une seconde fenêtre.
-
-Les données sont stockées dans le `localStorage` du navigateur. Pour réinitialiser le prototype, vider les données du site.
+Codes PIN de test : caissier1 = 1111, caissier2 = 2222, gérant = 9999. Ouvrez `index.html?client=1` dans une seconde fenêtre pour l'afficheur client.
 
 ## Limites connues
 
-- Pas encore de TVA ; le taux n'est pas précisé
-- Pas de serveur ni de synchronisation entre postes
-- Pas de mobile money
-- Pas d'intégration FNE (facturation électronique)
-- Pas d'intégration de balance
-- Impression via la boîte d'impression du navigateur
-- Le fonctionnement hors ligne n'a pas été testé en conditions réelles
+- Pas encore de TVA ; le taux n'est pas précisé (FC-01).
+- Pas de serveur de synchronisation : les ventes hors ligne attendent dans la file, et une alerte le signale.
+- Espèces uniquement : pas de mobile money, pas de paiement fractionné.
+- Pas d'intégration FNE (facture électronique).
+- Pas d'intégration de balance.
+- L'impression passe par la boîte d'impression du navigateur.
+- Le fonctionnement hors ligne n'a pas été testé sur de vrais réseaux.
+- Les codes PIN de démonstration sont en clair.
 
 ## Documentation
 
@@ -79,26 +80,34 @@ Les prompts de design restent en français, car l'interface générée est en fr
 
 | Chemin | Description |
 |--------|-------------|
+| `app/` | Application Angular 22 (PWA) |
+| `app/src/app/core/` | Services : session, gestionnaire de fenêtres, modules, thème, barre des tâches, fond d'écran, alertes, horloge |
+| `app/src/app/shell/` | Écran de verrouillage, bureau, fenêtres, barre des tâches, menu Démarrer |
+| `app/src/app/apps/` | Modules : `caisse`, `cloture` (clôtures de caisse), `synchronisation`, `alertes`, `settings` (paramètres) |
+| `app/public/` | Ressources statiques : fonds d'écran, icônes couleur (Fluent Emoji), manifeste et icônes PWA |
 | `docs/en/`, `docs/fr/` | Documentation, en anglais et en français (mêmes fichiers dans chaque dossier) |
 | `docs/references/` | Images partagées utilisées par la documentation |
-| `app/` | PWA Angular 22 : écran de verrouillage, bureau, fenêtres, barre des tâches, menu Démarrer |
-| `prototype/caisse/index.html` | Prototype de l'écran de vente (CSS, JavaScript et balisage dans un seul fichier) |
-| `prototype/marketpos_retail_software/` | Exports de maquettes : un dossier par écran, avec source HTML et capture |
+| `prototype/caisse/index.html` | Prototype initial de l'écran de vente (un seul fichier) |
+| `prototype/marketpos_retail_software/` | Exports de maquettes : un dossier par écran |
+
+## Tests
+
+Lancez `npm test` dans `app/` avant chaque modification. La suite couvre les règles de dépendances des modules, le gestionnaire de fenêtres, la session, le thème, la couleur d'accentuation, le fond d'écran, les réglages de la barre des tâches, la caisse (catalogue, panier, ventes, règles de paiement), la file hors ligne (acquittement, doublons, fonctionnement hors ligne) et les clôtures (justification, remise à zéro de la période, rectifications).
 
 ## Crédits
 
-Les icônes en couleur de l'application viennent de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji), de Microsoft, sous licence MIT (voir `app/public/icons/fluent/LICENSE`).
+Les icônes couleur de l'application viennent de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji), de Microsoft, sous licence MIT (voir `app/public/icons/fluent/LICENSE`).
 
 ## Feuille de route
 
-L'ordre de construction, tiré de la section 17 du cahier des charges :
+Ordre de construction, tiré de la section 17 du cahier des charges :
 
-1. Connexion
-2. Écran de vente
-3. Test hors ligne
-4. Mobile money
-5. Clôtures de caisse X et Z
-6. Gestion du stock et rapports
+1. Connexion : fait
+2. Écran de vente : fait (espèces uniquement)
+3. Fonctionnement hors ligne : les ventes sont mises en file avec des identifiants uniques ; le serveur reste à construire
+4. Mobile money : en attente du choix de l'agrégateur de paiement (MM-01)
+5. Clôtures X et Z : faites ; le seuil d'écart de caisse reste à définir (CL-03)
+6. Stock, puis rapports : à faire
 
 La synchronisation hors ligne est le principal risque technique ; elle est suivie par les exigences `OF-*`.
 
@@ -106,7 +115,7 @@ La synchronisation hors ligne est le principal risque technique ; elle est suivi
 
 Les retours sont bienvenus, surtout ceux d'experts-comptables connaissant la fiscalité ivoirienne, d'éditeurs de caisse et de gérants de magasin. Beaucoup d'exigences attendent encore une confirmation extérieure, donc l'expertise métier est la contribution la plus utile à ce stade.
 
-Quand vous modifiez un document, mettez à jour sa version anglaise et sa version française dans la même modification.
+Avant de proposer une modification, lancez `npm test` et `npm run build` dans `app/`. Quand vous modifiez un document, mettez à jour sa version anglaise et sa version française dans la même modification.
 
 ## Licence
 
