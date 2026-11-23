@@ -18,6 +18,7 @@ import { CaisseAppComponent } from '../../apps/caisse/caisse-app.component';
 import { ClotureAppComponent } from '../../apps/cloture/cloture-app.component';
 import { SyncAppComponent } from '../../apps/synchronisation/sync-app.component';
 import { AlertsAppComponent } from '../../apps/alertes/alerts-app.component';
+import { StockAppComponent } from '../../apps/stock/stock-app.component';
 import { ModuleAppComponent } from '../../apps/module-app/module-app.component';
 import { SettingsAppComponent } from '../../apps/settings/settings-app.component';
 import { duration } from '../../core/motion';
@@ -41,6 +42,7 @@ gsap.registerPlugin(Draggable);
     ClotureAppComponent,
     SyncAppComponent,
     AlertsAppComponent,
+    StockAppComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -95,6 +97,9 @@ gsap.registerPlugin(Draggable);
           @case ('alertes') {
             <app-alerts-app />
           }
+          @case ('stock') {
+            <app-stock-app />
+          }
           @default {
             <app-module-app [appId]="state().appId" />
           }
@@ -113,7 +118,7 @@ export class WindowComponent implements AfterViewInit {
   private readonly titlebar = viewChild.required<ElementRef<HTMLElement>>('titlebar');
 
   /** Apps with their own layout fill the window edge to edge. */
-  readonly flushed = new Set<AppId>(['parametres', 'caisse', 'cloture']);
+  readonly flushed = new Set<AppId>(['parametres', 'caisse', 'cloture', 'stock']);
 
   readonly hidden = signal(false);
   readonly isActive = computed(() => this.wm.activeId() === this.state().id);

@@ -5,6 +5,14 @@ export interface Product {
   readonly price: number;
   readonly category: string;
   readonly stock: number;
+  /** Unit of sale, for example "pièce" or "kg". Optional for articles saved before this field existed. */
+  readonly unit?: string;
+  /** Purchase price in FCFA, used later for margins (ST-07). */
+  readonly purchasePrice?: number;
+  /** Stock level at or below which an alert is raised (ST-06). */
+  readonly threshold?: number;
+  /** Best-before date, ISO format, when the article has one (ST-06). */
+  readonly expiry?: string;
 }
 
 type Seed = readonly [code: string, name: string, price: number, category: string];

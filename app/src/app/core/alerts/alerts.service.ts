@@ -1,6 +1,6 @@
 import { Injectable, computed, signal } from '@angular/core';
 
-export type AlertKind = 'stock-negatif' | 'synchronisation' | 'ecart-caisse';
+export type AlertKind = 'stock-negatif' | 'stock-bas' | 'synchronisation' | 'ecart-caisse' | 'peremption';
 
 export interface Alert {
   readonly id: string;

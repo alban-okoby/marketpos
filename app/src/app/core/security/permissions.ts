@@ -9,7 +9,7 @@ export const ROLE_LABELS: Record<Role, string> = {
 };
 
 /** Actions the application checks. Each one is enforced where it happens. */
-export const ACTIONS = ['vendre', 'cloture-x', 'cloture-z', 'rectification', 'exporter', 'modules', 'parametres'] as const;
+export const ACTIONS = ['vendre', 'cloture-x', 'cloture-z', 'rectification', 'exporter', 'modules', 'parametres', 'stock'] as const;
 export type Action = (typeof ACTIONS)[number];
 
 export const ACTION_LABELS: Record<Action, string> = {
@@ -20,6 +20,7 @@ export const ACTION_LABELS: Record<Action, string> = {
   exporter: 'Exporter les rapports',
   modules: 'Activer ou désactiver les modules',
   parametres: 'Modifier les paramètres et les droits',
+  stock: 'Gérer les articles, sorties et inventaire',
 };
 
 export type PermissionMatrix = Readonly<Record<Role, readonly Action[]>>;
@@ -27,8 +28,8 @@ export type PermissionMatrix = Readonly<Record<Role, readonly Action[]>>;
 /** Starting rights (US-02). The manager always keeps "parametres", so the settings can never be locked out. */
 export const DEFAULT_PERMISSIONS: PermissionMatrix = {
   caissier: ['vendre', 'cloture-x'],
-  gerant: ['vendre', 'cloture-x', 'cloture-z', 'rectification', 'exporter', 'modules', 'parametres'],
-  administrateur: ['exporter', 'modules', 'parametres'],
+  gerant: ['vendre', 'cloture-x', 'cloture-z', 'rectification', 'exporter', 'modules', 'parametres', 'stock'],
+  administrateur: ['exporter', 'modules', 'parametres', 'stock'],
   comptable: ['exporter'],
 };
 

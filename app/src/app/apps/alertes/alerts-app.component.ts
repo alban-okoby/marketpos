@@ -6,6 +6,8 @@ const KIND_LABELS: Record<AlertKind, string> = {
   'stock-negatif': 'Stock',
   synchronisation: 'Synchronisation',
   'ecart-caisse': 'Caisse',
+  'stock-bas': 'Stock',
+  peremption: 'Péremption',
 };
 
 /** Open alerts. An alert stays until someone acknowledges it. */
