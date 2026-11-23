@@ -2,13 +2,15 @@
 
 # MarketPOS
 
-Logiciel de caisse (POS) et de gestion pour supermarchés et épiceries. Le premier marché visé est la Côte d'Ivoire, puis le reste de l'Afrique de l'Ouest francophone.
-
-> **Statut : brouillon précoce (version 0.1).** Rien n'est encore validé avec un expert-comptable, la DGI ni un magasin. Les points ouverts sont marqués « à valider » dans les spécifications.
-
+Logiciel de caisse (POS) et de gestion pour supermarchés et épiceries.
 ## Ce que c'est
 
 MarketPOS est une application web progressive (PWA) Angular qui se comporte comme un système d'exploitation de bureau : un écran de verrouillage avec connexion par code PIN, un bureau avec des fenêtres déplaçables, une barre des tâches et un menu Démarrer. Chaque fonction métier est un module, et seuls les modules dont un magasin a besoin sont activés.
+
+<img width="1900" height="868" alt="A0621789-3E3F-4079-AC68-2438F7B66482" src="https://github.com/user-attachments/assets/a5421e24-b520-4675-809e-171d3f2e781f" />
+
+<img width="1900" height="868" alt="61120C0A-F7E8-4E7E-991B-165D5102949B" src="https://github.com/user-attachments/assets/45bf97c5-14bb-4951-aefd-9d91ba7f0756" />
+
 
 Déjà en place :
 

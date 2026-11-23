@@ -2,13 +2,16 @@
 
 **English** · [Français](README.fr.md)
 
-Point-of-sale (POS) and store-management software for supermarkets and grocery stores. The first target market is Côte d'Ivoire, with the rest of francophone West Africa to follow.
-
-> **Status: early draft (v0.1).** Nothing has been validated yet with an accountant, the tax authority (DGI), or a store. Open points are marked *"à valider"* (to be validated) in the specifications.
+Point-of-sale (POS) and store-management software for supermarkets and grocery stores
 
 ## What it is
 
 MarketPOS is an Angular progressive web app (PWA) that behaves like a desktop operating system: a lock screen with PIN login, a desktop with draggable windows, a taskbar and a start menu. Each business function is a module, and only the modules a shop needs are switched on.
+
+<img width="1900" height="868" alt="A0621789-3E3F-4079-AC68-2438F7B66482" src="https://github.com/user-attachments/assets/a5421e24-b520-4675-809e-171d3f2e781f" />
+
+<img width="1900" height="868" alt="61120C0A-F7E8-4E7E-991B-165D5102949B" src="https://github.com/user-attachments/assets/45bf97c5-14bb-4951-aefd-9d91ba7f0756" />
+
 
 Implemented so far:
 
