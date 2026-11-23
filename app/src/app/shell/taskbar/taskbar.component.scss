@@ -165,7 +165,9 @@ $slide: calc(100% + #{$gap} + 12px);
   --mag: 1;
   --lift: 0px;
   --press: 1;
-  transition: background 0.15s;
+  transform: translate(calc(var(--lift) * var(--dock-x)), calc(var(--lift) * var(--dock-y)))
+    scale(calc(var(--mag) * var(--press)));
+  transition: background 0.15s, transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 
   &:hover,
   &.open {
@@ -177,20 +179,17 @@ $slide: calc(100% + #{$gap} + 12px);
   }
 }
 
-// Only the picture moves: the button and its hover background stay inside the bar.
+// The picture keeps its place in the button; the whole button, hover background included, rises and grows.
 .glyph {
   display: grid;
   place-items: center;
-  transform: translate(calc(var(--lift) * var(--dock-x)), calc(var(--lift) * var(--dock-y)))
-    scale(calc(var(--mag) * var(--press)));
-  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-// Hovered item: largest. Neighbours on each side grow a little, one step further even less.
+// Hovered item: largest, and it rises above the bar. Neighbours on each side grow a little, one step further even less.
 .start:hover,
 .app:hover {
-  --mag: 1.5;
-  --lift: 6px;
+  --mag: 1.6;
+  --lift: 10px;
 }
 
 .start:hover + .app,
@@ -218,9 +217,10 @@ $slide: calc(100% + #{$gap} + 12px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glyph {
+  .start,
+  .app {
     transform: none;
-    transition: none;
+    transition: background 0.15s;
   }
 }
 
