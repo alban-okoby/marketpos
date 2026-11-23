@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { APPS, AppDefinition, AppId, MODULE_CATEGORIES, ModuleCategoryDefinition } from '../../../core/os/apps';
 import { ModuleSettingsService } from '../../../core/os/module-settings.service';
 import { WindowManagerService } from '../../../core/os/window-manager.service';
+import { PermissionsService } from '../../../core/security/permissions.service';
 import { IconComponent } from '../../../shared/icon/icon.component';
 
 interface CategoryGroup {
@@ -60,7 +61,7 @@ interface CategoryGroup {
                   [class.on]="modules.isEnabled(app.id)"
                   [attr.aria-checked]="modules.isEnabled(app.id)"
                   [attr.aria-label]="'Activer ' + app.title"
-                  [disabled]="app.core"
+                  [disabled]="app.core || !permissions.can('modules')"
                   (click)="toggle(app.id)"
                 >
                   <span class="knob"></span>
@@ -77,6 +78,7 @@ interface CategoryGroup {
 export class ModulesSettingsComponent {
   readonly modules = inject(ModuleSettingsService);
   private readonly wm = inject(WindowManagerService);
+  readonly permissions = inject(PermissionsService);
 
   readonly total = APPS.length;
   readonly enabledCount = computed(() => this.modules.enabledApps().length);
@@ -93,11 +95,17 @@ export class ModulesSettingsComponent {
   }
 
   toggle(appId: AppId): void {
+    if (!this.permissions.can('modules')) {
+      return;
+    }
     const change = this.modules.setEnabled(appId, !this.modules.isEnabled(appId));
     change.disabled.forEach((id) => this.wm.closeApp(id));
   }
 
   resetToDefaults(): void {
+    if (!this.permissions.can('modules')) {
+      return;
+    }
     const change = this.modules.resetToDefaults();
     change.disabled.forEach((id) => this.wm.closeApp(id));
   }

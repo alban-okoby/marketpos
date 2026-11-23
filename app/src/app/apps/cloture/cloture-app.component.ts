@@ -6,6 +6,7 @@ import { ZClosure, cashGap, needsJustification } from './closure';
 import { ClosuresService } from './closures.service';
 import { FiscalSettingsService } from '../../core/settings/fiscal.service';
 import { PinGuardService } from '../../core/session/pin-guard.service';
+import { PermissionsService } from '../../core/security/permissions.service';
 import { PrintableReport, downloadText, toCsv, xReport, zReport } from './report';
 import { ReportPrintComponent } from './report-print.component';
 
@@ -136,6 +137,7 @@ export class ClotureAppComponent {
   private readonly injector = inject(Injector);
   private readonly fiscal = inject(FiscalSettingsService);
   private readonly guard = inject(PinGuardService);
+  private readonly permissions = inject(PermissionsService);
 
   readonly counted = signal<number | null>(null);
   readonly reason = signal('');
@@ -192,6 +194,10 @@ export class ClotureAppComponent {
   }
 
   exportX(): void {
+    if (!this.permissions.can('exporter')) {
+      this.error.set('Votre rôle ne permet pas d’exporter les rapports.');
+      return;
+    }
     const report = xReport(this.x(), this.openingFloat(), this.closuresService.since());
     downloadText(`rapport-x-${new Date().toISOString().slice(0, 10)}.csv`, toCsv(report));
   }
@@ -205,6 +211,10 @@ export class ClotureAppComponent {
     const wait = this.guard.secondsLeft('gerant');
     if (wait > 0) {
       this.error.set(`Trop de tentatives. Réessayez dans ${wait} s.`);
+      return;
+    }
+    if (!this.permissions.roleCan(this.session.findUser('gerant')?.roleId ?? 'gerant', 'cloture-z')) {
+      this.error.set('Le rôle du gérant ne permet pas de valider une clôture Z.');
       return;
     }
     if (!this.session.verifyPin('gerant', this.pin())) {
@@ -243,6 +253,10 @@ export class ClotureAppComponent {
   }
 
   saveRectification(closureId: string): void {
+    if (!this.permissions.can('rectification')) {
+      this.error.set('Votre rôle ne permet pas d’ajouter une rectification.');
+      return;
+    }
     try {
       this.closuresService.addRectification(closureId, this.rectAmount(), this.rectReason());
       this.rectifying.set(null);

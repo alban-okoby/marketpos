@@ -15,6 +15,16 @@
 }
 
 // Top bar: search, next ticket number, customer display button, sync status.
+.notice {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  font-size: 0.88rem;
+  flex: 0 0 auto;
+}
+
 .top {
   display: flex;
   align-items: center;

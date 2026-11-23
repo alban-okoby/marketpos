@@ -18,6 +18,7 @@ import { CartService } from './cart.service';
 import { CatalogueService } from './catalogue.service';
 import { Product, formatFcfa, matchesSearch } from './catalogue';
 import { CustomerChannelService, CustomerScreenState } from './customer-channel.service';
+import { PermissionsService } from '../../core/security/permissions.service';
 import { CaisseTicketComponent } from './caisse-ticket.component';
 import { PaymentDialogComponent } from './payment-dialog.component';
 import { Sale, SalesService } from './sales.service';
@@ -46,6 +47,10 @@ interface CategoryChoice {
   },
   template: `
     <section class="caisse">
+      @if (notice(); as text) {
+        <p class="notice" role="status">{{ text }}</p>
+      }
+
       <header class="top">
         <label class="search">
           <app-icon name="search" [size]="18" />
@@ -133,6 +138,9 @@ export class CaisseAppComponent {
   readonly paying = signal(false);
   readonly printed = signal<Sale | null>(null);
   readonly message = signal('');
+  /** Short message shown above the ticket, for example when the role does not allow a sale. */
+  readonly notice = signal<string | null>(null);
+  private readonly permissions = inject(PermissionsService);
 
   readonly categoryChoices = computed<readonly CategoryChoice[]>(() => {
     const products = this.catalogue.products();
@@ -199,9 +207,15 @@ export class CaisseAppComponent {
   }
 
   openPayment(): void {
-    if (this.cart.lines().length > 0) {
-      this.paying.set(true);
+    if (this.cart.lines().length === 0) {
+      return;
     }
+    if (!this.permissions.can('vendre')) {
+      this.notice.set('Votre rôle ne permet pas d’encaisser. Demandez à un gérant.');
+      return;
+    }
+    this.notice.set(null);
+    this.paying.set(true);
   }
 
   onValidated(received: number): void {

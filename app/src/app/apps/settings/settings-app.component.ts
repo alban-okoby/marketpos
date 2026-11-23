@@ -4,6 +4,7 @@ import { IconComponent } from '../../shared/icon/icon.component';
 import { DisplaySettingsComponent } from './sections/display-settings.component';
 import { FiscalSettingsComponent } from './sections/fiscal-settings.component';
 import { ModulesSettingsComponent } from './sections/modules-settings.component';
+import { RightsSettingsComponent } from './sections/rights-settings.component';
 import { SecuritySettingsComponent } from './sections/security-settings.component';
 import { ShopSettingsComponent } from './sections/shop-settings.component';
 import { TaskbarSettingsComponent } from './sections/taskbar-settings.component';
@@ -23,6 +24,7 @@ import { SettingsSectionId, filterSettingsSections } from './settings-sections';
     ShopSettingsComponent,
     FiscalSettingsComponent,
     SecuritySettingsComponent,
+    RightsSettingsComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -81,6 +83,9 @@ import { SettingsSectionId, filterSettingsSections } from './settings-sections';
           }
           @case ('securite') {
             <app-security-settings />
+          }
+          @case ('droits') {
+            <app-rights-settings />
           }
         }
       </div>

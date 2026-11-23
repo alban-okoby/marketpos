@@ -1,0 +1,80 @@
+@use '../settings' as s;
+
+:host {
+  display: block;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 760px;
+
+  @include s.page-title;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  background: var(--fill-subtle);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+
+  th,
+  td {
+    padding: 9px 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  thead th {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  tbody th {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-strong);
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}
+
+.row-actions {
+  display: flex;
+}
+
+.reset {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: var(--fill-active);
+  font-size: 0.88rem;
+  font-weight: 600;
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  margin: 0;
+  color: var(--danger-text);
+  font-size: 0.88rem;
+}

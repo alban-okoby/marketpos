@@ -1,6 +1,6 @@
 import { IconName } from '../../shared/icon/icon.component';
 
-export type SettingsSectionId = 'display' | 'taskbar' | 'modules' | 'boutique' | 'fiscalite' | 'securite';
+export type SettingsSectionId = 'display' | 'taskbar' | 'modules' | 'boutique' | 'fiscalite' | 'securite' | 'droits';
 
 /**
  * Sidebar entries of the Settings app, in display order. Add a new page here and in the
@@ -40,9 +40,15 @@ export const SETTINGS_SECTIONS: readonly SettingsSection[] = [
     keywords: 'tva taux fiscalité écart caisse seuil justification',
   },
   {
+    id: 'droits',
+    label: 'Droits',
+    icon: 'key',
+    keywords: 'droits rôle caissier gérant administrateur comptable permissions autorisation',
+  },
+  {
     id: 'securite',
     label: 'Sécurité',
-    icon: 'key',
+    icon: 'lock',
     keywords: 'sécurité verrouillage inactivité session pin délai',
   },
   {
