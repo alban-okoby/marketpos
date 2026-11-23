@@ -20,6 +20,7 @@ import { SyncAppComponent } from '../../apps/synchronisation/sync-app.component'
 import { AlertsAppComponent } from '../../apps/alertes/alerts-app.component';
 import { StockAppComponent } from '../../apps/stock/stock-app.component';
 import { RapportsAppComponent } from '../../apps/rapports/rapports-app.component';
+import { UtilisateursAppComponent } from '../../apps/utilisateurs/utilisateurs-app.component';
 import { ModuleAppComponent } from '../../apps/module-app/module-app.component';
 import { SettingsAppComponent } from '../../apps/settings/settings-app.component';
 import { duration } from '../../core/motion';
@@ -45,6 +46,7 @@ gsap.registerPlugin(Draggable);
     AlertsAppComponent,
     StockAppComponent,
     RapportsAppComponent,
+    UtilisateursAppComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
@@ -104,6 +106,9 @@ gsap.registerPlugin(Draggable);
           }
           @case ('rapports') {
             <app-rapports-app />
+          }
+          @case ('utilisateurs') {
+            <app-utilisateurs-app />
           }
           @default {
             <app-module-app [appId]="state().appId" />

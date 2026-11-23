@@ -1,6 +1,16 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 
-import { DEMO_USERS, DemoUser } from './demo-users';
+import { ROLE_LABELS, Role } from '../security/permissions';
+import { UsersService } from '../security/users.service';
+
+/** What the screens show about a user. The PIN and its hash never leave the users service. */
+export interface SessionUser {
+  readonly id: string;
+  readonly name: string;
+  /** Role label, shown on the lock screen. */
+  readonly role: string;
+  readonly roleId: Role;
+}
 
 /**
  * Lock and session state of the system.
@@ -8,28 +18,32 @@ import { DEMO_USERS, DemoUser } from './demo-users';
  */
 @Injectable({ providedIn: 'root' })
 export class SessionService {
-  readonly users = DEMO_USERS;
+  private readonly accounts = inject(UsersService);
 
-  private readonly signedInUser = signal<DemoUser | null>(null);
+  /** Active accounts, for the lock screen. */
+  readonly users = computed<readonly SessionUser[]>(() => this.accounts.active().map(toSessionUser));
+
+  private readonly signedInUser = signal<SessionUser | null>(null);
   private readonly isLocked = signal(true);
 
   readonly user = this.signedInUser.asReadonly();
   readonly locked = this.isLocked.asReadonly();
   readonly hasSession = computed(() => this.signedInUser() !== null);
 
-  findUser(userId: string): DemoUser | undefined {
-    return this.users.find((user) => user.id === userId);
+  findUser(userId: string): SessionUser | undefined {
+    const account = this.accounts.find(userId);
+    return account ? toSessionUser(account) : undefined;
   }
 
   /** Checks a PIN without changing any state. */
-  verifyPin(userId: string, pin: string): boolean {
-    return this.findUser(userId)?.pin === pin;
+  verifyPin(userId: string, pin: string): Promise<boolean> {
+    return this.accounts.verifyPin(userId, pin);
   }
 
   /** Signs the user in and unlocks the system. The caller must verify the PIN first. */
   unlock(userId: string): void {
     const user = this.findUser(userId);
-    if (!user) {
+    if (!user || !this.accounts.find(userId)?.active) {
       throw new Error(`Unknown user: ${userId}`);
     }
     this.signedInUser.set(user);
@@ -46,4 +60,8 @@ export class SessionService {
     this.signedInUser.set(null);
     this.isLocked.set(true);
   }
+}
+
+function toSessionUser(account: { readonly id: string; readonly name: string; readonly roleId: Role }): SessionUser {
+  return { id: account.id, name: account.name, role: ROLE_LABELS[account.roleId], roleId: account.roleId };
 }

@@ -206,7 +206,7 @@ export class ClotureAppComponent {
     this.print(zReport(closure));
   }
 
-  validateZ(): void {
+  async validateZ(): Promise<void> {
     this.error.set(null);
     const wait = this.guard.secondsLeft('gerant');
     if (wait > 0) {
@@ -217,7 +217,7 @@ export class ClotureAppComponent {
       this.error.set('Le rôle du gérant ne permet pas de valider une clôture Z.');
       return;
     }
-    if (!this.session.verifyPin('gerant', this.pin())) {
+    if (!(await this.session.verifyPin('gerant', this.pin()))) {
       this.guard.fail('gerant');
       this.error.set('Code PIN du gérant incorrect.');
       return;

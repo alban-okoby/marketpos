@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { SessionService } from '../session/session.service';
+import { UsersService } from './users.service';
 import { DEFAULT_PERMISSIONS, parsePermissions, roleCan } from './permissions';
 import { PermissionsService } from './permissions.service';
 
@@ -31,9 +32,11 @@ describe('PermissionsService', () => {
   let permissions: PermissionsService;
   let session: SessionService;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     localStorage.removeItem('marketpos.droits');
+    localStorage.removeItem('marketpos.utilisateurs');
     TestBed.configureTestingModule({});
+    await TestBed.inject(UsersService).whenReady();
     session = TestBed.inject(SessionService);
     permissions = TestBed.inject(PermissionsService);
   });

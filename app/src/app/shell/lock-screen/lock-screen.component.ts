@@ -4,9 +4,11 @@ import {
   Component,
   ElementRef,
   computed,
+  effect,
   inject,
   output,
   signal,
+  untracked,
   viewChild,
 } from '@angular/core';
 import { gsap } from 'gsap';
@@ -43,7 +45,7 @@ const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
 
       <div class="card glass" #card>
         <div class="users" role="radiogroup" aria-label="Utilisateur">
-          @for (user of session.users; track user.id) {
+          @for (user of session.users(); track user.id) {
             <button
               type="button"
               role="radio"
@@ -111,15 +113,27 @@ export class LockScreenComponent implements AfterViewInit {
   readonly slots = Array.from({ length: PIN_LENGTH }, (_, index) => index);
 
   /** Preselects the user who was signed in before locking, otherwise the first user. */
-  readonly selectedId = signal(this.session.user()?.id ?? this.session.users[0].id);
+  readonly selectedId = signal(this.session.user()?.id ?? '');
   readonly pin = signal('');
   readonly error = signal(false);
   private busy = false;
+  /** True while a PIN is being checked, so a second entry cannot start another check. */
+  private checking = false;
 
   /** Counts wrong PINs; blocks the keypad after too many attempts (Sécurité settings). */
   readonly guard = inject(PinGuardService);
 
   readonly selectedName = computed(() => this.session.findUser(this.selectedId())?.name ?? '');
+
+  constructor() {
+    // Accounts load asynchronously on first start: preselect the first user as soon as they are there.
+    effect(() => {
+      const first = this.session.users()[0];
+      if (!this.selectedId() && first) {
+        untracked(() => this.selectedId.set(first.id));
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     this.playIntro();
@@ -169,9 +183,15 @@ export class LockScreenComponent implements AfterViewInit {
     this.error.set(false);
   }
 
-  private submit(pin: string): void {
+  private async submit(pin: string): Promise<void> {
+    if (this.checking) {
+      return;
+    }
+    this.checking = true;
     const userId = this.selectedId();
-    if (this.session.verifyPin(userId, pin)) {
+    const valid = await this.session.verifyPin(userId, pin);
+    this.checking = false;
+    if (valid) {
       this.guard.reset('session');
       this.busy = true;
       this.playUnlock(userId);
