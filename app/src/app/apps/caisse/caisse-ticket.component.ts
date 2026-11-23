@@ -42,7 +42,7 @@ import { formatFcfa } from './catalogue';
 
       <div class="actions">
         <button type="button" class="cancel" (click)="cart.clear()" [disabled]="cart.lines().length === 0">
-          Annuler la vente
+          Annuler
         </button>
         <button type="button" class="pay" (click)="payRequested.emit()" [disabled]="cart.lines().length === 0">
           Encaisser (F9)
