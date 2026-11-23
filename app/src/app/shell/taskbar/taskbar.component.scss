@@ -160,11 +160,6 @@ $slide: calc(100% + #{$gap} + 12px);
   }
 }
 
-// Open app windows show a hover background; the start button does not (it only grows).
-.app:hover {
-  background: var(--fill-active);
-}
-
 // Hovered item: largest, and it rises above the bar. Neighbours on each side grow a little, one step further even less.
 .start:hover,
 .app:hover {
