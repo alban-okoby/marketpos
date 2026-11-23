@@ -134,75 +134,8 @@ $slide: calc(100% + #{$gap} + 12px);
   font-size: 0.85rem;
 }
 
-// The bar swells under the hovered item: a dome of the same glass rising from its edge, curved on both sides.
-// On horizontal bars it grows from the top edge (bottom bar) or drops from it (top bar). Vertical bars keep it off.
-.bulge {
-  position: absolute;
-  left: 0;
-  width: 0;
-  height: 26px;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  background: var(--glass);
-  backdrop-filter: blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
-  opacity: 0;
-  transform: scaleY(0.3);
-  transform-origin: bottom;
-  pointer-events: none;
-  transition:
-    left 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 0.2s ease-out,
-    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-:host(.pos-bottom) .bulge {
-  bottom: 100%;
-}
-
-:host(.pos-top) .bulge {
-  top: 100%;
-  border-radius: 0 0 50% 50% / 0 0 100% 100%;
-  transform-origin: top;
-}
-
-:host(.pos-left) .bulge,
-:host(.pos-right) .bulge {
-  display: none;
-}
-
-.bulge.on {
-  opacity: 1;
-  transform: scaleY(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bulge {
-    transition: none;
-  }
-}
-
 // Dock magnification, as on macOS: the hovered item grows and lifts, and its neighbours follow with less effect.
 // --dock-x / --dock-y give the direction of the lift: up on a bottom bar, down on a top bar, sideways on vertical bars.
-:host {
-  --dock-x: 0;
-  --dock-y: -1;
-}
-
-:host(.pos-top) {
-  --dock-y: 1;
-}
-
-:host(.pos-left) {
-  --dock-x: 1;
-  --dock-y: 0;
-}
-
-:host(.pos-right) {
-  --dock-x: -1;
-  --dock-y: 0;
-}
-
 .start,
 .app {
   position: relative;
@@ -226,12 +159,6 @@ $slide: calc(100% + #{$gap} + 12px);
   &:active {
     --press: 0.92;
   }
-}
-
-// The picture keeps its place in the button; the whole button, hover background included, rises and grows.
-.glyph {
-  display: grid;
-  place-items: center;
 }
 
 // Hovered item: largest, and it rises above the bar. Neighbours on each side grow a little, one step further even less.
@@ -331,9 +258,32 @@ $slide: calc(100% + #{$gap} + 12px);
   font-weight: 600;
 }
 
-.time {
-  font-variant-numeric: tabular-nums;
-  font-weight: 600;
+// Per bar: --dock-x / --dock-y give the direction the dock lift takes (up on a bottom bar, down on a top bar,
+// sideways on vertical bars); --hide is the direction of the auto-hide slide.
+:host {
+  --dock-x: 0;
+  --dock-y: -1;
+}
+
+:host(.pos-bottom) {
+  --hide: 0 #{$slide};
+}
+
+:host(.pos-top) {
+  --dock-y: 1;
+  --hide: 0 calc(-1 * #{$slide});
+}
+
+:host(.pos-left) {
+  --dock-x: 1;
+  --dock-y: 0;
+  --hide: calc(-1 * #{$slide}) 0;
+}
+
+:host(.pos-right) {
+  --dock-x: -1;
+  --dock-y: 0;
+  --hide: #{$slide} 0;
 }
 
 // Auto-hide: the bar and tray slide out of the screen, and the edge trigger brings them back.
@@ -347,35 +297,7 @@ $slide: calc(100% + #{$gap} + 12px);
 
   .taskbar,
   .tray {
-    translate: 0 0;
-  }
-}
-
-:host(.hidden-state.pos-bottom) {
-  .taskbar,
-  .tray {
-    translate: 0 $slide;
-  }
-}
-
-:host(.hidden-state.pos-top) {
-  .taskbar,
-  .tray {
-    translate: 0 calc(-1 * $slide);
-  }
-}
-
-:host(.hidden-state.pos-left) {
-  .taskbar,
-  .tray {
-    translate: calc(-1 * $slide) 0;
-  }
-}
-
-:host(.hidden-state.pos-right) {
-  .taskbar,
-  .tray {
-    translate: $slide 0;
+    translate: var(--hide);
   }
 }
 
@@ -384,30 +306,23 @@ $slide: calc(100% + #{$gap} + 12px);
   pointer-events: auto;
 }
 
+// A 4px strip along the bar's screen edge.
 :host(.pos-bottom) .edge {
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: auto 0 0 0;
   height: 4px;
 }
 
 :host(.pos-top) .edge {
-  left: 0;
-  right: 0;
-  top: 0;
+  inset: 0 0 auto 0;
   height: 4px;
 }
 
 :host(.pos-left) .edge {
-  top: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0 auto 0 0;
   width: 4px;
 }
 
 :host(.pos-right) .edge {
-  top: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0 0 0 auto;
   width: 4px;
 }

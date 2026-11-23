@@ -1,0 +1,42 @@
+// The shape of the taskbar, painted by TaskbarComponent. On a horizontal bar its box starts 40px above the bar
+// (the headroom, HEADROOM in taskbar.component.ts), so the swelling has room to rise. A top bar is flipped,
+// so its swelling drops below it. Vertical bars have no headroom.
+:host {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+:host(.horizontal) {
+  top: -40px;
+}
+
+:host(.horizontal.flip) {
+  top: 0;
+  bottom: -40px;
+  transform: scaleY(-1);
+}
+
+.glass,
+.edge-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+}
+
+.edge-line {
+  overflow: visible;
+  fill: none;
+  stroke: var(--glass-border);
+  stroke-width: 1;
+}

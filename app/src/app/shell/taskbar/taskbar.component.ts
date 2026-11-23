@@ -1,4 +1,15 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, computed, inject, input, output, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  computed,
+  inject,
+  input,
+  output,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { gsap } from 'gsap';
 
 import { ClockService } from '../../core/clock.service';
@@ -9,10 +20,23 @@ import { WindowManagerService, WindowState } from '../../core/os/window-manager.
 import { TaskbarSettingsService } from '../../core/taskbar/taskbar-settings.service';
 import { IconComponent, IconName } from '../../shared/icon/icon.component';
 import { LogoComponent } from '../../shared/logo/logo.component';
+import { barOutline } from './taskbar-outline';
+import { TaskbarSurfaceComponent } from './taskbar-surface.component';
 
 const HIDE_DELAY_MS = 500;
-/** How far the swelling of the bar extends on each side of the hovered item. */
-const BULGE_PAD = 14;
+/** Space above a horizontal bar where the swelling rises. Must match the surface height in the stylesheet. */
+const HEADROOM = 40;
+/** How far the swelling rises above the bar, in px. */
+const SWELL_RISE = 30;
+/** Space on each side of the hovered item that the swelling covers, in px. */
+const SWELL_PAD = 14;
+/** Corner radius of the bar. Must match the taskbar corner radius in the stylesheet. */
+const BAR_RADIUS = 16;
+
+/** Start or app button, as opposed to the surface or outline elements in the bar. */
+function isItem(element: Element | null): element is HTMLElement {
+  return element !== null && element.matches('.start, .app');
+}
 
 /**
  * Taskbar: start button and open windows, plus the system tray (network, pending sales, clock).
@@ -20,17 +44,11 @@ const BULGE_PAD = 14;
  */
 @Component({
   selector: 'app-taskbar',
-  imports: [IconComponent, LogoComponent],
+  imports: [IconComponent, LogoComponent, TaskbarSurfaceComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <nav class="taskbar glass" aria-label="Barre des tâches" (mouseleave)="hideBulge()">
-      <span
-        class="bulge"
-        aria-hidden="true"
-        [class.on]="bulge() !== null"
-        [style.left.px]="bulge()?.left ?? 0"
-        [style.width.px]="bulge()?.width ?? 0"
-      ></span>
+    <nav #bar class="taskbar" aria-label="Barre des tâches" (mouseleave)="hideSwell()">
+      <app-taskbar-surface [class.horizontal]="horizontal()" [class.flip]="flipped()" />
       <button
         type="button"
         class="start"
@@ -81,6 +99,7 @@ const BULGE_PAD = 14;
     '[class]': 'hostClasses()',
     '(mouseenter)': 'reveal()',
     '(mouseleave)': 'scheduleHide()',
+    '(window:resize)': 'draw()',
   },
   styleUrl: './taskbar.component.scss',
 })
@@ -94,12 +113,23 @@ export class TaskbarComponent implements AfterViewInit {
   readonly settings = inject(TaskbarSettingsService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
+  private readonly barRef = viewChild.required<ElementRef<HTMLElement>>('bar');
+  private readonly surface = viewChild.required(TaskbarSurfaceComponent);
+
+  /** Horizontal bars (top or bottom) can swell; vertical ones keep their plain shape. */
+  readonly horizontal = computed(() => {
+    const position = this.settings.position();
+    return position === 'bottom' || position === 'top';
+  });
+  /** A top bar is drawn flipped, so its swelling drops below it. */
+  readonly flipped = computed(() => this.settings.position() === 'top');
+
+  /** Span of the swelling and its height, animated by GSAP. A rise of zero is a plain bar. */
+  private readonly swell = { from: 0, to: 0, rise: 0 };
+
   /** True while the pointer is on the bar or its edge, or while the start menu is open. */
   private readonly revealed = signal(false);
   private hideTimer: ReturnType<typeof setTimeout> | undefined;
-
-  /** Where the bar swells, relative to the bar: under the hovered item, or null when no item is hovered. */
-  readonly bulge = signal<{ readonly left: number; readonly width: number } | null>(null);
 
   readonly hidden = computed(() => this.settings.autoHide() && !this.revealed() && !this.startOpen());
 
@@ -115,6 +145,7 @@ export class TaskbarComponent implements AfterViewInit {
   );
 
   ngAfterViewInit(): void {
+    this.draw();
     if (reducedMotion()) {
       return;
     }
@@ -140,14 +171,23 @@ export class TaskbarComponent implements AfterViewInit {
     }
   }
 
-  /** Moves the swelling of the bar under the hovered start or app button. */
+  /** The swelling covers the hovered item and half of each neighbour, up to the next item's centre. */
   raise(event: MouseEvent): void {
+    if (!this.horizontal()) {
+      return;
+    }
     const button = event.currentTarget as HTMLElement;
-    this.bulge.set({ left: button.offsetLeft - BULGE_PAD, width: button.offsetWidth + 2 * BULGE_PAD });
+    const left = button.offsetLeft;
+    const right = left + button.offsetWidth;
+    const previous = button.previousElementSibling;
+    const next = button.nextElementSibling;
+    const from = isItem(previous) ? previous.offsetLeft + previous.offsetWidth / 2 : left - SWELL_PAD;
+    const to = isItem(next) ? next.offsetLeft + next.offsetWidth / 2 : right + SWELL_PAD;
+    this.animateSwell(from, to, SWELL_RISE);
   }
 
-  hideBulge(): void {
-    this.bulge.set(null);
+  hideSwell(): void {
+    this.animateSwell(this.swell.from, this.swell.to, 0);
   }
 
   reveal(): void {
@@ -159,5 +199,47 @@ export class TaskbarComponent implements AfterViewInit {
   scheduleHide(): void {
     clearTimeout(this.hideTimer);
     this.hideTimer = setTimeout(() => this.revealed.set(false), HIDE_DELAY_MS);
+  }
+
+  /** Animates the swelling toward a span and a rise. Overwrites a running animation so the motion follows the pointer. */
+  private animateSwell(from: number, to: number, rise: number): void {
+    if (this.swell.rise < 0.5) {
+      // Starting from a plain bar: the swelling appears at the item, then grows.
+      this.swell.from = from;
+      this.swell.to = to;
+    }
+    gsap.to(this.swell, {
+      from,
+      to,
+      rise,
+      duration: duration(0.28),
+      ease: 'power3.out',
+      overwrite: true,
+      onUpdate: () => this.draw(),
+    });
+    if (reducedMotion()) {
+      this.swell.from = from;
+      this.swell.to = to;
+      this.swell.rise = rise;
+      this.draw();
+    }
+  }
+
+  /** Writes the current outline to the bar's glass surface (its clip) and to its stroke. */
+  private draw(): void {
+    const bar = this.barRef().nativeElement;
+    const headroom = this.horizontal() ? HEADROOM : 0;
+    const width = bar.offsetWidth;
+    const height = bar.offsetHeight;
+    const d = barOutline({
+      width,
+      height,
+      headroom,
+      radius: BAR_RADIUS,
+      from: this.swell.from,
+      to: this.swell.to,
+      rise: this.horizontal() ? this.swell.rise : 0,
+    });
+    this.surface().paint(d, width, height + headroom);
   }
 }
