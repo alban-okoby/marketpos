@@ -30,7 +30,7 @@ interface CategoryGroup {
 
       <div class="summary">
         <span class="count" aria-live="polite">{{ enabledCount() }} sur {{ total }} modules actifs</span>
-        <button type="button" class="reset" (click)="resetToDefaults()">Revenir au socle MVP</button>
+        <button type="button" class="reset" (click)="resetToDefaults()">Revenir aux modules par défaut</button>
       </div>
 
       @for (group of groups(); track group.category.id) {

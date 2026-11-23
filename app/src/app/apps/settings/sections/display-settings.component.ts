@@ -111,7 +111,7 @@ interface ThemeOption {
               (click)="wallpaper.setChoice({ kind: 'custom' })"
             >
               <img class="thumb" [src]="custom" alt="" />
-              <span class="option-label">Mon image</span>
+              <span class="option-label">Personnalisée</span>
             </button>
           }
         </div>
