@@ -5,6 +5,7 @@ import { formatFcfa } from '../caisse/catalogue';
 import { ZClosure, cashGap, needsJustification } from './closure';
 import { ClosuresService } from './closures.service';
 import { FiscalSettingsService } from '../../core/settings/fiscal.service';
+import { PinGuardService } from '../../core/session/pin-guard.service';
 import { PrintableReport, downloadText, toCsv, xReport, zReport } from './report';
 import { ReportPrintComponent } from './report-print.component';
 
@@ -134,6 +135,7 @@ export class ClotureAppComponent {
   private readonly session = inject(SessionService);
   private readonly injector = inject(Injector);
   private readonly fiscal = inject(FiscalSettingsService);
+  private readonly guard = inject(PinGuardService);
 
   readonly counted = signal<number | null>(null);
   readonly reason = signal('');
@@ -155,6 +157,7 @@ export class ClotureAppComponent {
   readonly canClose = computed(
     () =>
       this.counted() !== null &&
+      this.guard.secondsLeft('gerant') === 0 &&
       this.pin().length === 4 &&
       (!this.needsReason() || this.reason().trim() !== ''),
   );
@@ -199,10 +202,17 @@ export class ClotureAppComponent {
 
   validateZ(): void {
     this.error.set(null);
+    const wait = this.guard.secondsLeft('gerant');
+    if (wait > 0) {
+      this.error.set(`Trop de tentatives. Réessayez dans ${wait} s.`);
+      return;
+    }
     if (!this.session.verifyPin('gerant', this.pin())) {
+      this.guard.fail('gerant');
       this.error.set('Code PIN du gérant incorrect.');
       return;
     }
+    this.guard.reset('gerant');
     try {
       const closure = this.closuresService.closeDay({
         countedCash: this.counted() ?? 0,

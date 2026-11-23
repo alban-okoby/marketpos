@@ -1,0 +1,58 @@
+import { DestroyRef, Injectable, inject, signal } from '@angular/core';
+
+import { SecuritySettingsService } from '../settings/security.service';
+import { NO_FAILURES, PinGuardState, registerFailure, secondsLeft } from './pin-guard';
+
+const STORAGE_KEY = 'marketpos.pinguard';
+
+export type PinScope = 'session' | 'gerant';
+
+function readStates(): Partial<Record<PinScope, PinGuardState>> {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    const parsed: unknown = stored ? JSON.parse(stored) : {};
+    return typeof parsed === 'object' && parsed !== null ? (parsed as Partial<Record<PinScope, PinGuardState>>) : {};
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Limits wrong PIN attempts (US-03 and the lock screen). The counter is kept in local storage,
+ * so reloading the page does not reset a block.
+ */
+@Injectable({ providedIn: 'root' })
+export class PinGuardService {
+  private readonly security = inject(SecuritySettingsService);
+  private readonly states = signal<Partial<Record<PinScope, PinGuardState>>>(readStates());
+  private readonly now = signal(Date.now());
+
+  constructor() {
+    const timer = setInterval(() => this.now.set(Date.now()), 1000);
+    inject(DestroyRef).onDestroy(() => clearInterval(timer));
+  }
+
+  secondsLeft(scope: PinScope): number {
+    return secondsLeft(this.states()[scope] ?? NO_FAILURES, this.now());
+  }
+
+  fail(scope: PinScope): void {
+    const { maxPinAttempts, lockoutSeconds } = this.security.settings();
+    const next = registerFailure(this.states()[scope] ?? NO_FAILURES, Date.now(), maxPinAttempts, lockoutSeconds * 1000);
+    this.write(scope, next);
+  }
+
+  reset(scope: PinScope): void {
+    this.write(scope, NO_FAILURES);
+  }
+
+  private write(scope: PinScope, state: PinGuardState): void {
+    const next = { ...this.states(), [scope]: state };
+    this.states.set(next);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      // Storage is blocked: the block still applies for this session.
+    }
+  }
+}

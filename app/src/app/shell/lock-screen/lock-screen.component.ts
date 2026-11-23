@@ -12,6 +12,7 @@ import {
 import { gsap } from 'gsap';
 
 import { ClockService } from '../../core/clock.service';
+import { PinGuardService } from '../../core/session/pin-guard.service';
 import { duration, reducedMotion } from '../../core/motion';
 import { SessionService } from '../../core/session/session.service';
 import { IconComponent } from '../../shared/icon/icon.component';
@@ -68,7 +69,9 @@ const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
         </div>
 
         <p class="error-text" role="alert">
-          @if (error()) {
+          @if (guard.secondsLeft('session') > 0) {
+            Trop de tentatives. Réessayez dans {{ guard.secondsLeft('session') }} s.
+          } @else if (error()) {
             Code PIN incorrect
           }
         </p>
@@ -113,6 +116,9 @@ export class LockScreenComponent implements AfterViewInit {
   readonly error = signal(false);
   private busy = false;
 
+  /** Counts wrong PINs; blocks the keypad after too many attempts (Sécurité settings). */
+  readonly guard = inject(PinGuardService);
+
   readonly selectedName = computed(() => this.session.findUser(this.selectedId())?.name ?? '');
 
   ngAfterViewInit(): void {
@@ -139,7 +145,7 @@ export class LockScreenComponent implements AfterViewInit {
   }
 
   press(digit: string): void {
-    if (this.busy || this.pin().length >= PIN_LENGTH) {
+    if (this.busy || this.guard.secondsLeft('session') > 0 || this.pin().length >= PIN_LENGTH) {
       return;
     }
     const next = this.pin() + digit;
@@ -166,9 +172,11 @@ export class LockScreenComponent implements AfterViewInit {
   private submit(pin: string): void {
     const userId = this.selectedId();
     if (this.session.verifyPin(userId, pin)) {
+      this.guard.reset('session');
       this.busy = true;
       this.playUnlock(userId);
     } else {
+      this.guard.fail('session');
       this.error.set(true);
       this.pin.set('');
       this.shake();
