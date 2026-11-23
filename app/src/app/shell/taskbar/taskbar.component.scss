@@ -165,9 +165,7 @@ $slide: calc(100% + #{$gap} + 12px);
   --mag: 1;
   --lift: 0px;
   --press: 1;
-  transform: translate(calc(var(--lift) * var(--dock-x)), calc(var(--lift) * var(--dock-y)))
-    scale(calc(var(--mag) * var(--press)));
-  transition: background 0.15s, transform 0.2s ease-out;
+  transition: background 0.15s;
 
   &:hover,
   &.open {
@@ -179,42 +177,50 @@ $slide: calc(100% + #{$gap} + 12px);
   }
 }
 
-// Hovered item: largest. Neighbours on each side: smaller, then smaller again one step further.
+// Only the picture moves: the button and its hover background stay inside the bar.
+.glyph {
+  display: grid;
+  place-items: center;
+  transform: translate(calc(var(--lift) * var(--dock-x)), calc(var(--lift) * var(--dock-y)))
+    scale(calc(var(--mag) * var(--press)));
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+// Hovered item: largest. Neighbours on each side grow a little, one step further even less.
 .start:hover,
 .app:hover {
-  --mag: 1.6;
-  --lift: 12px;
+  --mag: 1.5;
+  --lift: 6px;
 }
 
 .start:hover + .app,
 .app:hover + .app {
-  --mag: 1.25;
-  --lift: 6px;
+  --mag: 1.15;
+  --lift: 2px;
 }
 
 .start:hover + .app + .app,
 .app:hover + .app + .app {
-  --mag: 1.1;
-  --lift: 3px;
+  --mag: 1.05;
+  --lift: 0px;
 }
 
 .app:has(+ .app:hover),
 .start:has(+ .app:hover) {
-  --mag: 1.25;
-  --lift: 6px;
+  --mag: 1.15;
+  --lift: 2px;
 }
 
 .app:has(+ .app + .app:hover),
 .start:has(+ .app + .app:hover) {
-  --mag: 1.1;
-  --lift: 3px;
+  --mag: 1.05;
+  --lift: 0px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .start,
-  .app {
+  .glyph {
     transform: none;
-    transition: background 0.15s;
+    transition: none;
   }
 }
 

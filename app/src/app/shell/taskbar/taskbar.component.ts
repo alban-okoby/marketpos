@@ -30,7 +30,7 @@ const HIDE_DELAY_MS = 500;
         [class.open]="startOpen()"
         (click)="toggleStart.emit()"
       >
-        <app-logo [size]="22" />
+        <span class="glyph"><app-logo [size]="22" /></span>
       </button>
 
       @for (win of wm.windows(); track win.id) {
@@ -42,7 +42,7 @@ const HIDE_DELAY_MS = 500;
           [attr.aria-label]="win.title + (win.minimized ? ' (réduite)' : '')"
           (click)="onAppClick(win)"
         >
-          <app-icon [name]="iconFor(win)" [size]="22" />
+          <span class="glyph"><app-icon [name]="iconFor(win)" [size]="22" /></span>
           <span class="indicator" aria-hidden="true"></span>
         </button>
       }
