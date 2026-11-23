@@ -1,10 +1,18 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import {
+  TASKBAR_ICON_PX,
   TaskbarAlignment,
+  TaskbarIconSize,
   TaskbarPosition,
   TaskbarSettingsService,
 } from '../../../core/taskbar/taskbar-settings.service';
+
+interface IconSizeOption {
+  readonly value: TaskbarIconSize;
+  readonly label: string;
+  readonly hint: string;
+}
 
 interface PositionOption {
   readonly value: TaskbarPosition;
@@ -67,6 +75,25 @@ interface AlignmentOption {
         </div>
       </section>
 
+      <section aria-labelledby="icon-size-title">
+        <h3 id="icon-size-title" class="group-title">Taille des icônes</h3>
+        <div class="options options-three" role="radiogroup" aria-labelledby="icon-size-title">
+          @for (option of iconSizeOptions; track option.value) {
+            <button
+              type="button"
+              role="radio"
+              class="option option-compact"
+              [class.selected]="taskbar.iconSize() === option.value"
+              [attr.aria-checked]="taskbar.iconSize() === option.value"
+              (click)="taskbar.update({ iconSize: option.value })"
+            >
+              <span class="option-label">{{ option.label }}</span>
+              <span class="option-hint">{{ option.hint }}</span>
+            </button>
+          }
+        </div>
+      </section>
+
       <div class="switch-row">
         <div>
           <span class="option-label" id="autohide-label">Masquer automatiquement</span>
@@ -96,6 +123,12 @@ export class TaskbarSettingsComponent {
     { value: 'top', label: 'Haut', hint: 'En haut de l\'écran' },
     { value: 'left', label: 'Gauche', hint: 'Colonne à gauche' },
     { value: 'right', label: 'Droite', hint: 'Colonne à droite' },
+  ];
+
+  readonly iconSizeOptions: readonly IconSizeOption[] = [
+    { value: 'small', label: 'Petite', hint: `${TASKBAR_ICON_PX['small']} px` },
+    { value: 'normal', label: 'Normale', hint: `${TASKBAR_ICON_PX['normal']} px · par défaut` },
+    { value: 'large', label: 'Grande', hint: `${TASKBAR_ICON_PX['large']} px` },
   ];
 
   readonly alignmentOptions: readonly AlignmentOption[] = [

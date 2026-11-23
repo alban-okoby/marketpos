@@ -3,21 +3,33 @@ import { Injectable, computed, effect, signal } from '@angular/core';
 export type TaskbarPosition = 'bottom' | 'top' | 'left' | 'right';
 export type TaskbarAlignment = 'center' | 'start';
 
+export type TaskbarIconSize = 'small' | 'normal' | 'large';
+
 export interface TaskbarSettings {
   readonly position: TaskbarPosition;
   readonly alignment: TaskbarAlignment;
   readonly autoHide: boolean;
+  readonly iconSize: TaskbarIconSize;
 }
 
 export const DEFAULT_TASKBAR_SETTINGS: TaskbarSettings = {
   position: 'bottom',
   alignment: 'center',
   autoHide: false,
+  iconSize: 'normal',
+};
+
+/** Size in px of the icons and the logo in the taskbar, for each choice in Paramètres. */
+export const TASKBAR_ICON_PX: Readonly<Record<TaskbarIconSize, number>> = {
+  small: 18,
+  normal: 22,
+  large: 28,
 };
 
 const STORAGE_KEY = 'marketpos.taskbar';
 const POSITIONS: readonly TaskbarPosition[] = ['bottom', 'top', 'left', 'right'];
 const ALIGNMENTS: readonly TaskbarAlignment[] = ['center', 'start'];
+const ICON_SIZES = Object.keys(TASKBAR_ICON_PX) as TaskbarIconSize[];
 
 /**
  * Reads saved taskbar settings. Anything missing or invalid falls back to the defaults,
@@ -36,6 +48,9 @@ export function parseTaskbarSettings(raw: unknown): TaskbarSettings {
       ? (value['alignment'] as TaskbarAlignment)
       : DEFAULT_TASKBAR_SETTINGS.alignment,
     autoHide: typeof value['autoHide'] === 'boolean' ? value['autoHide'] : DEFAULT_TASKBAR_SETTINGS.autoHide,
+    iconSize: ICON_SIZES.includes(value['iconSize'] as TaskbarIconSize)
+      ? (value['iconSize'] as TaskbarIconSize)
+      : DEFAULT_TASKBAR_SETTINGS.iconSize,
   };
 }
 
@@ -59,6 +74,9 @@ export class TaskbarSettingsService {
   readonly position = computed(() => this.state().position);
   readonly alignment = computed(() => this.state().alignment);
   readonly autoHide = computed(() => this.state().autoHide);
+  readonly iconSize = computed(() => this.state().iconSize);
+  /** Icon size in px, from the chosen size. */
+  readonly iconPx = computed(() => TASKBAR_ICON_PX[this.state().iconSize]);
 
   /** Space reserved on each side of the screen. Zero when the bar hides itself. */
   readonly reserves = computed(() => {

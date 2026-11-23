@@ -25,7 +25,7 @@ export const SETTINGS_SECTIONS: readonly SettingsSection[] = [
     id: 'taskbar',
     label: 'Barre des tâches',
     icon: 'taskbar',
-    keywords: 'barre position haut bas gauche droite alignement masquer automatiquement',
+    keywords: 'barre position haut bas gauche droite alignement taille icônes masquer automatiquement',
   },
   {
     id: 'boutique',

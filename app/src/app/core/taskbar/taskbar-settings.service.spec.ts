@@ -14,7 +14,13 @@ describe('parseTaskbarSettings', () => {
       position: 'right',
       alignment: 'center',
       autoHide: true,
+      iconSize: 'normal',
     });
+  });
+
+  it('keeps a known icon size and falls back to normal for an unknown one', () => {
+    expect(parseTaskbarSettings({ iconSize: 'large' }).iconSize).toBe('large');
+    expect(parseTaskbarSettings({ iconSize: 'huge' }).iconSize).toBe('normal');
   });
 });
 
@@ -36,6 +42,13 @@ describe('TaskbarSettingsService', () => {
   it('reserves no space when the bar hides itself', () => {
     settings.update({ position: 'top', autoHide: true });
     expect(settings.reserves()).toEqual({ top: '0px', bottom: '0px', left: '0px', right: '0px' });
+  });
+
+  it('gives the icon size in px for the chosen size', () => {
+    settings.update({ iconSize: 'small' });
+    expect(settings.iconPx()).toBe(18);
+    settings.update({ iconSize: 'large' });
+    expect(settings.iconPx()).toBe(28);
   });
 
   it('saves changes so they survive a reload', () => {

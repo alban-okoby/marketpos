@@ -58,7 +58,7 @@ function isItem(element: Element | null): element is HTMLElement {
         (click)="toggleStart.emit()"
         (mouseenter)="raise($event)"
       >
-        <span class="glyph"><app-logo [size]="22" /></span>
+        <span class="glyph"><app-logo [size]="settings.iconPx()" /></span>
       </button>
 
       @for (win of wm.windows(); track win.id) {
@@ -71,7 +71,7 @@ function isItem(element: Element | null): element is HTMLElement {
           (click)="onAppClick(win)"
           (mouseenter)="raise($event)"
         >
-          <span class="glyph"><app-icon [name]="iconFor(win)" [size]="22" /></span>
+          <span class="glyph"><app-icon [name]="iconFor(win)" [size]="settings.iconPx()" /></span>
           <span class="indicator" aria-hidden="true"></span>
         </button>
       }

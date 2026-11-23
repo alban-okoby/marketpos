@@ -27,6 +27,10 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
+.options-three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .option {
   @include s.option-card;
   padding: 12px;
