@@ -109,8 +109,8 @@ $slide: calc(100% + #{$gap} + 12px);
 }
 
 // The tray is compact on vertical bars: labels are hidden, icons and the clock stay.
-:host(.pos-left) .tray .label,
-:host(.pos-right) .tray .label {
+:host(.pos-left) .label,
+:host(.pos-right) .label {
   display: none;
 }
 
@@ -151,7 +151,6 @@ $slide: calc(100% + #{$gap} + 12px);
     scale(calc(var(--mag) * var(--press)));
   transition: background 0.15s, transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  &:hover,
   &.open {
     background: var(--fill-active);
   }
@@ -159,6 +158,11 @@ $slide: calc(100% + #{$gap} + 12px);
   &:active {
     --press: 0.92;
   }
+}
+
+// Open app windows show a hover background; the start button does not (it only grows).
+.app:hover {
+  background: var(--fill-active);
 }
 
 // Hovered item: largest, and it rises above the bar. Neighbours on each side grow a little, one step further even less.
@@ -200,7 +204,7 @@ $slide: calc(100% + #{$gap} + 12px);
   }
 }
 
-.app.minimized {
+.minimized {
   opacity: 0.6;
 }
 
