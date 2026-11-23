@@ -1,0 +1,159 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.reports {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  overflow: auto;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tabs,
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+button {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 9px;
+  background: var(--fill-subtle);
+  font-size: 0.86rem;
+  font-weight: 600;
+
+  &.active {
+    background: var(--accent-strong);
+    color: var(--on-accent);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.hint,
+.empty {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+
+  select {
+    margin-left: 6px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--stroke);
+    background: var(--fill-subtle);
+    color: var(--text);
+    font: inherit;
+  }
+}
+
+.total strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  min-height: 0;
+}
+
+.table-wrap {
+  min-height: 0;
+  overflow: auto;
+  border-radius: 10px;
+  background: var(--fill-subtle);
+  padding: 8px;
+
+  h3 {
+    margin: 4px 6px 8px;
+    font-size: 0.92rem;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+
+  th,
+  td {
+    padding: 7px 9px;
+    border-bottom: 1px solid var(--stroke);
+    text-align: left;
+  }
+
+  th {
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--fill-subtle);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+
+  strong {
+    font-size: 1.4rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.plain {
+  margin: 0;
+  padding: 0 6px;
+  list-style: none;
+  font-size: 0.88rem;
+
+  li {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  small {
+    color: var(--text-muted);
+    margin-left: 6px;
+  }
+}
