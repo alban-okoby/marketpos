@@ -1,6 +1,7 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 
 import { AlertsService } from '../../core/alerts/alerts.service';
+import { FiscalSettingsService } from '../../core/settings/fiscal.service';
 import { SalesService } from '../caisse/sales.service';
 import {
   Rectification,
@@ -37,6 +38,7 @@ function newId(prefix: string): string {
 export class ClosuresService {
   private readonly sales = inject(SalesService);
   private readonly alerts = inject(AlertsService);
+  private readonly fiscal = inject(FiscalSettingsService);
 
   private readonly closureList = signal<readonly ZClosure[]>(readList<ZClosure>(CLOSURES_KEY));
   private readonly rectificationList = signal<readonly Rectification[]>(readList<Rectification>(RECTIFICATIONS_KEY));
@@ -64,7 +66,7 @@ export class ClosuresService {
     const gap = cashGap(input.countedCash, cashExpected);
     const justification = input.justification.trim();
 
-    if (needsJustification(gap) && justification === '') {
+    if (needsJustification(gap, this.fiscal.cashGapThreshold()) && justification === '') {
       throw new Error('Justification obligatoire : la caisse ne correspond pas au montant théorique.');
     }
 

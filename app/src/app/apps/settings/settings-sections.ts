@@ -1,6 +1,6 @@
 import { IconName } from '../../shared/icon/icon.component';
 
-export type SettingsSectionId = 'display' | 'taskbar' | 'modules';
+export type SettingsSectionId = 'display' | 'taskbar' | 'modules' | 'boutique' | 'fiscalite' | 'securite';
 
 /**
  * Sidebar entries of the Settings app, in display order. Add a new page here and in the
@@ -26,6 +26,24 @@ export const SETTINGS_SECTIONS: readonly SettingsSection[] = [
     label: 'Barre des tâches',
     icon: 'taskbar',
     keywords: 'barre position haut bas gauche droite alignement masquer automatiquement',
+  },
+  {
+    id: 'boutique',
+    label: 'Boutique et ticket',
+    icon: 'building',
+    keywords: 'boutique commerce nom adresse téléphone nif rccm ticket papier mm pied de ticket',
+  },
+  {
+    id: 'fiscalite',
+    label: 'Fiscalité',
+    icon: 'bank',
+    keywords: 'tva taux fiscalité écart caisse seuil justification',
+  },
+  {
+    id: 'securite',
+    label: 'Sécurité',
+    icon: 'key',
+    keywords: 'sécurité verrouillage inactivité session pin délai',
   },
   {
     id: 'modules',

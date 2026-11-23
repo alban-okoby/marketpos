@@ -4,6 +4,7 @@ import { SessionService } from '../../core/session/session.service';
 import { formatFcfa } from '../caisse/catalogue';
 import { ZClosure, cashGap, needsJustification } from './closure';
 import { ClosuresService } from './closures.service';
+import { FiscalSettingsService } from '../../core/settings/fiscal.service';
 import { PrintableReport, downloadText, toCsv, xReport, zReport } from './report';
 import { ReportPrintComponent } from './report-print.component';
 
@@ -132,6 +133,7 @@ export class ClotureAppComponent {
   private readonly closuresService = inject(ClosuresService);
   private readonly session = inject(SessionService);
   private readonly injector = inject(Injector);
+  private readonly fiscal = inject(FiscalSettingsService);
 
   readonly counted = signal<number | null>(null);
   readonly reason = signal('');
@@ -147,7 +149,9 @@ export class ClotureAppComponent {
   readonly x = computed(() => this.closuresService.xReport());
   readonly expected = computed(() => this.openingFloat() + this.x().cash);
   readonly gap = computed(() => cashGap(this.counted() ?? 0, this.expected()));
-  readonly needsReason = computed(() => this.counted() !== null && needsJustification(this.gap()));
+  readonly needsReason = computed(
+    () => this.counted() !== null && needsJustification(this.gap(), this.fiscal.cashGapThreshold()),
+  );
   readonly canClose = computed(
     () =>
       this.counted() !== null &&

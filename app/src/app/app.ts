@@ -4,6 +4,7 @@ import { filter } from 'rxjs';
 
 import { CustomerDisplayComponent } from './apps/caisse/customer-display.component';
 import { SyncService } from './apps/caisse/sync.service';
+import { IdleLockService } from './core/session/idle-lock.service';
 import { SessionService } from './core/session/session.service';
 import { AccentService } from './core/theme/accent.service';
 import { WallpaperService } from './core/wallpaper/wallpaper.service';
@@ -39,6 +40,8 @@ export class App {
   private readonly accent = inject(AccentService);
   // Starts the offline queue: sales waiting on this device are sent when the network is back.
   private readonly sync = inject(SyncService);
+  // Locks the session after a period without activity (US-04).
+  private readonly idleLock = inject(IdleLockService);
   private readonly wallpaper = inject(WallpaperService);
 
   /** CSS value for the wallpaper layer, or null to show the flat background colour. */

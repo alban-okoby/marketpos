@@ -1,0 +1,56 @@
+@use '../settings' as s;
+
+:host {
+  display: block;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 620px;
+
+  @include s.page-title;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.sub-title {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.field {
+  @include s.form-field;
+}
+
+.options-two {
+  @include s.option-grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 6px 0 0;
+}
+
+.option {
+  @include s.option-card;
+  padding: 12px;
+}
+
+.option-label {
+  @include s.option-label;
+}
+
+.option-hint {
+  @include s.option-hint;
+}

@@ -4,7 +4,7 @@ import { Sale } from '../caisse/sales.service';
  * Gap between counted and expected cash above which a justification is required (CL-03).
  * The threshold is still to be defined (see the specification, section 18): until then any gap needs a reason.
  */
-export const CASH_GAP_THRESHOLD = 0;
+export const CASH_GAP_THRESHOLD = 0; // default; the value in use comes from FiscalSettingsService
 
 export interface PeriodSummary {
   readonly count: number;
@@ -60,8 +60,8 @@ export function cashGap(counted: number, expected: number): number {
   return counted - expected;
 }
 
-export function needsJustification(gap: number): boolean {
-  return Math.abs(gap) > CASH_GAP_THRESHOLD;
+export function needsJustification(gap: number, threshold: number = CASH_GAP_THRESHOLD): boolean {
+  return Math.abs(gap) > threshold;
 }
 
 /** Z numbers are continuous, like tickets: Z-000001, Z-000002… */

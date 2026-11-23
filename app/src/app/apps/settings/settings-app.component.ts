@@ -2,7 +2,10 @@ import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/c
 
 import { IconComponent } from '../../shared/icon/icon.component';
 import { DisplaySettingsComponent } from './sections/display-settings.component';
+import { FiscalSettingsComponent } from './sections/fiscal-settings.component';
 import { ModulesSettingsComponent } from './sections/modules-settings.component';
+import { SecuritySettingsComponent } from './sections/security-settings.component';
+import { ShopSettingsComponent } from './sections/shop-settings.component';
 import { TaskbarSettingsComponent } from './sections/taskbar-settings.component';
 import { SettingsSectionId, filterSettingsSections } from './settings-sections';
 
@@ -12,7 +15,15 @@ import { SettingsSectionId, filterSettingsSections } from './settings-sections';
  */
 @Component({
   selector: 'app-settings-app',
-  imports: [IconComponent, DisplaySettingsComponent, TaskbarSettingsComponent, ModulesSettingsComponent],
+  imports: [
+    IconComponent,
+    DisplaySettingsComponent,
+    TaskbarSettingsComponent,
+    ModulesSettingsComponent,
+    ShopSettingsComponent,
+    FiscalSettingsComponent,
+    SecuritySettingsComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="layout">
@@ -61,6 +72,15 @@ import { SettingsSectionId, filterSettingsSections } from './settings-sections';
           }
           @case ('modules') {
             <app-modules-settings />
+          }
+          @case ('boutique') {
+            <app-shop-settings />
+          }
+          @case ('fiscalite') {
+            <app-fiscal-settings />
+          }
+          @case ('securite') {
+            <app-security-settings />
           }
         }
       </div>

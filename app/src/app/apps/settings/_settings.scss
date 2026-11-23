@@ -117,3 +117,27 @@
     color: var(--text-muted);
   }
 }
+
+// Form field: a label above an input, used on the settings forms.
+@mixin form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+
+  input {
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--stroke);
+    background: var(--fill-subtle);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.95rem;
+    outline: none;
+
+    &:focus-visible {
+      border-color: var(--accent-strong);
+    }
+  }
+}

@@ -1,5 +1,6 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 
+import { FiscalSettingsService } from '../../core/settings/fiscal.service';
 import { CartLine } from './cart.service';
 
 export const CASH_REGISTER_ID = 'CAISSE-01';
@@ -20,6 +21,13 @@ export interface Sale {
   readonly received: number;
   readonly change: number;
   readonly status: SaleStatus;
+  /** VAT rate in force when the sale was made, in percent. Kept so later changes never alter old tickets. */
+  readonly vatRate?: number;
+}
+
+/** VAT included in a tax-included total, for a rate in percent. */
+export function vatIncluded(total: number, vatRate: number): number {
+  return vatRate > 0 ? Math.round((total * vatRate) / (100 + vatRate)) : 0;
 }
 
 /** Ticket number such as "CAISSE-01-000042". Numbering is continuous (CA-13). */
@@ -83,6 +91,7 @@ function readJournal(): Sale[] {
 /** Ticket counter and sales journal. Both are kept locally, so a sale is never lost when the network drops. */
 @Injectable({ providedIn: 'root' })
 export class SalesService {
+  private readonly fiscal = inject(FiscalSettingsService);
   private readonly counter = signal(readCounter());
   readonly journal = signal<readonly Sale[]>(readJournal());
 
@@ -111,6 +120,7 @@ export class SalesService {
       received,
       change: changeDue(total, received),
       status: 'EN_ATTENTE_SYNC',
+      vatRate: this.fiscal.vatRate(),
     };
     this.counter.set(next);
     this.journal.set([...this.journal(), sale]);
