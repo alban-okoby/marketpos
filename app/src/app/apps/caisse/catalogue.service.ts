@@ -35,6 +35,8 @@ export interface ProductInput {
   readonly purchasePrice: number;
   readonly threshold: number;
   readonly expiry: string;
+  /** Photo as a data URL, or empty to use the category picture. */
+  readonly image?: string;
 }
 
 function loadCatalogue(): Product[] {
@@ -132,6 +134,7 @@ export class CatalogueService {
       purchasePrice: Math.round(input.purchasePrice),
       threshold: Math.round(input.threshold),
       expiry: input.expiry || undefined,
+      image: input.image || undefined,
     };
     const next = existing ? this.list().map((item) => (item.code === code ? product : item)) : [...this.list(), product];
     this.setProducts(next);

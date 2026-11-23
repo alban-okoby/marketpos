@@ -99,7 +99,7 @@ Run `npm test` in `app/` before each change. The suite covers the module depende
 
 ## Credits
 
-Colour icons in the application come from [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) by Microsoft, licensed under the MIT License (see `app/public/icons/fluent/LICENSE`).
+3D pictures in the application (icons and product pictures) come from [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) by Microsoft, packaged as [@lobehub/fluent-emoji-3d](https://www.npmjs.com/package/@lobehub/fluent-emoji-3d), both under the MIT License (see `app/public/icons/3d/LICENSE`).
 
 ## Roadmap
 

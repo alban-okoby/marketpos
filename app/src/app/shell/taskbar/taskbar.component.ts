@@ -48,18 +48,19 @@ const HIDE_DELAY_MS = 500;
       }
     </nav>
 
-    <aside class="tray glass" aria-label="État du système">
-      <span class="status" [class.offline]="!connectivity.online()">
-        <app-icon [name]="connectivity.online() ? 'online' : 'offline'" [size]="18" />
-        <span class="label">{{ connectivity.online() ? 'En ligne' : 'Hors ligne' }}</span>
-      </span>
-      @if (connectivity.pendingSales() > 0) {
+    <!-- The tray is shown only while sales are waiting: connection status and clock are commented out. -->
+    @if (connectivity.pendingSales() > 0) {
+      <aside class="tray glass" aria-label="Ventes en attente">
+        <span class="status" [class.offline]="!connectivity.online()">
+          <!-- <app-icon [name]="connectivity.online() ? 'online' : 'offline'" [size]="18" /> -->
+          <!-- <span class="label">{{ connectivity.online() ? 'En ligne' : 'Hors ligne' }}</span> -->
+        </span>
         <span class="pending" aria-live="polite">
           {{ connectivity.pendingSales() }} <span class="label">en attente</span>
         </span>
-      }
-      <time class="time">{{ clock.time() }}</time>
-    </aside>
+        <!-- <time class="time">{{ clock.time() }}</time> -->
+      </aside>
+    }
 
     @if (settings.autoHide()) {
       <div class="edge" aria-hidden="true" (mouseenter)="reveal()" (mouseleave)="scheduleHide()"></div>

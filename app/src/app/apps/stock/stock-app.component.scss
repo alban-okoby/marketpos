@@ -146,6 +146,46 @@ table {
   font-weight: 600;
 }
 
+.article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.thumb {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--fill-active);
+}
+
+.photo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: var(--fill-active);
+  }
+}
+
+.photo-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .file {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+}
+
 small {
   display: block;
   color: var(--text-muted);

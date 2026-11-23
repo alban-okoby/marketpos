@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 
 import { PermissionsService } from '../../core/security/permissions.service';
+import { imageFileToDataUrl } from '../../core/images/image-data';
 import { formatFcfa } from '../caisse/catalogue';
-import { Product } from '../caisse/catalogue';
+import { Product, productPicture } from '../caisse/catalogue';
 import { CatalogueService, MANUAL_REASONS, ProductInput, StockReason } from '../caisse/catalogue.service';
 
 type Tab = 'articles' | 'sorties' | 'inventaire';
@@ -16,6 +17,7 @@ const EMPTY: ProductInput = {
   purchasePrice: 0,
   threshold: 5,
   expiry: '',
+  image: '',
 };
 
 const REASON_LABELS: Record<StockReason, string> = {
@@ -60,7 +62,7 @@ const REASON_LABELS: Record<StockReason, string> = {
                   <tbody>
                     @for (product of visible(); track product.code) {
                       <tr [class.low]="isLow(product)" (click)="edit(product)">
-                        <td><span class="name">{{ product.name }}</span><small>{{ product.code }} · {{ product.category }}</small></td>
+                        <td class="article"><img class="thumb" [src]="picture(product)" alt="" /><span><span class="name">{{ product.name }}</span><small>{{ product.code }} · {{ product.category }}</small></span></td>
                         <td class="num">{{ product.stock }} {{ product.unit ?? 'pièce' }}</td>
                         <td class="num">{{ product.threshold ?? 5 }}</td>
                         <td class="num">{{ fmt(product.price) }}</td>
@@ -85,6 +87,13 @@ const REASON_LABELS: Record<StockReason, string> = {
                 <label class="field"><span>Seuil d’alerte</span><input type="number" min="0" [value]="form().threshold" [disabled]="!canEdit()" (input)="patch('threshold', num($event))" /></label>
               </div>
               <label class="field"><span>Date de péremption (facultative)</span><input type="date" [value]="form().expiry" [disabled]="!canEdit()" (input)="patch('expiry', value($event))" /></label>
+              <div class="photo">
+                <img [src]="form().image || pictureOfForm()" alt="Aperçu de l’article" />
+                <div class="photo-actions">
+                  <label class="file"><span>Choisir une photo</span><input type="file" accept="image/*" [disabled]="!canEdit()" (change)="pickPhoto($event)" /></label>
+                  @if (form().image) { <button type="button" [disabled]="!canEdit()" (click)="patch('image', '')">Retirer la photo</button> }
+                </div>
+              </div>
               @if (error(); as message) { <p class="error" role="alert">{{ message }}</p> }
               <button type="submit" class="primary" [disabled]="!canEdit()">Enregistrer</button>
             </form>
@@ -210,6 +219,29 @@ export class StockAppComponent {
     return formatFcfa(amount);
   }
 
+  picture(product: Product): string {
+    return productPicture(product);
+  }
+
+  /** Picture of the article being edited, or the category picture of the empty form. */
+  pictureOfForm(): string {
+    return productPicture({ ...this.form(), stock: 0, image: undefined } as Product);
+  }
+
+  async pickPhoto(event: Event): Promise<void> {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    input.value = '';
+    if (!file) {
+      return;
+    }
+    try {
+      this.patch('image', await imageFileToDataUrl(file, 200));
+    } catch (failure) {
+      this.error.set(failure instanceof Error ? failure.message : 'Photo impossible à lire.');
+    }
+  }
+
   reasonLabel(reason: StockReason): string {
     return REASON_LABELS[reason];
   }
@@ -251,6 +283,7 @@ export class StockAppComponent {
       purchasePrice: product.purchasePrice ?? 0,
       threshold: product.threshold ?? 5,
       expiry: product.expiry ?? '',
+      image: product.image ?? '',
     });
     this.error.set(null);
   }

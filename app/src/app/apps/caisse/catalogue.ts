@@ -13,6 +13,23 @@ export interface Product {
   readonly threshold?: number;
   /** Best-before date, ISO format, when the article has one (ST-06). */
   readonly expiry?: string;
+  /** Photo of the article, as a data URL. Without one, a 3D picture of its category is shown. */
+  readonly image?: string;
+}
+
+/** 3D picture shown for each category when an article has no photo of its own. */
+const CATEGORY_PICTURES: Readonly<Record<string, string>> = {
+  'Boissons': '1f964',
+  'Épicerie': '1f35a',
+  'Hygiène': '1f9fc',
+  'Laitier': '1f95b',
+  'Boulangerie': '1f956',
+};
+const DEFAULT_PICTURE = '1f6d2';
+
+/** Picture to show for an article: its own photo, or the 3D picture of its category. */
+export function productPicture(product: Product): string {
+  return product.image ?? `icons/3d/${CATEGORY_PICTURES[product.category] ?? DEFAULT_PICTURE}.webp`;
 }
 
 type Seed = readonly [code: string, name: string, price: number, category: string];

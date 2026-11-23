@@ -1,0 +1,2 @@
+Images 3D : Fluent Emoji (Microsoft), packagées par @lobehub/fluent-emoji-3d.
+Licence MIT, voir LICENSE.

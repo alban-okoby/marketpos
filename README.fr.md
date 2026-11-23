@@ -98,7 +98,7 @@ Lancez `npm test` dans `app/` avant chaque modification. La suite couvre les rè
 
 ## Crédits
 
-Les icônes couleur de l'application viennent de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji), de Microsoft, sous licence MIT (voir `app/public/icons/fluent/LICENSE`).
+Les images 3D de l'application (icônes et photos d'articles par défaut) viennent de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji), de Microsoft, packagées par [@lobehub/fluent-emoji-3d](https://www.npmjs.com/package/@lobehub/fluent-emoji-3d), toutes deux sous licence MIT (voir `app/public/icons/3d/LICENSE`).
 
 ## Feuille de route
 

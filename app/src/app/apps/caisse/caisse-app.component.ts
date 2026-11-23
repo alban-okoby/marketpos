@@ -16,7 +16,7 @@ import { SessionService } from '../../core/session/session.service';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { CartService } from './cart.service';
 import { CatalogueService } from './catalogue.service';
-import { Product, formatFcfa, matchesSearch } from './catalogue';
+import { Product, formatFcfa, matchesSearch, productPicture } from './catalogue';
 import { CustomerChannelService, CustomerScreenState } from './customer-channel.service';
 import { PermissionsService } from '../../core/security/permissions.service';
 import { CaisseTicketComponent } from './caisse-ticket.component';
@@ -97,7 +97,7 @@ interface CategoryChoice {
           <div class="grid">
             @for (product of visible(); track product.code) {
               <button type="button" class="product" (click)="cart.add(product)">
-                <span class="image">{{ product.name.charAt(0) }}</span>
+                <span class="image"><img [src]="picture(product)" alt="" /></span>
                 <span class="name">{{ product.name }}</span>
                 <span class="meta">{{ product.category }} · {{ product.code.slice(-6) }}</span>
                 <span class="price">{{ fmt(product.price) }}</span>
@@ -180,6 +180,10 @@ export class CaisseAppComponent {
 
   fmt(amount: number): string {
     return formatFcfa(amount);
+  }
+
+  picture(product: Product): string {
+    return productPicture(product);
   }
 
   onSearch(event: Event): void {

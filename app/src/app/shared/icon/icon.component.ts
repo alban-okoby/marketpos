@@ -38,52 +38,52 @@ export type IconName =
   | 'backspace';
 
 /**
- * Colour illustrations from Fluent Emoji (Microsoft, MIT licence), stored in assets/icons/fluent.
- * Each file is a standalone image, so it is cached by the service worker and works offline.
+ * 3D illustrations from Fluent Emoji (Microsoft, MIT licence), packaged by @lobehub/fluent-emoji-3d.
+ * Files are named by their Unicode code points and live in assets/icons/3d. Each one is a small image,
+ * cached by the service worker, so it works offline.
  */
-const COLOR_ICONS: Partial<Record<IconName, string>> = {
-  register: 'shopping-cart.svg',
-  receipt: 'receipt.svg',
-  box: 'package.svg',
-  chart: 'bar-chart.svg',
-  users: 'busts-in-silhouette.svg',
-  settings: 'gear.svg',
-  search: 'magnifying-glass-tilted-right.svg',
-  power: 'door.svg',
-  lock: 'locked.svg',
-  online: 'satellite-antenna.svg',
-  offline: 'mobile-phone-off.svg',
-  user: 'office-worker-default.svg',
-  display: 'desktop-computer.svg',
-  taskbar: 'triangular-ruler.svg',
-  modules: 'card-index.svg',
-  label: 'label.svg',
-  'shopping-bags': 'shopping-bags.svg',
-  card: 'credit-card.svg',
-  bank: 'bank.svg',
-  abacus: 'abacus.svg',
-  money: 'money-bag.svg',
-  briefcase: 'briefcase.svg',
-  key: 'key.svg',
-  printer: 'printer.svg',
-  cloud: 'cloud.svg',
-  backup: 'floppy-disk.svg',
-  bell: 'bell.svg',
-  scroll: 'scroll.svg',
-  building: 'office-building.svg',
-  truck: 'delivery-truck.svg',
-  laptop: 'laptop.svg',
+const PICTURES: Partial<Record<IconName, string>> = {
+  register: '1f6d2',
+  receipt: '1f9fe',
+  box: '1f4e6',
+  chart: '1f4ca',
+  users: '1f465',
+  settings: '2699-fe0f',
+  power: '1f6aa',
+  lock: '1f512',
+  online: '1f4e1',
+  offline: '1f4f5',
+  user: '1f9d1-200d-1f4bc',
+  display: '1f5a5-fe0f',
+  taskbar: '1f4d0',
+  modules: '1f4c7',
+  label: '1f3f7-fe0f',
+  'shopping-bags': '1f6cd-fe0f',
+  card: '1f4b3',
+  bank: '1f3e6',
+  abacus: '1f9ee',
+  money: '1f4b0',
+  briefcase: '1f4bc',
+  key: '1f511',
+  printer: '1f5a8-fe0f',
+  cloud: '2601-fe0f',
+  backup: '1f4be',
+  bell: '1f514',
+  scroll: '1f4dc',
+  building: '1f3e2',
+  truck: '1f69a',
+  laptop: '1f4bb',
 };
 
 /**
- * Renders a colour illustration when one exists for the name. Window controls keep thin line icons
- * drawn in-house, because they must stay simple and neutral at small sizes.
+ * Renders a 3D picture when one exists for the name. The search button and the window controls use thin grey
+ * line icons drawn in-house, so they stay simple and neutral at small sizes.
  */
 @Component({
   selector: 'app-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    @if (colorSrc(); as src) {
+    @if (pictureSrc(); as src) {
       <img [src]="src" [attr.width]="size()" [attr.height]="size()" alt="" draggable="false" />
     } @else {
       <svg
@@ -99,6 +99,10 @@ const COLOR_ICONS: Partial<Record<IconName, string>> = {
         focusable="false"
       >
         @switch (name()) {
+          @case ('search') {
+            <circle cx="11" cy="11" r="6.5" />
+            <path d="M20 20l-4.2-4.2" />
+          }
           @case ('minus') {
             <path d="M5 12h14" />
           }
@@ -116,14 +120,29 @@ const COLOR_ICONS: Partial<Record<IconName, string>> = {
       </svg>
     }
   `,
-  styleUrl: './icon.component.scss',
+  styles: `
+    :host {
+      display: inline-flex;
+      line-height: 0;
+    }
+
+    img {
+      display: block;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    svg {
+      color: var(--text-muted);
+    }
+  `,
 })
 export class IconComponent {
   readonly name = input.required<IconName>();
   readonly size = input(24);
 
-  readonly colorSrc = computed(() => {
-    const file = COLOR_ICONS[this.name()];
-    return file ? `icons/fluent/${file}` : null;
+  readonly pictureSrc = computed(() => {
+    const code = PICTURES[this.name()];
+    return code ? `icons/3d/${code}.webp` : null;
   });
 }
