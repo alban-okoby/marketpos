@@ -111,18 +111,19 @@
   transition: background 0.15s;
 }
 
-.tile:hover,
-.tile:focus-visible {
-  background: var(--fill-hover);
-}
-
+// The background shows only behind the icon, on hover or keyboard focus.
 .tile-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
-  background: var(--fill-active);
+  transition: background 0.15s;
+}
+
+.tile:hover .tile-icon,
+.tile:focus-visible .tile-icon {
+  background: var(--fill-hover);
 }
 
 .tile-title {

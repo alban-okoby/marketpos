@@ -50,7 +50,7 @@ import { IconComponent } from '../../shared/icon/icon.component';
       <div class="grid">
         @for (app of filtered(); track app.id) {
           <button type="button" class="tile" (click)="launchApp(app.id)">
-            <span class="tile-icon"><app-icon [name]="app.icon" [size]="26" /></span>
+            <span class="tile-icon"><app-icon [name]="app.icon" [size]="40" /></span>
             <span class="tile-title">{{ app.title }}</span>
           </button>
         } @empty {

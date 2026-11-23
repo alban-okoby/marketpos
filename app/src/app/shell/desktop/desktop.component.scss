@@ -32,17 +32,19 @@
   border-radius: 10px;
 }
 
-.icon:hover {
-  background: var(--fill-subtle);
-}
-
+// The background shows only on hover or keyboard focus, behind the icon.
 .icon-tile {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
-  background: var(--fill-active);
+  transition: background 0.15s;
+}
+
+.icon:hover .icon-tile,
+.icon:focus-visible .icon-tile {
+  background: var(--fill-hover);
 }
 
 // One line only: a label longer than the icon is cut with an ellipsis.

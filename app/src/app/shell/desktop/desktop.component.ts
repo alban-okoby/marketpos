@@ -28,7 +28,7 @@ const MAX_LABEL_LENGTH = 15;
       <nav class="icons" aria-label="Applications">
         @for (app of modules.enabledApps(); track app.id) {
           <button type="button" class="icon" [attr.aria-label]="'Ouvrir ' + app.title" (click)="launch(app.id)">
-            <span class="icon-tile glass"><app-icon [name]="app.icon" [size]="28" /></span>
+            <span class="icon-tile"><app-icon [name]="app.icon" [size]="44" /></span>
             <span class="icon-label" [attr.title]="app.title">{{ shortLabel(app.title) }}</span>
           </button>
         }

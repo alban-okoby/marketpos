@@ -130,6 +130,7 @@ const PICTURES: Partial<Record<IconName, string>> = {
       display: block;
       object-fit: contain;
       pointer-events: none;
+      filter: drop-shadow(0 4px 6px var(--icon-shadow));
     }
 
     svg {
