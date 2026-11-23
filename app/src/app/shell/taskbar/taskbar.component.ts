@@ -11,6 +11,8 @@ import { IconComponent, IconName } from '../../shared/icon/icon.component';
 import { LogoComponent } from '../../shared/logo/logo.component';
 
 const HIDE_DELAY_MS = 500;
+/** How far the swelling of the bar extends on each side of the hovered item. */
+const BULGE_PAD = 14;
 
 /**
  * Taskbar: start button and open windows, plus the system tray (network, pending sales, clock).
@@ -21,7 +23,14 @@ const HIDE_DELAY_MS = 500;
   imports: [IconComponent, LogoComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <nav class="taskbar glass" aria-label="Barre des tâches">
+    <nav class="taskbar glass" aria-label="Barre des tâches" (mouseleave)="hideBulge()">
+      <span
+        class="bulge"
+        aria-hidden="true"
+        [class.on]="bulge() !== null"
+        [style.left.px]="bulge()?.left ?? 0"
+        [style.width.px]="bulge()?.width ?? 0"
+      ></span>
       <button
         type="button"
         class="start"
@@ -29,6 +38,7 @@ const HIDE_DELAY_MS = 500;
         [attr.aria-expanded]="startOpen()"
         [class.open]="startOpen()"
         (click)="toggleStart.emit()"
+        (mouseenter)="raise($event)"
       >
         <span class="glyph"><app-logo [size]="22" /></span>
       </button>
@@ -41,6 +51,7 @@ const HIDE_DELAY_MS = 500;
           [class.minimized]="win.minimized"
           [attr.aria-label]="win.title + (win.minimized ? ' (réduite)' : '')"
           (click)="onAppClick(win)"
+          (mouseenter)="raise($event)"
         >
           <span class="glyph"><app-icon [name]="iconFor(win)" [size]="22" /></span>
           <span class="indicator" aria-hidden="true"></span>
@@ -87,6 +98,9 @@ export class TaskbarComponent implements AfterViewInit {
   private readonly revealed = signal(false);
   private hideTimer: ReturnType<typeof setTimeout> | undefined;
 
+  /** Where the bar swells, relative to the bar: under the hovered item, or null when no item is hovered. */
+  readonly bulge = signal<{ readonly left: number; readonly width: number } | null>(null);
+
   readonly hidden = computed(() => this.settings.autoHide() && !this.revealed() && !this.startOpen());
 
   readonly hostClasses = computed(() =>
@@ -124,6 +138,16 @@ export class TaskbarComponent implements AfterViewInit {
     } else {
       this.wm.focus(win.id);
     }
+  }
+
+  /** Moves the swelling of the bar under the hovered start or app button. */
+  raise(event: MouseEvent): void {
+    const button = event.currentTarget as HTMLElement;
+    this.bulge.set({ left: button.offsetLeft - BULGE_PAD, width: button.offsetWidth + 2 * BULGE_PAD });
+  }
+
+  hideBulge(): void {
+    this.bulge.set(null);
   }
 
   reveal(): void {

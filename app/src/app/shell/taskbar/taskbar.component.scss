@@ -115,6 +115,7 @@ $slide: calc(100% + #{$gap} + 12px);
 }
 
 .taskbar {
+  position: relative;
   pointer-events: auto;
   display: flex;
   align-items: center;
@@ -131,6 +132,54 @@ $slide: calc(100% + #{$gap} + 12px);
   padding: 0 14px;
   border-radius: 14px;
   font-size: 0.85rem;
+}
+
+// The bar swells under the hovered item: a dome of the same glass rising from its edge, curved on both sides.
+// On horizontal bars it grows from the top edge (bottom bar) or drops from it (top bar). Vertical bars keep it off.
+.bulge {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 26px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: var(--glass);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  opacity: 0;
+  transform: scaleY(0.3);
+  transform-origin: bottom;
+  pointer-events: none;
+  transition:
+    left 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.2s ease-out,
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:host(.pos-bottom) .bulge {
+  bottom: 100%;
+}
+
+:host(.pos-top) .bulge {
+  top: 100%;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  transform-origin: top;
+}
+
+:host(.pos-left) .bulge,
+:host(.pos-right) .bulge {
+  display: none;
+}
+
+.bulge.on {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bulge {
+    transition: none;
+  }
 }
 
 // Dock magnification, as on macOS: the hovered item grows and lifts, and its neighbours follow with less effect.
