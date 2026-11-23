@@ -21,7 +21,7 @@ import { CustomerChannelService, CustomerScreenState } from './customer-channel.
 import { PermissionsService } from '../../core/security/permissions.service';
 import { CaisseTicketComponent } from './caisse-ticket.component';
 import { PaymentDialogComponent } from './payment-dialog.component';
-import { Sale, SalesService } from './sales.service';
+import { PaymentLine, Sale, SalesService } from './sales.service';
 import { TicketPrintComponent } from './ticket-print.component';
 
 const ALL = 'all';
@@ -32,6 +32,8 @@ interface CategoryChoice {
   readonly id: string;
   readonly label: string;
   readonly count: number;
+  /** Picture of the first article in the category, shown on its tile. */
+  readonly picture: string | null;
 }
 
 /**
@@ -84,7 +86,13 @@ interface CategoryChoice {
             [attr.aria-pressed]="activeCategory() === choice.id"
             (click)="activeCategory.set(choice.id)"
           >
-            <span class="round">{{ choice.label.charAt(0) }}</span>
+            <span class="round">
+              @if (choice.picture; as src) {
+                <img [src]="src" alt="" />
+              } @else {
+                {{ choice.label.charAt(0) }}
+              }
+            </span>
             <strong>{{ choice.label }}</strong>
             <small>{{ choice.count }} articles</small>
           </button>
@@ -93,14 +101,19 @@ interface CategoryChoice {
 
       <div class="body">
         <section class="products" aria-label="Articles">
-          <p class="count">{{ visible().length }} article(s)</p>
+          <div class="section-head">
+            <h2>Articles</h2>
+            <span class="count">{{ visible().length }} article(s)</span>
+          </div>
           <div class="grid">
             @for (product of visible(); track product.code) {
               <button type="button" class="product" (click)="cart.add(product)">
                 <span class="image"><img [src]="picture(product)" alt="" /></span>
-                <span class="name">{{ product.name }}</span>
-                <span class="meta">{{ product.category }} · {{ product.code.slice(-6) }}</span>
-                <span class="price">{{ fmt(product.price) }}</span>
+                <span class="info">
+                  <span class="name">{{ product.name }}</span>
+                  <span class="meta">{{ product.category }} · {{ product.code.slice(-6) }}</span>
+                  <span class="price">{{ fmt(product.price) }}</span>
+                </span>
               </button>
             } @empty {
               <p class="empty">Aucun article trouvé.</p>
@@ -144,12 +157,16 @@ export class CaisseAppComponent {
 
   readonly categoryChoices = computed<readonly CategoryChoice[]>(() => {
     const products = this.catalogue.products();
-    const all: CategoryChoice = { id: ALL, label: 'Tous', count: products.length };
-    const perCategory = this.catalogue.categories().map((category) => ({
-      id: category,
-      label: category,
-      count: products.filter((product) => product.category === category).length,
-    }));
+    const all: CategoryChoice = { id: ALL, label: 'Tous', count: products.length, picture: null };
+    const perCategory = this.catalogue.categories().map((category) => {
+      const first = products.find((product) => product.category === category);
+      return {
+        id: category,
+        label: category,
+        count: products.filter((product) => product.category === category).length,
+        picture: first ? productPicture(first) : null,
+      };
+    });
     return [all, ...perCategory];
   });
 
@@ -222,10 +239,10 @@ export class CaisseAppComponent {
     this.paying.set(true);
   }
 
-  onValidated(received: number): void {
+  onValidated(payments: PaymentLine[]): void {
     const lines = this.cart.lines();
     const cashier = this.session.user()?.name ?? '';
-    const sale = this.sales.record(lines, received, cashier);
+    const sale = this.sales.recordPayments(lines, payments, cashier);
     this.catalogue.decrementStock(lines);
     this.cart.clear();
     this.paying.set(false);

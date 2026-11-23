@@ -117,13 +117,21 @@
   }
 
   .round {
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: grid;
     place-items: center;
     background: var(--fill-active);
     font-weight: 700;
+    overflow: hidden;
+  }
+
+  .round img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
   }
 
   &:hover {
@@ -149,53 +157,67 @@
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 14px;
 }
 
 .products {
   min-height: 0;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
   gap: 8px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
 }
 
-.count {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
+// Product cards: picture on the left, name, code and price on the right, like the reference screen.
 .grid {
   flex: 1;
   min-height: 0;
   overflow: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   align-content: start;
-  gap: 10px;
-  padding-right: 4px;
+  gap: 12px;
+  padding: 2px 4px 2px 2px;
 }
 
 .product {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  align-items: center;
+  gap: 12px;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: var(--glass-strong);
   border: 1px solid var(--glass-border);
   text-align: left;
+  min-width: 0;
 
   &:hover {
     border-color: var(--accent-strong);
+    background: var(--fill-hover);
   }
 
   .image {
-    width: 100%;
-    height: 96px;
-    border-radius: 8px;
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
     background: var(--fill-active);
     display: flex;
     align-items: center;
@@ -210,8 +232,16 @@
     pointer-events: none;
   }
 
+  .info {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
   .name {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 600;
     line-height: 1.25;
     max-height: 2.5em;
@@ -219,12 +249,15 @@
   }
 
   .meta {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .price {
-    margin-top: auto;
+    margin-top: 2px;
     font-weight: 700;
     color: var(--warn-strong);
     font-variant-numeric: tabular-nums;

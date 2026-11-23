@@ -10,6 +10,17 @@ export const BANKNOTE_SHORTCUTS: readonly number[] = [500, 1000, 2000, 5000, 100
 /** EN_ATTENTE_SYNC: kept on this device until the server acknowledges it. */
 export type SaleStatus = 'EN_ATTENTE_SYNC' | 'SYNCHRONISEE';
 
+/** Payment methods a receipt can combine (CA-05). Only cash gives change back. */
+export type PaymentMethod = 'ESPECES' | 'CARTE' | 'MOBILE_MONEY';
+
+export interface PaymentLine {
+  readonly method: PaymentMethod;
+  /** Amount in FCFA, a positive whole number. */
+  readonly amount: number;
+  /** Terminal or mobile money transaction reference. Required for non-cash methods. */
+  readonly reference?: string;
+}
+
 export interface Sale {
   /** Unique operation id (OF-03). The server uses it to ignore a sale it has already received. */
   readonly id: string;
@@ -23,6 +34,47 @@ export interface Sale {
   readonly status: SaleStatus;
   /** VAT rate in force when the sale was made, in percent. Kept so later changes never alter old tickets. */
   readonly vatRate?: number;
+  /** How the sale was paid. Absent on sales recorded before split payment existed (they were all cash). */
+  readonly payments?: readonly PaymentLine[];
+}
+
+/** Result of a payment check: whether the receipt can be closed, and the cash to give back. */
+export interface SplitPaymentStatus {
+  readonly paid: number;
+  readonly remaining: number;
+  readonly change: number;
+  readonly canValidate: boolean;
+  readonly reason: string | null;
+}
+
+/**
+ * Checks a set of payment lines against the amount due (CA-05, CA-06).
+ * Only cash lines can produce change: an overpayment by card or mobile money is refused.
+ */
+export function splitPaymentStatus(total: number, payments: readonly PaymentLine[]): SplitPaymentStatus {
+  const paid = payments.reduce((sum, line) => sum + line.amount, 0);
+  const cash = payments.filter((line) => line.method === 'ESPECES').reduce((sum, line) => sum + line.amount, 0);
+  const change = Math.max(paid - total, 0);
+  const remaining = Math.max(total - paid, 0);
+  const invalidLine = payments.some(
+    (line) =>
+      !Number.isInteger(line.amount) ||
+      line.amount <= 0 ||
+      (line.method !== 'ESPECES' && !line.reference?.trim()),
+  );
+
+  let reason: string | null = null;
+  if (total <= 0) {
+    reason = 'Aucun article dans le panier.';
+  } else if (invalidLine) {
+    reason = 'Chaque paiement doit avoir un montant entier positif, et une référence pour carte ou mobile money.';
+  } else if (remaining > 0) {
+    reason = 'Montant reçu insuffisant.';
+  } else if (change > cash) {
+    reason = 'Le rendu ne peut être donné qu’en espèces.';
+  }
+
+  return { paid, remaining, change, canValidate: reason === null, reason };
 }
 
 /** VAT included in a tax-included total, for a rate in percent. */
@@ -105,9 +157,18 @@ export class SalesService {
    * Sales are never removed: a synchronised sale only changes status (OF-06).
    */
   record(lines: readonly CartLine[], received: number, cashier: string): Sale {
+    return this.recordPayments(lines, [{ method: 'ESPECES', amount: received }], cashier);
+  }
+
+  /**
+   * Records a sale paid with one or several methods (CA-05). Throws if the payments do not cover the total.
+   * Sales are never removed: a synchronised sale only changes status (OF-06).
+   */
+  recordPayments(lines: readonly CartLine[], payments: readonly PaymentLine[], cashier: string): Sale {
     const total = lines.reduce((sum, line) => sum + line.price * line.qty, 0);
-    if (total <= 0 || received < total) {
-      throw new Error('Montant reçu insuffisant : la vente ne peut pas être validée.');
+    const status = splitPaymentStatus(total, payments);
+    if (!status.canValidate) {
+      throw new Error(`Vente impossible : ${status.reason}`);
     }
     const next = this.counter() + 1;
     const sale: Sale = {
@@ -117,10 +178,11 @@ export class SalesService {
       cashier,
       lines: lines.map((line) => ({ ...line })),
       total,
-      received,
-      change: changeDue(total, received),
+      received: status.paid,
+      change: status.change,
       status: 'EN_ATTENTE_SYNC',
       vatRate: this.fiscal.vatRate(),
+      payments: payments.map((line) => ({ ...line })),
     };
     this.counter.set(next);
     this.journal.set([...this.journal(), sale]);

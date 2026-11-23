@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { buildTestCatalogue, categoriesOf, formatFcfa, matchesSearch, parseCatalogue, SEED_PRODUCTS, TEST_CATALOGUE_SIZE } from './catalogue';
 import { CartService } from './cart.service';
 import { CatalogueService } from './catalogue.service';
-import { cashPaymentStatus, changeDue, formatTicketNumber, SalesService } from './sales.service';
+import { cashPaymentStatus, changeDue, formatTicketNumber, SalesService, splitPaymentStatus } from './sales.service';
 
 describe('test catalogue', () => {
   const products = buildTestCatalogue();
@@ -106,6 +106,80 @@ describe('SalesService', () => {
     const lines = [{ code: 'A', name: 'Sucre', price: 800, qty: 2 }];
     expect(() => sales.record(lines, 1000, 'Caissier 1')).toThrowError(/insuffisant/);
     expect(sales.journal().length).toBe(0);
+  });
+});
+
+describe('split payment (CA-05)', () => {
+  beforeEach(() => {
+    localStorage.removeItem('marketpos.caisse.compteur');
+    localStorage.removeItem('marketpos.caisse.ventes');
+    TestBed.configureTestingModule({});
+  });
+
+  it('accepts cash plus card that together cover the total', () => {
+    const status = splitPaymentStatus(5000, [
+      { method: 'CARTE', amount: 3000, reference: 'TPE-881' },
+      { method: 'ESPECES', amount: 2000 },
+    ]);
+    expect(status).toEqual({ paid: 5000, remaining: 0, change: 0, canValidate: true, reason: null });
+  });
+
+  it('gives change only from cash', () => {
+    const status = splitPaymentStatus(1700, [
+      { method: 'MOBILE_MONEY', amount: 1000, reference: 'MM-42' },
+      { method: 'ESPECES', amount: 1000 },
+    ]);
+    expect(status.change).toBe(300);
+    expect(status.canValidate).toBe(true);
+  });
+
+  it('refuses an overpayment by card, since no change can be given', () => {
+    const status = splitPaymentStatus(1700, [{ method: 'CARTE', amount: 2000, reference: 'TPE-1' }]);
+    expect(status.canValidate).toBe(false);
+    expect(status.reason).toBe('Le rendu ne peut être donné qu’en espèces.');
+  });
+
+  it('reports the remaining amount when the payments fall short', () => {
+    const status = splitPaymentStatus(5000, [{ method: 'CARTE', amount: 3000, reference: 'TPE-2' }]);
+    expect(status.remaining).toBe(2000);
+    expect(status.canValidate).toBe(false);
+  });
+
+  it('requires a reference for card and mobile money, but not for cash', () => {
+    expect(splitPaymentStatus(1000, [{ method: 'CARTE', amount: 1000 }]).canValidate).toBe(false);
+    expect(splitPaymentStatus(1000, [{ method: 'MOBILE_MONEY', amount: 1000, reference: '  ' }]).canValidate).toBe(false);
+    expect(splitPaymentStatus(1000, [{ method: 'ESPECES', amount: 1000 }]).canValidate).toBe(true);
+  });
+
+  it('refuses non-integer or non-positive amounts and an empty cart', () => {
+    expect(splitPaymentStatus(1000, [{ method: 'ESPECES', amount: 1000.5 }]).canValidate).toBe(false);
+    expect(splitPaymentStatus(1000, [{ method: 'ESPECES', amount: 0 }]).canValidate).toBe(false);
+    expect(splitPaymentStatus(0, [{ method: 'ESPECES', amount: 0 }]).reason).toBe('Aucun article dans le panier.');
+  });
+
+  it('records a split sale with its payment lines and the change', () => {
+    const sales = TestBed.inject(SalesService);
+    const before = sales.journal().length;
+    const lines = [{ code: 'A', name: 'Sucre', price: 1700, qty: 1 }];
+    const sale = sales.recordPayments(
+      lines,
+      [
+        { method: 'MOBILE_MONEY', amount: 1000, reference: 'MM-77' },
+        { method: 'ESPECES', amount: 1000 },
+      ],
+      'Caissier 1',
+    );
+    expect(sale.received).toBe(2000);
+    expect(sale.change).toBe(300);
+    expect(sale.payments?.map((p) => p.method)).toEqual(['MOBILE_MONEY', 'ESPECES']);
+    expect(sales.journal().length).toBe(before + 1);
+  });
+
+  it('keeps a cash-only sale with a single cash payment line', () => {
+    const sales = TestBed.inject(SalesService);
+    const sale = sales.record([{ code: 'A', name: 'Sucre', price: 800, qty: 1 }], 1000, 'Caissier 1');
+    expect(sale.payments).toEqual([{ method: 'ESPECES', amount: 1000 }]);
+    expect(sale.change).toBe(200);
   });
 });
 

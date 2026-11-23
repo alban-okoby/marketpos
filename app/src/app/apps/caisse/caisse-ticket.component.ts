@@ -1,21 +1,26 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, output } from '@angular/core';
 
 import { IconComponent } from '../../shared/icon/icon.component';
 import { CartService } from './cart.service';
-import { formatFcfa } from './catalogue';
+import { CatalogueService } from './catalogue.service';
+import { formatFcfa, productPicture } from './catalogue';
 
-/** Ticket in progress: lines with quantity steppers, total, and the cancel and pay actions. */
+/** Ticket in progress: lines with thumbnails and quantity steppers, totals, and the cancel and pay actions. */
 @Component({
   selector: 'app-caisse-ticket',
   imports: [IconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <aside class="ticket glass" aria-label="Ticket en cours">
-      <h3>Ticket en cours</h3>
+      <header class="head">
+        <h3>Ticket en cours</h3>
+        <span class="count">{{ itemCount() }} article(s)</span>
+      </header>
 
       <div class="lines">
         @for (line of cart.lines(); track line.code) {
           <div class="line">
+            <span class="thumb"><img [src]="picture(line.code)" alt="" /></span>
             <div class="line-name">
               <span>{{ line.name }}</span>
               <small>{{ fmt(line.price) }} l'unité</small>
@@ -54,9 +59,17 @@ import { formatFcfa } from './catalogue';
 })
 export class CaisseTicketComponent {
   readonly cart = inject(CartService);
+  private readonly catalogue = inject(CatalogueService);
   readonly payRequested = output<void>();
+
+  readonly itemCount = computed(() => this.cart.lines().reduce((sum, line) => sum + line.qty, 0));
 
   fmt(amount: number): string {
     return formatFcfa(amount);
+  }
+
+  picture(code: string): string {
+    const product = this.catalogue.find(code);
+    return product ? productPicture(product) : '';
   }
 }
