@@ -8,7 +8,10 @@ Point-of-sale (POS) and store-management software for supermarkets and grocery s
 
 MarketPOS is an Angular progressive web app (PWA) that behaves like a desktop operating system: a lock screen with PIN login, a desktop with draggable windows, a taskbar and a start menu. Each business function is a module, and only the modules a shop needs are switched on.
 
-<img width="1900" height="866" alt="EBC6F2F4-DCC5-4CFF-B4BF-559FF85BD34D_1_102_o" src="https://github.com/user-attachments/assets/cc1b47bc-a001-46c4-ba19-75b086ec964e" />
+<img width="1900" height="868" alt="A0621789-3E3F-4079-AC68-2438F7B66482" src="https://github.com/user-attachments/assets/a5421e24-b520-4675-809e-171d3f2e781f" />
+
+<img width="1900" height="868" alt="61120C0A-F7E8-4E7E-991B-165D5102949B" src="https://github.com/user-attachments/assets/45bf97c5-14bb-4951-aefd-9d91ba7f0756" />
+
 
 Implemented so far:
 
