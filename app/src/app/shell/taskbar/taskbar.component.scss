@@ -133,6 +133,27 @@ $slide: calc(100% + #{$gap} + 12px);
   font-size: 0.85rem;
 }
 
+// Dock magnification, as on macOS: the hovered item grows and lifts, and its neighbours follow with less effect.
+// --dock-x / --dock-y give the direction of the lift: up on a bottom bar, down on a top bar, sideways on vertical bars.
+:host {
+  --dock-x: 0;
+  --dock-y: -1;
+}
+
+:host(.pos-top) {
+  --dock-y: 1;
+}
+
+:host(.pos-left) {
+  --dock-x: 1;
+  --dock-y: 0;
+}
+
+:host(.pos-right) {
+  --dock-x: -1;
+  --dock-y: 0;
+}
+
 .start,
 .app {
   position: relative;
@@ -141,7 +162,12 @@ $slide: calc(100% + #{$gap} + 12px);
   border-radius: 12px;
   display: grid;
   place-items: center;
-  transition: background 0.15s, transform 0.15s;
+  --mag: 1;
+  --lift: 0px;
+  --press: 1;
+  transform: translate(calc(var(--lift) * var(--dock-x)), calc(var(--lift) * var(--dock-y)))
+    scale(calc(var(--mag) * var(--press)));
+  transition: background 0.15s, transform 0.2s ease-out;
 
   &:hover,
   &.open {
@@ -149,7 +175,46 @@ $slide: calc(100% + #{$gap} + 12px);
   }
 
   &:active {
-    transform: scale(0.92);
+    --press: 0.92;
+  }
+}
+
+// Hovered item: largest. Neighbours on each side: smaller, then smaller again one step further.
+.start:hover,
+.app:hover {
+  --mag: 1.6;
+  --lift: 12px;
+}
+
+.start:hover + .app,
+.app:hover + .app {
+  --mag: 1.25;
+  --lift: 6px;
+}
+
+.start:hover + .app + .app,
+.app:hover + .app + .app {
+  --mag: 1.1;
+  --lift: 3px;
+}
+
+.app:has(+ .app:hover),
+.start:has(+ .app:hover) {
+  --mag: 1.25;
+  --lift: 6px;
+}
+
+.app:has(+ .app + .app:hover),
+.start:has(+ .app + .app:hover) {
+  --mag: 1.1;
+  --lift: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start,
+  .app {
+    transform: none;
+    transition: background 0.15s;
   }
 }
 
