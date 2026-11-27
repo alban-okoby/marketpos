@@ -49,7 +49,7 @@ export const SETTINGS_SECTIONS: readonly SettingsSection[] = [
     id: 'securite',
     label: 'Sécurité',
     icon: 'lock',
-    keywords: 'sécurité verrouillage inactivité session pin délai',
+    keywords: 'sécurité verrouillage inactivité session pin délai mot de passe longueur identifiant connexion',
   },
   {
     id: 'modules',

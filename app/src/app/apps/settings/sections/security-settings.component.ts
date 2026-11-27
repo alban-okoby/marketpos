@@ -3,7 +3,9 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   MAX_IDLE_MINUTES,
   MAX_LOCKOUT_SECONDS,
+  MAX_PASSWORD_LENGTH_LIMIT,
   MAX_PIN_ATTEMPTS,
+  MIN_PASSWORD_LENGTH_LIMIT,
   SecuritySettingsService,
 } from '../../../core/settings/security.service';
 
@@ -38,6 +40,26 @@ import {
         </p>
       </section>
 
+      <section aria-labelledby="password-title">
+        <h3 id="password-title" class="group-title">Mot de passe</h3>
+        <div class="form">
+          <label class="field">
+            <span>Longueur minimale (caractères)</span>
+            <input
+              type="number"
+              [attr.min]="minPassword"
+              [attr.max]="maxPassword"
+              step="1"
+              [value]="security.settings().minPasswordLength"
+              (change)="setMinPassword($event)"
+            />
+          </label>
+        </div>
+        <p class="hint">
+          Appliqué à la création d'un compte et à chaque changement de mot de passe. Les comptes déjà créés ne sont pas modifiés.
+        </p>
+      </section>
+
       <section aria-labelledby="pin-title">
         <h3 id="pin-title" class="group-title">Code PIN</h3>
         <div class="form">
@@ -51,7 +73,7 @@ import {
           </label>
         </div>
         <p class="hint">
-          Après le nombre d'essais indiqué, le code PIN ne peut plus être saisi pendant la durée choisie. Ce blocage s'applique au verrouillage et au code du gérant pour les clôtures.
+          Après le nombre d'essais indiqué, la connexion (identifiant et mot de passe) ne peut plus être tentée pendant la durée choisie. Ce blocage s'applique aussi au code du gérant pour les clôtures.
         </p>
       </section>
     </article>
@@ -63,6 +85,12 @@ export class SecuritySettingsComponent {
   readonly max = MAX_IDLE_MINUTES;
   readonly maxAttempts = MAX_PIN_ATTEMPTS;
   readonly maxLockout = MAX_LOCKOUT_SECONDS;
+  readonly minPassword = MIN_PASSWORD_LENGTH_LIMIT;
+  readonly maxPassword = MAX_PASSWORD_LENGTH_LIMIT;
+
+  setMinPassword(event: Event): void {
+    this.security.update({ minPasswordLength: Math.round(Number((event.target as HTMLInputElement).value) || 8) });
+  }
 
   setAttempts(event: Event): void {
     this.security.update({ maxPinAttempts: Math.round(Number((event.target as HTMLInputElement).value) || 1) });
