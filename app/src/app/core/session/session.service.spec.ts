@@ -19,6 +19,15 @@ describe('SessionService', () => {
     expect(session.user()).toBeNull();
   });
 
+  it('signs in with the identifiant and password, and gives the identifiant back for the sign-in form', async () => {
+    expect(await session.checkPassword('caissier1', 'caisse-1111')).toBe('caissier1');
+    expect(await session.checkPassword('caissier1', '1111')).toBeNull();
+    expect(session.loginOf('gerant')).toBe('gerant');
+    expect(session.findByLogin('CAISSIER1')?.name).toBe('Caissier 1');
+    expect(session.findByLogin('inconnu')).toBeUndefined();
+    expect(session.loginOf('inconnu')).toBe('');
+  });
+
   it('accepts the correct PIN and rejects a wrong one', async () => {
     expect(await session.verifyPin('caissier1', '1111')).toBe(true);
     expect(await session.verifyPin('caissier1', '2222')).toBe(false);

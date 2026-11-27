@@ -48,7 +48,7 @@ MarketPOS est un logiciel de caisse et de gestion pour épiceries et supermarch�
 
 | ID | Exigence | Priorité |
 |---|---|---|
-| US-01 | Connexion individuelle : identifiant et code PIN haché | P1 |
+| US-01 | Connexion individuelle : identifiant et mot de passe haché, avec un code PIN haché conservé pour les autorisations du gérant. La longueur minimale du mot de passe est un réglage. | P1 |
 | US-02 | Droits par action : vente, remise, retour, annulation, ouverture, clôture | P1 |
 | US-03 | Autorisation ponctuelle par PIN du gérant, avec trace | P1 |
 | US-04 | Session expirée après inactivité | P1 |

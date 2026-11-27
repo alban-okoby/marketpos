@@ -35,7 +35,23 @@ export class SessionService {
     return account ? toSessionUser(account) : undefined;
   }
 
-  /** Checks a PIN without changing any state. */
+  /** Active account with this identifiant, for the first step of the sign-in. Undefined when unknown or inactive. */
+  findByLogin(login: string): SessionUser | undefined {
+    const account = this.accounts.findByLogin(login);
+    return account && account.active ? toSessionUser(account) : undefined;
+  }
+
+  /** Identifiant of an account, to prefill the sign-in form. Empty when unknown. */
+  loginOf(userId: string): string {
+    return this.accounts.find(userId)?.login ?? '';
+  }
+
+  /** Checks an identifiant and password without changing any state. Returns the account id, or null. */
+  checkPassword(login: string, password: string): Promise<string | null> {
+    return this.accounts.checkPassword(login, password);
+  }
+
+  /** Checks a PIN without changing any state. Used for the manager's authorisations. */
   verifyPin(userId: string, pin: string): Promise<boolean> {
     return this.accounts.verifyPin(userId, pin);
   }

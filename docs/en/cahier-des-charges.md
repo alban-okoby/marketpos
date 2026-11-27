@@ -48,7 +48,7 @@ MarketPOS is point-of-sale and management software for grocery stores and superm
 
 | ID | Requirement | Priority |
 |---|---|---|
-| US-01 | Individual login: username and a hashed PIN | P1 |
+| US-01 | Individual login: identifiant and hashed password, with a hashed PIN kept for the manager's authorisations. Minimum password length is a setting. | P1 |
 | US-02 | Per-action permissions: sale, discount, return, cancellation, opening, closing | P1 |
 | US-03 | One-off authorization with the manager's PIN, with an audit trail | P1 |
 | US-04 | Session expires after inactivity | P1 |

@@ -20,11 +20,12 @@ import { SessionService } from '../../core/session/session.service';
 
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Nom</th><th>Rôle</th><th>Statut</th><th>Code PIN</th></tr></thead>
+          <thead><tr><th>Nom</th><th>Identifiant</th><th>Rôle</th><th>Statut</th><th>Mot de passe</th><th>Code PIN</th></tr></thead>
           <tbody>
             @for (account of accounts(); track account.id) {
               <tr [class.inactive]="!account.active">
                 <td>{{ account.name }}</td>
+                <td><code>{{ account.login }}</code></td>
                 <td>
                   <select [value]="account.roleId" [disabled]="!canManage()" [attr.aria-label]="'Rôle de ' + account.name" (change)="setRole(account.id, $event)">
                     @for (role of roles; track role) { <option [value]="role">{{ roleLabels[role] }}</option> }
@@ -34,6 +35,12 @@ import { SessionService } from '../../core/session/session.service';
                   <button type="button" class="status" [disabled]="!canManage()" (click)="toggle(account.id, account.active)">
                     {{ account.active ? 'Actif' : 'Désactivé' }}
                   </button>
+                </td>
+                <td>
+                  <span class="pin-row">
+                    <input type="password" autocomplete="new-password" placeholder="Nouveau" [disabled]="!canManage()" [attr.aria-label]="'Nouveau mot de passe de ' + account.name" [value]="passwordFor(account.id)" (input)="setPasswordDraft(account.id, $event)" />
+                    <button type="button" [disabled]="!canManage() || passwordFor(account.id).length === 0" (click)="changePassword(account.id)">Changer</button>
+                  </span>
                 </td>
                 <td>
                   <span class="pin-row">
@@ -51,11 +58,13 @@ import { SessionService } from '../../core/session/session.service';
         <h3>Nouvel utilisateur</h3>
         <div class="row">
           <label><span>Nom</span><input [value]="newName()" [disabled]="!canManage()" (input)="newName.set(value($event))" /></label>
+          <label><span>Identifiant</span><input autocomplete="off" autocapitalize="none" [value]="newLogin()" [disabled]="!canManage()" (input)="newLogin.set(value($event))" /></label>
           <label><span>Rôle</span>
             <select [value]="newRole()" [disabled]="!canManage()" (change)="newRole.set(roleOf($event))">
               @for (role of roles; track role) { <option [value]="role">{{ roleLabels[role] }}</option> }
             </select>
           </label>
+          <label><span>Mot de passe</span><input type="password" autocomplete="new-password" [value]="newPassword()" [disabled]="!canManage()" (input)="newPassword.set(value($event))" /></label>
           <label><span>Code PIN (4 chiffres)</span><input type="password" inputmode="numeric" maxlength="4" [value]="newPin()" [disabled]="!canManage()" (input)="newPin.set(digits($event))" /></label>
           <button type="submit" class="primary" [disabled]="!canManage()">Créer</button>
         </div>
@@ -78,9 +87,12 @@ export class UtilisateursAppComponent {
   readonly canManage = computed(() => this.permissions.can('parametres'));
 
   readonly newName = signal('');
+  readonly newLogin = signal('');
   readonly newRole = signal<Role>('caissier');
+  readonly newPassword = signal('');
   readonly newPin = signal('');
   readonly drafts = signal<Record<string, string>>({});
+  readonly passwordDrafts = signal<Record<string, string>>({});
   readonly error = signal<string | null>(null);
   readonly notice = signal<string | null>(null);
 
@@ -105,12 +117,36 @@ export class UtilisateursAppComponent {
     this.drafts.set({ ...this.drafts(), [id]: this.digits(event) });
   }
 
+  passwordFor(id: string): string {
+    return this.passwordDrafts()[id] ?? '';
+  }
+
+  setPasswordDraft(id: string, event: Event): void {
+    this.passwordDrafts.set({ ...this.passwordDrafts(), [id]: this.value(event) });
+  }
+
   async create(): Promise<void> {
     await this.run(async () => {
-      const account = await this.users.add({ name: this.newName(), roleId: this.newRole(), pin: this.newPin() });
+      const account = await this.users.add({
+        name: this.newName(),
+        login: this.newLogin(),
+        roleId: this.newRole(),
+        password: this.newPassword(),
+        pin: this.newPin(),
+      });
       this.newName.set('');
+      this.newLogin.set('');
+      this.newPassword.set('');
       this.newPin.set('');
-      this.notice.set(`Compte créé : ${account.name}.`);
+      this.notice.set(`Compte créé : ${account.name} (identifiant ${account.login}).`);
+    });
+  }
+
+  async changePassword(id: string): Promise<void> {
+    await this.run(async () => {
+      await this.users.setPassword(id, this.passwordFor(id));
+      this.passwordDrafts.set({ ...this.passwordDrafts(), [id]: '' });
+      this.notice.set('Mot de passe modifié.');
     });
   }
 

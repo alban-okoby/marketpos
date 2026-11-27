@@ -72,6 +72,8 @@
   --shadow-soft: 0 8px 24px rgba(20, 40, 30, 0.12);
   --icon-shadow: rgba(20, 40, 30, 0.28);
   --wallpaper-scrim: rgba(255, 255, 255, 0.08);
+  --label-bg: rgba(0, 0, 0, 0.45); /* same pill as the dark theme: text over a wallpaper image stays readable */
+  --on-image-text: #ffffff;
 }
 
 *,
