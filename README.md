@@ -6,7 +6,7 @@ Point-of-sale (POS) and store-management software for supermarkets and grocery s
 
 ## What it is
 
-MarketPOS is an Angular progressive web app (PWA) that behaves like a desktop operating system: a lock screen with PIN login, a desktop with draggable windows, a taskbar and a start menu. Each business function is a module, and only the modules a shop needs are switched on.
+MarketPOS is an Angular progressive web app (PWA) that behaves like a desktop operating system: a lock screen with identifiant and password sign-in, a desktop with draggable windows, a taskbar and a start menu. Each business function is a module, and only the modules a shop needs are switched on.
 
 <img width="1900" height="868" alt="A0621789-3E3F-4079-AC68-2438F7B66482" src="https://github.com/user-attachments/assets/a5421e24-b520-4675-809e-171d3f2e781f" />
 
@@ -15,7 +15,7 @@ MarketPOS is an Angular progressive web app (PWA) that behaves like a desktop op
 
 Implemented so far:
 
-- **Lock screen and session**: user choice, PIN entry (keyboard or touch), unlock transition.
+- **Lock screen and session**: identifiant, then password; a block per account after failed attempts; unlock transition.
 - **Desktop**: wallpapers (built-in or your own image), accent colour, light, dark or automatic theme, date and time, taskbar at any screen edge, auto-hide.
 - **Settings**: display, taskbar, modules (switch on what you need, with dependencies), with a search field.
 - **Cashier**: search or scan an article, 200 test articles, cart, cash payment with change, 80 mm receipt, continuous numbering, stock updates, customer display in its own window.
@@ -45,7 +45,12 @@ npm run dev        # development server on http://localhost:4250, reachable on t
 Notes:
 
 - The service worker (offline cache and automatic updates) runs only in **production builds**. In development, the app always loads the latest code.
-- Demo PINs for testing: caissier1 = 1111, caissier2 = 2222, Manager = 9999. They are stored in plain text and must be replaced by hashed PINs before any real use.
+- Demo accounts for testing (identifiant / password, and the PIN used for the manager's closings):
+  - caissier1 / `caisse-1111`, PIN 1111
+  - caissier2 / `caisse-2222`, PIN 2222
+  - gerant / `gerant-9999`, PIN 9999
+
+  Passwords and PINs are stored as salted hashes. The plain values only exist in the demo seed (`app/src/app/core/session/demo-users.ts`) and must be removed before any real use.
 - Settings and data are stored in the browser's `localStorage`. To reset the application, clear the site's stored data.
 
 ## Known limitations

@@ -5,7 +5,7 @@
 Logiciel de caisse (POS) et de gestion pour supermarchés et épiceries.
 ## Ce que c'est
 
-MarketPOS est une application web progressive (PWA) Angular qui se comporte comme un système d'exploitation de bureau : un écran de verrouillage avec connexion par code PIN, un bureau avec des fenêtres déplaçables, une barre des tâches et un menu Démarrer. Chaque fonction métier est un module, et seuls les modules dont un magasin a besoin sont activés.
+MarketPOS est une application web progressive (PWA) Angular qui se comporte comme un système d'exploitation de bureau : un écran de verrouillage avec connexion par identifiant et mot de passe, un bureau avec des fenêtres déplaçables, une barre des tâches et un menu Démarrer. Chaque fonction métier est un module, et seuls les modules dont un magasin a besoin sont activés.
 
 <img width="1900" height="868" alt="A0621789-3E3F-4079-AC68-2438F7B66482" src="https://github.com/user-attachments/assets/a5421e24-b520-4675-809e-171d3f2e781f" />
 
@@ -14,7 +14,7 @@ MarketPOS est une application web progressive (PWA) Angular qui se comporte comm
 
 Déjà en place :
 
-- **Écran de verrouillage et session** : choix de l'utilisateur, saisie du code PIN (clavier ou écran tactile), transition de déverrouillage.
+- **Écran de verrouillage et session** : identifiant, puis mot de passe ; blocage par compte après plusieurs essais ratés ; transition de déverrouillage.
 - **Bureau** : fonds d'écran (fournis ou image personnelle), couleur d'accentuation, thème clair, sombre ou automatique, date et heure, barre des tâches sur n'importe quel bord, masquage automatique.
 - **Paramètres** : affichage, barre des tâches, modules (on n'active que ce qu'on utilise, avec les dépendances), avec un champ de recherche.
 - **Caisse** : recherche ou scan d'un article, 200 articles de test, panier, paiement en espèces avec rendu, ticket 80 mm, numérotation continue, mise à jour du stock, afficheur client dans sa propre fenêtre.
@@ -44,7 +44,12 @@ npm run dev        # serveur de développement sur http://localhost:4250, access
 Remarques :
 
 - Le service worker (cache hors ligne et mises à jour automatiques) ne fonctionne que dans les **builds de production**. En développement, l'application charge toujours le dernier code.
-- Codes PIN de test : caissier1 = 1111, caissier2 = 2222, gérant = 9999. Ils sont stockés en clair et doivent être remplacés par des codes hachés avant tout usage réel.
+- Comptes de test (identifiant et mot de passe, plus le PIN utilisé pour les clôtures du gérant) :
+  - caissier1 / `caisse-1111`, PIN 1111
+  - caissier2 / `caisse-2222`, PIN 2222
+  - gerant / `gerant-9999`, PIN 9999
+
+  Les mots de passe et les PIN sont stockés hachés. Les valeurs en clair n'existent que dans les comptes de démonstration (`app/src/app/core/session/demo-users.ts`) et doivent être retirées avant tout usage réel.
 - Les réglages et les données sont stockés dans le `localStorage` du navigateur. Pour réinitialiser l'application, effacez les données du site.
 
 ## Limites connues
