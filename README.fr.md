@@ -47,12 +47,6 @@ Remarques :
 - Codes PIN de test : caissier1 = 1111, caissier2 = 2222, gérant = 9999. Ils sont stockés en clair et doivent être remplacés par des codes hachés avant tout usage réel.
 - Les réglages et les données sont stockés dans le `localStorage` du navigateur. Pour réinitialiser l'application, effacez les données du site.
 
-## Prototype (référence)
-
-`prototype/caisse/index.html` est le prototype initial de l'écran de vente, dans un seul fichier. Il ne demande ni build ni serveur : ouvrez-le dans Chrome ou Edge. Il reste la référence de la logique de vente que reproduit l'écran de caisse Angular.
-
-Codes PIN de test : caissier1 = 1111, caissier2 = 2222, gérant = 9999. Ouvrez `index.html?client=1` dans une seconde fenêtre pour l'afficheur client.
-
 ## Limites connues
 
 - Pas encore de TVA ; le taux n'est pas précisé (FC-01).
@@ -62,7 +56,6 @@ Codes PIN de test : caissier1 = 1111, caissier2 = 2222, gérant = 9999. Ouvrez `
 - Pas d'intégration de balance.
 - L'impression passe par la boîte d'impression du navigateur.
 - Le fonctionnement hors ligne n'a pas été testé sur de vrais réseaux.
-- Les codes PIN de démonstration sont en clair.
 
 ## Documentation
 

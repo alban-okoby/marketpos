@@ -45,14 +45,8 @@ npm run dev        # development server on http://localhost:4250, reachable on t
 Notes:
 
 - The service worker (offline cache and automatic updates) runs only in **production builds**. In development, the app always loads the latest code.
-- Demo PINs for testing: caissier1 = 1111, caissier2 = 2222, gérant = 9999. They are stored in plain text and must be replaced by hashed PINs before any real use.
+- Demo PINs for testing: caissier1 = 1111, caissier2 = 2222, Manager = 9999. They are stored in plain text and must be replaced by hashed PINs before any real use.
 - Settings and data are stored in the browser's `localStorage`. To reset the application, clear the site's stored data.
-
-## Prototype (reference)
-
-`prototype/caisse/index.html` is the original single-file sales-screen prototype. It needs no build and no server: open it in Chrome or Edge. It remains the reference for the sales logic that the Angular cashier screen reproduces.
-
-Test PINs: caissier1 = 1111, caissier2 = 2222, gérant = 9999. Open `index.html?client=1` in a second window for the customer display.
 
 ## Known limitations
 
@@ -63,7 +57,6 @@ Test PINs: caissier1 = 1111, caissier2 = 2222, gérant = 9999. Open `index.html?
 - No scale (balance) integration.
 - Printing relies on the browser's print dialog.
 - Offline behaviour has not been tested on real networks.
-- Demo PINs are in plain text.
 
 ## Documentation
 
