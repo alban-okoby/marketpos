@@ -1,7 +1,11 @@
 {
   "name": "app",
   "version": "0.0.0",
-  "author": "alban-okoby",
+  "description": "MarketPOS is a point-of-sale and store management for grocery stores, as an offline-first PWA.",
+  "author": {
+    "name": "alban-okoby",
+    "url": "https://github.com/alban-okoby"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
