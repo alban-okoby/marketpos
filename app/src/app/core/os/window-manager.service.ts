@@ -1,5 +1,6 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, computed, effect, inject, signal, untracked } from '@angular/core';
 
+import { PermissionsService } from '../security/permissions.service';
 import { AppId, getAppDefinition } from './apps';
 import { ModuleSettingsService } from './module-settings.service';
 
@@ -29,10 +30,26 @@ const CASCADE_LENGTH = 6;
 export class WindowManagerService {
   private readonly state = signal<readonly WindowState[]>([]);
   private readonly modules = inject(ModuleSettingsService);
+  private readonly permissions = inject(PermissionsService);
   private topZ = 1;
   private windowCount = 0;
 
   readonly windows = this.state.asReadonly();
+
+  constructor() {
+    // When the signed-in user or their rights change, windows of modules they can no longer see are closed.
+    effect(() => {
+      this.permissions.matrix();
+      this.permissions.currentRole();
+      untracked(() => {
+        for (const win of this.state()) {
+          if (!this.permissions.canSee(getAppDefinition(win.appId))) {
+            this.close(win.id);
+          }
+        }
+      });
+    });
+  }
 
   /** Id of the frontmost visible window, or null when none is visible. */
   readonly activeId = computed(() => {
@@ -48,7 +65,7 @@ export class WindowManagerService {
    * Returns the window id, or null when the module is turned off.
    */
   open(appId: AppId): string | null {
-    if (!this.modules.isEnabled(appId)) {
+    if (!this.modules.isEnabled(appId) || !this.permissions.canSee(getAppDefinition(appId))) {
       return null;
     }
     const existing = this.state().find((win) => win.appId === appId);

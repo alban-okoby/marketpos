@@ -6,6 +6,7 @@ import { duration, reducedMotion } from '../../core/motion';
 import { AppId } from '../../core/os/apps';
 import { ModuleSettingsService } from '../../core/os/module-settings.service';
 import { WindowManagerService } from '../../core/os/window-manager.service';
+import { PermissionsService } from '../../core/security/permissions.service';
 import { WallpaperService } from '../../core/wallpaper/wallpaper.service';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { StartMenuComponent } from '../start-menu/start-menu.component';
@@ -26,7 +27,7 @@ const MAX_LABEL_LENGTH = 15;
   template: `
     <main class="desktop">
       <nav class="icons" aria-label="Applications">
-        @for (app of modules.enabledApps(); track app.id) {
+        @for (app of visibleApps(); track app.id) {
           <button type="button" class="icon" [attr.aria-label]="'Ouvrir ' + app.title" (click)="launch(app.id)">
             <span class="icon-tile"><app-icon [name]="app.icon" [size]="44" /></span>
             <span class="icon-label" [attr.title]="app.title">{{ shortLabel(app.title) }}</span>
@@ -57,6 +58,9 @@ const MAX_LABEL_LENGTH = 15;
 export class DesktopComponent implements AfterViewInit {
   readonly wm = inject(WindowManagerService);
   readonly modules = inject(ModuleSettingsService);
+  private readonly permissions = inject(PermissionsService);
+  /** Enabled modules the signed-in user may see. */
+  readonly visibleApps = computed(() => this.modules.enabledApps().filter((app) => this.permissions.canSee(app)));
   readonly clock = inject(ClockService);
   readonly startOpen = signal(false);
   private readonly wallpaper = inject(WallpaperService);

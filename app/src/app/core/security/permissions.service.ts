@@ -1,5 +1,6 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 
+import type { AppDefinition } from '../os/apps';
 import { SessionService } from '../session/session.service';
 import { readStored, writeStored } from '../settings/storage';
 import { Action, DEFAULT_PERMISSIONS, LOCKED_OUT_GUARD, PermissionMatrix, Role, parsePermissions, roleCan } from './permissions';
@@ -26,6 +27,16 @@ export class PermissionsService {
   can(action: Action): boolean {
     const role = this.currentRole();
     return role !== null && roleCan(this.state(), role, action);
+  }
+
+  /**
+   * True when the signed-in user has at least one right the module needs. A module without rights is visible to everyone.
+   */
+  canSee(app: AppDefinition): boolean {
+    if (!app.actions) {
+      return true;
+    }
+    return app.actions.some((action) => this.can(action));
   }
 
   /** Grants or removes one right. Refused unless the signed-in user may change the settings, and the manager keeps the settings right. */

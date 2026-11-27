@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import { AppId, getAppDefinition } from '../os/apps';
 import { SessionService } from '../session/session.service';
 import { UsersService } from './users.service';
 import { DEFAULT_PERMISSIONS, parsePermissions, roleCan } from './permissions';
@@ -49,6 +50,25 @@ describe('PermissionsService', () => {
     session.unlock('caissier1');
     expect(permissions.can('vendre')).toBe(true);
     expect(permissions.can('cloture-z')).toBe(false);
+  });
+
+  it('shows a module only to users with one of its rights', () => {
+    const app = (id: string) => getAppDefinition(id as AppId);
+    session.unlock('caissier1');
+    expect(permissions.canSee(app('caisse'))).toBe(true);
+    expect(permissions.canSee(app('cloture'))).toBe(true);
+    expect(permissions.canSee(app('stock'))).toBe(false);
+    expect(permissions.canSee(app('utilisateurs'))).toBe(false);
+    expect(permissions.canSee(app('parametres'))).toBe(false);
+    expect(permissions.canSee(app('rapports'))).toBe(true);
+  });
+
+  it('hides the sales module once the cashier loses the sale right', () => {
+    session.unlock('gerant');
+    permissions.set('caissier', 'vendre', false);
+    session.unlock('caissier1');
+    expect(permissions.canSee(getAppDefinition('caisse'))).toBe(false);
+    expect(permissions.canSee(getAppDefinition('cloture'))).toBe(true);
   });
 
   it('refuses rights changes from a user without the settings right', () => {

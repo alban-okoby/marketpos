@@ -1,4 +1,5 @@
 import { IconName } from '../../shared/icon/icon.component';
+import type { Action } from '../security/permissions';
 
 export type AppId =
   | 'caisse'
@@ -64,6 +65,11 @@ export interface AppDefinition {
   readonly scope: 'in' | 'outside';
   /** Core modules are always enabled and cannot be turned off. */
   readonly core?: boolean;
+  /**
+   * Rights that let a user see this module: one of them is enough. Without a list, every user sees it.
+   * A user who cannot see a module does not get its icon, its start menu entry, or its window.
+   */
+  readonly actions?: readonly Action[];
   /** Default window size in pixels. */
   readonly size: { readonly width: number; readonly height: number };
 }
@@ -81,6 +87,7 @@ export const APPS: readonly AppDefinition[] = [
     requires: [],
     requirements: ['CA-01', 'CA-02', 'CA-05', 'CA-06', 'CA-11'],
     scope: 'in',
+    actions: ['vendre'],
     size: { width: 1100, height: 680 },
   },
   {
@@ -93,6 +100,7 @@ export const APPS: readonly AppDefinition[] = [
     requires: ['caisse'],
     requirements: ['CL-01', 'CL-02', 'CL-03', 'CL-04', 'CL-05'],
     scope: 'in',
+    actions: ['cloture-x', 'cloture-z'],
     size: { width: 820, height: 600 },
   },
   {
@@ -117,6 +125,7 @@ export const APPS: readonly AppDefinition[] = [
     requires: [],
     requirements: ['ST-01', 'ST-02', 'ST-03', 'ST-05'],
     scope: 'in',
+    actions: ['stock'],
     size: { width: 960, height: 620 },
   },
   {
@@ -273,6 +282,7 @@ export const APPS: readonly AppDefinition[] = [
     requires: [],
     requirements: ['US-01', 'US-02', 'US-03', 'US-04', 'US-05'],
     scope: 'in',
+    actions: ['parametres'],
     size: WINDOW,
   },
   {
@@ -334,6 +344,7 @@ export const APPS: readonly AppDefinition[] = [
     requirements: ['NF-05'],
     scope: 'in',
     core: true,
+    actions: ['parametres'],
     size: { width: 820, height: 580 },
   },
 ];

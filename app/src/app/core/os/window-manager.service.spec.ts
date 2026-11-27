@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import { UsersService } from '../security/users.service';
+import { SessionService } from '../session/session.service';
 import { WindowManagerService } from './window-manager.service';
 
 /** Opens a module and fails the test if it is switched off. */
@@ -15,8 +17,13 @@ function openApp(wm: WindowManagerService, appId: Parameters<WindowManagerServic
 describe('WindowManagerService', () => {
   let wm: WindowManagerService;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    localStorage.removeItem('marketpos.utilisateurs');
+    localStorage.removeItem('marketpos.droits');
     TestBed.configureTestingModule({});
+    await TestBed.inject(UsersService).whenReady();
+    // The manager sees every module, so the windows below can open.
+    TestBed.inject(SessionService).unlock('gerant');
     wm = TestBed.inject(WindowManagerService);
   });
 

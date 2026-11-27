@@ -15,6 +15,7 @@ import { gsap } from 'gsap';
 import { duration, reducedMotion } from '../../core/motion';
 import { AppId } from '../../core/os/apps';
 import { ModuleSettingsService } from '../../core/os/module-settings.service';
+import { PermissionsService } from '../../core/security/permissions.service';
 import { SessionService } from '../../core/session/session.service';
 import { TaskbarSettingsService } from '../../core/taskbar/taskbar-settings.service';
 import { IconComponent } from '../../shared/icon/icon.component';
@@ -83,6 +84,7 @@ export class StartMenuComponent implements AfterViewInit {
 
   private readonly session = inject(SessionService);
   private readonly modules = inject(ModuleSettingsService);
+  private readonly permissions = inject(PermissionsService);
   private readonly taskbar = inject(TaskbarSettingsService);
   private readonly panel = viewChild.required<ElementRef<HTMLElement>>('panel');
   private readonly search = viewChild.required<ElementRef<HTMLInputElement>>('search');
@@ -93,7 +95,7 @@ export class StartMenuComponent implements AfterViewInit {
 
   readonly query = signal('');
   readonly filtered = computed(() => {
-    const apps = this.modules.enabledApps();
+    const apps = this.modules.enabledApps().filter((app) => this.permissions.canSee(app));
     const term = this.query().trim().toLowerCase();
     if (!term) {
       return apps;
