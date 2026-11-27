@@ -5,7 +5,16 @@ import { NO_FAILURES, PinGuardState, registerFailure, secondsLeft } from './pin-
 
 const STORAGE_KEY = 'marketpos.pinguard';
 
-export type PinScope = 'session' | 'gerant';
+/**
+ * What a block applies to: the manager's PIN for closings ('gerant'), or one account on the lock screen
+ * ('compte:<id>'). A wrong password for one account never blocks another account.
+ */
+export type PinScope = 'gerant' | `compte:${string}`;
+
+/** Scope of the lock-screen block for one account. */
+export function accountScope(userId: string): PinScope {
+  return `compte:${userId}`;
+}
 
 function readStates(): Partial<Record<PinScope, PinGuardState>> {
   try {
@@ -18,8 +27,8 @@ function readStates(): Partial<Record<PinScope, PinGuardState>> {
 }
 
 /**
- * Limits wrong PIN attempts (US-03 and the lock screen). The counter is kept in local storage,
- * so reloading the page does not reset a block.
+ * Limits wrong attempts (US-03, the manager's PIN for closings, and the lock screen, per account).
+ * The counter is kept in local storage, so reloading the page does not reset a block.
  */
 @Injectable({ providedIn: 'root' })
 export class PinGuardService {

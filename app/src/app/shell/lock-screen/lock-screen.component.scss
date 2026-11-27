@@ -5,14 +5,16 @@
   display: block;
 }
 
+// Full-screen, like the Windows and macOS lock screens: the wallpaper shows through, nothing sits in a card.
 .lock {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 40px;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 .intro {
@@ -22,160 +24,127 @@
   gap: 6px;
 }
 
-// Date and time on the lock screen are always white, with a soft shadow so they read on any wallpaper.
+// Date, time and text on the lock screen are always white, with no shadow.
 .clock {
   margin: 12px 0 0;
   font-size: clamp(56px, 10vw, 96px);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1;
-  color: #ffffff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  color: var(--on-image-text);
   font-variant-numeric: tabular-nums;
 }
 
 .date {
   margin: 0;
-  color: #ffffff;
+  color: var(--on-image-text);
   font-size: 1.1rem;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 
-.card {
-  width: min(380px, 92vw);
-  padding: 22px;
-  border-radius: 20px;
+.signin {
+  width: min(300px, 90vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
-}
-
-.users {
-  display: flex;
-  gap: 8px;
-  width: 100%;
-}
-
-.user {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 10px 6px;
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-  color: var(--text-muted);
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.user:hover {
-  background: var(--fill-subtle);
-}
-
-.user.selected {
-  color: var(--text);
-  background: var(--fill-active);
-  border-color: var(--glass-border);
+  color: var(--on-image-text);
 }
 
 .avatar {
-  width: 44px;
-  height: 44px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--fill-active);
+  background: var(--label-bg);
+  color: var(--on-image-text);
 }
 
-.user-name {
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.user-role {
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
-
-.prompt {
+.name {
   margin: 6px 0 0;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 600;
+  text-align: center;
 }
 
-.hint {
-  margin: 0;
-  color: var(--text-muted);
+.role {
+  margin: -10px 0 0;
   font-size: 0.9rem;
+  opacity: 0.85;
 }
 
-.dots {
+// One pill: the field and the arrow button share the same background, as in Windows 11.
+.row {
+  width: 100%;
   display: flex;
-  gap: 14px;
-  height: 16px;
   align-items: center;
-}
+  gap: 0;
+  border-radius: 999px;
+  background: var(--label-bg);
+  overflow: hidden;
 
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid var(--text-muted);
-  transition: background 0.15s, border-color 0.15s, transform 0.15s;
-}
+  input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 6px 0 18px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--on-image-text);
+    font: inherit;
+    font-size: 1rem;
 
-.dot.filled {
-  background: var(--text);
-  border-color: var(--text);
-  transform: scale(1.05);
-}
+    &::placeholder {
+      color: var(--on-image-text);
+      opacity: 0.7;
+    }
 
-.dot.error {
-  border-color: var(--danger);
-}
+    &:focus-visible {
+      box-shadow: inset 0 0 0 2px var(--focus);
+    }
 
-.dot.filled.error {
-  background: var(--danger);
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .go {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    color: var(--on-image-text);
+    font-size: 1.2rem;
+
+    &:hover:not(:disabled) {
+      background: var(--fill-hover);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
 }
 
 .error-text {
   min-height: 1.2em;
   margin: 0;
-  font-size: 0.85rem;
-  color: var(--danger-text);
+  font-size: 0.88rem;
+  text-align: center;
+  color: var(--on-image-text);
+  font-weight: 600;
 }
 
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  width: 100%;
-  max-width: 280px;
-}
-
-.key {
-  height: 60px;
-  border-radius: 16px;
-  font-size: 1.5rem;
-  font-weight: 500;
-  display: grid;
-  place-items: center;
-  background: var(--fill-hover);
-  transition: background 0.15s, transform 0.1s;
-}
-
-.key:hover {
-  background: var(--fill-active);
-}
-
-.key:active {
-  transform: scale(0.96);
-}
-
-.key-secondary {
+.link {
+  border: 0;
   background: transparent;
+  color: var(--on-image-text);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 4px 8px;
 }
 
 .footer {
@@ -183,6 +152,6 @@
   left: 20px;
   bottom: 16px;
   margin: 0;
-  color: var(--text-muted);
+  color: var(--on-image-text);
   font-size: 0.8rem;
 }

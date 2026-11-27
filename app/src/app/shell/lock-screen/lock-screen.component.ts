@@ -3,37 +3,36 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Injector,
+  afterNextRender,
   computed,
-  effect,
   inject,
   output,
   signal,
-  untracked,
   viewChild,
 } from '@angular/core';
 import { gsap } from 'gsap';
 
 import { ClockService } from '../../core/clock.service';
-import { PinGuardService } from '../../core/session/pin-guard.service';
+import { PinGuardService, accountScope } from '../../core/session/pin-guard.service';
 import { duration, reducedMotion } from '../../core/motion';
-import { SessionService } from '../../core/session/session.service';
+import { SessionService, SessionUser } from '../../core/session/session.service';
 import { IconComponent } from '../../shared/icon/icon.component';
 import { LogoComponent } from '../../shared/logo/logo.component';
 
-const PIN_LENGTH = 4;
-/** Keypad layout. An empty string is a spacer; '⌫' is the backspace key. */
-const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
+/** Sign-in steps: first the identifiant, then, once it is recognised, the password of that account. */
+type Step = 'identifiant' | 'secret';
 
 /**
- * Lock screen: choose a user, enter the PIN, then the screen dissolves into the desktop.
- * Keyboard input (digits, Backspace, Escape) works for PIN entry on a physical keyboard or scanner station.
+ * Lock screen in two steps, like the Windows and macOS lock screens: type the identifiant, the account
+ * appears with its picture and name, then type the password. The role comes from the account.
  */
 @Component({
   selector: 'app-lock-screen',
   imports: [IconComponent, LogoComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '(document:keydown)': 'onKeydown($event)',
+    '(keydown.escape)': 'onEscape()',
   },
   template: `
     <section class="lock" aria-labelledby="lock-title">
@@ -43,54 +42,56 @@ const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
         <p class="date">{{ clock.date() }}</p>
       </div>
 
-      <div class="card glass" #card>
-        <div class="users" role="radiogroup" aria-label="Utilisateur">
-          @for (user of session.users(); track user.id) {
-            <button
-              type="button"
-              role="radio"
-              class="user"
-              [class.selected]="user.id === selectedId()"
-              [attr.aria-checked]="user.id === selectedId()"
-              (click)="selectUser(user.id)"
-            >
-              <span class="avatar"><app-icon name="user" [size]="22" /></span>
-              <span class="user-name">{{ user.name }}</span>
-              <span class="user-role">{{ user.role }}</span>
-            </button>
-          }
-        </div>
+      <div class="signin" #card>
+        @if (step() === 'identifiant') {
+          <div class="avatar" aria-hidden="true"><app-icon name="user" [size]="56" /></div>
+          <h1 id="lock-title" class="name">Connexion</h1>
 
-        <h1 id="lock-title" class="prompt">Bonjour, {{ selectedName() }}</h1>
-        <p class="hint">Saisissez votre code PIN</p>
+          <form class="row" (submit)="$event.preventDefault(); nextStep()">
+            <input
+              #login
+              type="text"
+              autocomplete="username"
+              autocapitalize="none"
+              spellcheck="false"
+              placeholder="Identifiant"
+              aria-label="Identifiant"
+              [value]="loginName()"
+              (input)="onLogin($event)"
+            />
+            <button type="submit" class="go" aria-label="Suivant" [disabled]="loginName().trim() === ''">→</button>
+          </form>
 
-        <div class="dots" [attr.aria-label]="pin().length + ' chiffres saisis sur ' + pinLength">
-          @for (slot of slots; track slot) {
-            <span class="dot" [class.filled]="slot < pin().length" [class.error]="error()"></span>
-          }
-        </div>
+          <p class="error-text" role="alert">{{ error() }}</p>
+        } @else {
+          <div class="avatar" aria-hidden="true"><app-icon name="user" [size]="56" /></div>
+          <h1 id="lock-title" class="name">{{ user()?.name }}</h1>
+          <p class="role">{{ user()?.role }}</p>
 
-        <p class="error-text" role="alert">
-          @if (guard.secondsLeft('session') > 0) {
-            Trop de tentatives. Réessayez dans {{ guard.secondsLeft('session') }} s.
-          } @else if (error()) {
-            Code PIN incorrect
-          }
-        </p>
+          <form class="row" (submit)="$event.preventDefault(); submit()">
+            <input
+              #secret
+              type="password"
+              autocomplete="current-password"
+              placeholder="Mot de passe"
+              aria-label="Mot de passe"
+              [value]="password()"
+              (input)="onPassword($event)"
+              [disabled]="blockedSeconds() > 0"
+            />
+            <button type="submit" class="go" aria-label="Se connecter" [disabled]="!canSubmit()">→</button>
+          </form>
 
-        <div class="keypad">
-          @for (key of keys; track $index) {
-            @if (key === '⌫') {
-              <button type="button" class="key key-secondary" aria-label="Effacer" (click)="backspace()">
-                <app-icon name="backspace" [size]="22" />
-              </button>
-            } @else if (key === '') {
-              <span class="key-spacer" aria-hidden="true"></span>
+          <p class="error-text" role="alert">
+            @if (blockedSeconds() > 0) {
+              Trop de tentatives sur ce compte. Réessayez dans {{ blockedSeconds() }} s.
             } @else {
-              <button type="button" class="key" (click)="press(key)">{{ key }}</button>
+              {{ error() }}
             }
-          }
-        </div>
+          </p>
+
+          <button type="button" class="link" (click)="back()">Ce n'est pas vous ? Changer d'identifiant</button>
+        }
       </div>
 
       <footer class="footer">MarketPOS · version 0.1</footer>
@@ -99,108 +100,127 @@ const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
   styleUrl: './lock-screen.component.scss',
 })
 export class LockScreenComponent implements AfterViewInit {
-  /** Emits the id of the user once the PIN is verified and the transition has finished. */
+  /** Emits the id of the user once the password is verified and the transition has finished. */
   readonly unlocked = output<string>();
 
   readonly session = inject(SessionService);
   readonly clock = inject(ClockService);
+  /** Counts wrong attempts; blocks the password field after too many (Sécurité settings). */
+  readonly guard = inject(PinGuardService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly injector = inject(Injector);
   private readonly intro = viewChild.required<ElementRef<HTMLElement>>('intro');
   private readonly card = viewChild.required<ElementRef<HTMLElement>>('card');
+  private readonly loginInput = viewChild<ElementRef<HTMLInputElement>>('login');
+  private readonly secretInput = viewChild<ElementRef<HTMLInputElement>>('secret');
 
-  readonly keys = KEYS;
-  readonly pinLength = PIN_LENGTH;
-  readonly slots = Array.from({ length: PIN_LENGTH }, (_, index) => index);
-
-  /** Preselects the user who was signed in before locking, otherwise the first user. */
-  readonly selectedId = signal(this.session.user()?.id ?? '');
-  readonly pin = signal('');
-  readonly error = signal(false);
+  /** The account the user has identified. Set once the identifiant is recognised. */
+  readonly user = signal<SessionUser | null>(null);
+  readonly step = signal<Step>('identifiant');
+  readonly loginName = signal('');
+  readonly password = signal('');
+  readonly error = signal('');
   private busy = false;
-  /** True while a PIN is being checked, so a second entry cannot start another check. */
+  /** True while a password is being checked, so a second submit cannot start another check. */
   private checking = false;
 
-  /** Counts wrong PINs; blocks the keypad after too many attempts (Sécurité settings). */
-  readonly guard = inject(PinGuardService);
-
-  readonly selectedName = computed(() => this.session.findUser(this.selectedId())?.name ?? '');
+  /** Seconds the identified account stays blocked. Zero when there is no block or no account yet. */
+  readonly blockedSeconds = computed(() => {
+    const account = this.user();
+    return account ? this.guard.secondsLeft(accountScope(account.id)) : 0;
+  });
+  readonly canSubmit = computed(() => this.password() !== '' && this.blockedSeconds() === 0);
 
   constructor() {
-    // Accounts load asynchronously on first start: preselect the first user as soon as they are there.
-    effect(() => {
-      const first = this.session.users()[0];
-      if (!this.selectedId() && first) {
-        untracked(() => this.selectedId.set(first.id));
-      }
-    });
+    // The account signed in before locking is already identified: go straight to its password.
+    const previous = this.session.user();
+    if (previous) {
+      this.loginName.set(this.session.loginOf(previous.id));
+      this.user.set(previous);
+      this.step.set('secret');
+    }
   }
 
   ngAfterViewInit(): void {
     this.playIntro();
+    this.focusField();
   }
 
-  onKeydown(event: KeyboardEvent): void {
-    if (/^\d$/.test(event.key)) {
-      event.preventDefault();
-      this.press(event.key);
-    } else if (event.key === 'Backspace') {
-      this.backspace();
-    } else if (event.key === 'Escape') {
-      this.clear();
+  onLogin(event: Event): void {
+    this.error.set('');
+    this.loginName.set((event.target as HTMLInputElement).value);
+  }
+
+  onPassword(event: Event): void {
+    this.error.set('');
+    this.password.set((event.target as HTMLInputElement).value);
+  }
+
+  /** Step 1: the identifiant must belong to an active account. Then the password field appears. */
+  nextStep(): void {
+    const found = this.session.findByLogin(this.loginName());
+    if (!found) {
+      this.error.set('Identifiant inconnu.');
+      return;
     }
+    this.user.set(found);
+    this.error.set('');
+    this.goTo('secret');
   }
 
-  selectUser(userId: string): void {
+  /** Back to the identifiant, for another account. */
+  back(): void {
     if (this.busy) {
       return;
     }
-    this.selectedId.set(userId);
-    this.clear();
+    this.user.set(null);
+    this.password.set('');
+    this.error.set('');
+    this.goTo('identifiant');
   }
 
-  press(digit: string): void {
-    if (this.busy || this.guard.secondsLeft('session') > 0 || this.pin().length >= PIN_LENGTH) {
-      return;
-    }
-    const next = this.pin() + digit;
-    this.error.set(false);
-    this.pin.set(next);
-    if (next.length === PIN_LENGTH) {
-      this.submit(next);
-    }
-  }
-
-  backspace(): void {
+  onEscape(): void {
     if (this.busy) {
       return;
     }
-    this.error.set(false);
-    this.pin.update((value) => value.slice(0, -1));
+    if (this.step() === 'secret') {
+      this.password.set('');
+      this.error.set('');
+    } else {
+      this.loginName.set('');
+      this.error.set('');
+    }
   }
 
-  private clear(): void {
-    this.pin.set('');
-    this.error.set(false);
-  }
-
-  private async submit(pin: string): Promise<void> {
-    if (this.checking) {
+  async submit(): Promise<void> {
+    const account = this.user();
+    if (this.busy || this.checking || !account || !this.canSubmit()) {
       return;
     }
     this.checking = true;
-    const userId = this.selectedId();
-    const valid = await this.session.verifyPin(userId, pin);
+    const userId = await this.session.checkPassword(this.session.loginOf(account.id), this.password());
     this.checking = false;
-    if (valid) {
-      this.guard.reset('session');
+    if (userId) {
+      this.guard.reset(accountScope(account.id));
       this.busy = true;
       this.playUnlock(userId);
     } else {
-      this.guard.fail('session');
-      this.error.set(true);
-      this.pin.set('');
+      this.guard.fail(accountScope(account.id));
+      this.error.set('Mot de passe incorrect.');
+      this.password.set('');
       this.shake();
+      this.focusField();
     }
+  }
+
+  private goTo(next: Step): void {
+    this.step.set(next);
+    afterNextRender(() => this.focusField(), { injector: this.injector });
+  }
+
+  private focusField(): void {
+    const field = this.step() === 'identifiant' ? this.loginInput() : this.secretInput();
+    field?.nativeElement.focus();
   }
 
   private playIntro(): void {
@@ -215,11 +235,11 @@ export class LockScreenComponent implements AfterViewInit {
       stagger: 0.08,
     });
     gsap.from(this.card().nativeElement, {
-      y: 40,
+      y: 30,
       opacity: 0,
-      duration: 0.8,
+      duration: 0.7,
       delay: 0.15,
-      ease: 'power4.out',
+      ease: 'power3.out',
     });
   }
 
@@ -237,7 +257,7 @@ export class LockScreenComponent implements AfterViewInit {
   private shake(): void {
     gsap.fromTo(
       this.card().nativeElement,
-      { x: -14 },
+      { x: -12 },
       { x: 0, duration: duration(0.6), ease: 'elastic.out(1, 0.25)' },
     );
   }
